@@ -21,8 +21,7 @@ import {
   Segment
 } from "semantic-ui-react";
 
-
-import Logo from '-!svg-react-loader?name=Logo!../../openlaw-logo.svg';
+import Logo from "-!svg-react-loader?name=Logo!../img/openlaw-logo.svg";
 
 class App extends Component {
   render() {
@@ -32,7 +31,7 @@ class App extends Component {
       <Router>
         <Container>
           <Header as="h1" icon textAlign="center" style={{ paddingTop: 15 }}>
-            <Logo              
+            <Logo
               alt="OpenLaw NZ"
               style={{
                 width: "285.4px"

@@ -4,7 +4,7 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"dev": "webpack-dev-server --hot",
+		"dev": "webpack-dev-server --hot --mode development",
 		"build": "rm -rf dist && webpack -p --output-path dist"
 	},
 	"dependencies": {

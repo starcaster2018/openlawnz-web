@@ -2,7 +2,6 @@ var webpack = require("webpack");
 var path = require("path");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-var FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 var fs = require("fs");
 
 var src = path.resolve(__dirname, "src");
@@ -27,25 +26,19 @@ var config = {
         use: ["url-loader?limit=1024"]
       },
       {
-        test: /\.(png|jpg|ico)$/,
+        test: /\.(png|jpg)$/,
         use: ["url-loader?limit=8192"]
       },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
-      },
-      {
-          test: /\.svg$/,
-          exclude: /node_modules/,
-          use: ['svg-react-loader']
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: src + "/templates/index.html"
-    }),
-     new FaviconsWebpackPlugin(src +'/img/logo-small.png')
+    })
   ],
   optimization: {
     minimizer: [

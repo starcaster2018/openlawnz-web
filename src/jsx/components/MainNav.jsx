@@ -7,7 +7,7 @@ class App extends Component {
     const { pathname } = this.props.location;
 
     return (
-      <Menu attached="top" stackable>
+      <Menu attached="top">
         <Menu.Item active={pathname === "/"}>
           <Link to="/">Home</Link>
         </Menu.Item>

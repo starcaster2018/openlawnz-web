@@ -1,13 +1,9 @@
 language: node_js
 node_js: 9
+before_deploy: pip install awscli
 deploy:
-  provider: s3
-  bucket: "dev-www.openlaw.nz"
-  endpoint: "s3-website-ap-southeast-2.amazonaws.com"
-  region: "ap-southeast-2"
-  local_dir: dist
+  provider: script
+  script: ~/.local/bin/aws s3 sync dist s3://dev-www.openlaw.nz --region=ap-southeast-2 --delete      
   skip_cleanup: true
-  access_key_id: $access_key_id
-  secret_access_key: $secret_access_key
   on:
     branch: master

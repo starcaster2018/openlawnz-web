@@ -2,7 +2,9 @@ language: node_js
 node_js: 9
 deploy:
   provider: s3
-  bucket: "dev-www.openlaw.nz.s3-website-ap-southeast-2.amazonaws.com"
+  bucket: "dev-www.openlaw.nz"
+  endpoint: "s3-website-ap-southeast-2.amazonaws.com"
+  region: "ap-southeast-2"
   local_dir: dist
   skip_cleanup: true
   access_key_id: $access_key_id

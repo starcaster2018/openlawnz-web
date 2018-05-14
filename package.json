@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --hot --mode development",
-    "build": "webpack -p --output-path dist"
+    "build": "webpack -p --output-path dist",
+    "test": "webpack -p --output-path dist"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Icon, Responsive } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 
 class App extends Component {
   render() {
@@ -8,29 +8,41 @@ class App extends Component {
 
     return (
       <Menu attached="top" stackable>
-        <Menu.Item active={pathname === "/"}>
-          <Link to="/">Home</Link>
+        <Menu.Item active={pathname === "/"} as={Link} to="/">
+          Home
         </Menu.Item>
         <Menu.Item
-          active={pathname === "/case-search" || pathname.includes("/case")}
+          active={pathname === "/developers"}
+          as={Link}
+          to="/developers"
         >
-          <Link to="/case-search">Case Search</Link>
+          Developers
         </Menu.Item>
-        <Menu.Item active={pathname === "/about"}>
-          <Link to="/about">About / Contact</Link>
+        <Menu.Item
+          active={pathname === "/search" || pathname.includes("/case")}
+          as={Link}
+          to="/search"
+        >
+          Search
         </Menu.Item>
-        <Menu.Item active={pathname === "/plugin"}>
-          <Link to="/plugin">legislation.govt.nz Plugin</Link>
+
+        <Menu.Item active={pathname === "/plugin"} as={Link} to="/plugin">
+          Plugins
         </Menu.Item>
-        <Menu.Item>
-          <a href="https://api.openlaw.nz/graphql">
-            API &nbsp;<Icon name="external" fitted />
-          </a>
+        <Menu.Item active={pathname === "/services"} as={Link} to="/services">
+          Services
         </Menu.Item>
-        <Menu.Item>
-          <a href="https://github.com/openlawnz">
+        <Menu.Item active={pathname === "/about"} as={Link} to="/about">
+          About us
+        </Menu.Item>
+        <Menu.Item active={pathname === "/contact"} as={Link} to="/contact">
+          Contact
+        </Menu.Item>
+
+        <Menu.Item onClick={() => window.location.href = "https://github.com/openlawnz" }>
+          
             Github &nbsp;<Icon name="external" fitted />
-          </a>
+          
         </Menu.Item>
       </Menu>
     );

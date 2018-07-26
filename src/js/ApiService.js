@@ -4,11 +4,14 @@ class ApiService {
    * @returns {ApiService}
    */
   constructor() {
-    this.apiUrl = "https://api.openlaw.nz/graphql";
+    this.apiUrl = API_URL + "/graphql";
     this.caseFields = `{
 			id,
 			case_name,
-			bucket_key,
+      PDF
+      {
+        bucket_key 
+      },
 			cited_by 
 			{ 
 				id, 
@@ -18,7 +21,16 @@ class ApiService {
 			{ 
 				id, 
 				case_name
-			}
+      },
+      legislationReferences
+      {
+        section,
+        legislation
+        {
+          title,
+        }
+      }
+
 		}`;
   }
 
@@ -29,23 +41,11 @@ class ApiService {
    */
   async getGraphQlData(resource, params, fields) {
     const query = `{${resource} ${this.paramsToString(params)} ${fields}}`;
-    const res = await fetch(this.apiUrl, {
-      method: "POST",
-      mode: "cors",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      }),
-      body: JSON.stringify({
-        query
-      })
-    });
-    if (res.ok) {
-      const body = await res.json();
-      return body.data;
-    } else {
-      throw new Error(res.status);
-    }
+    const res = await fetch(`${this.apiUrl}?query=${encodeURIComponent(query)}`)
+
+    const body = await res.json();
+    return body.data;
+    
   }
   /**
    *

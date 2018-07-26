@@ -1,49 +1,64 @@
-import React, { Component } from 'react';
-import { Button, Container, Segment, Header, Item, Image } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css';
-import Placeholder from '../img/placeholder.png';
+import React, { Component } from "react";
+import { Statistic, Header, List, Segment } from "semantic-ui-react";
 
 class Home extends Component {
-	render() {
-		return (
-			
-			<React.Fragment>
-				
-				<Header as='h2'>Welcome</Header>
-				
-				<p>We have analysed thousands of cases and made connections between them and associated legislation.</p>
-				
-				<Header as='h3'>Metadata</Header>
-				
-				<Item.Group>
-					<Item>
-						<Item.Image size='tiny' src={Placeholder} />
-						<Item.Content>
-							<Item.Header as='a'>Cases to legislation</Item.Header>
-							<Item.Meta>Links between legislation mentioned in cases with legislation.gov.nz</Item.Meta>
-						</Item.Content>
-					</Item>
+  render() {
+    return (
+      <React.Fragment>
+        <Header as="h1">Welcome</Header>
+		<p>OpenLaw NZ is a new, free legal research platform for New Zealand.</p>
+        <Header as="h2">Our Mission</Header>
 
-					<Item>
-					<Item.Image size='tiny' src={Placeholder} />
-						<Item.Content>
-							<Item.Header as='a'>Cases to cases</Item.Header>
-							<Item.Meta>Cases have been parsed to find relationships to other cases based on their neutral and double citations</Item.Meta>
-						</Item.Content>
-					</Item>
-					
-					<Item>
-					<Item.Image size='tiny' src={Placeholder} />
-						<Item.Content>
-							<Item.Header as='a'>Legislation to cases</Item.Header>
-							<Item.Meta>Download the Chrome extension to use on legislation.gov.nz to see cases related to legislation</Item.Meta>
-						</Item.Content>
-					</Item>
-				</Item.Group>
-
-			</React.Fragment>
-		);
-	}
+        <List relaxed="very" size="large">
+          <List.Item>
+		  <List.Icon name='universal access' />
+		  <List.Content>
+            Improve access to justice and education for all New Zealanders
+			</List.Content>
+          </List.Item>
+          <List.Item>
+		  <List.Icon name='database' />
+		  <List.Content>
+            Spur innovation with a freely available relational database
+			</List.Content>
+          </List.Item>
+          <List.Item>
+		  <List.Icon name='dollar sign' />
+		  <List.Content>
+            Fund future development by providing services using the OpenLaw NZ
+            platform
+			</List.Content>
+          </List.Item>
+        </List>
+        <br />
+        <p>
+          <em>
+            OpenLaw NZ is an open-source platform that any country can copy and
+            use for the betterment of their citizens.
+          </em>
+        </p>
+        <br />
+        <Segment>
+          <Statistic.Group widths='three'>
+            <Statistic>
+              <Statistic.Value>17,000</Statistic.Value>
+              <Statistic.Label>Cases</Statistic.Label>
+            </Statistic>
+            <Statistic>
+              <Statistic.Value>30,000</Statistic.Value>
+              <Statistic.Label>Case-to-Case relationships</Statistic.Label>
+            </Statistic>
+            <Statistic>
+              <Statistic.Value>10,000</Statistic.Value>
+              <Statistic.Label>
+                Case to Legislation relationships
+              </Statistic.Label>
+            </Statistic>
+          </Statistic.Group>
+        </Segment>
+      </React.Fragment>
+    );
+  }
 }
 
 export default Home;

@@ -1,14 +1,17 @@
-var webpack = require("webpack");
-var path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-var FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-var fs = require("fs");
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-var src = path.resolve(__dirname, "src");
-var out = path.resolve(__dirname, "debug");
+const config = require("./config.json")
 
-var config = {
+const src = path.resolve(__dirname, "src");
+const out = path.resolve(__dirname, "debug");
+
+module.exports = (env, argv) => ({
   entry: ["babel-polyfill", src + "/jsx/index.jsx"],
   output: {
     path: out + "/js",
@@ -23,6 +26,10 @@ var config = {
         exclude: /node_modules/
       },
       {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
         use: ["url-loader?limit=1024"]
       },
@@ -31,21 +38,36 @@ var config = {
         use: ["url-loader?limit=8192"]
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        test: /\.scss$/,
+        use: [
+          argv.mode !== "production"
+            ? "style-loader"
+            : MiniCssExtractPlugin.loader,
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // compiles Sass to CSS
+        ]
       },
       {
-          test: /\.svg$/,
-          exclude: /node_modules/,
-          use: ['svg-react-loader']
+        test: /\.svg$/,
+        exclude: /node_modules/,
+        use: ["svg-react-loader"]
       }
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      API_URL:JSON.stringify(config[argv.mode].API_URL) 
+    }),
     new HtmlWebpackPlugin({
       template: src + "/templates/index.html"
     }),
-     new FaviconsWebpackPlugin(src +'/img/logo-small.png')
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+    new FaviconsWebpackPlugin(src + "/img/logo-small.png")
   ],
   optimization: {
     minimizer: [
@@ -59,7 +81,16 @@ var config = {
     contentBase: out,
     port: 9000,
     historyApiFallback: true
-  }
-};
+  },
 
-module.exports = config;
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  }
+});

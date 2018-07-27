@@ -80,9 +80,7 @@ class Search extends Component {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Case Name</Table.HeaderCell>
-              <Table.HeaderCell>Citations</Table.HeaderCell>
               <Table.HeaderCell>Date</Table.HeaderCell>
-			  <Table.HeaderCell>Relevance</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -90,9 +88,7 @@ class Search extends Component {
 		  {this.state.results.map((result, i) => 
 			<Table.Row key={`result-${i}`}>
 				<Table.Cell><Link to={`/case/${result.id}`}>{result.case_name}</Link></Table.Cell>
-				<Table.Cell>-</Table.Cell>
 				<Table.Cell>{result.case_date}</Table.Cell>
-				<Table.Cell>{result.relevance}</Table.Cell>
 			</Table.Row>
 		  )}
           </Table.Body>

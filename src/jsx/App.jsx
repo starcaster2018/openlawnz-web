@@ -59,7 +59,7 @@ class App extends Component {
             <Route exact path="/about" component={About} />
           </Segment>
           <footer>
-            <p>&copy; 2018 OpenLaw NZ | <a href="terms.html">Terms &amp; Conditions</a> | Sponsored by Harte Law (<Link to="/contact">Contact us</Link> if you'd like to contribute)</p>
+            <p>&copy; 2018 OpenLaw NZ | Sponsored by Harte Law (<Link to="/contact">Contact us</Link> if you'd like to contribute)</p>
           </footer>
         </Container>
         

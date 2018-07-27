@@ -41,17 +41,17 @@ class Home extends Component {
         <Segment>
           <Statistic.Group widths='three'>
             <Statistic>
-              <Statistic.Value>17,000</Statistic.Value>
+              <Statistic.Value>17,605</Statistic.Value>
               <Statistic.Label>Cases</Statistic.Label>
             </Statistic>
             <Statistic>
-              <Statistic.Value>30,000</Statistic.Value>
+              <Statistic.Value>20,261</Statistic.Value>
               <Statistic.Label>Case-to-Case relationships</Statistic.Label>
             </Statistic>
             <Statistic>
-              <Statistic.Value>10,000</Statistic.Value>
+              <Statistic.Value>190,324</Statistic.Value>
               <Statistic.Label>
-                Case to Legislation relationships
+                Case-to-Legislation relationships
               </Statistic.Label>
             </Statistic>
           </Statistic.Group>

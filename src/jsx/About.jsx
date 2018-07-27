@@ -82,8 +82,16 @@ class About extends Component {
                 <span className="date">Developer</span>
               </Item.Meta>
               <Item.Description>
-                Eugene joined the team in 2018, and has been working with data
-                parsing and code enhancements.
+                <p>
+                  Eugene joined the team in 2018, and has been working with data
+                  parsing and code enhancements.
+                </p>
+                <p>
+                  He lives in Auckland and is currently studying Software
+                  Engineering and Finance at the University of Auckland. Eugene
+                  has always had a strong interest in software, and a passion
+                  for seeing interesting technology in action.
+                </p>
               </Item.Description>
             </Item.Content>
           </Item>
@@ -95,10 +103,16 @@ class About extends Component {
                 <span className="date">Database Developer</span>
               </Item.Meta>
               <Item.Description>
-                <p>Matt joined the team in 2018, and has been working on database
-                optimisation and reslience.</p>
-				<p>Matt Frost is a current Software Engineering student at the University of Auckland. He has a wide range of 
-technical skills obtained from previous and ongoing work, and a passion for problem solving.</p>
+                <p>
+                  Matt joined the team in 2018, and has been working on database
+                  optimisation and reslience.
+                </p>
+                <p>
+                  Matt Frost is a current Software Engineering student at the
+                  University of Auckland. He has a wide range of technical
+                  skills obtained from previous and ongoing work, and a passion
+                  for problem solving.
+                </p>
               </Item.Description>
             </Item.Content>
           </Item>

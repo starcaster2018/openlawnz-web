@@ -22,7 +22,7 @@ class Plugin extends Component {
           at.
         </p>
 
-        <a href="">Install the plugin</a>
+        <p><em>- Coming soon -</em></p>
 
         <Header as="h3">Microsoft Word Auto Citation Linker</Header>
 
@@ -31,7 +31,7 @@ class Plugin extends Component {
           automatically link citations.
         </p>
 
-        <p><a href="">Get the source code</a></p>
+        <p><a href="https://github.com/openlawnz/openlawnz-word-plugin">Get the source code</a></p>
 
         <p>
 			<em>

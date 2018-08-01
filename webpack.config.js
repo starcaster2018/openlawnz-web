@@ -5,6 +5,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = require("./config.json")
 
@@ -61,6 +62,9 @@ module.exports = (env, argv) => ({
     new HtmlWebpackPlugin({
       template: src + "/templates/index.html"
     }),
+    new CopyWebpackPlugin([
+      { from: 'static/**/*', to: '', flatten: true },
+    ]),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional

@@ -12,11 +12,11 @@ class Plugin extends Component {
 
         <p>Simply send us your document (e.g. court submissions, advice letters, research papers), along with $300NZD and we will:</p>
         <ul>
-          <li>Hyperlink all cited (NZ) cases to an online source</li>
-          <li>Or: Download and hyperlink all cited (NZ) cases in a format that complies with the <a href="https://www.courtsofnz.govt.nz/going-to-court/practice-directions/practice-notes/all-benches/SCCEDP.pdf">Senior Courts Electronic Document Protocol</a></li>
+          <li>Hyperlink all cited (NZ) cases to an online source; or</li>
+          <li>Download and hyperlink all cited (NZ) cases in a format that complies with the <a href="https://www.courtsofnz.govt.nz/going-to-court/practice-directions/practice-notes/all-benches/SCCEDP.pdf">Senior Courts Electronic Document Protocol</a></li>
         </ul>
 
-        <p><em>All profits OpenLaw NZ makes goes back into funding its development</em></p>
+        <p><em>All profits OpenLaw NZ makes goes back into funding further development</em></p>
 
         <Header as="h3">Get started</Header>
 

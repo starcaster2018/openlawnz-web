@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Icon } from "semantic-ui-react";
+import { Header, Icon, Message } from "semantic-ui-react";
 
 class Developers extends Component {
   render() {
@@ -25,11 +25,11 @@ class Developers extends Component {
             GraphQL API &nbsp;<Icon name="external" fitted />
           </a>
         </p>
-		<Header as="h4">Example</Header>
+		<Header as="h4">Code Example</Header>
 		<p>From our Chrome Extension:</p>
+    <Message compact>
 <pre>
-{`
-const formatQuery = (legislationTitle) => {
+{`const formatQuery = (legislationTitle) => {
 	return \`{ 
 		legislation(title: "'\${legislationTitle}'") { 
 			caseReferences { 
@@ -49,7 +49,7 @@ const formatQuery = (legislationTitle) => {
 
 fetch(\`https://api.openlaw.nz?query=\${formatQuery(legislationTitle)}\`);
 `}
-</pre>
+</pre></Message>
 
         {/* <Header as="h3">Search</Header>
 

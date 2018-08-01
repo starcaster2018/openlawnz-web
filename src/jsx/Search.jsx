@@ -66,8 +66,8 @@ class Search extends Component {
 				focus
 				value={this.state.currentSearchQuery}
 				onChange={ this.handleChange.bind(this) } 
-				icon={<Icon name="search" inverted circular link />}
-				placeholder="Search in cases..."
+				icon={<Icon name="search" inverted color='teal' circular link />}
+				placeholder="Search cases..."
 			/>
 		</Form>
 		{this.state.results && this.state.results.length == 0 && <Message>

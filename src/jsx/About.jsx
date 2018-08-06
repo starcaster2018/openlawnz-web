@@ -4,6 +4,7 @@ import Andy from "../img/andy.jpg";
 import Will from "../img/will.jpg";
 import Eugene from "../img/eugene.jpg";
 import Matt from "../img/matt.jpg";
+import Jenni from "../img/jenni.jpg";
 
 class About extends Component {
   render() {
@@ -112,6 +113,27 @@ class About extends Component {
                   University of Auckland. He has a wide range of technical
                   skills obtained from previous and ongoing work, and a passion
                   for problem solving.
+                </p>
+              </Item.Description>
+            </Item.Content>
+          </Item>
+          <Item>
+            <Item.Image src={Jenni} />
+            <Item.Content>
+              <Item.Header>Jenni Harding</Item.Header>
+              <Item.Meta>
+                <span className="date">Developer</span>
+              </Item.Meta>
+              <Item.Description>
+                <p>
+                  Jenni Harding joined the team in 2018 and helps with the
+                  front-end development of the website.
+                </p>
+                <p>
+                  She is in her first year studying the Bachelor of Information
+                  Communication and Technologies at UCOL in Palmerston North and
+                  she is looking to gain real-world experience by working on the
+                  OpenLaw NZ project
                 </p>
               </Item.Description>
             </Item.Content>

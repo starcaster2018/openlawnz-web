@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table, Header, Segment, Grid, List } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import ApiService from "../js/ApiService";
+import ApiService from "../../js/ApiService";
 
 class SingleCase extends Component {
 	constructor({ match }) {

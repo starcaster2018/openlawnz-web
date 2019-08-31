@@ -3,24 +3,146 @@ $openLawLightGreen: #6CB5BA;
 $openLawTeal: #00A8B3;
 $openLawLightBrown: #CF9768;
 $openLawCharcoal: #22283A;
+$headerLinkColor: #FFFFFF;
+$contentBackgroundColor: #FFFFFF;
 
-$header1: 40px;
-$header2: 30px;
-$header3: 24px;
-$header4: 20px;
-$header5: 16px;
-$body: 15px;
+@font-face {
+	font-family: 'Avenir LT Std 85 Heavy';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/AvenirLTStd-Heavy.woff') format('woff');
+	}
+
+@font-face {
+	font-family: 'Avenir LT Std 65 Medium';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/AvenirLTStd-Medium.woff') format('woff');
+		}
+
+@font-face {
+	font-family: 'Avenir LT Std 45 Book';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/AvenirLTStd-Book.woff') format('woff');
+			}
+
+
+@mixin header-one {
+	font-family: 'Avenir LT Std 85 Heavy';
+	font-size: 40px;
+}
+
+@mixin header-two {
+	font-family: 'Avenir LT Std 85 Heavy';
+	font-size: 30px;
+}
+
+@mixin header-three {
+	font-family: 'Avenir LT Std 65 Medium';
+	font-size: 24px;
+}
+
+@mixin header-four {
+	font-family: 'Avenir LT Std 65 Medium';
+	font-size: 20px;
+}
+
+@mixin header-five {
+	font-family: 'Avenir LT Std 85 Medium';
+	font-size: 16px;
+}
+
+@mixin body {
+	font-family: 'Avenir LT Std 45 Book';
+	font-size: 15px;
+}
+
+* {
+	font-family: 'Avenir LT Std 45 Book';
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	text-decoration: none;
+	list-style-type: none;
+}
 
 .main-header {
 	margin: 25px 0;
 }
+
 .main-logo {
-	width: 300px;
+	width: 160px;
 	max-width: 80%;
 }
 
-footer {
-	text-align: center;
-	margin: 20px 0;
-	font-size: 12px;
+.nav-container {
+	width: 100vw;
+	height: 100vw;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: url(../img/open-law-background.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	.nav-items {
+		width: 100%;
+		padding: 65px 8vw;
+		display: flex;
+		flex-direction: row;
+	.nav-links {
+		position: absolute;
+		right: 8vw;
+		ul {	
+		display: flex;
+		flex-direction: row;
+		@include header-five;
+		li {
+			padding: 0 3vw;
+		}
+		a {
+			color: $headerLinkColor;
+		}
+		}
+	}
+	}
+}
+
+.footer-items {
+	position: relative;
+	width: 100vw;
+	height: 104px;
+	background-color: $openLawDarkGreen;
+	ul {
+		position: absolute;
+		padding: 0%;
+		margin: 0%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		flex-direction: row;
+		@include header-five;
+		color: white;
+		li {
+			padding: 0 3vw;
+		}
+		a {
+			color: $headerLinkColor;
+		}
+	}
+}
+
+.content-wrapper {
+	position: fixed;
+	margin-top: 170px;
+	background-color: $contentBackgroundColor;
+	overflow: auto;
+
 }

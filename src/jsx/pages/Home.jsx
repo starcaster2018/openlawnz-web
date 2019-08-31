@@ -1,11 +1,20 @@
 import React, { Component } from "react";
-import { Statistic, Header, List, Segment } from "semantic-ui-react";
+import Search from "../components/Search.jsx"
 
 class Home extends Component {
 	render() {
 		return (
-			<React.Fragment>
-				<Header as="h1">Welcome</Header>
+			<div className="home-wrapper">
+				<Search/>
+			</div>
+		);
+	}
+}
+
+export default Home;
+
+
+				{/* <Header as="h1">Welcome</Header>
 				<p>OpenLaw NZ is a new, free legal research platform for New Zealand.</p>
 				<Header as="h2">Our Mission</Header>
 
@@ -48,10 +57,4 @@ class Home extends Component {
 							<Statistic.Label>Case-to-Legislation relationships</Statistic.Label>
 						</Statistic>
 					</Statistic.Group>
-				</Segment>
-			</React.Fragment>
-		);
-	}
-}
-
-export default Home;
+				</Segment> */}

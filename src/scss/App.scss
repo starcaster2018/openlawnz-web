@@ -3,6 +3,7 @@ $openLawLightGreen: #6CB5BA;
 $openLawTeal: #00A8B3;
 $openLawLightBrown: #CF9768;
 $openLawCharcoal: #22283A;
+@import './Helpers.scss';
 
 $header1: 40px;
 $header2: 30px;
@@ -10,6 +11,10 @@ $header3: 24px;
 $header4: 20px;
 $header5: 16px;
 $body: 15px;
+
+h1 {
+	font-size: $header1
+}
 
 .main-header {
 	margin: 25px 0;
@@ -24,3 +29,6 @@ footer {
 	margin: 20px 0;
 	font-size: 12px;
 }
+
+// Components
+@import './HorizontalContainer.scss';

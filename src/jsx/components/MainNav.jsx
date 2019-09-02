@@ -2,37 +2,32 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Icon } from "semantic-ui-react";
 
+import Logo from "-!svg-react-loader?name=Logo!../../img/openlaw-logo.svg";
+
+
 class App extends Component {
 	render() {
 		const { pathname } = this.props.location;
 
 		return (
-			<Menu attached="top" stackable>
-				<Menu.Item active={pathname === "/"} as={Link} to="/">
-					Home
-				</Menu.Item>
-				<Menu.Item active={pathname === "/developers"} as={Link} to="/developers">
-					Developers
-				</Menu.Item>
-				<Menu.Item active={pathname === "/search" || pathname.includes("/case")} as={Link} to="/search">
-					Search
-				</Menu.Item>
-
-				<Menu.Item active={pathname === "/plugin"} as={Link} to="/plugin">
-					Plugins
-				</Menu.Item>
-				<Menu.Item active={pathname === "/about"} as={Link} to="/about">
-					About us
-				</Menu.Item>
-				<Menu.Item active={pathname === "/contact"} as={Link} to="/contact">
-					Contact
-				</Menu.Item>
-
-				<Menu.Item onClick={() => (window.location.href = "https://github.com/openlawnz")}>
-					Github &nbsp;
-					<Icon name="external" fitted />
-				</Menu.Item>
-			</Menu>
+			<div className="nav-container">
+			<div className="nav-items">
+			<div className="nav-logo">
+			<Link to="/">
+			<Logo alt="OpenLaw NZ" className="main-logo" />
+			</Link>
+			</div>
+			<div className="nav-links">
+				<ul>
+					<li><Link to="/about">About Us</Link></li>
+					<li><Link to="/news">News</Link></li>
+					<li><Link to="/spotlight">Spotlight</Link></li>
+					<li><Link to="/contact">Contact</Link></li>
+					<li><Link to="/volunteers">Volunteers</Link></li>
+				</ul>
+			</div>
+			</div>
+			</div>
 		);
 	}
 }

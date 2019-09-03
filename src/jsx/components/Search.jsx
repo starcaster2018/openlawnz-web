@@ -13,33 +13,6 @@ export default class Search extends Component {
             </div>
             <button type="submit" class="search-submit-button">Search</button>
             </div>
-            <div className="advanced-search">
-            <div className="advanced-search-unit"> 
-            <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="vw">VW</option>
-            <option value="audi" selected>Audi</option>
-            </select>
-            </div>   
-            <div className="advanced-search">
-            <div className="advanced-search-unit"> 
-            <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="vw">VW</option>
-            <option value="audi" selected>Audi</option>
-            </select>
-            </div>
-            <div className="advanced-search-unit"> 
-            <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="vw">VW</option>
-            <option value="audi" selected>Audi</option>
-            </select>
-            </div>
-            </div>
             </div>
         )
     }

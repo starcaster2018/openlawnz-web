@@ -1,233 +1,360 @@
 $openLawDarkGreen: #3f7578;
-$openLawLightGreen: #6CB5BA;
-$openLawTeal: #00A8B3;
-$openLawLightBrown: #CF9768;
-$openLawCharcoal: #22283A;
-$headerLinkColor: #FFFFFF;
-$contentBackgroundColor: #FFFFFF;
+$openLawLightGreen: #6cb5ba;
+$openLawTeal: #00a8b3;
+$openLawLightBrown: #cf9768;
+$openLawArapawa: #225160;
+$openLawCharcoal: #22283a;
+$headerLinkColor: #ffffff;
+$contentBackgroundColor: #ffffff;
+
+
 
 @font-face {
-	font-family: 'Avenir LT Std 85 Heavy';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../fonts/AvenirLTStd-Heavy.woff') format('woff');
-	}
+  font-family: "Avenir LT Std 85 Heavy";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/AvenirLTStd-Heavy.woff") format("woff");
+}
 
 @font-face {
-	font-family: 'Avenir LT Std 65 Medium';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../fonts/AvenirLTStd-Medium.woff') format('woff');
-		}
+  font-family: "Avenir LT Std 65 Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/AvenirLTStd-Medium.woff") format("woff");
+}
 
 @font-face {
-	font-family: 'Avenir LT Std 45 Book';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../fonts/AvenirLTStd-Book.woff') format('woff');
-			}
-
+  font-family: "Avenir LT Std 45 Book";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/AvenirLTStd-Book.woff") format("woff");
+}
 
 @mixin header-one {
-	font-family: 'Avenir LT Std 85 Heavy';
-	font-size: 40px;
+  font-family: "Avenir LT Std 85 Heavy";
+  font-size: 40px;
 }
 
 @mixin header-two {
-	font-family: 'Avenir LT Std 85 Heavy';
-	font-size: 30px;
+  font-family: "Avenir LT Std 85 Heavy";
+  font-size: 30px;
 }
 
 @mixin header-three {
-	font-family: 'Avenir LT Std 65 Medium';
-	font-size: 24px;
+  font-family: "Avenir LT Std 65 Medium";
+  font-size: 24px;
 }
 
 @mixin header-four {
-	font-family: 'Avenir LT Std 65 Medium';
-	font-size: 20px;
+  font-family: "Avenir LT Std 65 Medium";
+  font-size: 20px;
 }
 
 @mixin header-five {
-	font-family: 'Avenir LT Std 85 Medium';
-	font-size: 16px;
+  font-family: "Avenir LT Std 85 Medium";
+  font-size: 16px;
 }
 
 @mixin body {
-	font-family: 'Avenir LT Std 45 Book';
-	font-size: 15px;
+  font-family: "Avenir LT Std 45 Book";
+  font-size: 15px;
 }
 
 @mixin card-style {
-background: #FFFFFF;
-box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 
 * {
-	font-family: 'Avenir LT Std 45 Book';
+  font-family: "Avenir LT Std 45 Book";
 }
 
 button:focus {
-	outline: none;
-  }
+  outline: none;
+}
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 li {
-	text-decoration: none;
-	list-style-type: none;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .main-header {
-	margin: 25px 0;
+  margin: 25px 0;
 }
 
 .main-logo {
-	width: 160px;
-	max-width: 80%;
+  width: 160px;
+  max-width: 80%;
 }
 
 .nav-container {
-	width: 100vw;
-	height: 100vw;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: url(../img/open-law-background.png) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-	.nav-items {
-		width: 100%;
-		padding: 65px 8vw;
-		display: flex;
-		flex-direction: row;
-	.nav-links {
-		position: absolute;
-		right: 8vw;
-		ul {	
-		display: flex;
-		flex-direction: row;
-		@include header-five;
-		li {
-			padding: 0 3vw;
-		}
-		a {
-			color: $headerLinkColor;
-		}
-		}
-	}
-	}
+  width: 100vw;
+  height: 100vw;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: url(../img/open-law-background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  .nav-items {
+    width: 100%;
+    padding: 65px 8vw;
+    display: flex;
+    flex-direction: row;
+
+    .nav-links {
+      position: absolute;
+      right: 8vw;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        @include header-five;
+
+        li {
+          padding: 0 3vw;
+        }
+
+        a {
+          color: $headerLinkColor;
+        }
+      }
+    }
+  }
 }
 
 .footer-items {
-	position: relative;
-	width: 100vw;
-	height: 104px;
-	background-color: $openLawDarkGreen;
-	ul {
-		position: absolute;
-		padding: 0%;
-		margin: 0%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		display: flex;
-		flex-direction: row;
-		@include header-five;
-		color: white;
-		li {
-			padding: 0 3vw;
-		}
-		a {
-			color: $headerLinkColor;
-		}
-	}
+  position: relative;
+  width: 100vw;
+  height: 104px;
+  background-color: $openLawDarkGreen;
+
+  ul {
+    position: absolute;
+    padding: 0%;
+    margin: 0%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    @include header-five;
+    color: white;
+
+    li {
+      padding: 0 3vw;
+    }
+
+    a {
+      color: $headerLinkColor;
+    }
+  }
 }
 
 .content-wrapper {
-	position: fixed;
-	margin-top: 170px;
-	overflow: auto;
+  position: fixed;
+  margin-top: 170px;
+  overflow: auto;
+}
 
+.home-wrapper {
+  position: relative;
+  width: 100%;
+  height: 20vh;
+}
+
+.search {
+  display: flex;
+  width: 50%;
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.search-input {
+  width: 100%;
+  position: relative;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+}
+
+.search-term {
+  width: 100%;
+  padding: 11px 15px;
+  border: none;
+  outline: none;
+  color: #959595;
+  background: #ffffff;
+  border-radius: 5px 0 0 5px;
+  font-family: Avenir LT Std;
+  font-size: 15px;
+}
+
+.searchTerm:focus {
+  color: none;
+}
+
+.search-button {
+  width: 47px;
+  height: 47px;
+  padding: 13px;
+  border: none;
+  background: #ffffff;
+  text-align: center;
+  color: #cf9768;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.search-submit-button {
+  border: none;
+  margin-left: 14px;
+  background: #cf9768;
+  padding: 0 53px;
+  border-radius: 5px;
+  font-family: Avenir LT Std;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 
-  
-.home-wrapper{
-	position: relative;
-	width: 100%;
-	height: 20vh;
+
+.contact-us-container {
+  text-align: center;
+  background-color: $contentBackgroundColor;
+  padding-top: 66px;
+  padding-bottom: 67px;
+
+  .contact-us {
+    @include header-two;
+    line-height: 36px;
+    letter-spacing: -0.02em;
+    color: $openLawLightBrown;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.02em;
+    color: $openLawLightBrown;
+    margin-bottom: 20px;
+  }
+
+  .get-in-touch {
+    border: 2px solid #cf9768;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 160px;
+    height: 52px;
+    display: inline-block;
+
+    a {
+      display: inline-block;
+      @include header-four;
+      width: 140px;
+      height: 17px;
+      line-height: 24px;
+      letter-spacing: -0.02em;
+      color: $openLawLightBrown;
+      position: relative;
+      box-sizing: border-box;
+      padding: 0 10px 0 10px;
+      top: 12px;
+    }
+  }
 }
 
+.news-spotlights-container {
+  display: flex;
+  flex-direction: row;
+  background: #E5E5E5;
+  align-items: center;
+  justify-content: center;
 
-.search{
-	display: flex;
-	width: 50%;
-	position: absolute;
-	z-index: 100;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  .cards-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 87px auto 108px auto;
   }
-  
-  .search-input {
-	width: 100%;
-	position: relative;
-	display: flex;
-	border-radius: 5px;
-	box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+
+  .card__news,
+  .card__spotlight {
+    width: 480px;
+    height: 578px;
+    margin-right: 20px;
+    padding-left: 19px;
+    @include card-style;
+
+    h2 {
+      margin-top: 35px;
+      @include header-two;
+      line-height: 36px;
+      letter-spacing: -0.03em;
+      color: $openLawArapawa;
+      width: 205px;
+      height: 35px;
+    }
+
+    .picture {
+      padding-left: 1px;
+      width: 438px;
+      height: 216px;
+      background: #C4C4C4;
+    }
+
+    h3 {
+      @include header-four;
+      line-height: 24px;
+      width: 205px;
+      height: 28px;
+      margin-top: 30px;
+      color: $openLawArapawa;
+    }
+
+    p {
+      @include body;
+      width: 439px;
+      height: 108px;
+      line-height: 136.7%;
+      /* or 21px */
+      color: $openLawArapawa;
+    }
+
+    .link {
+      @include body;
+      width: 102px;
+      height: 13px;
+      line-height: 18px;
+      color: $openLawTeal;
+    }
+
   }
-  
-  .search-term {
-	width: 100%;
-	padding: 11px 15px;
-	border: none;
-	outline: none;
-	color: #959595;
-	background: #FFFFFF;
-	border-radius: 5px 0 0 5px;
-	font-family: Avenir LT Std;
-	font-size: 15px;
+
+  .card__spotlight {
+    margin-right: 0px;
   }
-  
-  .searchTerm:focus{
-	color: none;
-  }
-  
-  .search-button {
-	width: 47px;
-	height: 47px;
-	padding: 13px;
-	border: none;
-	background: #FFFFFF;
-	text-align: center;
-	color: #CF9768;
-	border-radius: 0 5px 5px 0;
-	cursor: pointer;
-	font-size: 20px;
-	svg{
-		width: 20px;
-		height: 20px;
-	}
-  }
-  
-  .search-submit-button{
-	border: none;
-	margin-left: 14px;
-	background: #CF9768;
-	padding: 0 53px;
-	border-radius: 5px;
-	font-family: Avenir LT Std;
-	font-size: 16px;
-	color: #FFFFFF;
-	cursor: pointer;
-  }
+
+
+}

@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import Search from "../components/Search.jsx"
+import Contact from "../components/Contact.jsx";
+import Search from "../components/Search.jsx";
+import NewsSpotlight from "../components/NewsSpotlight.jsx";
 
 class Home extends Component {
 	render() {
 		return (
-			<div className="home-wrapper">
-				<Search/>
+			<div>
+				<div className="home-wrapper">
+					<Search />
+				</div>
+				<NewsSpotlight />
+				<Contact />
 			</div>
 		);
 	}
@@ -13,11 +19,10 @@ class Home extends Component {
 
 export default Home;
 
-
-				{/* <Header as="h1">Welcome</Header>
+{
+	/* <Header as="h1">Welcome</Header>
 				<p>OpenLaw NZ is a new, free legal research platform for New Zealand.</p>
 				<Header as="h2">Our Mission</Header>
-
 				<List relaxed="very" size="large">
 					<List.Item>
 						<List.Icon name="universal access" />
@@ -57,4 +62,5 @@ export default Home;
 							<Statistic.Label>Case-to-Legislation relationships</Statistic.Label>
 						</Statistic>
 					</Statistic.Group>
-				</Segment> */}
+				</Segment> */
+}

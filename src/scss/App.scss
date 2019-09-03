@@ -5,7 +5,8 @@ $openLawTeal: #00A8B3;
 $openLawLightBrown: #CF9768;
 $openLawCharcoal: #22283A;
 $headerLinkColor: #FFFFFF;
-$contentBackgroundColor: #FFFFFF;
+$backgroundColor: #FFFFFF;
+
 
 @font-face {
 	font-family: 'Avenir LT Std 85 Heavy';
@@ -50,7 +51,7 @@ $contentBackgroundColor: #FFFFFF;
 }
 
 @mixin header-five {
-	font-family: 'Avenir LT Std 85 Medium';
+	font-family: 'Avenir LT Std 65 Medium';
 	font-size: 16px;
 }
 
@@ -65,6 +66,29 @@ box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
 border-radius: 5px;
 }
 
+@mixin center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  }
+
+@mixin button-style {
+	@include header-four;
+	padding: 10px;
+	color: $openLawLightBrown;
+	background: none;
+	width: 156px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: $openLawLightBrown;
+	border-radius: 5px;
+} 
+
+::-webkit-scrollbar {
+	display: none;
+	}
+	
 * {
 	font-family: 'Avenir LT Std 45 Book';
 }
@@ -86,6 +110,10 @@ li {
 	list-style-type: none;
 }
 
+.main-wrapper{
+	overflow: auto;
+}
+
 .main-header {
 	margin: 25px 0;
 }
@@ -97,17 +125,19 @@ li {
 
 .nav-container {
 	width: 100vw;
-	height: 100vw;
+	height: 100%;
 	top: 0;
 	left: 0;
-	position: fixed;
-	background: url(../img/open-law-background.png) no-repeat center center fixed; 
+	position: absolute;
+	background: url(../img/open-law-background.png) no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 	.nav-items {
+		position: absolute;
 		width: 100%;
+		height: 100%;
 		padding: 65px 8vw;
 		display: flex;
 		flex-direction: row;
@@ -129,18 +159,20 @@ li {
 	}
 }
 
-.footer-items {
-	position: relative;
+.footer-container {
+	position: inherit;
 	width: 100vw;
 	height: 104px;
+}
+
+.footer-items {
+	width: 100%;
+	height: 100%;
 	background-color: $openLawDarkGreen;
 	ul {
-		position: absolute;
+		@include center;
 		padding: 0%;
 		margin: 0%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
 		display: flex;
 		flex-direction: row;
 		@include header-five;
@@ -155,10 +187,8 @@ li {
 }
 
 .content-wrapper {
-	position: fixed;
+	position: relative;
 	margin-top: 170px;
-	overflow: auto;
-
 }
 
 .container {
@@ -194,18 +224,21 @@ li {
 .home-wrapper{
 	position: relative;
 	width: 100%;
-	height: 20vh;
+	background: $backgroundColor;
+	padding-top: 167px;
 }
 
+.search-container{
+	position: relative;
+	height: 200px;
+	margin-bottom: 85px;
+}
 
 .search{
+	@include center;
 	display: flex;
 	width: 50%;
-	position: absolute;
 	z-index: 100;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
   }
   
   .search-input {
@@ -261,6 +294,47 @@ li {
 	cursor: pointer;
   }
 
+  .info-card{
+	  @include center;
+	  display: flex;
+	  top: 0;
+	  width: 50%;
+	  height: 132px;
+	  @include card-style
+  }
+
+  .info-card-unit{
+	  	position: relative;
+		width: calc(100% / 3);
+		height: 100%; 
+  }
+
+  .info-card-unit-wrapper{
+	@include center;
+	height: 60%;
+	h1{
+		text-align: center;
+		font-family: 'Avenir LT Std 85 Heavy';
+		font-size: 2.9vw;
+		padding-bottom: .1vw;
+		margin: 0;
+		color: $openLawLightBrown;
+	  }
+
+	  h2{
+		  text-align: center;
+		  font-family: 'Avenir LT Std 65 Medium';	
+		  font-size: .7vw;
+		  margin: 0;
+		  color: $openLawDarkGreen;
+	  }	
+  }
+
+  .border{
+	  border-right: 1px solid #d0d0d0;
+	  margin: 2vw 0 2vw 0;
+  }
+
 	.is-text-center {
 		text-align: center;
 	}
@@ -271,6 +345,38 @@ li {
 		margin: 0 auto 15px auto;
 	}
 
+	.contact-us-wrapper{
+		position: relative;
+		width: 100vw;
+		height: 280px;
+	}
+
+	.contact-us-container{
+		@include center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		h1{
+			@include header-two;
+			color: $openLawLightBrown;
+		}
+		p{
+			@include header-five;
+			color: $openLawLightBrown;
+			padding-bottom: 12px;
+		}
+		button{
+			@include button-style;
+		}
+		button:hover{
+			background: $openLawLightBrown;
+			color: $backgroundColor;
+			border-color: $backgroundColor;
+		}
+
+
+	}
 	/*
   Use to display blocks horizontally aligned.
   Example of use: Our Mission / News

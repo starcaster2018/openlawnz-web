@@ -5,7 +5,7 @@ import SearchIcon from "-!svg-react-loader?name=Logo!../../img/search-icon.svg";
 export default class Search extends Component {
     render() {
         return (
-            <div>
+            <div className="search-container">
             <div class="search">
             <div class="search-input">
             <input type="text" class="search-term" placeholder="Search legal cases" />

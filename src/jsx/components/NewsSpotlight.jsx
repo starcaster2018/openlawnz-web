@@ -15,9 +15,10 @@ class NewsSpotlight extends Component {
 							corporis ea similique, neque blanditiis possimus cupiditate, natus deserunt laudantium
 							consequatur veritatis ullam quis quas optio reprehenderit?
 						</p>
-						<div className="link">
-							<Link to="/news">Find out more</Link>
-						</div>
+
+						<Link to="/news" className="link">
+							Find out more
+						</Link>
 					</div>
 					<div className="card__spotlight">
 						<h2>Spotlight</h2>
@@ -28,7 +29,9 @@ class NewsSpotlight extends Component {
 							corporis ea similique, neque blanditiis possimus cupiditate, natus deserunt laudantium
 							consequatur veritatis ullam quis quas optio reprehenderit?
 						</p>
-						<Link to="/spotlight">Find out more</Link>
+						<Link to="/spotlight" className="link">
+							Find out more
+						</Link>
 					</div>
 				</div>
 			</div>

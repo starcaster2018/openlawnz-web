@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Contact from "../components/Contact.jsx";
 import Search from "../components/Search.jsx";
 import NewsSpotlight from "../components/NewsSpotlight.jsx";
 
@@ -11,7 +10,6 @@ class Home extends Component {
 					<Search />
 				</div>
 				<NewsSpotlight />
-				<Contact />
 			</div>
 		);
 	}

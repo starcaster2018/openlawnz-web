@@ -1,0 +1,74 @@
+$openLawArapawa: #225160;
+
+.news-spotlights-container {
+    display: flex;
+    flex-direction: row;
+    background: #E5E5E5;
+    align-items: center;
+    justify-content: center;
+
+    .cards-wrapper {
+        display: flex;
+        flex-direction: row;
+        margin: 87px auto 108px auto;
+    }
+
+    .card__news,
+    .card__spotlight {
+        width: 480px;
+        height: 578px;
+        margin-right: 20px;
+        padding-left: 19px;
+        @include card-style;
+
+        h2 {
+            margin-top: 35px;
+            @include header-two;
+            line-height: 36px;
+            letter-spacing: -0.03em;
+            color: $openLawArapawa;
+            width: 205px;
+            height: 35px;
+        }
+
+        .picture {
+            padding-left: 1px;
+            width: 438px;
+            height: 216px;
+            background: #C4C4C4;
+        }
+
+        h3 {
+            @include header-four;
+            line-height: 24px;
+            width: 205px;
+            height: 28px;
+            margin-top: 30px;
+            color: $openLawArapawa;
+        }
+
+        p {
+            @include body;
+            width: 439px;
+            height: 108px;
+            line-height: 136.7%;
+            /* or 21px */
+            color: $openLawArapawa;
+        }
+
+        .link {
+            @include body;
+            width: 102px;
+            height: 13px;
+            line-height: 18px;
+            color: $openLawTeal;
+        }
+
+    }
+
+    .card__spotlight {
+        margin-right: 0px;
+    }
+
+
+}

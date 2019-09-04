@@ -1,16 +1,29 @@
 import React, { Component } from "react";
 import Search from "../components/Search.jsx";
-import NewsSpotlight from "../components/NewsSpotlight.jsx";
+import Mission from "../components/Mission.jsx";
+import Footer from "../components/Footer.jsx";
+import InfoCard from "../components/InfoCard.jsx";
+import InfoCardUnit from "../components/InfoCardUnit.jsx";
+import ContactUs from "../components/ContactUs.jsx";
 
 class Home extends Component {
 	render() {
 		return (
-			<div>
+			<React.Fragment>
+				<Search />
 				<div className="home-wrapper">
-					<Search />
+					<InfoCard>
+						<InfoCardUnit one="17,605" two="CASES" />
+						<div className="border"></div>
+						<InfoCardUnit one="20,261" two="CASE-TO-CASE RELATIONSHIPS" />
+						<div className="border"></div>
+						<InfoCardUnit one="190,324" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
+					</InfoCard>
+					<Mission />
+					<ContactUs />
+					<Footer />
 				</div>
-				<NewsSpotlight />
-			</div>
+			</React.Fragment>
 		);
 	}
 }
@@ -20,23 +33,32 @@ export default Home;
 {
 	/* <Header as="h1">Welcome</Header>
 				<p>OpenLaw NZ is a new, free legal research platform for New Zealand.</p>
-				<Header as="h2">Our Mission</Header>
-				<List relaxed="very" size="large">
-					<List.Item>
-						<List.Icon name="universal access" />
-						<List.Content>Improve access to justice and education for all New Zealanders</List.Content>
-					</List.Item>
-					<List.Item>
-						<List.Icon name="database" />
-						<List.Content>Spur innovation with a freely available relational database</List.Content>
-					</List.Item>
-					<List.Item>
-						<List.Icon name="dollar sign" />
-						<List.Content>
-							Fund future development by providing services using the OpenLaw NZ platform
-						</List.Content>
-					</List.Item>
-				</List>
+
+				<h1 className="is-text-center">Our Mission</h1>
+				<p className="is-text-center">OpenLaw NZ is an open-source platform that any country can copy and use for the betterment of their citizens.</p>
+
+				<div className='horizontal-container horizontal-container--spaced'>
+					<div className='horizontal-container__item horizontal-container__item--small'>
+						<div className='card'>
+							<MissionAccessLogo className='mission-icon' />
+							<p>Improve access to justive and education for all New Zealanders</p>
+						</div>
+					</div>
+
+					<div className='horizontal-container__item horizontal-container__item--small'>
+						<div className='card'>
+							<MissionInnovationLogo className='mission-icon' />
+							<p>Spur innovation with a freely available relational database</p>
+						</div>
+					</div>
+
+					<div className='horizontal-container__item horizontal-container__item--small'>
+						<div className='card'>
+							<MissionFundLogo className='mission-icon' />
+							<p>Fund future development by providing services  using the OpenLaw NZ platform</p>
+						</div>
+					</div>
+				</div>
 				<br />
 				<p>
 					<em>

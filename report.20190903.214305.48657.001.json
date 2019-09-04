@@ -3,10 +3,10 @@
   "header": {
     "event": "Allocation failed - JavaScript heap out of memory",
     "trigger": "FatalError",
-    "filename": "report.20190830.191618.85835.001.json",
-    "dumpEventTime": "2019-08-30T19:16:18Z",
-    "dumpEventTimeStamp": "1567149378862",
-    "processId": 85835,
+    "filename": "report.20190903.214305.48657.001.json",
+    "dumpEventTime": "2019-09-03T21:43:05Z",
+    "dumpEventTimeStamp": "1567503785008",
+    "processId": 48657,
     "commandLine": [
       "node",
       "/Users/blaineanthonywestern/Programming/openlawnz-web/node_modules/.bin/webpack-dev-server",
@@ -103,15 +103,19 @@
       "symbol": "v8::internal::Runtime_AllocateInNewSpace(int, v8::internal::Object**, v8::internal::Isolate*) [/usr/local/bin/node]"
     },
     {
-      "pc": "0x00001cc29dfcfc7d",
+      "pc": "0x00003989ecd4fc7d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00003989ecd334f7",
       "symbol": ""
     }
   ],
   "javascriptHeap": {
-    "totalMemory": 1489035264,
-    "totalCommittedMemory": 1480106592,
-    "usedMemory": 1457210000,
-    "availableMemory": 43412568,
+    "totalMemory": 1481023488,
+    "totalCommittedMemory": 1478613904,
+    "usedMemory": 1456375432,
+    "availableMemory": 49177856,
     "memoryLimit": 1526909922,
     "heapSpaces": {
       "read_only_space": {
@@ -122,39 +126,39 @@
         "available": 482064
       },
       "new_space": {
-        "memorySize": 10485760,
-        "committedMemory": 3126096,
-        "capacity": 5155840,
-        "used": 458344,
-        "available": 4697496
+        "memorySize": 2097152,
+        "committedMemory": 1378664,
+        "capacity": 1031168,
+        "used": 312688,
+        "available": 718480
       },
       "old_space": {
-        "memorySize": 365105152,
-        "committedMemory": 364620816,
-        "capacity": 350289312,
-        "used": 349738992,
-        "available": 550320
+        "memorySize": 351997952,
+        "committedMemory": 351310312,
+        "capacity": 337205144,
+        "used": 334922296,
+        "available": 2282848
       },
       "code_space": {
         "memorySize": 5767168,
-        "committedMemory": 5464896,
-        "capacity": 4899424,
-        "used": 4899424,
+        "committedMemory": 5288768,
+        "capacity": 4738048,
+        "used": 4738048,
         "available": 0
       },
       "map_space": {
-        "memorySize": 4206592,
-        "committedMemory": 3906256,
-        "capacity": 2649520,
-        "used": 2649520,
+        "memorySize": 3682304,
+        "committedMemory": 3639312,
+        "capacity": 2626000,
+        "used": 2626000,
         "available": 0
       },
       "large_object_space": {
-        "memorySize": 1102946304,
-        "committedMemory": 1102946304,
-        "capacity": 1137112888,
-        "used": 1099430200,
-        "available": 37682688
+        "memorySize": 1116954624,
+        "committedMemory": 1116954624,
+        "capacity": 1159437344,
+        "used": 1113742880,
+        "available": 45694464
       },
       "new_large_object_space": {
         "memorySize": 0,
@@ -166,13 +170,13 @@
     }
   },
   "resourceUsage": {
-    "userCpuSeconds": 157.686,
-    "kernelCpuSeconds": 4.64255,
-    "cpuConsumptionPercent": 9.30785,
-    "maxRss": 1334950494208,
+    "userCpuSeconds": 141.793,
+    "kernelCpuSeconds": 3.74799,
+    "cpuConsumptionPercent": 9.97542,
+    "maxRss": 1479708508160,
     "pageFaults": {
-      "IORequired": 68,
-      "IONotRequired": 1045031
+      "IORequired": 94,
+      "IONotRequired": 913290
     },
     "fsActivity": {
       "reads": 0,
@@ -190,7 +194,7 @@
     "npm_config_only": "",
     "npm_config_commit_hooks": "true",
     "npm_config_browser": "",
-    "npm_package_gitHead": "9d941cd147bf58f1e60abe25eb02a871346d056b",
+    "npm_package_gitHead": "27ead77f96c75d6cc8552f8b02c2f128e98670aa",
     "npm_config_also": "",
     "npm_config_sign_git_commit": "",
     "npm_config_rollback": "true",
@@ -227,7 +231,7 @@
     "npm_config_local_address": "",
     "npm_config_git_tag_version": "true",
     "npm_config_cert": "",
-    "TERM_SESSION_ID": "w0t1p0:4FC12D1E-F77B-4E68-8952-840F269B1F56",
+    "TERM_SESSION_ID": "w0t0p0:BB2E2850-AD66-48DE-A5E5-34A8D6252B73",
     "npm_config_registry": "https://registry.npmjs.org/",
     "npm_config_noproxy": "",
     "npm_config_fetch_retries": "2",
@@ -335,7 +339,7 @@
     "npm_config_cache_lock_stale": "60000",
     "npm_config_otp": "",
     "npm_config_cache_min": "10",
-    "ITERM_SESSION_ID": "w0t1p0:4FC12D1E-F77B-4E68-8952-840F269B1F56",
+    "ITERM_SESSION_ID": "w0t0p0:BB2E2850-AD66-48DE-A5E5-34A8D6252B73",
     "npm_config_searchexclude": "",
     "npm_config_cache": "/Users/blaineanthonywestern/.npm",
     "npm_package_devDependencies_html_webpack_plugin": "^3.2.0",

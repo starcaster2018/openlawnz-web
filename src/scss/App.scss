@@ -6,6 +6,7 @@ $openLawLightBrown: #CF9768;
 $openLawCharcoal: #22283A;
 $headerLinkColor: #FFFFFF;
 $backgroundColor: #FFFFFF;
+$openLawArapawa: #225160;
 
 
 @font-face {
@@ -429,3 +430,5 @@ li {
     }
   }
 }
+
+@import "./News-Spotlights.scss"

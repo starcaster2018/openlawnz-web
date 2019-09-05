@@ -6,6 +6,7 @@ $openLawLightBrown: #CF9768;
 $openLawCharcoal: #22283A;
 $headerLinkColor: #FFFFFF;
 $backgroundColor: #FFFFFF;
+$newsBackgroundColor:#F5F5F5;
 $openLawArapawa: #225160;
 
 
@@ -431,4 +432,4 @@ li {
   }
 }
 
-@import "./News-Spotlights.scss"
+@import "./News.scss"

@@ -5,7 +5,7 @@ import Footer from "../components/Footer.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import InfoCardUnit from "../components/InfoCardUnit.jsx";
 import ContactUs from "../components/ContactUs.jsx";
-import NewsSpotlight from "../components/NewsSpotlight.jsx";
+import News from "../components/News.jsx";
 
 class Home extends Component {
 	render() {
@@ -21,7 +21,7 @@ class Home extends Component {
 						<InfoCardUnit one="190,324" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
 					</InfoCard>
 					<Mission />
-					<NewsSpotlight />
+					<News />
 					<ContactUs />
 					<Footer />
 				</div>

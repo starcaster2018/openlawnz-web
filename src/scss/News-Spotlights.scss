@@ -9,6 +9,8 @@
         display: flex;
         flex-direction: row;
         margin: 87px auto 108px auto;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .card__news,
@@ -61,7 +63,7 @@
             width: 102px;
             line-height: 18px;
             color: $openLawTeal;
-            font-weight: bold;
+            font-weight: 900;
             text-decoration-color: $openLawTeal;
         }
 
@@ -74,15 +76,12 @@
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 963px) {
+    .card__news {
+        margin: 0 auto 20px auto !important;
+    }
 
-    .news-spotlights-container {
-        .cards-wrapper {
-            flex-direction: column;
-
-            .card__spotlight {
-                margin-top: 30px;
-            }
-        }
+    .cards-wrapper {
+        margin: 35px auto 35px auto !important;
     }
 }

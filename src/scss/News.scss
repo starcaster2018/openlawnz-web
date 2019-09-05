@@ -11,7 +11,7 @@
         margin: 0 auto;
         flex-direction: column;
         width: 980px;
-        height: 538px;
+
 
         h1 {
             @include header-one;
@@ -24,7 +24,7 @@
         .news-cards-wrapper {
             display: flex;
             flex-direction: row;
-
+            flex-wrap: wrap;
             justify-content: space-between;
 
             .news-card {
@@ -68,7 +68,4 @@
         }
 
     }
-
-
-
 }

@@ -76,12 +76,13 @@
 
 }
 
-@media (max-width: 963px) {
+@media (max-width: 979px) {
     .card__news {
-        margin: 0 auto 20px auto !important;
+        margin: 0 0 20px 0px !important;
     }
 
     .cards-wrapper {
         margin: 35px auto 35px auto !important;
+        flex-direction: column !important;
     }
 }

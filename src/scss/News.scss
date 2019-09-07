@@ -1,37 +1,38 @@
 .news-container {
     background: $newsBackgroundColor;
-    height: 562px;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    width: 100%;
 
     .news-items {
-        padding: 46px 73px 71px 71px;
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
         @include card-style;
         position: relative;
         top: -80px;
-        display: flex;
-        margin: 0 auto;
-        flex-direction: column;
-        width: 980px;
-
+        min-width: 1078px;
+        width: 1078px;
 
         h1 {
             @include header-one;
             line-height: 48px;
             color: $openLawArapawa;
-            width: 205px;
-            margin-bottom: 43px;
+            margin: 46px 0 43px 93px;
         }
 
         .news-cards-wrapper {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around;
+            margin: 0 71px 71px 71px;
 
             .news-card {
                 width: 266px;
 
                 .picture {
-                    margin-left: 1px;
                     height: 181px;
                     background: #C4C4C4;
                 }
@@ -42,6 +43,7 @@
                     width: 205px;
                     height: 28px;
                     margin-top: 22px;
+                    margin-bottom: 0px;
                     color: $openLawArapawa;
                 }
 
@@ -51,7 +53,7 @@
                     line-height: 136.7%;
                     /* or 21px */
                     color: $openLawArapawa;
-                    margin-bottom: 0;
+                    margin-bottom: 15px;
                 }
 
                 .link {
@@ -60,12 +62,17 @@
                     height: 13px;
                     line-height: 18px;
                     color: $openLawTeal;
-                    margin-top: 15px;
                     text-decoration-color: $openLawTeal;
                 }
             }
-
         }
 
     }
 }
+
+// @media (min-width: 1082px) {
+//     .news-items {
+//         min-width: 1078px;
+//         width: 1078px;
+//     }
+// }

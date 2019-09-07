@@ -13,7 +13,7 @@ Visit http://localhost:9000/
 
 ## Contributors
 
-Please refer to this repos Wiki pages:
+Please refer to the following Wiki pages:
 
 Overview:
 https://github.com/openlawnz/openlawnz-web/wiki/OpenLawNZ-Website-Overview

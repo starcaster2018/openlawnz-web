@@ -1,0 +1,78 @@
+.news-container {
+    background: $newsBackgroundColor;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    width: 100%;
+
+    .news-items {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        @include card-style;
+        position: relative;
+        top: -80px;
+        min-width: 1078px;
+        width: 1078px;
+
+        h1 {
+            @include header-one;
+            line-height: 48px;
+            color: $openLawArapawa;
+            margin: 46px 0 43px 93px;
+        }
+
+        .news-cards-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 0 71px 71px 71px;
+
+            .news-card {
+                width: 266px;
+
+                .picture {
+                    height: 181px;
+                    background: #C4C4C4;
+                }
+
+                h2 {
+                    @include header-four;
+                    line-height: 24px;
+                    width: 205px;
+                    height: 28px;
+                    margin-top: 22px;
+                    margin-bottom: 0px;
+                    color: $openLawArapawa;
+                }
+
+                p {
+                    @include body;
+                    height: 84px;
+                    line-height: 136.7%;
+                    /* or 21px */
+                    color: $openLawArapawa;
+                    margin-bottom: 15px;
+                }
+
+                .link {
+                    @include body;
+                    width: 102px;
+                    height: 13px;
+                    line-height: 18px;
+                    color: $openLawTeal;
+                    text-decoration-color: $openLawTeal;
+                }
+            }
+        }
+
+    }
+}
+
+// @media (min-width: 1082px) {
+//     .news-items {
+//         min-width: 1078px;
+//         width: 1078px;
+//     }
+// }

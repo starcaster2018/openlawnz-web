@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Button, Container, Card, Image, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import Andy from "../img/andy.jpg";
-import Will from "../img/will.jpg";
 
 class About extends Component {
 	render() {

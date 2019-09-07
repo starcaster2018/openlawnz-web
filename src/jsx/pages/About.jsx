@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Header, Item } from "semantic-ui-react";
-import Andy from "../img/andy.jpg";
-import Will from "../img/will.jpg";
+import Andy from "../../img/andy.jpg";
+import Will from "../../img/will.jpg";
 
 class About extends Component {
 	render() {

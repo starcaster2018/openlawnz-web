@@ -5,6 +5,27 @@
     width: 50%;
     height: 132px;
     @include card-style;
+
+    &--large {
+      max-width: 900px;
+      width: 95%;
+    }
+
+    &--title {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      h1 {
+        @include header-two;
+        color: $openLawLightBrown;
+      }
+
+      span {
+        font-size: 16px;
+        color: $openLawDarkGreen;
+      }
+    }
   }
   
   .info-card-unit {

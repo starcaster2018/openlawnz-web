@@ -27,7 +27,7 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around;
 
             .news-card {
                 width: 100%;
@@ -43,11 +43,15 @@
 
                 .picture {
                     width: 66px;
-                    height: 66px;
+                    text-align: center;
                     float: left;
-                    background: #C4C4C4;
                     margin-bottom: 15px;
                     margin-right: 15px;
+
+                    img {
+                        object-fit: contain;
+                        height: 66px;
+                    }
                 }
 
                 h2 {
@@ -103,9 +107,12 @@
                         float: none;
                         width: auto;
                         height: 181px;
-                        background: #C4C4C4;
                         margin-bottom: 20px;
                         margin-right: 0px;
+
+                        img {
+                            height: 181px;
+                        }
                     }
 
                     h2 {

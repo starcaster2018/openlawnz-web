@@ -75,10 +75,10 @@ $openLawArapawa: #225160;
 
 @mixin button-style {
   @include header-four;
-  padding: 10px;
   color: $openLawLightBrown;
   background: none;
   width: 156px;
+  height: 45px;
   border-style: solid;
   border-width: 2px;
   border-color: $openLawLightBrown;
@@ -123,77 +123,6 @@ li {
   max-width: 80%;
 }
 
-.nav-container {
-  width: 100vw;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  background: url(../img/open-law-background.png) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-  .nav-items {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding: 65px 8vw;
-    display: flex;
-    flex-direction: row;
-
-    .nav-links {
-      position: absolute;
-      right: 8vw;
-
-      ul {
-        display: flex;
-        flex-direction: row;
-        @include header-five;
-
-        li {
-          padding: 0 3vw;
-        }
-
-        a {
-          color: $headerLinkColor;
-        }
-      }
-    }
-  }
-}
-
-.footer-container {
-  position: inherit;
-  width: 100vw;
-  height: 104px;
-}
-
-.footer-items {
-  width: 100%;
-  height: 100%;
-  background-color: $openLawDarkGreen;
-
-  ul {
-    @include center;
-    padding: 0%;
-    margin: 0%;
-    display: flex;
-    flex-direction: row;
-    @include header-five;
-    color: white;
-
-    li {
-      padding: 0 3vw;
-    }
-
-    a {
-      color: $headerLinkColor;
-    }
-  }
-}
-
 .content-wrapper {
   position: relative;
   margin-top: 170px;
@@ -235,113 +164,6 @@ li {
   padding-top: 167px;
 }
 
-.search-container {
-  position: relative;
-  height: 200px;
-  margin-bottom: 85px;
-}
-
-.search {
-  @include center;
-  display: flex;
-  width: 50%;
-  z-index: 100;
-}
-.input-wrapper {
-  display: flex;
-  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
-}
-.search-input {
-  width: 100%;
-  position: relative;
-  display: flex;
-  border-radius: 5px;
-}
-
-.search-term {
-  width: 100%;
-  padding: 11px 15px;
-  border: none;
-  outline: none;
-  color: #959595;
-  background: #ffffff;
-  border-radius: 5px 0 0 5px;
-  font-family: Avenir LT Std;
-  font-size: 15px;
-}
-
-.searchTerm:focus {
-  color: none;
-}
-
-.search-button {
-  width: 47px;
-  height: 47px;
-  padding: 13px;
-  border: none;
-  background: #ffffff;
-  text-align: center;
-  color: #cf9768;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.search-submit-button {
-  border: none;
-  margin-left: 14px;
-  background: #cf9768;
-  padding: 0 53px;
-  border-radius: 5px;
-  font-family: Avenir LT Std;
-  font-size: 16px;
-  color: #ffffff;
-  cursor: pointer;
-  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
-}
-
-.info-card {
-  @include center;
-  display: flex;
-  top: 0;
-  width: 50%;
-  height: 132px;
-  @include card-style;
-}
-
-.info-card-unit {
-  position: relative;
-  width: calc(100% / 3);
-  height: 100%;
-}
-
-.info-card-unit-wrapper {
-  @include center;
-  height: 60%;
-
-  h1 {
-    text-align: center;
-    font-family: "Avenir LT Std 85 Heavy";
-    font-size: 2.9vw;
-    padding-bottom: 0.1vw;
-    margin: 0;
-    color: $openLawLightBrown;
-  }
-
-  h2 {
-    text-align: center;
-    font-family: "Avenir LT Std 65 Medium";
-    font-size: 0.7vw;
-    margin: 0;
-    color: $openLawDarkGreen;
-  }
-}
-
 .border {
   border-right: 1px solid #d0d0d0;
   margin: 2vw 0 2vw 0;
@@ -381,14 +203,24 @@ li {
     padding-bottom: 12px;
   }
 
-  button {
+  .contact-us-button {
+    position: relative;
     @include button-style;
+    a{
+      width: 100%;
+      @include center;
+      text-decoration: none;
+      color: $openLawLightBrown;
+
+    }
   }
 
-  button:hover {
+  .contact-us-button:hover {
     background: $openLawLightBrown;
-    color: $backgroundColor;
     border-color: $backgroundColor;
+    a{
+      color: $backgroundColor;
+    }
   }
 }
 
@@ -430,4 +262,8 @@ li {
   }
 }
 
+@import "./Nav.scss";
+@import "./Search.scss";
+@import "./Info.scss";
 @import "./News.scss";
+@import "./Footer.scss";

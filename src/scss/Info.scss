@@ -1,0 +1,37 @@
+.info-card {
+    @include center;
+    display: flex;
+    top: 0;
+    width: 50%;
+    height: 132px;
+    @include card-style;
+  }
+  
+  .info-card-unit {
+    position: relative;
+    width: calc(100% / 3);
+    height: 100%;
+  }
+  
+  .info-card-unit-wrapper {
+    @include center;
+    height: 60%;
+  
+    h1 {
+      text-align: center;
+      font-family: "Avenir LT Std 85 Heavy";
+      font-size: 2.9vw;
+      padding-bottom: 0.1vw;
+      margin: 0;
+      color: $openLawLightBrown;
+    }
+  
+    h2 {
+      text-align: center;
+      font-family: "Avenir LT Std 65 Medium";
+      font-size: 0.7vw;
+      margin: 0;
+      color: $openLawDarkGreen;
+    }
+  }
+  

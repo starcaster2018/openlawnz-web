@@ -6,7 +6,9 @@ export default function ContactUs() {
 			<div className="contact-us-container">
 				<h1>Contact us</h1>
 				<p>We&apos;d love to hear your feedback and things you have done with the platform</p>
-				<button>Get in touch</button>
+				<div className="contact-us-button">
+					<a href="mailto:enquiries@openlaw.nz">Get in touch</a>
+				</div>
 			</div>
 		</div>
 	);

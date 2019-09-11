@@ -15,6 +15,8 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      padding: 30px 40px;
+      height: auto;
 
       h1 {
         @include header-two;

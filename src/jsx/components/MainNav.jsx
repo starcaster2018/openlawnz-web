@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Icon } from "semantic-ui-react";
 
 import Logo from "-!svg-react-loader?name=Logo!../../img/openlaw-logo.svg";
 
-class App extends Component {
+class MainNav extends Component {
 	render() {
-		const { pathname } = this.props.location;
-
 		return (
 			<div className="nav-container">
 				<div className="nav-items">
@@ -25,13 +22,10 @@ class App extends Component {
 								<Link to="/news">News</Link>
 							</li>
 							<li>
-								<Link to="/spotlight">Spotlight</Link>
+								<Link to="/plugins">Plugins</Link>
 							</li>
 							<li>
-								<Link to="/contact">Contact</Link>
-							</li>
-							<li>
-								<Link to="/volunteers">Volunteers</Link>
+								<Link to="/contact">Developers</Link>
 							</li>
 						</ul>
 					</div>
@@ -41,4 +35,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default MainNav;

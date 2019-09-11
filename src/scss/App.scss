@@ -1,69 +1,67 @@
 $openLawDarkGreen: #3f7578;
-$openLawLightGreen: #6CB5BA;
+$openLawLightGreen: #6cb5ba;
 $openLawDarkBlue: #225160;
-$openLawTeal: #00A8B3;
-$openLawLightBrown: #CF9768;
-$openLawCharcoal: #22283A;
-$headerLinkColor: #FFFFFF;
-$backgroundColor: #FFFFFF;
-$newsBackgroundColor:#F5F5F5;
+$openLawTeal: #00a8b3;
+$openLawLightBrown: #cf9768;
+$openLawCharcoal: #22283a;
+$headerLinkColor: #ffffff;
+$backgroundColor: #ffffff;
+$newsBackgroundColor: #f5f5f5;
 $openLawArapawa: #225160;
 
-
 @font-face {
-  font-family: 'Avenir LT Std 85 Heavy';
+  font-family: "Avenir LT Std 85 Heavy";
   font-style: normal;
   font-weight: normal;
-  src: url('../fonts/AvenirLTStd-Heavy.woff') format('woff');
+  src: url("../fonts/AvenirLTStd-Heavy.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Avenir LT Std 65 Medium';
+  font-family: "Avenir LT Std 65 Medium";
   font-style: normal;
   font-weight: normal;
-  src: url('../fonts/AvenirLTStd-Medium.woff') format('woff');
+  src: url("../fonts/AvenirLTStd-Medium.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Avenir LT Std 45 Book';
+  font-family: "Avenir LT Std 45 Book";
   font-style: normal;
   font-weight: normal;
-  src: url('../fonts/AvenirLTStd-Book.woff') format('woff');
+  src: url("../fonts/AvenirLTStd-Book.woff") format("woff");
 }
-
 
 @mixin header-one {
-  font-family: 'Avenir LT Std 85 Heavy';
+  font-family: "Avenir LT Std 85 Heavy";
   font-size: 40px;
 }
 
 @mixin header-two {
-  font-family: 'Avenir LT Std 85 Heavy';
+  font-family: "Avenir LT Std 85 Heavy";
   font-size: 30px;
 }
 
 @mixin header-three {
-  font-family: 'Avenir LT Std 65 Medium';
+  font-family: "Avenir LT Std 65 Medium";
   font-size: 24px;
 }
 
 @mixin header-four {
-  font-family: 'Avenir LT Std 65 Medium';
+  font-family: "Avenir LT Std 65 Medium";
   font-size: 20px;
 }
 
 @mixin header-five {
-  font-family: 'Avenir LT Std 65 Medium';
+  font-family: "Avenir LT Std 65 Medium";
   font-size: 16px;
 }
 
 @mixin body {
-  font-family: 'Avenir LT Std 45 Book';
+  font-family: "Avenir LT Std 45 Book";
   font-size: 15px;
 }
 
 @mixin card-style {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
@@ -92,7 +90,7 @@ $openLawArapawa: #225160;
 }
 
 * {
-  font-family: 'Avenir LT Std 45 Book';
+  font-family: "Avenir LT Std 45 Book";
 }
 
 button:focus {
@@ -230,7 +228,6 @@ li {
   margin-bottom: 20px;
 }
 
-
 .home-wrapper {
   position: relative;
   width: 100%;
@@ -250,13 +247,15 @@ li {
   width: 50%;
   z-index: 100;
 }
-
+.input-wrapper {
+  display: flex;
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+}
 .search-input {
   width: 100%;
   position: relative;
   display: flex;
   border-radius: 5px;
-  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
 }
 
 .search-term {
@@ -265,7 +264,7 @@ li {
   border: none;
   outline: none;
   color: #959595;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 5px 0 0 5px;
   font-family: Avenir LT Std;
   font-size: 15px;
@@ -280,9 +279,9 @@ li {
   height: 47px;
   padding: 13px;
   border: none;
-  background: #FFFFFF;
+  background: #ffffff;
   text-align: center;
-  color: #CF9768;
+  color: #cf9768;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
@@ -296,13 +295,14 @@ li {
 .search-submit-button {
   border: none;
   margin-left: 14px;
-  background: #CF9768;
+  background: #cf9768;
   padding: 0 53px;
   border-radius: 5px;
   font-family: Avenir LT Std;
   font-size: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
 }
 
 .info-card {
@@ -311,7 +311,7 @@ li {
   top: 0;
   width: 50%;
   height: 132px;
-  @include card-style
+  @include card-style;
 }
 
 .info-card-unit {
@@ -326,17 +326,17 @@ li {
 
   h1 {
     text-align: center;
-    font-family: 'Avenir LT Std 85 Heavy';
+    font-family: "Avenir LT Std 85 Heavy";
     font-size: 2.9vw;
-    padding-bottom: .1vw;
+    padding-bottom: 0.1vw;
     margin: 0;
     color: $openLawLightBrown;
   }
 
   h2 {
     text-align: center;
-    font-family: 'Avenir LT Std 65 Medium';
-    font-size: .7vw;
+    font-family: "Avenir LT Std 65 Medium";
+    font-size: 0.7vw;
     margin: 0;
     color: $openLawDarkGreen;
   }
@@ -390,8 +390,6 @@ li {
     color: $backgroundColor;
     border-color: $backgroundColor;
   }
-
-
 }
 
 /*
@@ -404,7 +402,7 @@ li {
   flex-direction: column;
 
   &--spaced {
-    justify-content: space-between
+    justify-content: space-between;
   }
 
   &__item {
@@ -432,4 +430,4 @@ li {
   }
 }
 
-@import "./News.scss"
+@import "./News.scss";

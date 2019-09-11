@@ -9,9 +9,10 @@ import News from "../components/News.jsx";
 
 class Home extends Component {
 	render() {
+		console.log(this.props);
 		return (
 			<React.Fragment>
-				<Search />
+				<Search history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard>
 						<InfoCardUnit one="17,605" two="CASES" />

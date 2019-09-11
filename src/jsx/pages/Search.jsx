@@ -25,7 +25,6 @@ class Search extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-
 		this.props.history.push({
 			search: "?q=" + this.state.currentSearchQuery
 		});

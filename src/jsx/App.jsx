@@ -14,11 +14,25 @@ import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Footer from "./components/Footer.jsx";
+import NewsContext from "./NewsContext.jsx";
 
 import "semantic-ui-css/semantic.min.css";
 import "../scss/App.scss";
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.updateNewsData = this.updateNewsData.bind(this);
+
+		this.state = {
+			news: null
+		};
+	}
+
+	updateNewsData(news) {
+		this.setState({ news });
+	}
+
 	render() {
 		const MainNavWithRouter = withRouter(props => <MainNav {...props} />);
 
@@ -33,7 +47,9 @@ class App extends Component {
 						<Route exact path="/developers" component={Developers} />
 						<Route exact path="/plugin" component={Plugins} />
 						<Route exact path="/contact" component={Contact} />
-						<Route exact path="/news" component={News} />
+						<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>
+							<Route exact path="/news" component={News} />
+						</NewsContext.Provider>
 						<Route exact path="/spotlight" component={Spotlight} />
 						<Route exact path="/volunteers" component={Volunteers} />
 						<Route exact path="/sponsors" component={Sponsors} />

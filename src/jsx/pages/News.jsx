@@ -7,26 +7,26 @@ import InfoCard from "../components/InfoCard.jsx";
 import Footer from "../components/Footer.jsx";
 import NewsContext from "../NewsContext.jsx";
 
-const NewsItem = ({ id, title, summary, formattedDate, image_url }) => (
+const NewsItem = ({ id, title, summary, formattedDate, image_url: imageUrl }) => (
 	<div className="item">
 		<header>
 			<h2>
-				<Link to={"news/" + id}>{title}</Link>
+				<Link to={"/news/" + id}>{title}</Link>
 			</h2>
 			<span className="date">{formattedDate}</span>
 		</header>
 		<div className="content">
 			<div className="image-container">
-				{image_url && (
-					<Link to={"news/" + id}>
-						<img src={image_url} alt={title} />
+				{imageUrl && (
+					<Link to={"/news/" + id}>
+						<img src={imageUrl} alt={title} />
 					</Link>
 				)}
 			</div>
 			<p>
 				{summary}
 				<br />
-				<Link to={"news/" + id}>Read more</Link>
+				<Link to={"/news/" + id}>Read more</Link>
 			</p>
 		</div>
 	</div>

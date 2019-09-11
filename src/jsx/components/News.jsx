@@ -10,39 +10,45 @@ class NewsSpotlight extends Component {
 					<div className="news-cards-wrapper">
 						<div className="news-card">
 							<div className="picture"></div>
-							<h2>Heading</h2>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nulla reiciendis ab
-								fugiat, corporis ea similique
-							</p>
+							<div>
+								<h2>Heading</h2>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nulla reiciendis ab
+									fugiat, corporis ea similique
+								</p>
 
-							<Link to="/news" className="link">
-								Find out more
-							</Link>
+								<Link to="/news" className="link">
+									Find out more
+								</Link>
+							</div>
 						</div>
 						<div className="news-card">
 							<div className="picture"></div>
-							<h2>Heading</h2>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nulla reiciendis ab
-								fugiat, corporis ea similique
-							</p>
+							<div>
+								<h2>Heading</h2>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nulla reiciendis ab
+									fugiat, corporis ea similique
+								</p>
 
-							<Link to="/news" className="link">
-								Find out more
-							</Link>
+								<Link to="/news" className="link">
+									Find out more
+								</Link>
+							</div>
 						</div>
 						<div className="news-card">
 							<div className="picture"></div>
-							<h2>Heading</h2>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nulla reiciendis ab
-								fugiat, corporis ea similique
-							</p>
+							<div>
+								<h2>Heading</h2>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nulla reiciendis ab
+									fugiat, corporis ea similique
+								</p>
 
-							<Link to="/news" className="link">
-								Find out more
-							</Link>
+								<Link to="/news" className="link">
+									Find out more
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>

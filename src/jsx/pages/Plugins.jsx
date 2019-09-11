@@ -10,7 +10,7 @@ class Plugin extends Component {
 
 				<p>
 					We built these tools using the OpenLaw NZ API. If you build something with our platform, get in
-					touch and we'll list it here.
+					touch and we&apos;ll list it here.
 				</p>
 
 				<Header as="h3">
@@ -34,7 +34,7 @@ class Plugin extends Component {
 
 				<p>
 					The <a href="https://github.com/openlawnz/openlawnz-browser-extension">source code is on GitHub</a>,
-					if you'd like to improve or contribute.
+					if you&apos;d like to improve or contribute.
 				</p>
 			</React.Fragment>
 		);

@@ -8,13 +8,13 @@ class About extends Component {
 			<React.Fragment>
 				<Header as="h2">Contact us</Header>
 
-				<p>We'd love to hear feedback, and things you have done with the platform.</p>
+				<p>We&apos;d love to hear feedback, and things you have done with the platform.</p>
 
 				<Header as="h3">Media, Legal enquiries &amp; Sponsorship</Header>
 
 				<p>
-					If you're a Government department representative and would like to know more about open data, please
-					get in touch.
+					If you&apos;re a Government department representative and would like to know more about open data,
+					please get in touch.
 				</p>
 
 				<p>

@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function InfoCard({ children }) {
-    return (
-        <div className="info-card">
-            {children}
-        </div>
-    )
+	return <div className="info-card">{children}</div>;
 }

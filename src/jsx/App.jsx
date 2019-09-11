@@ -5,6 +5,7 @@ import MainNav from "./components/MainNav.jsx";
 import Home from "./pages/Home.jsx";
 import Search from "./pages/Search.jsx";
 import News from "./pages/News.jsx";
+import SingleNews from "./pages/SingleNews.jsx";
 import Spotlight from "./pages/Spotlight.jsx";
 import Volunteers from "./pages/Volunteers.jsx";
 import Sponsors from "./pages/Sponsors.jsx";
@@ -41,15 +42,16 @@ class App extends Component {
 				<div>
 					<MainNavWithRouter />
 					<div className="content-wrapper">
-						<Route exact path="/" component={Home} />
+						<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/news" component={News} />
+							<Route exact path="/news/:id" component={SingleNews} />
+						</NewsContext.Provider>
 						<Route exact path="/search" component={Search} />
 						<Route exact path="/case/:id" component={SingleCase} />
 						<Route exact path="/developers" component={Developers} />
 						<Route exact path="/plugin" component={Plugins} />
 						<Route exact path="/contact" component={Contact} />
-						<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>
-							<Route exact path="/news" component={News} />
-						</NewsContext.Provider>
 						<Route exact path="/spotlight" component={Spotlight} />
 						<Route exact path="/volunteers" component={Volunteers} />
 						<Route exact path="/sponsors" component={Sponsors} />

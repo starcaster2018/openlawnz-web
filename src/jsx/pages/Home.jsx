@@ -1,27 +1,26 @@
 import React, { Component } from "react";
-import Search from "../components/Search.jsx"
-import Mission from "../components/Mission.jsx"
-import Footer from "../components/Footer.jsx"
-import InfoCard from "../components/InfoCard.jsx"
-import InfoCardUnit from "../components/InfoCardUnit.jsx"
-import ContactUs from "../components/ContactUs.jsx"
+import Search from "../components/Search.jsx";
+import Mission from "../components/Mission.jsx";
+import Footer from "../components/Footer.jsx";
+import InfoCard from "../components/InfoCard.jsx";
+import InfoCardUnit from "../components/InfoCardUnit.jsx";
+import ContactUs from "../components/ContactUs.jsx";
+import Result from "../components/Result.jsx";
 
 class Home extends Component {
 	render() {
 		return (
 			<React.Fragment>
-					<Search/>
+				<Search />
 				<div className="home-wrapper">
 					<InfoCard>
-					<InfoCardUnit one="17,605" two="CASES"/>
-					<div className="border"></div>
-					<InfoCardUnit one="20,261" two="CASE-TO-CASE RELATIONSHIPS"/>
-					<div className="border"></div>
-					<InfoCardUnit one="190,324" two="CASE-TO-LEGISLATION RELATIONSHIPS"/>
+						<InfoCardUnit one="17,605" two="CASES" />
+						<div className="border"></div>
+						<InfoCardUnit one="20,261" two="CASE-TO-CASE RELATIONSHIPS" />
+						<div className="border"></div>
+						<InfoCardUnit one="190,324" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
 					</InfoCard>
-					<Mission/>
-					<ContactUs/>
-					<Footer/>
+					<Result />
 				</div>
 			</React.Fragment>
 		);
@@ -30,8 +29,8 @@ class Home extends Component {
 
 export default Home;
 
-
-				{/* <Header as="h1">Welcome</Header>
+{
+	/* <Header as="h1">Welcome</Header>
 				<p>OpenLaw NZ is a new, free legal research platform for New Zealand.</p>
 
 				<h1 className="is-text-center">Our Mission</h1>
@@ -82,4 +81,5 @@ export default Home;
 							<Statistic.Label>Case-to-Legislation relationships</Statistic.Label>
 						</Statistic>
 					</Statistic.Group>
-				</Segment> */}
+				</Segment> */
+}

@@ -20,12 +20,12 @@ export default class Result extends Component {
 		if (resultsData.results.length <= 9) {
 			this.setState({ pageResult: resultsData.results });
 		} else {
-			this.setState({ pageResult: resultsData.results.slice((number - 1) * 9, number * 9) });
+			this.setState({ pageResult: resultsData.results.slice((number - 1) * 9, number * 9, () => {}) });
 		}
 	}
 
 	handleClick(number) {
-		this.setState({ page: number }, () => {});
+		this.setState({ page: number });
 		this.getResultsByPage(this.state.page);
 	}
 
@@ -60,9 +60,9 @@ export default class Result extends Component {
 						{this.state.pageResult.map(result => {
 							return (
 								<tr>
-									<td>{result.case_name}</td>
+									<td className="caseName">{result.case_name}</td>
 									<td>{result.citation}</td>
-									<td>{result.case_date}</td>
+									<td calssName="caseDate">{result.case_date}</td>
 								</tr>
 							);
 						})}

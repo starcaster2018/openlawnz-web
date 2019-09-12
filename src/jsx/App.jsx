@@ -13,7 +13,6 @@ import Plugins from "./pages/Plugins.jsx";
 import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
-import Footer from "./components/Footer.jsx";
 
 import "semantic-ui-css/semantic.min.css";
 import "../scss/App.scss";
@@ -38,8 +37,6 @@ class App extends Component {
 						<Route exact path="/volunteers" component={Volunteers} />
 						<Route exact path="/sponsors" component={Sponsors} />
 						<Route exact path="/about" component={About} />
-						{/* <Route path="/" component={Footer} /> */}
-						{/* <Footer/> */}
 					</div>
 				</div>
 			</Router>

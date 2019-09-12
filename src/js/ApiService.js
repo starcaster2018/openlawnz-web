@@ -8,9 +8,10 @@ class ApiService {
 		this.caseFields = `{
 			id,
 			case_name,
+			citations {citation},
       PDF
       {
-        bucket_key
+		bucket_key
       },
 			cited_by
 			{

@@ -21,6 +21,8 @@ https://github.com/openlawnz/openlawnz-web/wiki/OpenLawNZ-Website-Overview
 Workflow:
 https://github.com/openlawnz/openlawnz-web/wiki/Workflow
 
+Build Badge:
+![Build Status](https://codebuild.ap-southeast-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiMUZXdEE0N0cwa2NkYVo0YVZvaU5zRkY3MG9qTUpoTjB6cWg0cGpWNGFUaDVsejVZZDl3ZU5YNXlRUXovYWVzVXZWVFNDMm02Wm1yenJvbFZlWFRsUmtBPSIsIml2UGFyYW1ldGVyU3BlYyI6ImY0NkczaFoycFNhNkp1S2oiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=staging)
 
 ## NOTICE
 

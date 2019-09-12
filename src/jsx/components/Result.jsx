@@ -12,7 +12,6 @@ export default class Result extends Component {
 	constructor() {
 		super();
 		this.state = {
-			page: 1,
 			pageResult: []
 		};
 	}
@@ -20,13 +19,16 @@ export default class Result extends Component {
 		if (resultsData.results.length <= 9) {
 			this.setState({ pageResult: resultsData.results });
 		} else {
-			this.setState({ pageResult: resultsData.results.slice((number - 1) * 9, number * 9, () => {}) });
+			this.setState({
+				pageResult: resultsData.results.slice((number - 1) * 9, number * 9, () => {})
+			});
 		}
 	}
-
+	componentDidMount() {
+		this.getResultsByPage(1);
+	}
 	handleClick(number) {
-		this.setState({ page: number });
-		this.getResultsByPage(this.state.page);
+		this.getResultsByPage(number);
 	}
 
 	render() {

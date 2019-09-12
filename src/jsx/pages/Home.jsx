@@ -12,6 +12,7 @@ class Home extends Component {
 		console.log(this.props);
 		return (
 			<React.Fragment>
+				<h1 className="header-title">OpenLaw NZ is a new, free legal research platform for New Zealand.</h1>
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard>

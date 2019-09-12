@@ -46,7 +46,7 @@ class News extends React.Component {
 			<React.Fragment>
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
-					<InfoCard classModifier="info-card--large info-card--title">
+					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>News</h1>
 						<span>Stay up to date with us.</span>
 					</InfoCard>

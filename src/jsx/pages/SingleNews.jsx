@@ -43,9 +43,12 @@ class News extends React.Component {
 					<div className="container main">
 						<div className="content">
 							{image_url && (
-								<div className="image-container">
-									<img src={image_url} />
-								</div>
+								<React.Fragment>
+									<div className="image-container">
+										<img src={image_url} />
+									</div>
+									<hr className="divider" />
+								</React.Fragment>
 							)}
 							<div
 								dangerouslySetInnerHTML={{

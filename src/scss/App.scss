@@ -262,10 +262,20 @@ li {
   }
 }
 
+.header-title {
+  @include header-two;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 5vh 10vw 0;
+}
+
 @import "./Nav.scss";
 @import "./Search.scss";
 @import "./Info.scss";
 @import "./News.scss";
+@import "./NewsList.scss";
 @import "./Footer.scss";
 @import "./Result.scss";
 @import "./SingleCase.scss";
+@import "./NewsSingle.scss";

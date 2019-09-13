@@ -1,4 +1,4 @@
-.news-single {
+.main {
 
   .content {
     @include card-style;
@@ -8,12 +8,15 @@
 
   .image-container {
     text-align: center;
-    border-bottom: 1px solid rgba(133, 133, 133, 0.5);
-    padding-bottom: 40px;
-    margin-bottom: 40px;
 
     img {
       max-width: 100%;
     }
+  }
+
+  .divider {
+    border: none;
+    border-bottom: 1px solid rgba(133, 133, 133, 0.5);
+    margin: 40px 0;
   }
 }

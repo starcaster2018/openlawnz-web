@@ -40,7 +40,7 @@ class News extends React.Component {
 						<h1>{title}</h1>
 						<span>{formattedDate}</span>
 					</InfoCard>
-					<div className="container news-single">
+					<div className="container main">
 						<div className="content">
 							{image_url && (
 								<div className="image-container">

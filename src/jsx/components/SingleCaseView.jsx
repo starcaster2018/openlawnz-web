@@ -28,7 +28,7 @@ class SingleCaseView extends Component {
 					</div>
 					<div className="download-button">
 						<a
-							href={`https://s3-ap-southeast-2.amazonaws.com/openlaw-pdfs/${this.props.singleCase.PDF.bucket_key}`}
+							href={`https://s3-ap-southeast-2.amazonaws.com/openlaw-pdfs/${this.props.singleCase.PDF.pdfDbKey}`}
 							download="filename.pdf"
 						>
 							<Download alt="Download" className="download-icon" />
@@ -38,7 +38,7 @@ class SingleCaseView extends Component {
 				<div className="row">
 					<div className="case-document-viewer">
 						<iframe
-							src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlaw-pdfs/${this.props.singleCase.PDF.bucket_key}&embedded=true`}
+							src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlaw-pdfs/${this.props.singleCase.PDF.pdfDbKey}&embedded=true`}
 							frameBorder={0}
 						/>
 					</div>
@@ -52,7 +52,7 @@ class SingleCaseView extends Component {
 									{this.props.singleCase.cites.map(function(obj) {
 										return (
 											<div role="listitem" className="item" key={`cites-reference-${obj.id}`}>
-												<Link to={`/case/${obj.id}`}>{obj.case_name}</Link>
+												<Link to={`/case/${obj.id}`}>{obj.caseName}</Link>
 											</div>
 										);
 									})}
@@ -61,15 +61,15 @@ class SingleCaseView extends Component {
 						<hr></hr>
 
 						<h3 className="header">Cited By</h3>
-						{this.props.singleCase.cited_by &&
-							(this.props.singleCase.cited_by.length === 0 ? (
+						{this.props.singleCase.casesCitedsByCaseCited.caseByCaseCited &&
+							(this.props.singleCase.casesCitedsByCaseCited.caseByCaseCited === 0 ? (
 								<p>No cases</p>
 							) : (
 								<div role="listitem" className="item">
-									{this.props.singleCase.cited_by.map(function(obj) {
+									{this.props.singleCase.casesCitedsByCaseCited.caseByCaseCited(function(obj) {
 										return (
 											<div role="listitem" className="item" key={`cited-by-reference-${obj.id}`}>
-												<Link to={`/case/${obj.id}`}>{obj.case_name}</Link>
+												<Link to={`/case/${obj.id}`}>{obj.caseName}</Link>
 											</div>
 										);
 									})}
@@ -90,7 +90,7 @@ class SingleCaseView extends Component {
 										</tr>
 									</thead>
 									<tbody className="">
-										{this.props.singleCase.legislationReferences.map(function(obj, i) {
+										{this.props.singleCase.legislationToCases.map(function(obj, i) {
 											return (
 												<tr className="" key={`legislation-reference-${i}`}>
 													<td className="">{obj.legislation.title}</td>

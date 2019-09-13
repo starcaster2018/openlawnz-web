@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Search from "../components/Search.jsx";
 import Footer from "../components/Footer.jsx";
-import InfoCard from "../components/InfoCard.jsx";
-import InfoCardUnit from "../components/InfoCardUnit.jsx";
 import Result from "../components/Result.jsx";
 
 const queryString = require("query-string");
@@ -11,7 +9,7 @@ class SearchPage extends Component {
 	constructor() {
 		super();
 		this.state = {
-			currentSearchQuery: null,
+			currentSearchQuery: null
 		};
 	}
 
@@ -33,13 +31,6 @@ class SearchPage extends Component {
 			<React.Fragment>
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
-					<InfoCard>
-						<InfoCardUnit one="17,605" two="CASES" />
-						<div className="border"></div>
-						<InfoCardUnit one="20,261" two="CASE-TO-CASE RELATIONSHIPS" />
-						<div className="border"></div>
-						<InfoCardUnit one="190,324" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
-					</InfoCard>
 					<Result query={this.state.currentSearchQuery} />
 					<Footer />
 				</div>

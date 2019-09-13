@@ -6,33 +6,29 @@ class ApiService {
 	constructor() {
 		this.apiUrl = API_URL + "/graphiql";
 		this.caseFields = `{
+			caseName,
 			id,
-			case_name,
-			citations {citation},
-      PDF
-      {
-		bucket_key
-      },
-			cited_by
-			{
-				id,
-				case_name
+			casesCitedsByCaseCited {
+				caseByCaseCited {
+					caseName,
+					id
+				}
 			},
-			cites
-			{
+			cites {
 				id,
-				case_name
-      },
-      legislationReferences
-      {
-        section,
-        legislation
-        {
-          title,
-        }
-      }
-
-		}`;
+				caseName
+			},
+			legislationToCases {
+				section,
+				legislation {
+					title
+				}
+			},
+			pdf {
+				pdfDbKey
+			}
+		}
+	}`;
 	}
 
 	/**
@@ -64,11 +60,11 @@ class ApiService {
 	}
 
 	/**
-	  *
-	  * @param {object} params
-	  * @returns {String} params
-	   converted to string for usage in graphQL
-	  */
+*
+* @param {object} params
+* @returns {String} params
+converted to string for usage in graphQL
+*/
 	paramsToString(params) {
 		let paramString = "";
 		if (params.constructor === Object && Object.keys(params).length) {

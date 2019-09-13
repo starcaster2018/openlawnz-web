@@ -11,7 +11,7 @@ class SearchPage extends Component {
 	constructor() {
 		super();
 		this.state = {
-			currentSearchQuery: ""
+			currentSearchQuery: null,
 		};
 	}
 
@@ -26,6 +26,9 @@ class SearchPage extends Component {
 
 	render() {
 		console.log(this.props);
+		if (!this.state.currentSearchQuery) {
+			return <p>Loading</p>;
+		}
 		return (
 			<React.Fragment>
 				<Search history={this.props.history} />

@@ -6,20 +6,20 @@ export default class Result extends Component {
 		super();
 		this.state = {
 			results: [],
-			perPage: 25,
+			perPage: 10,
 			offset: 0,
 			page: 1,
-            query: "",
-            length: 0
+			query: "",
+			length: 0
 		};
 	}
 
 	doSearch(query) {
-		return fetch(API_URL + "/search?q=" + query + `&p=${this.state.page}`).then(results => {
+		return fetch("http://search.openlaw.nz/cases?search=driveway&start=0&end=10").then(results => {
 			results.json().then(data => {
+				console.log(data);
 				this.setState({
-                    results: data,
-                    length: data.length
+					results: data
 				});
 			});
 		});
@@ -40,11 +40,11 @@ export default class Result extends Component {
 	}
 
 	render() {
-		console.log(this.state);
+		console.log(this.state.results);
 
 		return (
 			<div>
-				<div>
+				<div className="page-number">
 					<ReactPaginate
 						previousLabel={"previous"}
 						nextLabel={"next"}
@@ -83,3 +83,29 @@ export default class Result extends Component {
 		);
 	}
 }
+
+// doSearch(query) {
+// 	return fetch(API_URL + "/search?q=" + query + `&p=${this.state.page}`).then(results => {
+// 		results.json().then(data => {
+// 			this.setState({
+// 				results: data,
+// 				length: data.length
+// 			});
+// 		});
+// 	});
+// }
+
+// doSearch(query) {
+// 	return fetch(
+// 		"http://search.openlaw.nz/cases?search=driveway" +
+// 			query +
+// 			`&start=${this.state.offset}` +
+// 			`&end=${this.state.offset + this.state.perPage}`
+// 	).then(results => {
+// 		results.json().then(data => {
+// 			this.setState({
+// 				results: data
+// 			});
+// 		});
+// 	});
+// }

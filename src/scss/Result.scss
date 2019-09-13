@@ -33,9 +33,41 @@
     padding-left: 38px;
   }
   
-  .pageNumber {
-    width: 20px;
-    height: 23px;
-    left: 906px;
-    top: 636px;
+  .page-number{
+    width: 50%;
+    transform: translate(-50%, 0);
+    margin-right: 0;
+    position: relative;
+    left: 50%;
+    a {
+      color: #3D3D3D;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    ul.pagination {
+      display: flex;
+      padding: 0;
+      float: right;
+      li {
+        &:hover{
+          cursor: pointer;
+        }
+        a:focus{
+          outline: 0;
+        }
+        margin-left: 8px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        background: none;
+      }
+      li.active {
+        background: $openLawLightBrown;
+        a{
+          color: #fff;
+          text-decoration: none;
+        }
+      }
   }
+  }
+
+

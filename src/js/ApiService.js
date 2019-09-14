@@ -16,34 +16,6 @@ class ApiService {
 			},
 			cites {
 				id,
-<<<<<<< HEAD
-				caseName
-			},
-			legislationToCases {
-				section,
-				legislation {
-					title
-				}
-			},
-			pdf {
-				pdfDbKey
-			}
-		}
-	}`;
-||||||| merged common ancestors
-				case_name
-      },
-      legislationReferences
-      {
-        section,
-        legislation
-        {
-          title,
-        }
-      }
-
-		}`;
-=======
 				caseName
 			},
 			legislationToCases {
@@ -57,7 +29,6 @@ class ApiService {
 			}
 		}
 	`;
->>>>>>> 1210294c57122fcac822c0c311d85430f528d94f
 	}
 
 	/**

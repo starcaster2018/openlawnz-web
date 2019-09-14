@@ -13,7 +13,6 @@ import SingleCase from "./pages/SingleCase.jsx";
 import Plugins from "./pages/Plugins.jsx";
 import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
 import NewsContext from "./NewsContext.jsx";
 
 import "semantic-ui-css/semantic.min.css";

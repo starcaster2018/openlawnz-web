@@ -4,7 +4,7 @@ class ApiService {
 	 * @returns {ApiService}
 	 */
 	constructor() {
-		this.apiUrl = API_URL + "/graphql";
+		this.apiUrl = API_URL + "/graphiql";
 		this.caseFields = `{
 			caseName,
 			id,
@@ -16,6 +16,34 @@ class ApiService {
 			},
 			cites {
 				id,
+<<<<<<< HEAD
+				caseName
+			},
+			legislationToCases {
+				section,
+				legislation {
+					title
+				}
+			},
+			pdf {
+				pdfDbKey
+			}
+		}
+	}`;
+||||||| merged common ancestors
+				case_name
+      },
+      legislationReferences
+      {
+        section,
+        legislation
+        {
+          title,
+        }
+      }
+
+		}`;
+=======
 				caseName
 			},
 			legislationToCases {
@@ -29,6 +57,7 @@ class ApiService {
 			}
 		}
 	`;
+>>>>>>> 1210294c57122fcac822c0c311d85430f528d94f
 	}
 
 	/**
@@ -55,6 +84,7 @@ class ApiService {
 		const body = await res.json();
 		return body.data;
 	}
+
 	/**
 	 *
 	 * @param {object} params
@@ -71,16 +101,16 @@ class ApiService {
 	}
 
 	/**
-	  *
-	  * @param {object} params
-	  * @returns {String} params
-	   converted to string for usage in graphQL
-	  */
+*
+* @param {object} params
+* @returns {String} params
+converted to string for usage in graphQL
+*/
 	paramsToString(params) {
 		let paramString = "";
 		if (params.constructor === Object && Object.keys(params).length) {
 			let tmp = [];
-			for (let key in params) {
+			for (const key in params) {
 				let paramStr = params[key];
 				if (paramStr !== "") {
 					if (typeof params[key] === "string") {

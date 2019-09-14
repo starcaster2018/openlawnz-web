@@ -26,9 +26,10 @@ export default class Result extends Component {
 
 	doSearch(query, offset) {
 		return fetch(
-			`http://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${offset + this.state.perPage}`
+			`https://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${offset + this.state.perPage}`
 		).then(results => {
 			results.json().then(data => {
+				console.log(data);
 				this.setState({
 					results: data.results,
 					length: parseInt(data.total),
@@ -79,6 +80,7 @@ export default class Result extends Component {
 	}
 
 	render() {
+		console.log(this.state);
 		return (
 			<React.Fragment>
 				<InfoCard classModifier="info-card--large info-card--title info-card--column">

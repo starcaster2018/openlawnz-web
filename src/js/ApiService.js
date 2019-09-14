@@ -6,32 +6,29 @@ class ApiService {
 	constructor() {
 		this.apiUrl = API_URL + "/graphql";
 		this.caseFields = `{
+			caseName,
 			id,
-			case_name,
-      PDF
-      {
-        bucket_key
-      },
-			cited_by
-			{
-				id,
-				case_name
+			casesCitedsByCaseCited {
+				caseByCaseCited {
+					caseName,
+					id
+				}
 			},
-			cites
-			{
+			cites {
 				id,
-				case_name
-      },
-      legislationReferences
-      {
-        section,
-        legislation
-        {
-          title,
-        }
-      }
-
-		}`;
+				caseName
+			},
+			legislationToCases {
+				section,
+				legislation {
+					title
+				}
+			},
+			pdf {
+				pdfDbKey
+			}
+		}
+	`;
 	}
 
 	/**
@@ -40,8 +37,20 @@ class ApiService {
 	 * @returns {unresolved}
 	 */
 	async getGraphQlData(resource, params, fields) {
-		const query = `{${resource} ${this.paramsToString(params)} ${fields}}`;
-		const res = await fetch(`${this.apiUrl}?query=${encodeURIComponent(query)}`);
+		const query = `
+			query singleCase {
+				${resource} ${this.paramsToString(params)} 
+				${fields}
+			}`;
+		const res = await fetch(`${this.apiUrl}`, {
+			method: "POST",
+			body: JSON.stringify({
+				query: query
+			}),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		});
 
 		const body = await res.json();
 		return body.data;

@@ -34,16 +34,14 @@ class SingleCase extends Component {
 
 		return (
 			<React.Fragment>
-				<Header as="h2">{this.state.singleCase.case_name}</Header>
+				<Header as="h2">{this.state.singleCase.caseName}</Header>
 				<br />
 				<Grid>
 					<Grid.Row>
 						<Grid.Column width={10}>
 							<Segment>
 								<iframe
-									src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlaw-pdfs/${
-										this.state.singleCase.PDF.bucket_key
-									}&embedded=true`}
+									src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${this.state.singleCase.pdf.pdfDbKey}&embedded=true`}
 									style={{ width: "100%", height: 500 }}
 									frameBorder={0}
 								/>
@@ -59,7 +57,7 @@ class SingleCase extends Component {
 										{this.state.singleCase.cites.map(function(obj) {
 											return (
 												<List.Item key={`cites-reference-${obj.id}`}>
-													<Link to={`/case/${obj.id}`}>{obj.case_name}</Link>
+													<Link to={`/case/${obj.id}`}>{obj.caseName}</Link>
 												</List.Item>
 											);
 										})}
@@ -67,15 +65,17 @@ class SingleCase extends Component {
 								))}
 
 							<Header as="h3">Cited By</Header>
-							{this.state.singleCase.cited_by &&
-								(this.state.singleCase.cited_by.length === 0 ? (
+							{this.state.singleCase.casesCitedsByCaseCited &&
+								(this.state.singleCase.casesCitedsByCaseCited.length === 0 ? (
 									<p>No cases</p>
 								) : (
 									<List relaxed="very" divided>
-										{this.state.singleCase.cited_by.map(function(obj) {
+										{this.state.singleCase.casesCitedsByCaseCited.map(function(obj) {
 											return (
-												<List.Item key={`cited-by-reference-${obj.id}`}>
-													<Link to={`/case/${obj.id}`}>{obj.case_name}</Link>
+												<List.Item key={`cited-by-reference-${obj.caseByCaseCited.id}`}>
+													<Link to={`/case/${obj.caseByCaseCited.id}`}>
+														{obj.caseByCaseCited.caseName}
+													</Link>
 												</List.Item>
 											);
 										})}
@@ -83,8 +83,8 @@ class SingleCase extends Component {
 								))}
 
 							<Header as="h3">Legislation Referenced</Header>
-							{this.state.singleCase.legislationReferences &&
-								(this.state.singleCase.legislationReferences.length === 0 ? (
+							{this.state.singleCase.legislationToCases &&
+								(this.state.singleCase.legislationToCases.length === 0 ? (
 									<p>No legislation</p>
 								) : (
 									<Table celled>
@@ -95,7 +95,7 @@ class SingleCase extends Component {
 											</Table.Row>
 										</Table.Header>
 										<Table.Body>
-											{this.state.singleCase.legislationReferences.map(function(obj, i) {
+											{this.state.singleCase.legislationToCases.map(function(obj, i) {
 												return (
 													<Table.Row key={`legislation-reference-${i}`}>
 														<Table.Cell>{obj.legislation.title}</Table.Cell>

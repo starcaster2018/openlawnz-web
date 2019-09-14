@@ -27,6 +27,11 @@ class MainNav extends Component {
 							<li>
 								<Link to="/contact">Developers</Link>
 							</li>
+							<li>
+								<a href="https://donorbox.org/openlaw-nz-3" target="_blank" rel="noopener noreferrer">
+									Support Us
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>

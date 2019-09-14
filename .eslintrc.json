@@ -36,6 +36,7 @@
       ],
       "object-curly-spacing": [2, "always"],
       "react/prop-types": "off",
+      "import/no-webpack-loader-syntax": "off",
     "prettier/prettier": "error"
     }
   }

@@ -1,0 +1,40 @@
+.nav-container {
+  width: 100vw;
+  height: 125%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: url(../img/open-law-background.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  .nav-items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 65px 8vw;
+    display: flex;
+    flex-direction: row;
+
+    .nav-links {
+      position: absolute;
+      right: 8vw;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        @include header-five;
+
+        li {
+          padding: 0 3vw;
+        }
+
+        a {
+          color: $headerLinkColor;
+        }
+      }
+    }
+  }
+}

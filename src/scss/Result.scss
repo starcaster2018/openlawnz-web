@@ -55,7 +55,10 @@ tbody tr {
     color: black;
     font-weight: bold;
     font-size: 14px;
-    text-decoration: underline;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
   }
 }
 .page-number {

@@ -28,7 +28,7 @@ class SingleCaseView extends Component {
 					</div>
 					<div className="download-button">
 						<a
-							href={`https://s3-ap-southeast-2.amazonaws.com/openlaw-pdfs/${this.props.singleCase.PDF.pdfDbKey}`}
+							href={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${this.props.singleCase.pdf.pdfDbKey}&embedded=true`}
 							download="filename.pdf"
 						>
 							<Download alt="Download" className="download-icon" />
@@ -38,7 +38,7 @@ class SingleCaseView extends Component {
 				<div className="row">
 					<div className="case-document-viewer">
 						<iframe
-							src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlaw-pdfs/${this.props.singleCase.PDF.pdfDbKey}&embedded=true`}
+							src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${this.props.singleCase.pdf.pdfDbKey}&embedded=true`}
 							frameBorder={0}
 						/>
 					</div>
@@ -61,15 +61,21 @@ class SingleCaseView extends Component {
 						<hr></hr>
 
 						<h3 className="header">Cited By</h3>
-						{this.props.singleCase.casesCitedsByCaseCited.caseByCaseCited &&
-							(this.props.singleCase.casesCitedsByCaseCited.caseByCaseCited === 0 ? (
+						{this.props.singleCase.casesCitedsByCaseCited &&
+							(this.props.singleCase.casesCitedsByCaseCited.length === 0 ? (
 								<p>No cases</p>
 							) : (
 								<div role="listitem" className="item">
-									{this.props.singleCase.casesCitedsByCaseCited.caseByCaseCited(function(obj) {
+									{this.props.singleCase.casesCitedsByCaseCited.map(function(obj) {
 										return (
-											<div role="listitem" className="item" key={`cited-by-reference-${obj.id}`}>
-												<Link to={`/case/${obj.id}`}>{obj.caseName}</Link>
+											<div
+												role="listitem"
+												className="item"
+												key={`cited-by-reference-${obj.caseByCaseCited.id}`}
+											>
+												<Link to={`/case/${obj.caseByCaseCited.id}`}>
+													{obj.caseByCaseCited.caseName}
+												</Link>
 											</div>
 										);
 									})}
@@ -78,8 +84,8 @@ class SingleCaseView extends Component {
 						<hr></hr>
 
 						<h3 className="header">Legislation Referenced</h3>
-						{this.props.singleCase.legislationReferences &&
-							(this.props.singleCase.legislationReferences.length === 0 ? (
+						{this.props.singleCase.legislationToCases &&
+							(this.props.singleCase.legislationToCases.length === 0 ? (
 								<p>No legislation</p>
 							) : (
 								<table cellSpacing="0" cellPadding="0">

@@ -119,7 +119,6 @@ $primary-font-family: Avenir LT Std;
             table{
                 width: 100%;
                 text-align: left;
-                text-indent:20px;
                 table-layout:fixed;
 
                 td{
@@ -127,6 +126,7 @@ $primary-font-family: Avenir LT Std;
                     text-overflow:ellipsis;
                     word-break:keep-all;
                     white-space:nowrap;
+                    padding: 12px;
                 }
 
                
@@ -136,7 +136,8 @@ $primary-font-family: Avenir LT Std;
                     height: 35px;
                     font-family: $primary-font-family;
                     font-size: 14px;
-                    line-height: 17px;                    
+                    line-height: 17px;  
+                    padding: 12px;                  
                 }
 
                 tr{
@@ -170,7 +171,6 @@ $primary-font-family: Avenir LT Std;
 }
 
 .header-case{
-    @include center;
     @include header-two;
     color: $openLawLightBrown;
     width: 100%;

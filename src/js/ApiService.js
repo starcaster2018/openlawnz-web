@@ -4,7 +4,7 @@ class ApiService {
 	 * @returns {ApiService}
 	 */
 	constructor() {
-		this.apiUrl = API_URL + "/graphiql";
+		this.apiUrl = API_URL + "/graphql";
 		this.caseFields = `{
 			caseName,
 			id,

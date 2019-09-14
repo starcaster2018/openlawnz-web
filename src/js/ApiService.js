@@ -69,7 +69,7 @@ converted to string for usage in graphQL
 		let paramString = "";
 		if (params.constructor === Object && Object.keys(params).length) {
 			let tmp = [];
-			for (let key in params) {
+			for (const key in params) {
 				let paramStr = params[key];
 				if (paramStr !== "") {
 					if (typeof params[key] === "string") {

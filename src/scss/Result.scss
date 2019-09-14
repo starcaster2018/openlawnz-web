@@ -1,74 +1,95 @@
-.table {
-    border-collapse: collapse;
-    border-spacing: 0px;
-    width: 50%;
-    margin: auto;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
-    margin-bottom: 150px;
-  }
-  thead tr {
-    background-color: #3f7578;
-    border-radius: 5px;
-  }
-  thead th {
-    color: #fff;
-    text-align: left;
-    height: 60px;
-    padding-left: 38px;
-  }
-  
-  thead th:first-child {
-    border-radius: 5px 0 0 0;
-  }
-  
-  thead th:last-child {
-    border-radius: 0 5px 0 0;
-  }
-  
-  tbody tr {
-    height: 80px;
-    border-bottom: 1px solid rgba(133, 133, 133, 0.5);
-  }
-  tbody tr td {
-    padding-left: 38px;
-  }
-  
-  .page-number{
-    width: 50%;
-    transform: translate(-50%, 0);
-    margin-right: 0;
-    position: relative;
-    left: 50%;
-    a {
-      color: #3D3D3D;
-      font-size: 14px;
-      font-weight: bold;
+.results-wrapper {
+  margin-bottom: 170px;
+}
+
+.results-info-wrapper{
+  display: flex;
+  width: 100%;
+}
+
+table.table {
+  font-weight: bold;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  width: 75%;
+  margin: auto;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+  margin-bottom: 17px;
+  thead {
+    tr {
+      background-color: #3f7578;
+      border-radius: 5px;
     }
-    ul.pagination {
-      display: flex;
-      padding: 0;
-      float: right;
-      li {
-        &:hover{
-          cursor: pointer;
-        }
-        a:focus{
-          outline: 0;
-        }
-        margin-left: 8px;
-        padding: 5px 10px;
-        border-radius: 3px;
-        background: none;
+    th {
+      color: #fff;
+      text-align: left;
+      height: 70px;
+      padding-left: 38px;
+      &:first-child {
+        border-radius: 5px 0 0 0;
       }
-      li.active {
-        background: $openLawLightBrown;
-        a{
-          color: #fff;
-          text-decoration: none;
-        }
+      &:last-child {
+        border-radius: 0 5px 0 0;
       }
-  }
-  }
+    }
+}
+}
 
+tbody tr {
+  height: 100px;
+  border-bottom: 1px solid rgba(133, 133, 133, 0.5);
+  td {
+    padding-left: 38px;
+  }
+}
 
+.caseDate{
+    padding-right: 45px;
+    text-decoration: none;
+    color: black;
+}
+
+.caseName{
+  a{
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+  }
+}
+.page-number {
+  width: 75%;
+  transform: translate(-50%, 0);
+  margin-right: 0;
+  position: relative;
+  left: 50%;
+  a {
+    color: #3d3d3d;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  ul.pagination {
+    display: flex;
+    padding: 0;
+    float: right;
+    li {
+      &:hover {
+        cursor: pointer;
+      }
+      a:focus {
+        outline: 0;
+      }
+      margin-left: 8px;
+      padding: 5px 10px;
+      border-radius: 3px;
+      background: none;
+    }
+    li.active {
+      background: $openLawLightBrown;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}

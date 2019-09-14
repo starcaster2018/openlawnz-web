@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
-import InfoCardUnit from "../components/InfoCardUnit.jsx";
+import { Link } from "react-router-dom";
+
+import moment from "moment";
 
 import Next from "-!svg-react-loader?name=Logo!../../img/next-page.svg";
 import Previous from "-!svg-react-loader?name=Logo!../../img/previous-page.svg";
@@ -13,11 +15,13 @@ export default class Result extends Component {
 			results: [],
 			perPage: 10,
 			offset: 0,
-			page: 1,
+			currentPage: 1,
 			query: "",
 			length: 0,
 			pageCount: 0
 		};
+		this.handlePageClick = this.handlePageClick.bind(this);
+		this.Results = this.Results.bind(this);
 	}
 
 	doSearch(query, offset) {
@@ -25,7 +29,6 @@ export default class Result extends Component {
 			`http://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${offset + this.state.perPage}`
 		).then(results => {
 			results.json().then(data => {
-				console.log(data);
 				this.setState({
 					results: data.results,
 					length: parseInt(data.total),
@@ -36,7 +39,7 @@ export default class Result extends Component {
 	}
 
 	componentDidMount() {
-		this.doSearch(this.props.query);
+		this.doSearch(this.props.query, this.state.offset);
 		this.setState({
 			query: this.props.query
 		});
@@ -44,20 +47,22 @@ export default class Result extends Component {
 
 	handlePageClick(data) {
 		const selected = data.selected;
-		const offset = Math.ceil(selected * this.state.perPage);
+		const offset = selected * this.state.perPage;
 
-		this.setState({ offset: offset }, () => {
-			this.doSearch(this.state.query, offset);
+		this.setState({ offset: offset, currentPage: selected }, () => {
+			this.doSearch(this.state.query, this.state.offset);
 		});
 	}
 
-	Results(props) {
-		props.results.map(result => {
+	Results() {
+		return this.state.results.map((result, index) => {
 			return (
-				<tr key={result.caseId}>
-					<td className="caseName">{result.case_name}</td>
-					<td>{result.citation}</td>
-					<td calssName="caseDate">{result.case_date}</td>
+				<tr key={index}>
+					<td className="caseName">
+						<Link to={`/case/${result.caseId}`}>{result.caseName}</Link>
+					</td>
+					<td>{result.citation === null ? "N / A" : result.citation}</td>
+					<td className="caseDate">{moment(result.date).format("DD/MM/YYYY")}</td>
 				</tr>
 			);
 		});
@@ -68,22 +73,21 @@ export default class Result extends Component {
 			<tr>
 				<td className="caseName">-------</td>
 				<td>-------</td>
-				<td calssName="caseDate">-------</td>
+				<td className="caseDate">-------</td>
 			</tr>
 		);
 	}
 
 	render() {
-		console.log(this.state.results);
-
 		return (
 			<React.Fragment>
-				<InfoCard>
-						<InfoCardUnit one={`"${this.state.query}"`} two="SEARCH TERM" />
-						<div className="border" />
-						<InfoCardUnit one={this.state.length} two="SEARCH RESULTS" />
+				<InfoCard classModifier="info-card--large info-card--title info-card--column">
+					<h1>{this.state.length}</h1>
+					<span>
+						SEARCH RESULTS FOR <b>{`"${this.state.query.toUpperCase()}"`}</b>
+					</span>
 				</InfoCard>
-				<div>
+				<div className="results-wrapper">
 					{this.state.length >= this.state.perPage && (
 						<div className="page-number">
 							<ReactPaginate
@@ -92,6 +96,7 @@ export default class Result extends Component {
 								breakLabel={"..."}
 								breakClassName={"break-me"}
 								pageCount={this.state.pageCount}
+								forcePage={this.state.currentPage}
 								marginPagesDisplayed={2}
 								pageRangeDisplayed={5}
 								onPageChange={this.handlePageClick}
@@ -109,116 +114,28 @@ export default class Result extends Component {
 								<th>Date</th>
 							</tr>
 						</thead>
-						<tbody>
-							{this.state.length === 0 ? (
-								<this.NoResults />
-							) : (
-								<this.Results results={this.state.results} />
-							)}
-						</tbody>
+						<tbody>{this.state.length === 0 ? <this.NoResults /> : <this.Results />}</tbody>
 					</table>
+					{this.state.length >= this.state.perPage && (
+						<div className="page-number">
+							<ReactPaginate
+								previousLabel={<Previous />}
+								nextLabel={<Next />}
+								breakLabel={"..."}
+								breakClassName={"break-me"}
+								pageCount={this.state.pageCount}
+								forcePage={this.state.currentPage}
+								marginPagesDisplayed={2}
+								pageRangeDisplayed={5}
+								onPageChange={this.handlePageClick}
+								containerClassName={"pagination"}
+								subContainerClassName={"pages pagination"}
+								activeClassName={"active"}
+							/>
+						</div>
+					)}
 				</div>
 			</React.Fragment>
 		);
 	}
 }
-
-// export default class Result extends Component {
-// 	constructor() {
-// 		super();
-// 		this.state = {
-// 			results: [],
-// 			perPage: 10,
-// 			offset: 0,
-// 			page: 1,
-// 			query: "",
-// 			length: 0,
-// 			pageCount: 0
-// 		};
-// 	}
-
-// 	doSearch(query, offset) {
-// 		return fetch(
-// 			`http://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${offset + this.state.perPage}`
-// 		).then(results => {
-// 			results.json().then(data => {
-// 				console.log(data);
-// 				this.setState({
-// 					results: data.results,
-// 					length: parseInt(data.total),
-// 					pageCount: parseInt(data.total) / this.state.perPage
-// 				});
-// 			});
-// 		});
-// 	}
-
-// 	componentDidMount() {
-// 		this.doSearch(this.props.query);
-// 		this.setState({
-// 			query: this.props.query
-// 		});
-// 	}
-
-// 	handlePageClick(data) {
-// 		const selected = data.selected;
-// 		const offset = Math.ceil(selected * this.state.perPage);
-
-// 		this.setState({ offset: offset }, () => {
-// 			this.doSearch(this.state.query, offset);
-// 		});
-// 	}
-
-// 	render() {
-// 		console.log(this.state.results);
-
-// 		return (
-// 			<div>
-// 				{this.state.length >= this.state.perPage && (
-// 					<div className="page-number">
-// 						<ReactPaginate
-// 							previousLabel={<Previous />}
-// 							nextLabel={<Next />}
-// 							breakLabel={"..."}
-// 							breakClassName={"break-me"}
-// 							pageCount={this.state.pageCount}
-// 							marginPagesDisplayed={2}
-// 							pageRangeDisplayed={5}
-// 							onPageChange={this.handlePageClick}
-// 							containerClassName={"pagination"}
-// 							subContainerClassName={"pages pagination"}
-// 							activeClassName={"active"}
-// 						/>
-// 					</div>
-// 				)}
-// 				<table className="table">
-// 					<thead>
-// 						<tr>
-// 							<th>Case Name</th>
-// 							<th>Citation</th>
-// 							<th>Date</th>
-// 						</tr>
-// 					</thead>
-// 					<tbody>
-// 						{ if (this.state.length === 0) {
-// 								<tr>
-// 									<td className="caseName">---</td>
-// 									<td>---</td>
-// 									<td calssName="caseDate">---</td>
-// 								</tr>
-// 						} else {
-// 						this.state.results.map(result => {
-// 							return (
-// 								<tr key={result.caseId}>
-// 									<td className="caseName">{result.case_name}</td>
-// 									<td>{result.citation}</td>
-// 									<td calssName="caseDate">{result.case_date}</td>
-// 								</tr>
-// 							);
-// 						})}
-// 						}
-// 					</tbody>
-// 				</table>
-// 			</div>
-// 		);
-// 	}
-// }

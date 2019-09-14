@@ -13,7 +13,6 @@ import SingleCase from "./pages/SingleCase.jsx";
 import Plugins from "./pages/Plugins.jsx";
 import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import NewsContext from "./NewsContext.jsx";
 
@@ -51,7 +50,6 @@ class App extends Component {
 						<Route exact path="/case/:id" component={SingleCase} />
 						<Route exact path="/developers" component={Developers} />
 						<Route exact path="/plugin" component={Plugins} />
-						<Route exact path="/contact" component={Contact} />
 						<Route exact path="/spotlight" component={Spotlight} />
 						<Route exact path="/volunteers" component={Volunteers} />
 						<Route exact path="/sponsors" component={Sponsors} />

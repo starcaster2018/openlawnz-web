@@ -1,0 +1,92 @@
+.info-card {
+    @include card-style;
+    @include center;
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    padding: 30px 20px;
+    top: 0;
+    width: 100%;
+
+    &--large {
+      width: 95%;
+      max-width: initial;
+    }
+
+    &--title {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 30px 40px;
+      height: auto;
+
+      h1 {
+        @include header-two;
+        color: $openLawLightBrown;
+      }
+
+      span {
+        font-size: 16px;
+        color: $openLawDarkGreen;
+      }
+    }
+  }
+  
+  .info-card-unit {
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+  
+  .info-card-unit-wrapper {
+    /* @include center;
+    height: 60%; */
+  
+    h1 {
+      color: $openLawLightBrown;
+      font-family: "Avenir LT Std 85 Heavy";
+      font-size: 35px;
+      margin: 0;
+      padding-bottom: 0.1vw;
+      text-align: center;
+    }
+  
+    h2 {
+      color: $openLawDarkGreen;
+      font-family: "Avenir LT Std 65 Medium";
+      font-size: 10px;
+      margin: 0;
+      text-align: center;
+    }
+  }
+  
+@media (min-width: 767px) {
+  .info-card {
+    flex-direction: row;
+    max-width: 740px;
+
+    &--large {
+      max-width: 900px;
+    }
+
+    &--title {
+      justify-content: space-between;
+
+      h1 {
+        margin-bottom: 0;
+      }
+    }
+
+    &--column {
+      flex-direction: column;
+
+      h1 {
+        margin-bottom: 10px;
+      }
+    }
+
+    .info-card-unit {
+      width: calc(100% / 3);
+    }
+  }
+}

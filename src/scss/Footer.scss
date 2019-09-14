@@ -1,0 +1,47 @@
+.footer-container {
+    position: inherit;
+    width: 100vw;
+    height: 197px;
+    display: flex;
+    background-color: $openLawDarkGreen;
+  }
+  
+  .law-foundation-nav-logo{
+    @include header-five;
+    color: $headerLinkColor;
+    position: absolute;
+    right: 63px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    display: flex;
+    float: right;
+
+    p {
+        padding-right: 34px;
+    }
+    svg {
+        width: 93px;
+        height: 93px;
+    }
+  }
+
+  .footer-contact-us{
+    @include header-five;
+    color: $headerLinkColor;
+    position: absolute;
+    left: 63px;
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+
+  .footer-items {
+    height: 100%;
+    width: 100%;
+    display: flex;
+  
+      a {
+        color: $headerLinkColor;
+      }
+    }
+
+  

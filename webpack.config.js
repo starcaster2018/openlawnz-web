@@ -20,7 +20,7 @@ module.exports = (env, argv) => ({
 	module: {
 		rules: [
 			{
-				test: /\.jsx?/,
+				test: /\.jsx?$/,
 				use: ["babel-loader"],
 				exclude: /node_modules/
 			},

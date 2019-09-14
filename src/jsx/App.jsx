@@ -49,7 +49,7 @@ class App extends Component {
 						<Route exact path="/search" component={Search} />
 						<Route exact path="/case/:id" component={SingleCase} />
 						<Route exact path="/developers" component={Developers} />
-						<Route exact path="/plugin" component={Plugins} />
+						<Route exact path="/plugins" component={Plugins} />
 						<Route exact path="/spotlight" component={Spotlight} />
 						<Route exact path="/volunteers" component={Volunteers} />
 						<Route exact path="/sponsors" component={Sponsors} />

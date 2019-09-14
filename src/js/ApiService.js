@@ -16,6 +16,7 @@ class ApiService {
 			},
 			cites {
 				id,
+<<<<<<< HEAD
 				caseName
 			},
 			legislationToCases {
@@ -29,6 +30,34 @@ class ApiService {
 			}
 		}
 	}`;
+||||||| merged common ancestors
+				case_name
+      },
+      legislationReferences
+      {
+        section,
+        legislation
+        {
+          title,
+        }
+      }
+
+		}`;
+=======
+				caseName
+			},
+			legislationToCases {
+				section,
+				legislation {
+					title
+				}
+			},
+			pdf {
+				pdfDbKey
+			}
+		}
+	`;
+>>>>>>> 1210294c57122fcac822c0c311d85430f528d94f
 	}
 
 	/**
@@ -37,8 +66,20 @@ class ApiService {
 	 * @returns {unresolved}
 	 */
 	async getGraphQlData(resource, params, fields) {
-		const query = `{${resource} ${this.paramsToString(params)} ${fields}}`;
-		const res = await fetch(`${this.apiUrl}?query=${encodeURIComponent(query)}`);
+		const query = `
+			query singleCase {
+				${resource} ${this.paramsToString(params)} 
+				${fields}
+			}`;
+		const res = await fetch(`${this.apiUrl}`, {
+			method: "POST",
+			body: JSON.stringify({
+				query: query
+			}),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		});
 
 		const body = await res.json();
 		return body.data;

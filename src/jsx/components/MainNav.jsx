@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import Logo from "-!svg-react-loader?name=Logo!../../img/openlaw-logo.svg";
@@ -25,7 +26,15 @@ class MainNav extends Component {
 								<Link to="/plugins">Plugins</Link>
 							</li>
 							<li>
-								<Link to="/contact">Developers</Link>
+								<Link to="/developers">Developers</Link>
+							</li>
+							<li>
+								<a href="https://donorbox.org/openlaw-nz-3" target="_blank" rel="noopener noreferrer">
+									Support Us{" "}
+									<sup>
+										<Icon name="external" size="small" fitted />
+									</sup>
+								</a>
 							</li>
 						</ul>
 					</div>

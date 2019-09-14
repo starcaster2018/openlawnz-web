@@ -21,7 +21,7 @@ class SearchPage extends Component {
 			results: [],
 			perPage: 10,
 			offset: 0,
-			currentPage: 1,
+			currentPage: 0,
 			length: 0,
 			pageCount: 0
 		};
@@ -83,7 +83,7 @@ class SearchPage extends Component {
 		e.preventDefault();
 		this.props.history.replace(`/search?q=${this.state.query}`);
 		this.doSearch(this.state.query, 0);
-		this.setState({ currentPage: 1, query: "", currentSearchQuery: this.state.query });
+		this.setState({ currentPage: 0, query: "", currentSearchQuery: this.state.query });
 	}
 
 	handleChange(e) {
@@ -150,7 +150,7 @@ class SearchPage extends Component {
 									breakClassName={"break-me"}
 									pageCount={this.state.pageCount}
 									forcePage={this.state.currentPage}
-									marginPagesDisplayed={2}
+									marginPagesDisplayed={1}
 									pageRangeDisplayed={5}
 									onPageChange={this.handlePageClick}
 									containerClassName={"pagination"}

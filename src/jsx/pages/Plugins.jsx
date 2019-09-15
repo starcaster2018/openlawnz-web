@@ -46,9 +46,9 @@ class Plugin extends React.Component {
 								<img src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromescreenshot1.png" />
 							</p>
 						</div>
+						<Footer />
 					</div>
 				</div>
-				<Footer />
 			</React.Fragment>
 		);
 	}

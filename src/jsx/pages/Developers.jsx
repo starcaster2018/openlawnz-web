@@ -56,8 +56,8 @@ class Developers extends React.Component {
 							</p>
 						</div>
 					</div>
+					<Footer />
 				</div>
-				<Footer />
 			</React.Fragment>
 		);
 	}

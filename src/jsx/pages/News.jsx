@@ -53,8 +53,8 @@ class News extends React.Component {
 					<div className="container news-list">
 						{news && news.map(item => <NewsItem key={item.id} {...item} />)}
 					</div>
+					<Footer />
 				</div>
-				<Footer />
 			</React.Fragment>
 		);
 	}

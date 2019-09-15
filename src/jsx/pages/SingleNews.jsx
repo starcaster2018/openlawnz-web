@@ -41,7 +41,7 @@ class News extends React.Component {
 						<span>{formattedDate}</span>
 					</InfoCard>
 					<div className="container main">
-						<div className="content">
+						<div className="content news-single">
 							{image_url && (
 								<React.Fragment>
 									<div className="image-container">

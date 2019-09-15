@@ -12,7 +12,7 @@ export default class Search extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		console.log(this.props);
-		this.props.history.push(`search` + "?q=" + this.state.currentSearchQuery);
+		this.props.history.replace(`/search?q=${this.state.currentSearchQuery}`);
 	}
 
 	handleChange(e) {

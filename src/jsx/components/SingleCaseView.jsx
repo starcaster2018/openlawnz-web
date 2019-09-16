@@ -28,8 +28,8 @@ class SingleCaseView extends Component {
 					</div>
 					<div className="download-button">
 						<a
-							href={`https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${this.props.singleCase.pdf.pdfDbKey}&embedded=true`}
-							download="filename.pdf"
+							href={`https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${this.props.singleCase.pdf.pdfDbKey}`}
+							download
 						>
 							<Download alt="Download" className="download-icon" />
 						</a>

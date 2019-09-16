@@ -5,6 +5,19 @@ import { Link } from "react-router-dom";
 import Logo from "-!svg-react-loader?name=Logo!../../img/openlaw-logo.svg";
 
 class MainNav extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			checked: false
+		};
+		this.checkBoxInput = React.createRef();
+		this.checkHandler = this.checkHandler.bind(this);
+	}
+
+	checkHandler() {
+		this.setState({ checked: !this.state.checked });
+	}
+
 	render() {
 		return (
 			<div className="nav-container">
@@ -14,21 +27,26 @@ class MainNav extends Component {
 							<Logo alt="OpenLaw NZ" className="main-logo" />
 						</Link>
 					</div>
-					<div className="nav-links">
-						<ul>
-							<li>
+					<div className="nav-links" id="menuToggle">
+						<input type="checkbox" checked={this.state.checked} onClick={() => this.checkHandler()} />
+						<span></span>
+						<span></span>
+						<span></span>
+
+						<ul id="menu">
+							<li onClick={() => this.checkHandler()}>
 								<Link to="/about">About Us</Link>
 							</li>
-							<li>
+							<li onClick={() => this.checkHandler()}>
 								<Link to="/news">News</Link>
 							</li>
-							<li>
+							<li onClick={() => this.checkHandler()}>
 								<Link to="/plugins">Plugins</Link>
 							</li>
-							<li>
+							<li onClick={() => this.checkHandler()}>
 								<Link to="/developers">Developers</Link>
 							</li>
-							<li>
+							<li onClick={() => this.checkHandler()}>
 								<a href="https://donorbox.org/openlaw-nz-3" target="_blank" rel="noopener noreferrer">
 									Support Us{" "}
 									<sup>

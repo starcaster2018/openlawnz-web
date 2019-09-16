@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import InfoCard from "../components/InfoCard.jsx";
 import Search from "../components/Search.jsx";
+import Footer from "../components/Footer.jsx";
 
 import GenericAvatar from "../../img/about-us/avatar.png";
 import Andy from "../../img/about-us/andrew-easterbrook.png";
@@ -267,6 +268,8 @@ class About extends Component {
 						</div>
 					</div>
 				</div>
+
+				<Footer />
 			</React.Fragment>
 		);
 	}

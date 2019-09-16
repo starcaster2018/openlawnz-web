@@ -15,11 +15,11 @@ class Home extends Component {
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard>
-						<InfoCardUnit one="17,605" two="CASES" />
+						<InfoCardUnit one="30,141" two="CASES" />
 						<div className="border"></div>
-						<InfoCardUnit one="20,261" two="CASE-TO-CASE RELATIONSHIPS" />
+						<InfoCardUnit one="25,208" two="CASE-TO-CASE RELATIONSHIPS" />
 						<div className="border"></div>
-						<InfoCardUnit one="190,324" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
+						<InfoCardUnit one="346,395" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
 					</InfoCard>
 					<Mission />
 					<News />

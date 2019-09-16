@@ -6,7 +6,6 @@ import Home from "./pages/Home.jsx";
 import Search from "./pages/Search.jsx";
 import News from "./pages/News.jsx";
 import SingleNews from "./pages/SingleNews.jsx";
-// import Spotlight from "./pages/Spotlight.jsx";
 import SingleCase from "./pages/SingleCase.jsx";
 import Plugins from "./pages/Plugins.jsx";
 import Developers from "./pages/Developers.jsx";
@@ -47,7 +46,6 @@ class App extends Component {
 						<Route exact path="/case/:id" component={SingleCase} />
 						<Route exact path="/developers" component={Developers} />
 						<Route exact path="/plugins" component={Plugins} />
-						{/* <Route exact path="/spotlight" component={Spotlight} /> */}
 						<Route exact path="/about" component={About} />
 					</div>
 				</div>

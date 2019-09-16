@@ -44,20 +44,26 @@
       display: flex;
       flex-direction: column;
       font-size: 16px;
-      padding: 18px 28px 28px;
+      padding: 38px 28px 48px 28px;
 
       @media (min-width: 767px) {
         flex-direction: row;
       }
 
       a {
+        padding-top: 28px;
         float: right;
       }
     }
 
     .image-container {
       margin-bottom: 20px;
-      
+      @media (max-width: 767px) {
+          padding: 10% 20%;
+      }
+      @media (max-width: 550px) {
+        padding: 5% 10%;
+    }
       img {
         max-width: 100%;
       }

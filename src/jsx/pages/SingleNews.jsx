@@ -62,8 +62,8 @@ class News extends React.Component {
 							/>
 						</div>
 					</div>
+					<Footer />
 				</div>
-				<Footer />
 			</React.Fragment>
 		);
 	}

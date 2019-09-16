@@ -16,9 +16,71 @@ const memoizedFetch = memoize((query, offset, end) =>
 	fetch(`https://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${end}`)
 );
 
+const Results = ({ data = [] }) =>
+	data.map((result, index) => (
+		<tr key={index}>
+			<td className="caseName">
+				<Link to={`/case/${result.caseId}`}>{result.caseName}</Link>
+			</td>
+			<td>{result.citation === null ? "N / A" : result.citation}</td>
+			<td className="caseDate">{moment(result.date).format("DD/MM/YYYY")}</td>
+		</tr>
+	));
+
+const NoResults = () => (
+	<tr>
+		<td className="caseName">-------</td>
+		<td>-------</td>
+		<td className="caseDate">-------</td>
+	</tr>
+);
+
+const Search = ({ onSubmit, onInputChange }) => (
+	<div className="search-container">
+		<div className="search">
+			<form className="search-input" onSubmit={onSubmit}>
+				<div className="input-wrapper">
+					<input
+						type="text"
+						className="search-term"
+						placeholder="Search legal cases"
+						onChange={onInputChange}
+						defaultValue=""
+					/>
+					<button type="submit" className="search-button">
+						<SearchIcon />
+					</button>
+				</div>
+				<button type="submit" className="search-submit-button">
+					Search
+				</button>
+			</form>
+		</div>
+	</div>
+);
+
+const Pagination = ({ onPageChange, pageCount, currentPage }) => (
+	<div className="page-number">
+		<ReactPaginate
+			previousLabel={<Previous />}
+			nextLabel={<Next />}
+			breakLabel={"..."}
+			breakClassName={"break-me"}
+			pageCount={pageCount}
+			forcePage={currentPage}
+			marginPagesDisplayed={1}
+			pageRangeDisplayed={window && window.innerWidth < 450 ? 3 : 5} // Fewer items provide better view on mobile
+			onPageChange={onPageChange}
+			containerClassName={"pagination"}
+			subContainerClassName={"pages pagination"}
+			activeClassName={"active"}
+		/>
+	</div>
+);
+
 class SearchPage extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			currentSearchQuery: null,
 			query: null,
@@ -32,9 +94,6 @@ class SearchPage extends Component {
 			paginationInProgress: false
 		};
 		this.handlePageClick = this.handlePageClick.bind(this);
-		this.Results = this.Results.bind(this);
-		this.Search = this.Search.bind(this);
-		this.Pagination = this.Pagination.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -65,30 +124,6 @@ class SearchPage extends Component {
 		});
 	}
 
-	Results() {
-		return this.state.results.map((result, index) => {
-			return (
-				<tr key={index}>
-					<td className="caseName">
-						<Link to={`/case/${result.caseId}`}>{result.caseName}</Link>
-					</td>
-					<td>{result.citation === null ? "N / A" : result.citation}</td>
-					<td className="caseDate">{moment(result.date).format("DD/MM/YYYY")}</td>
-				</tr>
-			);
-		});
-	}
-
-	NoResults() {
-		return (
-			<tr>
-				<td className="caseName">-------</td>
-				<td>-------</td>
-				<td className="caseDate">-------</td>
-			</tr>
-		);
-	}
-
 	handleSubmit(e) {
 		e.preventDefault();
 		this.props.history.replace(`/search?q=${this.state.query}`);
@@ -110,60 +145,13 @@ class SearchPage extends Component {
 		}
 	}
 
-	Search() {
-		return (
-			<div className="search-container">
-				<div className="search">
-					<form className="search-input" onSubmit={this.handleSubmit.bind(this)}>
-						<div className="input-wrapper">
-							<input
-								type="text"
-								className="search-term"
-								placeholder="Search legal cases"
-								onChange={this.handleChange}
-								value={this.state.query}
-							/>
-							<button type="submit" className="search-button">
-								<SearchIcon />
-							</button>
-						</div>
-						<button type="submit" className="search-submit-button">
-							Search
-						</button>
-					</form>
-				</div>
-			</div>
-		);
-	}
-
-	Pagination() {
-		return (
-			<div className="page-number">
-				<ReactPaginate
-					previousLabel={<Previous />}
-					nextLabel={<Next />}
-					breakLabel={"..."}
-					breakClassName={"break-me"}
-					pageCount={this.state.pageCount}
-					forcePage={this.state.currentPage}
-					marginPagesDisplayed={1}
-					pageRangeDisplayed={window && window.innerWidth < 450 ? 3 : 5} // Fewer items provide better view on mobile
-					onPageChange={this.handlePageClick}
-					containerClassName={"pagination"}
-					subContainerClassName={"pages pagination"}
-					activeClassName={"active"}
-				/>
-			</div>
-		);
-	}
-
 	render() {
 		if (!this.state.currentSearchQuery) {
 			return <p className="loading-text">Loading</p>;
 		}
 		return (
 			<React.Fragment>
-				<this.Search />
+				<Search onSubmit={this.handleSubmit} onInputChange={this.handleChange} />
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						{this.state.searchInProgress ? (
@@ -180,7 +168,13 @@ class SearchPage extends Component {
 						)}
 					</InfoCard>
 					<div className="container">
-						{this.state.length >= this.state.perPage && <this.Pagination />}
+						{this.state.length >= this.state.perPage && (
+							<Pagination
+								onPageChange={this.handlePageClick}
+								currentPage={this.state.currentPage}
+								pageCount={this.state.pageCount}
+							/>
+						)}
 						<table className="table">
 							<thead>
 								<tr>
@@ -196,10 +190,16 @@ class SearchPage extends Component {
 										: undefined
 								}
 							>
-								{this.state.length === 0 ? <this.NoResults /> : <this.Results />}
+								{this.state.length === 0 ? <NoResults /> : <Results data={this.state.results} />}
 							</tbody>
 						</table>
-						{this.state.length >= this.state.perPage && <this.Pagination />}
+						{this.state.length >= this.state.perPage && (
+							<Pagination
+								onPageChange={this.handlePageClick}
+								currentPage={this.state.currentPage}
+								pageCount={this.state.pageCount}
+							/>
+						)}
 					</div>
 					<Footer />
 				</div>

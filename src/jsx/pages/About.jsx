@@ -16,7 +16,7 @@ import AlexC from "../../img/about-us/alex-chan.png";
 import Limei from "../../img/about-us/limei.png";
 // import Ed from "../../img/about-us/avatar.png";
 // import Yanyi from "../../img/about-us/avatar.png";
-// import April from "../../img/about-us/avatar.png";
+import April from "../../img/about-us/april-liau.png";
 import Lina from "../../img/about-us/lina-xie.png";
 import David from "../../img/about-us/david-paitai.png";
 import Infra from "../../img/about-us/openlaw-infrastructure.png";
@@ -231,7 +231,7 @@ class About extends Component {
 							<div className="cards-list">
 								<div className="card-item-small">
 									<div>
-										<img src={GenericAvatar} alt="April Liau" />
+										<img src={April} alt="April Liau" />
 										<strong>April Liau</strong>
 									</div>
 									<p>

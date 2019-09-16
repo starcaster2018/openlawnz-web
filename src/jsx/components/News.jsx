@@ -30,11 +30,11 @@ class NewsSpotlight extends Component {
 				<div className="news-items">
 					<h1>News</h1>
 					<div className="news-cards-wrapper">
-						{this.state.data.map(({ id, title, image_url, summary }) => (
+						{this.state.data.map(({ id, title, image_url: imageUrl, summary }) => (
 							<div key={id} className="news-card">
-								{image_url && (
+								{imageUrl && (
 									<div className="picture">
-										<img src={image_url} alt={title} />
+										<img src={imageUrl} alt={title} />
 									</div>
 								)}
 								<div>

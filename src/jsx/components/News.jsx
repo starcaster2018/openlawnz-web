@@ -18,7 +18,6 @@ class NewsSpotlight extends Component {
 		if (!this.context.data) {
 			const data = await getNews();
 			this.context.updateData(data.items);
-			console.log(selectNews(data.items))
 			this.setState({ data: selectNews(data.items) });
 		} else {
 			this.setState({ data: selectNews(this.context.data) });
@@ -26,7 +25,6 @@ class NewsSpotlight extends Component {
 	}
 
 	render() {
-		console.log(this.state);
 		return (
 			<div className="news-container">
 				<div className="news-items">

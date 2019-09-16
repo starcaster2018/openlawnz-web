@@ -256,8 +256,11 @@ class About extends Component {
 										<strong>David Paitai</strong>
 									</div>
 									<p>
-										April is a visual designer who believes in enhancing experiences and making
-										impacts through design.
+										David is a Community Advisor for Te Tari Taiwhenua (Internal Affairs) providing
+										advisory services for whānau, hapū, iwi, communities and community
+										organisations. He&apos;s also a volunteer fire fighter, marae trustee and as a
+										self-professed accounting geek. David comes from Harataunga (Kennedy Bay) in the
+										Coromandel, but lives in Hamilton with his wife and twin babies.
 									</p>
 								</div>
 							</div>

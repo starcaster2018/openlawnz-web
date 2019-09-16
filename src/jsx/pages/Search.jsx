@@ -70,7 +70,7 @@ const Pagination = ({ onPageChange, pageCount, currentPage }) => (
 			pageCount={pageCount}
 			forcePage={currentPage}
 			marginPagesDisplayed={1}
-			pageRangeDisplayed={window && window.innerWidth < 450 ? 3 : 5} // Fewer items provide better view on mobile
+			pageRangeDisplayed={window && window.innerWidth < 450 ? 2 : 4} // Fewer items provide better view on mobile
 			onPageChange={onPageChange}
 			containerClassName={"pagination"}
 			subContainerClassName={"pages pagination"}

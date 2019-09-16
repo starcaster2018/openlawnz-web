@@ -59,9 +59,9 @@ tbody tr {
     color: black;
     font-weight: bold;
     font-size: 14px;
-    text-decoration: none;
+    text-decoration: underline;
     &:hover {
-      text-decoration: underline;
+      color: rgb(37, 77, 74);
     }
   }
 }
@@ -116,4 +116,13 @@ tbody tr {
       padding: 38px;
     }
   }
+}
+
+@media (max-width: 360px){
+  tbody tr td {
+    padding: 20px 10px;
+}
+table.table thead th {
+  padding: 20px 10px;
+}
 }

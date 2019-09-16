@@ -30,6 +30,7 @@ class SearchPage extends Component {
 		this.handlePageClick = this.handlePageClick.bind(this);
 		this.Results = this.Results.bind(this);
 		this.Search = this.Search.bind(this);
+		this.Pagination = this.Pagination.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -130,6 +131,27 @@ class SearchPage extends Component {
 		);
 	}
 
+	Pagination() {
+		return (
+			<div className="page-number">
+				<ReactPaginate
+					previousLabel={<Previous />}
+					nextLabel={<Next />}
+					breakLabel={"..."}
+					breakClassName={"break-me"}
+					pageCount={this.state.pageCount}
+					forcePage={this.state.currentPage}
+					marginPagesDisplayed={1}
+					pageRangeDisplayed={window && window.innerWidth < 450 ? 3 : 5} // Fewer items provide better view on mobile
+					onPageChange={this.handlePageClick}
+					containerClassName={"pagination"}
+					subContainerClassName={"pages pagination"}
+					activeClassName={"active"}
+				/>
+			</div>
+		);
+	}
+
 	render() {
 		if (!this.state.currentSearchQuery) {
 			return <p className="loading-text">Loading</p>;
@@ -152,25 +174,8 @@ class SearchPage extends Component {
 							</React.Fragment>
 						)}
 					</InfoCard>
-					<div className="results-wrapper">
-						{this.state.length >= this.state.perPage && (
-							<div className="page-number">
-								<ReactPaginate
-									previousLabel={<Previous />}
-									nextLabel={<Next />}
-									breakLabel={"..."}
-									breakClassName={"break-me"}
-									pageCount={this.state.pageCount}
-									forcePage={this.state.currentPage}
-									marginPagesDisplayed={1}
-									pageRangeDisplayed={5}
-									onPageChange={this.handlePageClick}
-									containerClassName={"pagination"}
-									subContainerClassName={"pages pagination"}
-									activeClassName={"active"}
-								/>
-							</div>
-						)}
+					<div className="container">
+						{this.state.length >= this.state.perPage && <this.Pagination />}
 						<table className="table">
 							<thead>
 								<tr>
@@ -187,24 +192,7 @@ class SearchPage extends Component {
 								{this.state.length === 0 ? <this.NoResults /> : <this.Results />}
 							</tbody>
 						</table>
-						{this.state.length >= this.state.perPage && (
-							<div className="page-number">
-								<ReactPaginate
-									previousLabel={<Previous />}
-									nextLabel={<Next />}
-									breakLabel={"..."}
-									breakClassName={"break-me"}
-									pageCount={this.state.pageCount}
-									forcePage={this.state.currentPage}
-									marginPagesDisplayed={2}
-									pageRangeDisplayed={5}
-									onPageChange={this.handlePageClick}
-									containerClassName={"pagination"}
-									subContainerClassName={"pages pagination"}
-									activeClassName={"active"}
-								/>
-							</div>
-						)}
+						{this.state.length >= this.state.perPage && <this.Pagination />}
 					</div>
 					<Footer />
 				</div>

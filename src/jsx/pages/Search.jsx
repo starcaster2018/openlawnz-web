@@ -23,7 +23,8 @@ class SearchPage extends Component {
 			offset: 0,
 			currentPage: 0,
 			length: 0,
-			pageCount: 0
+			pageCount: 0,
+			paginationInProgress: false
 		};
 		this.handlePageClick = this.handlePageClick.bind(this);
 		this.Results = this.Results.bind(this);
@@ -40,7 +41,8 @@ class SearchPage extends Component {
 				this.setState({
 					results: data.results,
 					length: parseInt(data.total),
-					pageCount: parseInt(data.total) / this.state.perPage
+					pageCount: parseInt(data.total) / this.state.perPage,
+					paginationInProgress: false
 				});
 			});
 		});
@@ -50,7 +52,7 @@ class SearchPage extends Component {
 		const selected = data.selected;
 		const offset = selected * this.state.perPage;
 
-		this.setState({ offset: offset, currentPage: selected }, () => {
+		this.setState({ offset: offset, currentPage: selected, paginationInProgress: true }, () => {
 			this.doSearch(this.state.currentSearchQuery, this.state.offset);
 		});
 	}
@@ -167,7 +169,9 @@ class SearchPage extends Component {
 									<th>Date</th>
 								</tr>
 							</thead>
-							<tbody>{this.state.length === 0 ? <this.NoResults /> : <this.Results />}</tbody>
+							<tbody className={this.state.paginationInProgress && "loading"}>
+								{this.state.length === 0 ? <this.NoResults /> : <this.Results />}
+							</tbody>
 						</table>
 						{this.state.length >= this.state.perPage && (
 							<div className="page-number">

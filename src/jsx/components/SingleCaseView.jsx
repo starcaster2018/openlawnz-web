@@ -19,7 +19,6 @@ class SingleCaseView extends Component {
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<div className="single-case-wrapper">
 				<div className="single-case-header">

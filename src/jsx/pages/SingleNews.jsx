@@ -30,7 +30,12 @@ class News extends React.Component {
 	}
 
 	render() {
-		const { title = "", formattedDate = "", image_url = null, content_html = "" } = this.state.data;
+		const {
+			title = "",
+			formattedDate = "",
+			image_url: imageUrl = null,
+			content_html: contentHtml = ""
+		} = this.state.data;
 
 		return (
 			<React.Fragment>
@@ -41,18 +46,18 @@ class News extends React.Component {
 						<span>{formattedDate}</span>
 					</InfoCard>
 					<div className="container main">
-						<div className="content news-single">
-							{image_url && (
+						<div className="content">
+							{imageUrl && (
 								<React.Fragment>
 									<div className="image-container">
-										<img src={image_url} />
+										<img src={imageUrl} />
 									</div>
 									<hr className="divider" />
 								</React.Fragment>
 							)}
 							<div
 								dangerouslySetInnerHTML={{
-									__html: content_html
+									__html: contentHtml
 								}}
 							/>
 						</div>

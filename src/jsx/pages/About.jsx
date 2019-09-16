@@ -45,7 +45,7 @@ class About extends Component {
 								services. For an example, see our chrome extension.
 							</p>
 							<h2>Our data</h2>
-							<p className="paragraph-with-figure">
+							<div className="paragraph-with-figure">
 								The data we have currently comprises High Court, Court of Appeal and Supreme Court
 								decisions from present day back to approximately 2004 (with some exceptions, for example
 								some suppressed decisions and other judgments that have not been published).
@@ -69,7 +69,7 @@ class About extends Component {
 										<img src={Infra} alt="Infrastructure" />
 									</div>
 								</div>
-							</p>
+							</div>
 							<h2>Who we are</h2>
 							<p>
 								OpenLaw NZ <i></i>s a registered charity. We’re operated by a fantastic group of
@@ -256,8 +256,11 @@ class About extends Component {
 										<strong>David Paitai</strong>
 									</div>
 									<p>
-										April is a visual designer who believes in enhancing experiences and making
-										impacts through design.
+										David is a Community Advisor for Te Tari Taiwhenua (Internal Affairs) providing
+										advisory services for whānau, hapū, iwi, communities and community
+										organisations. He&apos;s also a volunteer fire fighter, marae trustee and as a
+										self-professed accounting geek. David comes from Harataunga (Kennedy Bay) in the
+										Coromandel, but lives in Hamilton with his wife and twin babies.
 									</p>
 								</div>
 							</div>
@@ -265,6 +268,8 @@ class About extends Component {
 					</div>
 					<Footer />
 				</div>
+
+				<Footer />
 			</React.Fragment>
 		);
 	}

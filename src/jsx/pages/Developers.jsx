@@ -12,19 +12,19 @@ class Developers extends React.Component {
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>Developers</h1>
-						<span>
-						Use our API to integrate case law intelligence into your own applications. 
-						</span>
+						<span>Use our API to integrate case law intelligence into your own applications.</span>
 					</InfoCard>
 					<div className="container main">
 						<div className="content">
 							<p>
-							At its core, OpenLaw NZ is a series of data services built for developers such as yourself
-							to use. We built OpenLaw NZ to be a living platform, and would love to see it used to make tools to enhance access to justice in New Zealand. 
+								At its core, OpenLaw NZ is a series of data services built for developers such as
+								yourself to use. We built OpenLaw NZ to be a living platform, and would love to see it
+								used to make tools to enhance access to justice in New Zealand.
 							</p>
 							<p>
-								While our API and search engine is free for educational, non-profit &amp; open-source projects,
-								commercial usage requires a separate license. Please contact us if you want to use it commercially.
+								While our API and search engine is free for educational, non-profit &amp; open-source
+								projects, commercial usage requires a separate license. Please contact us if you want to
+								use it commercially.
 							</p>
 
 							<h2>API</h2>

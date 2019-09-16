@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import memoize from "fast-memoize";
 import Footer from "../components/Footer.jsx";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
@@ -11,6 +12,9 @@ import Next from "-!svg-react-loader?name=Logo!../../img/next-page.svg";
 import Previous from "-!svg-react-loader?name=Logo!../../img/previous-page.svg";
 
 const queryString = require("query-string");
+const memoizedFetch = memoize((query, offset, end) =>
+	fetch(`https://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${end}`)
+);
 
 class SearchPage extends Component {
 	constructor() {
@@ -36,18 +40,19 @@ class SearchPage extends Component {
 	}
 
 	doSearch(query, offset) {
-		return fetch(
-			`https://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${offset + this.state.perPage}`
-		).then(results => {
-			results.json().then(data => {
-				this.setState({
-					results: data.results,
-					length: parseInt(data.total),
-					pageCount: parseInt(data.total) / this.state.perPage,
-					paginationInProgress: false,
-					searchInProgress: false
+		return memoizedFetch(query, offset, offset + this.state.perPage).then(results => {
+			results
+				.clone() // Necessary because of memoization of fetch
+				.json()
+				.then(data => {
+					this.setState({
+						results: data.results,
+						length: parseInt(data.total),
+						pageCount: parseInt(data.total) / this.state.perPage,
+						paginationInProgress: false,
+						searchInProgress: false
+					});
 				});
-			});
 		});
 	}
 
@@ -186,7 +191,9 @@ class SearchPage extends Component {
 							</thead>
 							<tbody
 								className={
-									(this.state.paginationInProgress || this.state.searchInProgress) && "loading"
+									this.state.paginationInProgress || this.state.searchInProgress
+										? "loading"
+										: undefined
 								}
 							>
 								{this.state.length === 0 ? <this.NoResults /> : <this.Results />}

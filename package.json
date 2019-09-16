@@ -9,6 +9,7 @@
 		"test": "webpack -p --output-path dist"
 	},
 	"dependencies": {
+		"fast-memoize": "^2.5.1",
 		"moment": "^2.24.0",
 		"query-string": "^6.8.3",
 		"react": "^16.9.0",

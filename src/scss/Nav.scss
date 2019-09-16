@@ -112,11 +112,6 @@
     transform: translate(0px, 20px);
   }
 
-  #menuToggle input:checked {
-    // width: 100vw;
-    // height: 100vh;
-  }
-
   #menuToggle input:checked ~ span {
     position: fixed;
     opacity: 1;
@@ -148,8 +143,7 @@
     background: #2b6064;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
-    /* to stop flickering of text in safari */
-
+  
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
 

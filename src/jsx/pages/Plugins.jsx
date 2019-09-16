@@ -1,44 +1,57 @@
-import React, { Component } from "react";
-import { Header, Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import React from "react";
+import Search from "../components/Search.jsx";
+import InfoCard from "../components/InfoCard.jsx";
+import Footer from "../components/Footer.jsx";
 
-class Plugin extends Component {
-	render() {
-		return (
-			<React.Fragment>
-				<Header as="h2">Plugins</Header>
+const Plugin = props => (
+	<React.Fragment>
+		<Search history={props.history} />
+		<div className="home-wrapper">
+			<InfoCard classModifier="info-card--large info-card--title info-card--column">
+				<h1>Plugins</h1>
+			</InfoCard>
 
-				<p>
-					We built these tools using the OpenLaw NZ API. If you build something with our platform, get in
-					touch and we&apos;ll list it here.
-				</p>
+			<div className="container main">
+				<div className="content">
+					<p>
+						We built these tools using the OpenLaw NZ API. If you build something with our platform, get in
+						touch and we&apos;ll list it here.
+					</p>
 
-				<Header as="h3">
-					<Icon color="teal" name="chrome" />
-					legislation.govt.nz Chrome Extension
-				</Header>
-				<p>
-					<a href="https://chrome.google.com/webstore/detail/openlaw-nz-legislation-he/abobmobdjckkdplcdjicelmejdmlleof?hl=en-US">
-						Available from the Chrome Web Store.
-					</a>
-				</p>
+					<h2>OpenLaw NZ Chrome Extension</h2>
+					<p>
+						Use our free chrome extension to help find cases related to the piece of legislation you’re
+						interested in.{" "}
+					</p>
 
-				<p>
-					When looking at a section of legislation on{" "}
-					<a href="https://legislation.govt.nz">legislation.govt.nz</a>, this Chrome Extension inserts a
-					button that, when clicked, will give you links to cases that refer to that section, and tell you how
-					many times it is mentioned in each case.
-				</p>
+					<p>
+						Simply view a section of an Act of Parliament on the official NZ Legislation website
+						legislation.govt.nz.
+					</p>
 
-				<p>It queries our database of 17,000 cases from 2012 onwards.</p>
+					<p>
+						You’ll see an OpenLaw logo appear just above the section number. Click that to view an overlay
+						with cases that discuss the relevant section and a count of how many times each case mentions
+						it.
+					</p>
 
-				<p>
-					The <a href="https://github.com/openlawnz/openlawnz-browser-extension">source code is on GitHub</a>,
-					if you&apos;d like to improve or contribute.
-				</p>
-			</React.Fragment>
-		);
-	}
-}
+					<p>
+						Get the chrome extension from the{" "}
+						<a
+							rel="noopener noreferrer"
+							target="_blank"
+							href="https://chrome.google.com/webstore/detail/openlaw-nz-legislation-he/abobmobdjckkdplcdjicelmejdmlleof?hl=en-US"
+						>
+							chrome web store
+						</a>
+						.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<Footer />
+	</React.Fragment>
+);
 
 export default Plugin;

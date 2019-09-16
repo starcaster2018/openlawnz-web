@@ -24,6 +24,7 @@ class SearchPage extends Component {
 			currentPage: 0,
 			length: 0,
 			pageCount: 0,
+			searchInProgress: true,
 			paginationInProgress: false
 		};
 		this.handlePageClick = this.handlePageClick.bind(this);
@@ -42,7 +43,8 @@ class SearchPage extends Component {
 					results: data.results,
 					length: parseInt(data.total),
 					pageCount: parseInt(data.total) / this.state.perPage,
-					paginationInProgress: false
+					paginationInProgress: false,
+					searchInProgress: false
 				});
 			});
 		});
@@ -84,8 +86,8 @@ class SearchPage extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		this.props.history.replace(`/search?q=${this.state.query}`);
+		this.setState({ currentPage: 0, query: "", currentSearchQuery: this.state.query, searchInProgress: true });
 		this.doSearch(this.state.query, 0);
-		this.setState({ currentPage: 0, query: "", currentSearchQuery: this.state.query });
 	}
 
 	handleChange(e) {
@@ -137,10 +139,18 @@ class SearchPage extends Component {
 				<this.Search />
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
-						<h1>{this.state.length}</h1>
-						<span>
-							SEARCH RESULTS FOR <b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
-						</span>
+						{this.state.searchInProgress ? (
+							<span>
+								SEARCHING RESULTS FOR <b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
+							</span>
+						) : (
+							<React.Fragment>
+								<h1>{this.state.length}</h1>
+								<span>
+									SEARCH RESULTS FOR <b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
+								</span>
+							</React.Fragment>
+						)}
 					</InfoCard>
 					<div className="results-wrapper">
 						{this.state.length >= this.state.perPage && (
@@ -169,7 +179,11 @@ class SearchPage extends Component {
 									<th>Date</th>
 								</tr>
 							</thead>
-							<tbody className={this.state.paginationInProgress && "loading"}>
+							<tbody
+								className={
+									(this.state.paginationInProgress || this.state.searchInProgress) && "loading"
+								}
+							>
 								{this.state.length === 0 ? <this.NoResults /> : <this.Results />}
 							</tbody>
 						</table>

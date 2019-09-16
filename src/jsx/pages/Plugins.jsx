@@ -50,7 +50,13 @@ class Plugin extends React.Component {
 							</p>
 
 							<p>
-								<img src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromescreenshot1.png" />
+								<video controls autoPlay loop>
+									<source
+										src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromeextension.mp4"
+										type="video/mp4"
+									/>
+									<img src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromescreenshot1.png" />
+								</video>
 							</p>
 						</div>
 					</div>

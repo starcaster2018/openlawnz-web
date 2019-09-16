@@ -12,10 +12,7 @@ class Plugin extends React.Component {
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>Plugins</h1>
-						<span>
-							These plugins are built using the OpenLaw NZ API. If you build something with our platform,
-							get in touch and we&apos;ll list it here.
-						</span>
+						<span>These plugins are built using the OpenLaw NZ API.</span>
 					</InfoCard>
 					<div className="container main">
 						<div className="content">
@@ -58,6 +55,7 @@ class Plugin extends React.Component {
 									<img src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromescreenshot1.png" />
 								</video>
 							</p>
+							<p>If you build something with our platform, get in touch and we&apos;ll list it here.</p>
 						</div>
 					</div>
 					<Footer />

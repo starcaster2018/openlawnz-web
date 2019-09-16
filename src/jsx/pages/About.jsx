@@ -1,21 +1,18 @@
 import React, { Component } from "react";
 import InfoCard from "../components/InfoCard.jsx";
 import Search from "../components/Search.jsx";
+import Footer from "../components/Footer.jsx";
 
 import GenericAvatar from "../../img/about-us/avatar.png";
 import Andy from "../../img/about-us/andrew-easterbrook.png";
 import Will from "../../img/about-us/will.jpg";
-// import Blaine from "../../img/about-us/avatar.png";
 import Tian from "../../img/about-us/tian-bai.png";
 import Caio from "../../img/about-us/caio-nunes.png";
 import Terence from "../../img/about-us/terence-zhong.png";
 import AlexH from "../../img/about-us/alex-huang.png";
 import Noel from "../../img/about-us/noel-soong.png";
-// import Hanbyul from "../../img/about-us/avatar.png";
 import AlexC from "../../img/about-us/alex-chan.png";
 import Limei from "../../img/about-us/limei.png";
-// import Ed from "../../img/about-us/avatar.png";
-// import Yanyi from "../../img/about-us/avatar.png";
 import April from "../../img/about-us/april-liau.png";
 import Lina from "../../img/about-us/lina-xie.png";
 import David from "../../img/about-us/david-paitai.png";
@@ -266,6 +263,7 @@ class About extends Component {
 							</div>
 						</div>
 					</div>
+					<Footer />
 				</div>
 			</React.Fragment>
 		);

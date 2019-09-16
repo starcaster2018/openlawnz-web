@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import memoize from "fast-memoize";
+import { Link } from "react-router-dom";
+
+import dateFormat from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 import Footer from "../components/Footer.jsx";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
-import { Link } from "react-router-dom";
-
-import moment from "moment";
 
 import SearchIcon from "-!svg-react-loader?name=Logo!../../img/search-icon.svg";
 import Next from "-!svg-react-loader?name=Logo!../../img/next-page.svg";
@@ -23,7 +24,7 @@ const Results = ({ data = [] }) =>
 				<Link to={`/case/${result.caseId}`}>{result.caseName}</Link>
 			</td>
 			<td>{result.citation === null ? "N / A" : result.citation}</td>
-			<td className="caseDate">{moment(result.date).format("DD/MM/YYYY")}</td>
+			<td className="caseDate">{dateFormat(parseISO(result.date), "dd/MM/yyyy")}</td>
 		</tr>
 	));
 

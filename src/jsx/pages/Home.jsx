@@ -9,7 +9,6 @@ import News from "../components/News.jsx";
 
 class Home extends Component {
 	render() {
-		console.log(this.props);
 		return (
 			<React.Fragment>
 				<h1 className="header-title">OpenLaw NZ is a new, free legal research platform for New Zealand.</h1>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import InfoCard from "../components/InfoCard.jsx";
 import Search from "../components/Search.jsx";
+import Footer from "../components/Footer.jsx";
 
 import GenericAvatar from "../../img/about-us/avatar.png";
 import Andy from "../../img/about-us/andrew-easterbrook.png";
@@ -48,7 +49,7 @@ class About extends Component {
 								services. For an example, see our chrome extension.
 							</p>
 							<h2>Our data</h2>
-							<p className="paragraph-with-figure">
+							<div className="paragraph-with-figure">
 								The data we have currently comprises High Court, Court of Appeal and Supreme Court
 								decisions from present day back to approximately 2004 (with some exceptions, for example
 								some suppressed decisions and other judgments that have not been published).
@@ -72,7 +73,7 @@ class About extends Component {
 										<img src={Infra} alt="Infrastructure" />
 									</div>
 								</div>
-							</p>
+							</div>
 							<h2>Who we are</h2>
 							<p>
 								OpenLaw NZ <i></i>s a registered charity. We’re operated by a fantastic group of
@@ -267,6 +268,8 @@ class About extends Component {
 						</div>
 					</div>
 				</div>
+
+				<Footer />
 			</React.Fragment>
 		);
 	}

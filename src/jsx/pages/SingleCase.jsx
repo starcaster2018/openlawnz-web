@@ -18,7 +18,6 @@ class SingleCase extends Component {
 	async fetchData(id) {
 		const singleCase = await ApiService.getCase({ id: parseInt(id) });
 		this.setState({ singleCase });
-		console.log(typeof singleCase);
 	}
 
 	async componentDidMount() {
@@ -32,7 +31,6 @@ class SingleCase extends Component {
 	}
 
 	render() {
-		console.log("state:", this.state);
 		if (!this.state.singleCase) {
 			return <p>Loading</p>;
 		}

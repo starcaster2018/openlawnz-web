@@ -18,7 +18,6 @@ class NewsSpotlight extends Component {
 		if (!this.context.data) {
 			const data = await getNews();
 			this.context.updateData(data.items);
-			console.log(selectNews(data.items))
 			this.setState({ data: selectNews(data.items) });
 		} else {
 			this.setState({ data: selectNews(this.context.data) });
@@ -26,17 +25,16 @@ class NewsSpotlight extends Component {
 	}
 
 	render() {
-		console.log(this.state);
 		return (
 			<div className="news-container">
 				<div className="news-items">
 					<h1>News</h1>
 					<div className="news-cards-wrapper">
-						{this.state.data.map(({ id, title, image_url, summary }) => (
+						{this.state.data.map(({ id, title, image_url: imageUrl, summary }) => (
 							<div key={id} className="news-card">
-								{image_url && (
+								{imageUrl && (
 									<div className="picture">
-										<img src={image_url} alt={title} />
+										<img src={imageUrl} alt={title} />
 									</div>
 								)}
 								<div>

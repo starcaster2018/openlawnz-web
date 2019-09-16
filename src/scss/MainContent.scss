@@ -19,6 +19,13 @@
     }
   }
 
+  h3 {
+    @include header-four;
+    color: $openLawDarkGreen;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
   img {
     max-width: 100%;
   }
@@ -86,16 +93,10 @@
 
   .cards-list {
     display: flex;
-    margin-left: -20px;
-    margin-right: -20px;
     flex-direction: column;
-
-    .break {
-      flex-basis: 100%;
-    }
     
     .card-item {
-      margin: 0 20px 20px;
+      margin-bottom: 20px;
       padding: 30px 25px;
       background: #F6F6F6;
 
@@ -107,10 +108,14 @@
       p {
         font-size: 14px;
       }
+
+      img {
+        border-radius: 50%;
+      }
     }
     
     .card-item-small {
-      margin: 0 20px 20px;
+      margin-bottom: 15px;
       padding: 15px 15px;
       background: #F6F6F6;
       display: flex;
@@ -120,6 +125,7 @@
         flex-basis: 110px;
         text-align: center;
         margin-right: 20px;
+        flex-shrink: 0;
       }
 
       strong {
@@ -129,6 +135,10 @@
 
       p {
         font-size: 14px;
+      }
+
+      img {
+        border-radius: 50%;
       }
     }
   }
@@ -147,16 +157,17 @@
 
     .cards-list {
       flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
 
       .card-item {
-        margin: 0 20px;
-        flex-basis: 50%;
+        margin-bottom: 15px;
+        flex-basis: 49%;
         padding: 30px 45px;
       }
 
       .card-item-small {
-        margin: 0 20px 15px;
-        flex-basis: 50%;
+        flex-basis: 49%;
       }
     }
   }

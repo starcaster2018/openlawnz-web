@@ -63,7 +63,7 @@ $primary-font-family: Avenir LT Std;
             }
         }
     }
-
+    
     .row{
         .case-document-viewer{
             position: absolute;
@@ -79,7 +79,7 @@ $primary-font-family: Avenir LT Std;
         .hide-case-details{
             display: none;
         }
-
+        
         .case-details{
             animation: fadein .3s;
             position: absolute;
@@ -90,37 +90,37 @@ $primary-font-family: Avenir LT Std;
             overflow: auto;
             background-color: $card-background-color;
             box-shadow: 3px 2px 13px 0px rgba(0,0,0,0.29);
-
-                .item{
-                    padding-bottom: 20px;
-                    a{
-                        color:$key-font-color;
-                        font-family: "Avenir LT Std 85 Heavy";
-                        font-size: 12px;
-                    }
+            
+            .item{
+                padding-bottom: 20px;
+                a{
+                    color:$key-font-color;
+                    font-family: "Avenir LT Std 85 Heavy";
+                    font-size: 12px;
                 }
-
-
+            }
+            
+            
             hr{
                 border: 1px solid #BDBDBD;
             }
-
+            
             h3{
                 width: 264px;
                 height: 31px;
-
+                
                 font-family: $primary-font-family;
                 font-size: 16px;
                 line-height: 19px;
-
+                
                 color:$primary-color;
             }
-
+            
             table{
                 width: 100%;
                 text-align: left;
                 table-layout:fixed;
-
+                
                 td{
                     overflow:hidden;
                     text-overflow:ellipsis;
@@ -128,8 +128,8 @@ $primary-font-family: Avenir LT Std;
                     white-space:nowrap;
                     padding: 12px;
                 }
-
-               
+                
+                
                 th{
                     background: $primary-color;
                     color:#FFF;
@@ -139,13 +139,13 @@ $primary-font-family: Avenir LT Std;
                     line-height: 17px;  
                     padding: 12px;                  
                 }
-
+                
                 tr{
                     .title{
                         width:200px;
                     }
                 }
-
+                
                 tr:nth-child(odd){
                     font-family: $primary-font-family;
                     font-size: 12px;
@@ -153,7 +153,7 @@ $primary-font-family: Avenir LT Std;
                     background: $odd-row-color;
                     height: 35px;
                 }
-
+                
                 tr:nth-child(even){
                     font-family: $primary-font-family;
                     font-size: 12px;
@@ -163,9 +163,9 @@ $primary-font-family: Avenir LT Std;
                     
                 }
             }
-           
+            
         }
-
+        
         
     }
 }
@@ -175,4 +175,20 @@ $primary-font-family: Avenir LT Std;
     color: $openLawLightBrown;
     width: 100%;
     text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .single-case-wrapper {
+        width: 95vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .single-case-wrapper{
+        .row{
+            .case-details{
+                width: 100%;
+            }
+        }
+    }
 }

@@ -40,12 +40,15 @@ class News extends React.Component {
 						<h1>{title}</h1>
 						<span>{formattedDate}</span>
 					</InfoCard>
-					<div className="container news-single">
-						<div className="content">
+					<div className="container main">
+						<div className="content news-single">
 							{image_url && (
-								<div className="image-container">
-									<img src={image_url} />
-								</div>
+								<React.Fragment>
+									<div className="image-container">
+										<img src={image_url} />
+									</div>
+									<hr className="divider" />
+								</React.Fragment>
 							)}
 							<div
 								dangerouslySetInnerHTML={{
@@ -54,8 +57,8 @@ class News extends React.Component {
 							/>
 						</div>
 					</div>
+					<Footer />
 				</div>
-				<Footer />
 			</React.Fragment>
 		);
 	}

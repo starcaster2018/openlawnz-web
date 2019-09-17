@@ -6,7 +6,7 @@ $odd-row-color: #fff;
 $even-row-color:#F7F7F7;
 $card-background-color:#fff;
 $pdf-reader-padding-color:rgba(255, 255, 255, 0.47);
-$primary-font-family: Avenir LT Std;
+$primary-font-family: 'Nunito', sans-serif;
 
 @keyframes fadein {
     from { opacity: 0; }
@@ -95,7 +95,7 @@ $primary-font-family: Avenir LT Std;
                 padding-bottom: 20px;
                 a{
                     color:$key-font-color;
-                    font-family: "Avenir LT Std 85 Heavy";
+                    font-family: 'Nunito', sans-serif;
                     font-size: 12px;
                 }
             }

@@ -174,7 +174,12 @@ class About extends Component {
 										<img src={Noel} alt="Noel Soong" />
 										<strong>Noel Soong</strong>
 									</div>
-									<p></p>
+									<p>
+										Noel is a full stack developer hungry to expand his knowledge for the whole
+										technology stack. He helped develop, deploy and maintain the GraphQL api. As
+										well as worked on the documentation on Github. Graduated from the University of
+										Canterbury and Dev Academy.
+									</p>
 								</div>
 								<div className="card-item-small">
 									<div>

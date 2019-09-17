@@ -9,54 +9,36 @@ $backgroundColor: #ffffff;
 $newsBackgroundColor: #f5f5f5;
 $openLawArapawa: #225160;
 
-@font-face {
-  font-family: "Avenir LT Std 85 Heavy";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/AvenirLTStd-Heavy.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Avenir LT Std 65 Medium";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/AvenirLTStd-Medium.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Avenir LT Std 45 Book";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/AvenirLTStd-Book.woff") format("woff");
-}
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800&display=swap');
 
 @mixin header-one {
-  font-family: "Avenir LT Std 85 Heavy";
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 40px;
 }
 
 @mixin header-two {
-  font-family: "Avenir LT Std 85 Heavy";
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 30px;
 }
 
 @mixin header-three {
-  font-family: "Avenir LT Std 65 Medium";
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 24px;
 }
 
 @mixin header-four {
-  font-family: "Avenir LT Std 65 Medium";
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 20px;
 }
 
 @mixin header-five {
-  font-family: "Avenir LT Std 65 Medium";
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
 }
 
 @mixin body {
-  font-family: "Avenir LT Std 45 Book";
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 15px;
 }
 
@@ -90,7 +72,7 @@ $openLawArapawa: #225160;
 }
 
 * {
-  font-family: "Avenir LT Std 45 Book";
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 button:focus {

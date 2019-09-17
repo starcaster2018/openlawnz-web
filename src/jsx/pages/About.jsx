@@ -119,7 +119,11 @@ class About extends Component {
 										<img src={GenericAvatar} alt="Blaine Western" />
 										<strong>Blaine Western</strong>
 									</div>
-									<p>Lead web developer.</p>
+									<p>
+										Lead web developer - Blaine is a programmer and developer with a background in
+										the visual arts. He is passionate about developing web technologies that strive
+										towards social justice and equality.
+									</p>
 								</div>
 
 								<div className="card-item-small">
@@ -192,9 +196,7 @@ class About extends Component {
 										Alex has more than 10 years of experience in the IT industry covering software
 										development, project management and operational support. He is also a Certified
 										Project Manager and ScrumMaster, and hold other qualifications related to data
-										analytics and business. Alex is an outgoing person who loves to build stuff from
-										concept to creation. He has a passionate curiosity for learning and likes to
-										interact with people to exchange ideas.
+										analytics and business.
 									</p>
 								</div>
 								<div className="card-item-small">
@@ -259,8 +261,7 @@ class About extends Component {
 										David is a Community Advisor for Te Tari Taiwhenua (Internal Affairs) providing
 										advisory services for whānau, hapū, iwi, communities and community
 										organisations. He&apos;s also a volunteer fire fighter, marae trustee and as a
-										self-professed accounting geek. David comes from Harataunga (Kennedy Bay) in the
-										Coromandel, but lives in Hamilton with his wife and twin babies.
+										self-professed accounting geek.
 									</p>
 								</div>
 							</div>
@@ -268,8 +269,6 @@ class About extends Component {
 					</div>
 					<Footer />
 				</div>
-
-				<Footer />
 			</React.Fragment>
 		);
 	}

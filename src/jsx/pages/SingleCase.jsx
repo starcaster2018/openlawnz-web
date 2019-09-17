@@ -22,6 +22,7 @@ class SingleCase extends Component {
 
 	async componentDidMount() {
 		this.fetchData(this.state.id);
+		window.scrollTo(0, 0);
 	}
 
 	async componentDidUpdate(prevProps) {
@@ -32,7 +33,7 @@ class SingleCase extends Component {
 
 	render() {
 		if (!this.state.singleCase) {
-			return <p>Loading</p>;
+			return "";
 		}
 		return (
 			<React.Fragment>

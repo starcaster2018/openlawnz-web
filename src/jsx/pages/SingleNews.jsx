@@ -18,6 +18,7 @@ class News extends React.Component {
 	}
 
 	async componentDidMount() {
+		window.scrollTo(0, 0);
 		const newsId = this.props.match.params.id;
 
 		if (!this.context.data) {

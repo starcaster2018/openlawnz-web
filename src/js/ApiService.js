@@ -8,8 +8,11 @@ class ApiService {
 		this.caseFields = `{
 			caseName,
 			id,
+			caseCitations {
+				citation
+			}
 			casesCitedsByCaseCited {
-				caseByCaseCited {
+				caseByCaseOrigin {
 					caseName,
 					id
 				}

@@ -6,7 +6,7 @@ $odd-row-color: #fff;
 $even-row-color:#F7F7F7;
 $card-background-color:#fff;
 $pdf-reader-padding-color:rgba(255, 255, 255, 0.47);
-$primary-font-family: 'Nunito', sans-serif;
+$primary-font-family: 'Nunito Sans', sans-serif;
 
 @keyframes fadein {
     from { opacity: 0; }
@@ -95,7 +95,7 @@ $primary-font-family: 'Nunito', sans-serif;
                 padding-bottom: 20px;
                 a{
                     color:$key-font-color;
-                    font-family: 'Nunito', sans-serif;
+                    font-family: 'Nunito Sans', sans-serif;
                     font-size: 12px;
                 }
             }

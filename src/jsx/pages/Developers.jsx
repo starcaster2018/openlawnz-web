@@ -36,7 +36,7 @@ class Developers extends React.Component {
 							</p>
 							<p>
 								Explore our{" "}
-								<a href="https://api2.openlaw.nz/graphiql">
+								<a href="https://api.openlaw.nz/graphiql">
 									GraphQL API &nbsp;
 									<Icon name="external" fitted />
 								</a>

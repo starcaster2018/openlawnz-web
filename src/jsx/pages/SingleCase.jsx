@@ -22,6 +22,7 @@ class SingleCase extends Component {
 
 	async componentDidMount() {
 		this.fetchData(this.state.id);
+		window.scrollTo(0, 0);
 	}
 
 	async componentDidUpdate(prevProps) {

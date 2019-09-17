@@ -33,7 +33,7 @@ class SingleCase extends Component {
 
 	render() {
 		if (!this.state.singleCase) {
-			return <p>Loading</p>;
+			return "";
 		}
 		return (
 			<React.Fragment>

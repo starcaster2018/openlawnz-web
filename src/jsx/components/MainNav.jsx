@@ -28,7 +28,7 @@ class MainNav extends Component {
 						</Link>
 					</div>
 					<div className="nav-links" id="menuToggle">
-						<input type="checkbox" checked={this.state.checked} onClick={() => this.checkHandler()} />
+						<input type="checkbox" checked={this.state.checked} onChange={() => this.checkHandler()} />
 						<span></span>
 						<span></span>
 						<span></span>

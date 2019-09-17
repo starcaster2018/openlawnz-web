@@ -45,7 +45,7 @@ class About extends Component {
 								services. For an example, see our chrome extension.
 							</p>
 							<h2>Our data</h2>
-							<p className="paragraph-with-figure">
+							<div className="paragraph-with-figure">
 								The data we have currently comprises High Court, Court of Appeal and Supreme Court
 								decisions from present day back to approximately 2004 (with some exceptions, for example
 								some suppressed decisions and other judgments that have not been published).
@@ -69,12 +69,11 @@ class About extends Component {
 										<img src={Infra} alt="Infrastructure" />
 									</div>
 								</div>
-							</p>
+							</div>
 							<h2>Who we are</h2>
 							<p>
-								OpenLaw NZ <i></i>s a registered charity. We’re operated by a fantastic group of
-								volunteers, helping with code, design, orchestration, data parsing, machine learning and
-								devops.
+								OpenLaw NZ is a registered charity. We’re operated by a fantastic group of volunteers,
+								helping with code, design, orchestration, data parsing, machine learning and devops.
 							</p>
 							<p>
 								Our volunteers receive real-world experience in react, node.js, python and a range of
@@ -92,7 +91,7 @@ class About extends Component {
 									<p>
 										Andrew is a lawyer, and has worked in technology law, civil litigation and
 										family law since 2009. He has been a Member of the Auckland District Law Society
-										Technology & Law Committee since 2012, and is experienced in web and software
+										Technology &amp; Law Committee since 2012, and is experienced in web and software
 										development. Andrew went to university at Victoria, Wellington, and now lives in
 										Whangarei.
 									</p>
@@ -119,7 +118,11 @@ class About extends Component {
 										<img src={GenericAvatar} alt="Blaine Western" />
 										<strong>Blaine Western</strong>
 									</div>
-									<p>Lead web developer.</p>
+									<p>
+										Lead web developer - Blaine is a programmer and developer with a background in
+										the visual arts. He is passionate about developing web technologies that strive
+										towards social justice and equality.
+									</p>
 								</div>
 
 								<div className="card-item-small">
@@ -170,7 +173,12 @@ class About extends Component {
 										<img src={Noel} alt="Noel Soong" />
 										<strong>Noel Soong</strong>
 									</div>
-									<p></p>
+									<p>
+										Noel is a full stack developer hungry to expand his knowledge for the whole
+										technology stack. He helped develop, deploy and maintain the GraphQL api. As
+										well as worked on the documentation on Github. Graduated from the University of
+										Canterbury and Dev Academy.
+									</p>
 								</div>
 								<div className="card-item-small">
 									<div>
@@ -192,9 +200,7 @@ class About extends Component {
 										Alex has more than 10 years of experience in the IT industry covering software
 										development, project management and operational support. He is also a Certified
 										Project Manager and ScrumMaster, and hold other qualifications related to data
-										analytics and business. Alex is an outgoing person who loves to build stuff from
-										concept to creation. He has a passionate curiosity for learning and likes to
-										interact with people to exchange ideas.
+										analytics and business.
 									</p>
 								</div>
 								<div className="card-item-small">
@@ -256,8 +262,10 @@ class About extends Component {
 										<strong>David Paitai</strong>
 									</div>
 									<p>
-										April is a visual designer who believes in enhancing experiences and making
-										impacts through design.
+										David is a Community Advisor for Te Tari Taiwhenua (Internal Affairs) providing
+										advisory services for whānau, hapū, iwi, communities and community
+										organisations. He&apos;s also a volunteer fire fighter, marae trustee and as a
+										self-professed accounting geek.
 									</p>
 								</div>
 							</div>

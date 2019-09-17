@@ -19,7 +19,6 @@ class SingleCaseView extends Component {
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<div className="single-case-wrapper">
 				<div className="single-case-header">
@@ -43,6 +42,27 @@ class SingleCaseView extends Component {
 						/>
 					</div>
 					<div className={this.state.details ? "case-details" : "hide-case-details"}>
+						<h3 className="header">Citations known for this case</h3>
+						{this.props.singleCase.caseCitations &&
+							(this.props.singleCase.caseCitations === 0 ? (
+								<p>None</p>
+							) : (
+								<div role="listitem" className="item">
+									{this.props.singleCase.caseCitations.map(function(obj) {
+										return (
+											<div
+												role="listitem"
+												className="item"
+												key={`cites-reference-${obj.citation}`}
+											>
+												{obj.citation}
+											</div>
+										);
+									})}
+								</div>
+							))}
+						<hr></hr>
+
 						<h3 className="header">Cites</h3>
 						{this.props.singleCase.cites &&
 							(this.props.singleCase.cites.length === 0 ? (
@@ -60,7 +80,7 @@ class SingleCaseView extends Component {
 							))}
 						<hr></hr>
 
-						<h3 className="header">Cited By</h3>
+						<h3 className="header">Cited by</h3>
 						{this.props.singleCase.casesCitedsByCaseCited &&
 							(this.props.singleCase.casesCitedsByCaseCited.length === 0 ? (
 								<p>No cases</p>
@@ -71,10 +91,10 @@ class SingleCaseView extends Component {
 											<div
 												role="listitem"
 												className="item"
-												key={`cited-by-reference-${obj.caseByCaseCited.id}`}
+												key={`cited-by-reference-${obj.caseByCaseOrigin.id}`}
 											>
-												<Link to={`/case/${obj.caseByCaseCited.id}`}>
-													{obj.caseByCaseCited.caseName}
+												<Link to={`/case/${obj.caseByCaseOrigin.id}`}>
+													{obj.caseByCaseOrigin.caseName}
 												</Link>
 											</div>
 										);

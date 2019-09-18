@@ -17,7 +17,7 @@ export default function Mission() {
 				<div className="horizontal-container__item horizontal-container__item--small">
 					<div className="card">
 						<MissionAccessLogo className="mission-icon" />
-						<p>Improve access to justive and education for all New Zealanders</p>
+						<p>Improve access to justice and education for all New Zealanders</p>
 					</div>
 				</div>
 

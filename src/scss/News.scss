@@ -43,16 +43,10 @@
         }
 
         .picture {
-          width: 66px;
-          text-align: center;
-          float: left;
           margin-bottom: 15px;
-          margin-right: 15px;
+          text-align: center;
 
           img {
-            width: 100%;
-            object-fit: contain;
-            height: 66px;
             max-width: 100%;
             object-fit: contain;
           }
@@ -106,11 +100,8 @@
           border-bottom: none;
 
           .picture {
-            float: none;
-            width: auto;
             height: 181px;
             margin-bottom: 20px;
-            margin-right: 0px;
 
             img {
               height: 181px;

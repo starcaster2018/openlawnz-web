@@ -12,7 +12,7 @@ import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
 import NewsContext from "./NewsContext.jsx";
 
-import "semantic-ui-css/semantic.min.css";
+import "normalize.css";
 import "../scss/App.scss";
 
 class App extends Component {

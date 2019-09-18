@@ -1,8 +1,9 @@
 import React from "react";
-import { Icon } from "semantic-ui-react";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import Footer from "../components/Footer.jsx";
+
+import External from "-!svg-react-loader?name=External!../../img/external.svg";
 
 class Developers extends React.Component {
 	render() {
@@ -38,7 +39,7 @@ class Developers extends React.Component {
 								Explore our{" "}
 								<a href="https://api.openlaw.nz/graphiql">
 									GraphQL API &nbsp;
-									<Icon name="external" fitted />
+									<External className="icon icon-medium link" alt="External" />
 								</a>
 							</p>
 							<h2>Open source code</h2>
@@ -46,7 +47,7 @@ class Developers extends React.Component {
 								Check out our{" "}
 								<a href="https://github.com/openlawnz">
 									Github repositories &nbsp;
-									<Icon name="external" fitted />
+									<External className="icon icon-medium link" alt="External" />
 								</a>
 							</p>
 

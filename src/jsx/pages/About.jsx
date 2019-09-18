@@ -72,9 +72,8 @@ class About extends Component {
 							</div>
 							<h2>Who we are</h2>
 							<p>
-								OpenLaw NZ <i></i>s a registered charity. We’re operated by a fantastic group of
-								volunteers, helping with code, design, orchestration, data parsing, machine learning and
-								devops.
+								OpenLaw NZ is a registered charity. We’re operated by a fantastic group of volunteers,
+								helping with code, design, orchestration, data parsing, machine learning and devops.
 							</p>
 							<p>
 								Our volunteers receive real-world experience in react, node.js, python and a range of
@@ -92,7 +91,7 @@ class About extends Component {
 									<p>
 										Andrew is a lawyer, and has worked in technology law, civil litigation and
 										family law since 2009. He has been a Member of the Auckland District Law Society
-										Technology & Law Committee since 2012, and is experienced in web and software
+										Technology &amp; Law Committee since 2012, and is experienced in web and software
 										development. Andrew went to university at Victoria, Wellington, and now lives in
 										Whangarei.
 									</p>

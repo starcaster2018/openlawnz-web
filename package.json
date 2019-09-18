@@ -11,13 +11,12 @@
 	"dependencies": {
 		"date-fns": "^2.2.1",
 		"fast-memoize": "^2.5.1",
+		"normalize.css": "^8.0.1",
 		"query-string": "^6.8.3",
 		"react": "^16.9.0",
 		"react-dom": "^16.9.0",
 		"react-paginate": "^6.3.0",
-		"react-router-dom": "^5.0.1",
-		"semantic-ui-css": "^2.4.1",
-		"semantic-ui-react": "^0.88.1"
+		"react-router-dom": "^5.0.1"
 	},
 	"devDependencies": {
 		"babel-polyfill": "^6.26.0",

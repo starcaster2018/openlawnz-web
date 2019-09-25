@@ -5,7 +5,7 @@ import Footer from "../components/Footer.jsx";
 
 import GenericAvatar from "../../img/about-us/avatar.png";
 import Andy from "../../img/about-us/andrew-easterbrook.png";
-import Will from "../../img/about-us/will.jpg";
+import Will from "../../img/about-us/will.png";
 import Tian from "../../img/about-us/tian-bai.png";
 import Caio from "../../img/about-us/caio-nunes.png";
 import Terence from "../../img/about-us/terence-zhong.png";
@@ -16,6 +16,7 @@ import Limei from "../../img/about-us/limei.png";
 import April from "../../img/about-us/april-liau.png";
 import Lina from "../../img/about-us/lina-xie.png";
 import David from "../../img/about-us/david-paitai.png";
+import Hanbyul from "../../img/about-us/hanbyul-son.png";
 import Infra from "../../img/about-us/openlaw-infrastructure.png";
 
 class About extends Component {
@@ -130,7 +131,7 @@ class About extends Component {
 										<img src={Tian} alt="Tian Bai" />
 										<strong>Tian Bai</strong>
 									</div>
-									<p></p>
+									<p>A passionate Software Developer who graduated with a major in Computer Science and Statistics from Victoria University of Wellington.</p>
 								</div>
 							</div>
 							<div className="cards-list">
@@ -182,14 +183,14 @@ class About extends Component {
 								</div>
 								<div className="card-item-small">
 									<div>
-										<img src={GenericAvatar} alt="Hanbyul Son" />
+										<img src={Hanbyul} alt="Hanbyul Son" />
 										<strong>Hanbyul Son</strong>
 									</div>
 									<p></p>
 								</div>
 							</div>
 
-							<h3>Devops & Orchestration</h3>
+							<h3>Devops &amp; Orchestration</h3>
 							<div className="cards-list">
 								<div className="card-item-small">
 									<div>
@@ -221,13 +222,6 @@ class About extends Component {
 									</div>
 									<p></p>
 								</div>
-								<div className="card-item-small">
-									<div>
-										<img src={GenericAvatar} alt="Yanyi Guo" />
-										<strong>Yanyi Guo</strong>
-									</div>
-									<p></p>
-								</div>
 							</div>
 
 							<h3>Design</h3>
@@ -249,7 +243,7 @@ class About extends Component {
 									</div>
 									<p>
 										Lina is enthusiastic when it comes to web/graphic design. She likes taking on
-										challenges and pursues the production of good results for end uers.
+										challenges and pursues the production of good results for end users.
 									</p>
 								</div>
 							</div>

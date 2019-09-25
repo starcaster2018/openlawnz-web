@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import InfoCard from "../components/InfoCard.jsx";
 import Search from "../components/Search.jsx";
 import Footer from "../components/Footer.jsx";
-
+import { Link } from "react-router-dom";
 import GenericAvatar from "../../img/about-us/avatar.png";
 import Andy from "../../img/about-us/andrew-easterbrook.png";
 import Will from "../../img/about-us/will.png";
@@ -43,7 +43,7 @@ class About extends Component {
 							</p>
 							<p>
 								You can use our API to build case law intelligence into your own applications and
-								services. For an example, see our chrome extension.
+								services. For an example, see our <Link to="/plugins">chrome extension</Link>.
 							</p>
 							<h2>Our data</h2>
 							<div className="paragraph-with-figure">
@@ -78,7 +78,7 @@ class About extends Component {
 							</p>
 							<p>
 								Our volunteers receive real-world experience in react, node.js, python and a range of
-								other technologies. If you’d like to get involved, drop us a line here.
+								other technologies. If you’d like to get involved, drop us a line <a href="mailto:enquiries@openlaw.nz">here</a>.
 							</p>
 
 							<hr className="divider" />

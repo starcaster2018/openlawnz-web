@@ -11,13 +11,14 @@ class SingleCase extends Component {
 		super();
 		this.state = {
 			id: match.params.id,
-			singleCase: null
+			singleCase: null,
+			loadingCase: true
 		};
 	}
 
 	async fetchData(id) {
 		const singleCase = await ApiService.getCase({ id: parseInt(id) });
-		this.setState({ singleCase });
+		this.setState({ singleCase, loadingCase: false });
 	}
 
 	async componentDidMount() {
@@ -32,17 +33,16 @@ class SingleCase extends Component {
 	}
 
 	render() {
-		if (!this.state.singleCase) {
-			return "";
-		}
 		return (
 			<React.Fragment>
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard>
-						<h2 className="header-case">{this.state.singleCase.caseName}</h2>
+						<h2 className="header-case">
+							{this.state.loadingCase ? "Loading..." : this.state.singleCase.caseName}
+						</h2>
 					</InfoCard>
-					<SingleCaseView singleCase={this.state.singleCase} />
+					{this.state.singleCase && <SingleCaseView singleCase={this.state.singleCase} />}
 					<Footer />
 				</div>
 			</React.Fragment>

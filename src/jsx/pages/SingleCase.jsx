@@ -28,6 +28,7 @@ class SingleCase extends Component {
 
 	async componentDidUpdate(prevProps) {
 		if (this.props.match.params.id !== prevProps.match.params.id) {
+			this.setState({ loadingCase: true });
 			this.fetchData(this.props.match.params.id);
 		}
 	}
@@ -42,7 +43,9 @@ class SingleCase extends Component {
 							{this.state.loadingCase ? "Loading..." : this.state.singleCase.caseName}
 						</h2>
 					</InfoCard>
-					{this.state.singleCase && <SingleCaseView singleCase={this.state.singleCase} />}
+					{this.state.singleCase && (
+						<SingleCaseView isBeingUpdated={this.state.loadingCase} singleCase={this.state.singleCase} />
+					)}
 					<Footer />
 				</div>
 			</React.Fragment>

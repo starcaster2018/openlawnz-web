@@ -58,7 +58,15 @@ class SingleCaseView extends Component {
 							frameBorder={0}
 						/>
 					</div>
-					<div className={this.state.showDetails ? "case-details" : "hide-case-details"}>
+					<div
+						className={
+							this.state.showDetails
+								? this.props.isBeingUpdated
+									? "case-details loading"
+									: "case-details"
+								: "hide-case-details"
+						}
+					>
 						<h3 className="header">Citations known for this case</h3>
 						{caseCitations &&
 							(caseCitations === 0 ? (

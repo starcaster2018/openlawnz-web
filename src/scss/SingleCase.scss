@@ -63,7 +63,7 @@ $primary-font-family: 'Nunito Sans', sans-serif;
             }
         }
     }
-    
+
     .loading-iframe {
         background: rgba(255,255,255, .7);
         bottom: 0;
@@ -100,6 +100,17 @@ $primary-font-family: 'Nunito Sans', sans-serif;
             background-color: $card-background-color;
             box-shadow: 3px 2px 13px 0px rgba(0,0,0,0.29);
             
+            &.loading:before {
+                background: white;
+                bottom: 0;
+                content: " ";
+                display: block;
+                left: 0;
+                opacity: 0.5;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
             .item{
                 padding-bottom: 20px;
                 a{

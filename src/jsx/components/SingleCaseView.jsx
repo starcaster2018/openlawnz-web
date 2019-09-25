@@ -10,12 +10,23 @@ class SingleCaseView extends Component {
 	constructor() {
 		super();
 		this.state = {
-			showDetails: false
+			showDetails: false,
+			loadingIframe: true
 		};
 	}
 
 	hideShowDetails() {
 		this.setState({ showDetails: !this.state.showDetails });
+	}
+
+	hideLoadingIframe() {
+		this.setState({ loadingIframe: false }); // Explicit to false because is used in onLoad event
+	}
+
+	componentDidUpdate(prevProps) {
+		if (this.props.singleCase.pdf.pdfDbKey !== prevProps.singleCase.pdf.pdfDbKey) {
+			this.setState({ loadingIframe: true });
+		}
 	}
 
 	render() {
@@ -36,7 +47,13 @@ class SingleCaseView extends Component {
 				</div>
 				<div className="row">
 					<div className="case-document-viewer">
+						{this.state.loadingIframe && (
+							<p className="loading-iframe">
+								<span className="spinner centered">Loading</span>
+							</p>
+						)}
 						<iframe
+							onLoad={this.hideLoadingIframe.bind(this)}
 							src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${pdf.pdfDbKey}&embedded=true`}
 							frameBorder={0}
 						/>

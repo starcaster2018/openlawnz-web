@@ -64,8 +64,17 @@ $primary-font-family: 'Nunito Sans', sans-serif;
         }
     }
     
+    .loading-iframe {
+        background: rgba(255,255,255, .7);
+        bottom: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    
     .row{
         .case-document-viewer{
+            background-color: #d1d1d1;
             position: absolute;
             width: 100%;
             height: calc(100% - 60px);

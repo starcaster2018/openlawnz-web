@@ -186,7 +186,7 @@ class About extends Component {
 										<img src={Hanbyul} alt="Hanbyul Son" />
 										<strong>Hanbyul Son</strong>
 									</div>
-									<p></p>
+									<p>Hanbyul is a mission-driven developer who always looks for opportunities to gain more in-depth software development knowledge, and turn it into innovative solutions to support communities.</p>
 								</div>
 							</div>
 

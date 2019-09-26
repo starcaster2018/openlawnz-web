@@ -84,7 +84,7 @@ class SearchPage extends Component {
 		super(props);
 		this.state = {
 			currentSearchQuery: null,
-			query: null,
+			query: "",
 			results: [],
 			perPage: 10,
 			offset: 0,
@@ -127,9 +127,13 @@ class SearchPage extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.props.history.replace(`/search?q=${this.state.query}`);
-		this.setState({ currentPage: 0, query: "", currentSearchQuery: this.state.query, searchInProgress: true });
-		this.doSearch(this.state.query, 0);
+		if (this.state.query === "") {
+			alert("Please enter a search term");
+		} else {
+			this.props.history.replace(`/search?q=${this.state.query}`);
+			this.setState({ currentPage: 0, query: "", currentSearchQuery: this.state.query, searchInProgress: true });
+			this.doSearch(this.state.query, 0);
+		}
 	}
 
 	handleChange(e) {

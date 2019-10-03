@@ -83,7 +83,7 @@ class SearchPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentSearchQuery: this.props.location.search.substring(this.props.location.search.indexOf('=') + 1),
+			currentSearchQuery: this.props.location.search.substring(this.props.location.search.indexOf('=') + 1, this.props.location.search.indexOf('&')),
 			query: "",
 			results: [],
 			perPage: 10,

@@ -6,11 +6,17 @@ $odd-row-color: #fff;
 $even-row-color:#F7F7F7;
 $card-background-color:#fff;
 $pdf-reader-padding-color:rgba(255, 255, 255, 0.47);
-$primary-font-family: 'Nunito Sans', sans-serif;
+$primary-font-family: 'Nunito Sans',
+sans-serif;
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .single-case-wrapper {
@@ -21,7 +27,8 @@ $primary-font-family: 'Nunito Sans', sans-serif;
     width: 987px;
     margin-bottom: 100px;
     @include card-style;
-    .single-case-header{
+
+    .single-case-header {
         position: absolute;
         z-index: 51;
         width: 100%;
@@ -30,66 +37,74 @@ $primary-font-family: 'Nunito Sans', sans-serif;
         color: $headerLinkColor;
         @include header-four;
         border-radius: 5px 5px 0 0;
-        .download-button{
+
+        .download-button {
             position: absolute;
             top: 50%;
             right: 40px;
             transform: translate(0%, -50%);
             width: 21px;
             height: 21px;
-            svg{
+
+            svg {
                 width: 21px;
                 height: 21px;
             }
-            &:hover{
-                cursor: pointer;  
+
+            &:hover {
+                cursor: pointer;
             }
-            
+
         }
-        .details-open-close-button{
+
+        .details-open-close-button {
             position: absolute;
             top: 50%;
             left: 40px;
             transform: translate(0%, -50%);
             display: flex;
+
             svg {
                 width: 16px;
                 height: 16px;
                 padding: 2.5px;
                 margin-left: 10px;
             }
-            &:hover{
-                cursor: pointer;  
+
+            &:hover {
+                cursor: pointer;
             }
         }
     }
 
     .loading-iframe {
-        background: rgba(255,255,255, .7);
+        background: rgba(255, 255, 255, .7);
         bottom: 0;
         position: absolute;
         top: 0;
         width: 100%;
     }
-    
-    .row{
-        .case-document-viewer{
+
+    .row {
+        .case-document-viewer {
             background-color: #d1d1d1;
             position: absolute;
             width: 100%;
             height: calc(100% - 60px);
             left: 0;
             top: 60px;
-            iframe{
+
+            iframe {
                 width: 100%;
                 height: 100%;
             }
         }
-        .hide-case-details{
+
+        .hide-case-details {
             display: none;
         }
-        
-        .case-details{
+
+        .case-details {
             animation: fadein .3s;
             position: absolute;
             top: 60px;
@@ -98,8 +113,8 @@ $primary-font-family: 'Nunito Sans', sans-serif;
             height: calc(100% - 60px);
             overflow: auto;
             background-color: $card-background-color;
-            box-shadow: 3px 2px 13px 0px rgba(0,0,0,0.29);
-            
+            box-shadow: 3px 2px 13px 0px rgba(0, 0, 0, 0.29);
+
             &.loading:before {
                 background: white;
                 bottom: 0;
@@ -111,91 +126,108 @@ $primary-font-family: 'Nunito Sans', sans-serif;
                 top: 0;
                 width: 100%;
             }
-            .item{
+
+            .item {
                 padding-bottom: 20px;
-                a{
-                    color:$key-font-color;
+
+                a {
+                    color: $key-font-color;
                     font-family: 'Nunito Sans', sans-serif;
                     font-size: 12px;
                 }
             }
-            
-            
-            hr{
+
+
+            hr {
                 border: 1px solid #BDBDBD;
             }
-            
-            h3{
+
+            h3 {
                 width: 264px;
                 height: 31px;
-                
+
                 font-family: $primary-font-family;
                 font-size: 16px;
                 line-height: 19px;
-                
-                color:$primary-color;
+
+                color: $primary-color;
             }
-            
-            table{
+
+            table {
                 width: 100%;
                 text-align: left;
-                table-layout:fixed;
-                
-                td{
-                    overflow:hidden;
-                    text-overflow:ellipsis;
-                    word-break:keep-all;
-                    white-space:nowrap;
+                table-layout: fixed;
+
+                td {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    word-break: keep-all;
+                    white-space: nowrap;
                     padding: 12px;
                 }
-                
-                
-                th{
+
+
+                th {
                     background: $primary-color;
-                    color:#FFF;
+                    color: #FFF;
                     height: 35px;
                     font-family: $primary-font-family;
                     font-size: 14px;
-                    line-height: 17px;  
-                    padding: 12px;                  
+                    line-height: 17px;
+                    padding: 12px;
                 }
-                
-                tr{
-                    .title{
-                        width:200px;
+
+                tr {
+                    .title {
+                        width: 200px;
                     }
                 }
-                
-                tr:nth-child(odd){
+
+                tr:nth-child(odd) {
                     font-family: $primary-font-family;
                     font-size: 12px;
                     line-height: 14px;
                     background: $odd-row-color;
                     height: 35px;
                 }
-                
-                tr:nth-child(even){
+
+                tr:nth-child(even) {
                     font-family: $primary-font-family;
                     font-size: 12px;
                     line-height: 14px;
                     background: $even-row-color;
                     height: 35px;
-                    
+
                 }
             }
-            
+
         }
-        
-        
+
+
     }
 }
 
-.header-case{
+.header-case {
     @include header-two;
     color: $openLawLightBrown;
     width: 100%;
     text-align: center;
+
+    &-mediumFont {
+        @include header-four;
+        color: $openLawLightBrown;
+        width: 100%;
+        text-align: center;
+    }
+
+    &-smallFont {
+        @include header-five;
+        color: $openLawLightBrown;
+        width: 100%;
+        text-align: center;
+    }
 }
+
 
 @media (max-width: 1200px) {
     .single-case-wrapper {
@@ -204,9 +236,9 @@ $primary-font-family: 'Nunito Sans', sans-serif;
 }
 
 @media (max-width: 400px) {
-    .single-case-wrapper{
-        .row{
-            .case-details{
+    .single-case-wrapper {
+        .row {
+            .case-details {
                 width: 100%;
             }
         }

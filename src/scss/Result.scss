@@ -21,19 +21,23 @@ table.table {
     opacity: 0.25;
     pointer-events: none;
   }
+
   thead {
     tr {
       background-color: #3f7578;
       border-radius: 5px;
     }
+
     th {
       color: #fff;
       text-align: left;
       height: 70px;
       padding-left: 20px;
+
       &:first-child {
         border-radius: 5px 0 0 0;
       }
+
       &:last-child {
         border-radius: 0 5px 0 0;
       }
@@ -44,6 +48,7 @@ table.table {
 tbody tr {
   height: 100px;
   border-bottom: 1px solid rgba(133, 133, 133, 0.5);
+
   td {
     padding: 30px 20px;
   }
@@ -60,11 +65,13 @@ tbody tr {
     font-weight: bold;
     font-size: 14px;
     text-decoration: underline;
+
     &:hover {
-      color: rgb(37, 77, 74);
+      color: #CF9768;
     }
   }
 }
+
 .page-number {
   a {
     color: #3d3d3d;
@@ -73,23 +80,29 @@ tbody tr {
     font-weight: bold;
     padding: 5px 10px;
   }
+
   ul.pagination {
     display: flex;
     padding: 0;
     float: right;
+
     li {
       &:hover {
         cursor: pointer;
       }
+
       a:focus {
         outline: 0;
       }
+
       margin-left: 8px;
       border-radius: 3px;
       background: none;
     }
+
     li.active {
       background: $openLawLightBrown;
+
       a {
         color: #fff;
         text-decoration: none;
@@ -118,11 +131,12 @@ tbody tr {
   }
 }
 
-@media (max-width: 360px){
+@media (max-width: 360px) {
   tbody tr td {
     padding: 20px 10px;
-}
-table.table thead th {
-  padding: 20px 10px;
-}
+  }
+
+  table.table thead th {
+    padding: 20px 10px;
+  }
 }

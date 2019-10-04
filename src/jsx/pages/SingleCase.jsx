@@ -33,13 +33,19 @@ class SingleCase extends Component {
 		}
 	}
 
+	handleInfoCardHeaderSize() {
+		if (this.state.singleCase.caseName.length <= 30) return "header-case";
+		else if (this.state.singleCase.caseName.length <= 60) return "header-case-mediumFont";
+		else return "header-case-smallFont"
+	}
+
 	render() {
 		return (
 			<React.Fragment>
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard>
-						<h2 className="header-case">
+						<h2 className={this.state.loadingCase ? "Loading..." : this.handleInfoCardHeaderSize()}>
 							{this.state.loadingCase ? "Loading..." : this.state.singleCase.caseName}
 						</h2>
 					</InfoCard>

@@ -214,14 +214,14 @@ sans-serif;
     text-align: center;
 
     &-mediumFont {
-        @include header-four;
+        @include header-three;
         color: $openLawLightBrown;
         width: 100%;
         text-align: center;
     }
 
     &-smallFont {
-        @include header-five;
+        @include header-four;
         color: $openLawLightBrown;
         width: 100%;
         text-align: center;

@@ -73,7 +73,14 @@
     color: #ffffff;
     cursor: pointer;
     box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+    &:hover {
+      color: #cf9768;
+      background: #fae8d9;
+    }
   }
+
+
 
 @media (min-width: 767px) {
   .search-container {

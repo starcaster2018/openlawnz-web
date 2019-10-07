@@ -36,7 +36,7 @@ const NoResults = () => (
 	</tr>
 );
 
-const Search = ({ onSubmit, onInputChange }) => (
+const Search = ({ value, onSubmit, onInputChange }) => (
 	<div className="search-container">
 		<div className="search">
 			<form className="search-input" onSubmit={onSubmit}>
@@ -46,7 +46,7 @@ const Search = ({ onSubmit, onInputChange }) => (
 						className="search-term"
 						placeholder="Search legal cases"
 						onChange={onInputChange}
-						defaultValue=""
+						defaultValue={value}
 					/>
 					<button type="submit" className="search-button">
 						<SearchIcon />
@@ -83,7 +83,7 @@ class SearchPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentSearchQuery: null,
+			currentSearchQuery: queryString.parse(props.location).q,
 			query: "",
 			results: [],
 			perPage: 10,
@@ -156,7 +156,11 @@ class SearchPage extends Component {
 		}
 		return (
 			<React.Fragment>
-				<Search onSubmit={this.handleSubmit} onInputChange={this.handleChange} />
+				<Search
+					value={this.state.currentSearchQuery}
+					onSubmit={this.handleSubmit}
+					onInputChange={this.handleChange}
+				/>
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						{this.state.searchInProgress ? (

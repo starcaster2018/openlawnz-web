@@ -83,7 +83,7 @@ class SearchPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentSearchQuery: this.props.location.search.substring(this.props.location.search.indexOf('=') + 1, this.props.location.search.indexOf('&')),
+			currentSearchQuery: queryString.parse(props.location).q,
 			query: "",
 			results: [],
 			perPage: 10,
@@ -156,7 +156,11 @@ class SearchPage extends Component {
 		}
 		return (
 			<React.Fragment>
-				<Search value={this.state.currentSearchQuery} onSubmit={this.handleSubmit} onInputChange={this.handleChange} />
+				<Search
+					value={this.state.currentSearchQuery}
+					onSubmit={this.handleSubmit}
+					onInputChange={this.handleChange}
+				/>
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						{this.state.searchInProgress ? (

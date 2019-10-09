@@ -6,13 +6,15 @@ import InfoCard from "../components/InfoCard.jsx";
 import InfoCardUnit from "../components/InfoCardUnit.jsx";
 import ContactUs from "../components/ContactUs.jsx";
 import News from "../components/News.jsx";
+import AdvancedSearch from "../components/AdvancedSearch.jsx";
 
 class Home extends Component {
 	render() {
 		return (
 			<React.Fragment>
 				<h1 className="header-title">OpenLaw NZ is a new, free legal research platform for New Zealand.</h1>
-				<Search history={this.props.history} />
+				{/* <Search history={this.props.history} /> */}
+				<AdvancedSearch />
 				<div className="home-wrapper">
 					<InfoCard>
 						<InfoCardUnit one="30,141" two="CASES" />

@@ -158,7 +158,7 @@ class SearchPage extends Component {
 			<React.Fragment>
 				<Search onSubmit={this.handleSubmit} onInputChange={this.handleChange} />
 				<div className="home-wrapper">
-					<InfoCard classModifier="info-card--large info-card--title info-card--column">
+					<InfoCard>
 						{this.state.searchInProgress ? (
 							<span>
 								SEARCHING RESULTS FOR <b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>

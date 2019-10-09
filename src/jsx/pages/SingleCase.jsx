@@ -45,7 +45,7 @@ class SingleCase extends Component {
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard>
-						<h2 className={this.state.loadingCase ? "Loading..." : this.handleInfoCardHeaderSize()}>
+						<h2 className={this.state.loadingCase ? "header-case" : this.handleInfoCardHeaderSize()}>
 							{this.state.loadingCase ? "Loading..." : this.state.singleCase.caseName}
 						</h2>
 					</InfoCard>

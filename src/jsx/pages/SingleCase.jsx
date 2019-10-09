@@ -54,9 +54,7 @@ class SingleCase extends Component {
 							{this.state.loadingCase ? "Loading..." : this.state.singleCase.caseName}
 						</h2>
 					</InfoCard>
-					{this.state.singleCase && (
-						<SingleCaseView isBeingUpdated={this.state.loadingCase} singleCase={this.state.singleCase} />
-					)}
+					{<SingleCaseView isBeingUpdated={this.state.loadingCase} singleCase={this.state.singleCase} />}
 					<Footer />
 				</div>
 			</React.Fragment>

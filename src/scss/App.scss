@@ -213,6 +213,7 @@ li {
   .contact-us-button {
     position: relative;
     @include button-style;
+    transition: 0.3s;
     a{
       width: 100%;
       @include center;
@@ -224,7 +225,7 @@ li {
 
   .contact-us-button:hover {
     background: $openLawLightBrown;
-    border-color: $backgroundColor;
+    transition: 0.3s;
     a{
       color: $backgroundColor;
     }

@@ -28,7 +28,9 @@ class NewsSpotlight extends Component {
 		return (
 			<div className="news-container">
 				<div className="news-items">
-					<h1>News</h1>
+					<h1>
+						<Link to="/news">News</Link>
+					</h1>
 					<div className="news-cards-wrapper">
 						{this.state.data.map(({ id, title, image_url: imageUrl, summary }) => (
 							<div key={id} className="news-card">

@@ -11,7 +11,7 @@
     margin-right: auto;
     max-width: 90%;
     @include card-style;
-    padding: 30px 20px;
+    padding: 30px 40px;
     padding-bottom: 40px;
     position: relative;
     top: -80px;
@@ -20,8 +20,11 @@
     h1 {
       @include header-one;
       line-height: 48px;
-      color: $openLawArapawa;
       margin: 0 0 20px 0;
+      margin-left: 0px;
+      a{
+        color: $openLawArapawa;
+      }
     }
 
     .news-cards-wrapper {
@@ -43,11 +46,12 @@
         }
 
         .picture {
-          margin-bottom: 15px;
+          margin-top: 30px;
+          margin-bottom: 30px;
           text-align: center;
 
           img {
-            max-width: 100%;
+            max-width: 80%;
             object-fit: contain;
           }
         }
@@ -62,10 +66,10 @@
 
         p {
           @include body;
-          font-size: 10px;
+          font-size: 12.5px;
           line-height: 136.7%;
           color: $openLawArapawa;
-          margin-bottom: 15px;
+          margin-bottom: 25px;
         }
 
         .link {
@@ -84,7 +88,7 @@
   .news-container {
     .news-items {
       max-width: 100%;
-      padding: 70px 70px 65px 35px;
+      padding: 70px 70px 65px 75px;
 
       h1 {
         margin-bottom: 30px;

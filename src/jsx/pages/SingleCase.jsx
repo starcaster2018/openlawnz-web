@@ -18,10 +18,11 @@ class SingleCase extends Component {
 
 	async fetchData(id) {
 		const singleCase = await ApiService.getCase({ id: parseInt(id) });
-		this.setState({ singleCase, loadingCase: false });
+		if (this._isMounted) this.setState({ singleCase, loadingCase: false }); // Check if is mounted to avoid performance issues with unmounted setState
 	}
 
 	async componentDidMount() {
+		this._isMounted = true;
 		this.fetchData(this.state.id);
 		window.scrollTo(0, 0);
 	}
@@ -33,10 +34,14 @@ class SingleCase extends Component {
 		}
 	}
 
+	componentWillUnmount() {
+		this._isMounted = false;
+	}
+
 	handleInfoCardHeaderSize() {
 		if (this.state.singleCase.caseName.length <= 30) return "header-case";
 		else if (this.state.singleCase.caseName.length <= 60) return "header-case-mediumFont";
-		else return "header-case-smallFont"
+		else return "header-case-smallFont";
 	}
 
 	render() {

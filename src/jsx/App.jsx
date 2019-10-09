@@ -28,6 +28,8 @@ const RouteWithTransition = ({ children }) => (
 	/>
 );
 
+const MainNavWithRouter = withRouter(props => <MainNav {...props} />);
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -43,11 +45,9 @@ class App extends Component {
 	}
 
 	render() {
-		const MainNavWithRouter = withRouter(props => <MainNav {...props} />);
-
 		return (
 			<Router>
-				<div>
+				<React.Fragment>
 					<MainNavWithRouter />
 					<div className="content-wrapper">
 						<RouteWithTransition>
@@ -63,7 +63,7 @@ class App extends Component {
 							<Route exact path="/about" component={About} />
 						</RouteWithTransition>
 					</div>
-				</div>
+				</React.Fragment>
 			</Router>
 		);
 	}

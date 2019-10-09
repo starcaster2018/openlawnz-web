@@ -301,6 +301,16 @@ li {
   padding: 5vh 10vw 0;
 }
 
+.route-transition-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.route-transition-enter.route-transition-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
 @import "./Nav.scss";
 @import "./Search.scss";
 @import "./Info.scss";

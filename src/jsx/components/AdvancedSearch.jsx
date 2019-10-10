@@ -42,9 +42,12 @@ export default class Search extends Component {
 		};
 
 		this.handleSelectChange = this.handleSelectChange.bind(this);
+		this.onInputChange = this.onInputChange.bind(this);
 	}
 
-	onInputChange() {}
+	onInputChange(e) {
+		this.setState({});
+	}
 
 	handleSubmit(e) {
 		e.preventDefault();
@@ -60,9 +63,9 @@ export default class Search extends Component {
 	}
 
 	handleAdd() {
-		const fieldValues = [...searchField];
-		fieldValues.push({});
-		this.setState({ fieldValues });
+		this.setState(prevState => ({
+			searchFields: [...prevState.searchFields, { id: 0, type: "default", value: null, Component: DefaultInput }]
+		}));
 	}
 
 	handleSelectChange(value, id) {

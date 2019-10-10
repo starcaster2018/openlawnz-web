@@ -213,6 +213,7 @@ li {
   .contact-us-button {
     position: relative;
     @include button-style;
+    transition: 0.3s;
     a{
       width: 100%;
       @include center;
@@ -224,7 +225,7 @@ li {
 
   .contact-us-button:hover {
     background: $openLawLightBrown;
-    border-color: $backgroundColor;
+    transition: 0.3s;
     a{
       color: $backgroundColor;
     }
@@ -298,6 +299,16 @@ li {
   text-align: center;
   margin: 0;
   padding: 5vh 10vw 0;
+}
+
+.route-transition-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.route-transition-enter.route-transition-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
 }
 
 @import "./Nav.scss";

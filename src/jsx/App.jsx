@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, BrowserRouter as Router, Route } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { hot } from "react-hot-loader";
 import MainNav from "./components/MainNav.jsx";
 import Home from "./pages/Home.jsx";
@@ -35,6 +36,9 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
+					<Helmet>
+						<meta name="openlaw" content="open law of new zealand" />
+					</Helmet>
 					<MainNavWithRouter />
 					<div className="content-wrapper">
 						<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>

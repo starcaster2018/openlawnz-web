@@ -20,6 +20,31 @@
     display: flex;
     box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
   }
+
+  .search-label {
+    // hide from visual users, show for screen readers
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+
+    &:focus {
+      display: inline-block;
+      padding: 15px 23px 14px;
+      width: auto;
+      height: auto;
+      clip: auto;
+      color: #000000;
+      background-color: #ffffff;
+      clip-path: unset;
+    }
+  }
+
   .search-input {
     width: 100%;
     position: relative;

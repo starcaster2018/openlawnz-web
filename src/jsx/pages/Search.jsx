@@ -41,7 +41,9 @@ const Search = ({ value, onSubmit, onInputChange }) => (
 		<div className="search">
 			<form className="search-input" onSubmit={onSubmit}>
 				<div className="input-wrapper">
+					<label className="search-label" htmlFor="searchTerm">Search legal cases</label>
 					<input
+						id="searchTerm"
 						type="text"
 						className="search-term"
 						placeholder="Search legal cases"

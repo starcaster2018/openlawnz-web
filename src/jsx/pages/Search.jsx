@@ -105,13 +105,16 @@ class SearchPage extends Component {
 				.clone() // Necessary because of memoization of fetch
 				.json()
 				.then(data => {
-					this.setState({
-						results: data.results,
-						length: parseInt(data.total),
-						pageCount: parseInt(data.total) / this.state.perPage,
-						paginationInProgress: false,
-						searchInProgress: false
-					});
+					// Check if is mounted to avoid performance issues with unmounted setState
+					if (this._isMounted) {
+						this.setState({
+							results: data.results,
+							length: parseInt(data.total),
+							pageCount: parseInt(data.total) / this.state.perPage,
+							paginationInProgress: false,
+							searchInProgress: false
+						});
+					}
 				});
 		});
 	}
@@ -142,12 +145,17 @@ class SearchPage extends Component {
 
 	componentDidMount() {
 		const searchQuery = queryString.parse(location.search);
+		this._isMounted = true;
 		this.doSearch(searchQuery.q, this.state.offset);
 		if (searchQuery.q) {
 			this.setState({
 				currentSearchQuery: searchQuery.q
 			});
 		}
+	}
+
+	componentWillUnmount() {
+		this._isMounted = false;
 	}
 
 	render() {

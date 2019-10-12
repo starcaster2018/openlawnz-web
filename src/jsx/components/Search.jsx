@@ -35,7 +35,7 @@ export default class Search extends Component {
 								onChange={this.handleChange.bind(this)}
 								value={this.state.currentSearchQuery}
 							/>
-							<button type="submit" className="search-button">
+							<button type="submit" className="search-button" title="Search">
 								<SearchIcon />
 							</button>
 						</div>

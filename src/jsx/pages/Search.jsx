@@ -48,7 +48,7 @@ const Search = ({ value, onSubmit, onInputChange }) => (
 						onChange={onInputChange}
 						defaultValue={value}
 					/>
-					<button type="submit" className="search-button">
+					<button type="submit" className="search-button" title="Search">
 						<SearchIcon />
 					</button>
 				</div>

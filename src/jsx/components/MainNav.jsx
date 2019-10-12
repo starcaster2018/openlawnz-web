@@ -24,6 +24,7 @@ class MainNav extends Component {
 				<div className="nav-items">
 					<div className="nav-logo">
 						<Link to="/">
+							<span className="visuallyhidden">Open Law</span>
 							<Logo alt="OpenLaw NZ" className="main-logo" />
 						</Link>
 					</div>

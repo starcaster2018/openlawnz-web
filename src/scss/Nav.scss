@@ -33,7 +33,7 @@
         }
 
         a {
-          color: $headerLinkColor;
+          color: $openWhite;
         }
       }
     }
@@ -92,7 +92,7 @@
     right: 30px;
     top: 30px;
 
-    background: #fff;
+    background: $openWhite;
     border-radius: 3px;
     transform-origin: 4px 0px;
 
@@ -116,7 +116,7 @@
     position: fixed;
     opacity: 1;
     transform: rotate(45deg) translate(0, 0);
-    background: #fff;
+    background: $openWhite;
   }
 
   #menuToggle input:checked ~ span:nth-last-child(3) {

@@ -24,7 +24,7 @@ export default class Search extends Component {
 
 	render() {
 		return (
-			<div className="search-container">
+			<section className="search-container">
 				<div className="search">
 					<form className="search-input" onSubmit={this.handleSubmit.bind(this)}>
 						<div className="input-wrapper">
@@ -46,7 +46,7 @@ export default class Search extends Component {
 						</button>
 					</form>
 				</div>
-			</div>
+			</section>
 		);
 	}
 }

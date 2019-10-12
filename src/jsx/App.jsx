@@ -49,7 +49,7 @@ class App extends Component {
 			<Router>
 				<React.Fragment>
 					<MainNavWithRouter />
-					<div className="content-wrapper">
+					<main className="content-wrapper">
 						<RouteWithTransition>
 							<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>
 								<Route exact path="/" component={Home} />
@@ -62,7 +62,7 @@ class App extends Component {
 							<Route exact path="/plugins" component={Plugins} />
 							<Route exact path="/about" component={About} />
 						</RouteWithTransition>
-					</div>
+					</main>
 				</React.Fragment>
 			</Router>
 		);

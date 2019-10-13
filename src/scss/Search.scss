@@ -3,7 +3,7 @@
     height: 200px;
     margin-bottom: 115px;
   }
-  
+
   .search {
     @include center;
     display: flex;
@@ -11,10 +11,10 @@
     max-width: 320px;
     z-index: 100;
   }
-  
+
   .input-wrapper {
     max-width: 320px;
-    width: 100%; 
+    width: 100%;
     border-radius: 5px;
     background-color: #ffffff;
     display: flex;
@@ -51,7 +51,49 @@
     display: flex;
     border-radius: 5px;
   }
-  
+
+  .search-msg {
+    color: #ffffff;
+    font-size: 15px;
+    width: 320px;
+    position: absolute;
+    display: flex;
+    z-index: 100;
+    left: calc(50% - 160px);
+    bottom: 22px;
+    background-color: #c76354;
+    padding: 5px;
+    border-radius: 5px;
+    animation: shake 0.2s;
+    box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+    opacity: .9;
+    p{
+      padding: 10px 20px; 
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  @keyframes shake{
+    10%, 90% {
+      transform: translateX(-1px);
+    }
+
+    20%, 80% {
+      transform: translateX(2px);
+    }
+
+    30%, 50%, 70% {
+      transform: translateX(-4px);
+    }
+
+    40%, 60% {
+      transform: translateX(4px);
+    }
+    100% {
+    }
+  }
+
   .search-term {
     width: 100%;
     padding: 11px 15px;
@@ -63,11 +105,11 @@
     font-family: 'Nunito Sans', sans-serif;
     font-size: 15px;
   }
-  
+
   .searchTerm:focus {
     color: none;
   }
-  
+
   .search-button {
     width: 47px;
     height: 47px;
@@ -79,13 +121,13 @@
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-size: 20px;
-  
+
     svg {
       width: 20px;
       height: 20px;
     }
   }
-  
+
   .search-submit-button {
     display: none;
     border: none;
@@ -111,12 +153,20 @@
   .search-container {
     margin-bottom: 70px;
 
-    .search {
-      max-width: 740px;
-    }
+    .search,
     .input-wrapper {
       max-width: 740px;
     }
+
+    .search-msg {
+      width: 572px;
+      left: calc(50% - 370px);
+      p{
+        width: 100%;
+        text-align: center;
+      }
+    }
+
     .search-submit-button{
       display: inline;
     }
@@ -127,5 +177,5 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 }

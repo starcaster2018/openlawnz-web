@@ -29,20 +29,24 @@
 
   .search-msg {
     color: #ffffff;
-    font-size: 17px;
+    font-size: 15px;
+    width: 320px;
     position: absolute;
     display: flex;
     z-index: 100;
-    width: 100%;
-    max-width: 320px;
     left: calc(50% - 160px);
-    bottom: 40px;
-    background-color: #be8657;
+    bottom: 22px;
+    background-color: #c76354;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #ffffff;
     animation: shake 0.2s;
     box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+    opacity: .9;
+    p{
+      padding: 10px 20px; 
+      width: 100%;
+      text-align: center;
+    }
   }
 
   @keyframes shake{
@@ -130,8 +134,12 @@
     }
 
     .search-msg {
-      max-width: 740px;
+      width: 572px;
       left: calc(50% - 370px);
+      p{
+        width: 100%;
+        text-align: center;
+      }
     }
 
     .search-submit-button{

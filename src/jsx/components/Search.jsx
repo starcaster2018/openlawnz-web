@@ -50,7 +50,11 @@ export default class Search extends Component {
 						</button>
 					</form>
 				</div>
-				{this.state.showSearchMsg ? <div className="search-msg">{this.state.searchMsg}</div> : null}
+				{this.state.showSearchMsg ? (
+					<div className="search-msg">
+						<p>{this.state.searchMsg}</p>
+					</div>
+				) : null}
 			</div>
 		);
 	}

@@ -36,7 +36,7 @@ const NoResults = () => (
 	</tr>
 );
 
-const Search = ({ value, onSubmit, onInputChange }) => (
+const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) => (
 	<div className="search-container">
 		<div className="search">
 			<form className="search-input" onSubmit={onSubmit}>
@@ -57,6 +57,11 @@ const Search = ({ value, onSubmit, onInputChange }) => (
 				</button>
 			</form>
 		</div>
+		{showSearchMsg ? (
+			<div className="search-msg">
+				<p>{searchMsg}</p>
+			</div>
+		) : null}
 	</div>
 );
 
@@ -131,10 +136,19 @@ class SearchPage extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		if (this.state.query === "") {
-			alert("Please enter a search term");
+			this.setState({
+				searchMsg: "Please enter a new search term!",
+				showSearchMsg: true
+			});
 		} else {
 			this.props.history.replace(`/search?q=${this.state.query}`);
-			this.setState({ currentPage: 0, query: "", currentSearchQuery: this.state.query, searchInProgress: true });
+			this.setState({
+				currentPage: 0,
+				query: "",
+				currentSearchQuery: this.state.query,
+				searchInProgress: true,
+				showSearchMsg: false
+			});
 			this.doSearch(this.state.query, 0);
 		}
 	}
@@ -168,6 +182,8 @@ class SearchPage extends Component {
 					value={this.state.currentSearchQuery}
 					onSubmit={this.handleSubmit}
 					onInputChange={this.handleChange}
+					showSearchMsg={this.state.showSearchMsg}
+					searchMsg={this.state.searchMsg}
 				/>
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">

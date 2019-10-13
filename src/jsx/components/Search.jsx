@@ -5,14 +5,20 @@ export default class Search extends Component {
 	constructor() {
 		super();
 		this.state = {
-			currentSearchQuery: ""
+			currentSearchQuery: "",
+			searchMsg: "",
+			showSearchMsg: false
 		};
+		this.searchMsgRef = React.createRef();
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
 		if (this.state.currentSearchQuery === "") {
-			alert("Please enter a new search term");
+			this.setState({
+				searchMsg: "Please enter a search term!",
+				showSearchMsg: true
+			});
 		} else {
 			this.props.history.replace(`/search?q=${this.state.currentSearchQuery}`);
 		}
@@ -44,6 +50,7 @@ export default class Search extends Component {
 						</button>
 					</form>
 				</div>
+				{this.state.showSearchMsg ? <div className="search-msg">{this.state.searchMsg}</div> : null}
 			</div>
 		);
 	}

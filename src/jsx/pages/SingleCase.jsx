@@ -55,7 +55,7 @@ class SingleCase extends Component {
 							ref={this.titleRef}
 							className={this.state.loadingCase ? "header-case" : this.handleInfoCardHeaderSize()}
 						>
-							{this.state.loadingCase ? "Loading..." : this.state.singleCase.caseName}
+							{this.state.loadingCase ? "-" : this.state.singleCase.caseName}
 						</h2>
 					</InfoCard>
 					{<SingleCaseView isBeingUpdated={this.state.loadingCase} singleCase={this.state.singleCase} />}

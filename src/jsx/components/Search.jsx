@@ -12,7 +12,7 @@ export default class Search extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		if (this.state.currentSearchQuery === "") {
-			alert("Please enter a search term");
+			alert("Please enter a new search term");
 		} else {
 			this.props.history.replace(`/search?q=${this.state.currentSearchQuery}`);
 		}

@@ -76,8 +76,8 @@
           @include body;
           float: right;
           line-height: 18px;
-          color: $openLawTeal;
-          text-decoration-color: $openLawTeal;
+          color: $openLawA11yTeal;
+          // text-decoration-color: $openLawA11yTeal;
         }
       }
     }
@@ -130,8 +130,8 @@
             @include body;
             float: none;
             line-height: 18px;
-            color: $openLawTeal;
-            text-decoration-color: $openLawTeal;
+            color: $openLawA11yTeal;
+            // text-decoration-color: $openLawA11yTeal;
           }
         }
       }

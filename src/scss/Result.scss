@@ -29,7 +29,7 @@ table.table {
     }
 
     th {
-      color: #fff;
+      color: $openWhite;
       text-align: left;
       height: 70px;
       padding-left: 20px;
@@ -104,7 +104,7 @@ tbody tr {
       background: $openLawLightBrown;
 
       a {
-        color: #fff;
+        color: $openWhite;
         text-decoration: none;
       }
     }

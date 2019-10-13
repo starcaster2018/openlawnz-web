@@ -52,6 +52,7 @@ export default class Search extends Component {
 		super(props);
 		this.state = {
 			types: [
+				{ value: "default", Component: DefaultInput, text: "Any Field" },
 				{ value: "caseTitle", Component: DefaultInput, text: "Case Title" },
 				{ value: "court", Component: DefaultInput, text: "Court" },
 				{ value: "judge", Component: DefaultInput, text: "Judge" },
@@ -101,21 +102,17 @@ export default class Search extends Component {
 
 	onAdd() {
 		this.setState(({ searchFields }) => ({
-			searchFields: [...searchFields, { ...defaultSearchFieldFormat, id: searchFields.length }]
+			searchFields: [
+				...searchFields,
+				{ ...defaultSearchFieldFormat, id: searchFields[searchFields.length - 1].id + 1 }
+			]
 		}));
 	}
 
 	onRemove(id) {
 		console.log("--", id);
 		this.setState(({ searchFields }) => ({
-			searchFields: searchFields
-				.filter(item => item.id !== id)
-				.map((val, idx) => {
-					return {
-						...val,
-						id: idx
-					};
-				})
+			searchFields: searchFields.filter(item => item.id !== id)
 		}));
 	}
 
@@ -141,11 +138,9 @@ export default class Search extends Component {
 				<div className="search">
 					<form className="search-input" onSubmit={this.handleSubmit.bind(this)}>
 						<div className="input-wrapper">
-							{this.state.searchFields.map(({ type, id, value, Component }) => (
+							{this.state.searchFields.map(({ type, id, value, Component }, index) => (
 								<React.Fragment key={id}>
 									<select onChange={ev => this.onFieldSelectChange(ev.target.value, id)}>
-										<option value="">Any Field</option>
-
 										{this.state.types.map(type => (
 											<option key={`searchField${id}-${type.value}`} value={type.value}>
 												{type.text}
@@ -157,9 +152,9 @@ export default class Search extends Component {
 									<div>
 										<button
 											type="button"
-											onClick={id === 0 ? this.onAdd : this.onRemove.bind(this, id)}
+											onClick={index === 0 ? this.onAdd : this.onRemove.bind(this, id)}
 										>
-											{id === 0 ? "+" : "x"}
+											{index === 0 ? "+" : "x"}
 										</button>
 									</div>
 								</React.Fragment>

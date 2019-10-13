@@ -1,3 +1,27 @@
+.visuallyhidden {
+  // hide from visual users, show for screen readers
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+
+  &:focus {
+    display: inline-block;
+    padding: 15px 23px 14px;
+    width: auto;
+    height: auto;
+    clip: auto;
+    color: #000000;
+    background-color: #ffffff;
+    clip-path: unset;
+  }
+}
+
 .nav-container {
   width: 100vw;
   height: 125%;
@@ -33,7 +57,7 @@
         }
 
         a {
-          color: $headerLinkColor;
+          color: $openWhite;
         }
       }
     }
@@ -92,7 +116,7 @@
     right: 30px;
     top: 30px;
 
-    background: #fff;
+    background: $openWhite;
     border-radius: 3px;
     transform-origin: 4px 0px;
 
@@ -116,7 +140,7 @@
     position: fixed;
     opacity: 1;
     transform: rotate(45deg) translate(0, 0);
-    background: #fff;
+    background: $openWhite;
   }
 
   #menuToggle input:checked ~ span:nth-last-child(3) {

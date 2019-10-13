@@ -20,14 +20,15 @@ class MainNav extends Component {
 
 	render() {
 		return (
-			<div className="nav-container">
+			<header role="banner" className="nav-container">
 				<div className="nav-items">
 					<div className="nav-logo">
 						<Link to="/">
+							<span className="visuallyhidden">Open Law</span>
 							<Logo alt="OpenLaw NZ" className="main-logo" />
 						</Link>
 					</div>
-					<div className="nav-links" id="menuToggle">
+					<nav className="nav-links" id="menuToggle">
 						<input type="checkbox" checked={this.state.checked} onChange={() => this.checkHandler()} />
 						<span></span>
 						<span></span>
@@ -55,9 +56,9 @@ class MainNav extends Component {
 								</a>
 							</li>
 						</ul>
-					</div>
+					</nav>
 				</div>
-			</div>
+			</header>
 		);
 	}
 }

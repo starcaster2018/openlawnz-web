@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 const DefaultInput = ({ value, id, onChange }) => (
 	<div>
-		<input id={`default-${id}`} value={value} onChange={ev => onChange(id, ev.target.value)} />
+		<input id={`simple-${id}`} value={value} onChange={ev => onChange(id, ev.target.value)} />
 	</div>
 );
 
@@ -45,39 +45,32 @@ const Legislation = ({ value, id, onChange }) => (
 	</div>
 );
 
-const defaultSearchFieldFormat = { id: 0, type: "default", value: "", Component: DefaultInput };
+const typesOfFields = [
+	{ value: "any", Component: DefaultInput, text: "Any Field" },
+	{ value: "caseTitle", Component: DefaultInput, text: "Case Title" },
+	{ value: "court", Component: DefaultInput, text: "Court" },
+	{ value: "judge", Component: DefaultInput, text: "Judge" },
+	{ value: "judgementDate", Component: JudgementDate, text: "Judgment Date" },
+	{ value: "legislation", Component: Legislation, text: "Legislation" },
+	{ value: "caseContent", Component: DefaultInput, text: "Case Content" }
+];
 
-export default class Search extends Component {
+class AdvancedSearch extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			types: [
-				{ value: "default", Component: DefaultInput, text: "Any Field" },
-				{ value: "caseTitle", Component: DefaultInput, text: "Case Title" },
-				{ value: "court", Component: DefaultInput, text: "Court" },
-				{ value: "judge", Component: DefaultInput, text: "Judge" },
-				{ value: "judgementDate", Component: JudgementDate, text: "Judgment Date" },
-				{ value: "legislation", Component: Legislation, text: "Legislation" },
-				{ value: "caseContent", Component: DefaultInput, text: "Case Content" }
-			],
-			searchFields: [defaultSearchFieldFormat],
-			currentSearchQuery: ""
-		};
-		this.myfunc = () => {};
+		this.defaultSearchFieldFormat = { id: 0, value: "", type: "any", Component: DefaultInput };
+		this.state = { searchFields: props.searchFields || [this.defaultSearchFieldFormat] };
+
 		this.onFieldSelectChange = this.onFieldSelectChange.bind(this);
 		this.onFieldValueChange = this.onFieldValueChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.onAdd = this.onAdd.bind(this);
-		this.onRemoveCl = this.onRemove.bind(this);
-	}
-
-	onInputChange(e) {
-		this.setState({});
+		this.onAddField = this.onAddField.bind(this);
+		this.onRemoveField = this.onRemoveField.bind(this);
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log(this.state, this.state.types, this.state.searchFields);
+		console.log(this.state);
 	}
 
 	onFieldValueChange(id, value, valueInObject) {
@@ -100,24 +93,23 @@ export default class Search extends Component {
 		});
 	}
 
-	onAdd() {
+	onAddField() {
 		this.setState(({ searchFields }) => ({
 			searchFields: [
 				...searchFields,
-				{ ...defaultSearchFieldFormat, id: searchFields[searchFields.length - 1].id + 1 }
+				{ ...this.defaultSearchFieldFormat, id: searchFields[searchFields.length - 1].id + 1 }
 			]
 		}));
 	}
 
-	onRemove(id) {
-		console.log("--", id);
-		this.setState(({ searchFields }) => ({
-			searchFields: searchFields.filter(item => item.id !== id)
-		}));
+	onRemoveField(id) {
+		this.setState({
+			searchFields: this.state.searchFields.filter(item => item.id !== id)
+		});
 	}
 
 	onFieldSelectChange(value, id) {
-		const type = this.state.types.find(t => t.value === value);
+		const type = this.props.typesOfFields.find(t => t.value === value);
 		this.setState({
 			searchFields: this.state.searchFields.map(sf =>
 				sf.id === id
@@ -136,12 +128,12 @@ export default class Search extends Component {
 		return (
 			<div className="search-container">
 				<div className="search">
-					<form className="search-input" onSubmit={this.handleSubmit.bind(this)}>
+					<form className="search-input" onSubmit={this.handleSubmit}>
 						<div className="input-wrapper">
 							{this.state.searchFields.map(({ type, id, value, Component }, index) => (
 								<React.Fragment key={id}>
 									<select onChange={ev => this.onFieldSelectChange(ev.target.value, id)}>
-										{this.state.types.map(type => (
+										{this.props.typesOfFields.map(type => (
 											<option key={`searchField${id}-${type.value}`} value={type.value}>
 												{type.text}
 											</option>
@@ -152,36 +144,21 @@ export default class Search extends Component {
 									<div>
 										<button
 											type="button"
-											onClick={index === 0 ? this.onAdd : this.onRemove.bind(this, id)}
+											onClick={
+												index === 0
+													? this.onAddField
+													: () => {
+															this.onRemoveField(id);
+													  }
+											}
 										>
 											{index === 0 ? "+" : "x"}
 										</button>
 									</div>
 								</React.Fragment>
 							))}
-
-							{/* <button type="button" onClick={this.onRemove(id)}>
-								-
-							</button> */}
-							{/* <select>
-								<option value="">Any Field</option>
-								<option value="Case Title">Case Title</option>
-								<option value="Court">Court</option>
-								<option value="Judge">Judge</option>
-								<option value="Legislation">Legislation</option>
-								<option value="Judgment Date">Judgment Date</option>
-								<option value="Case Content">Case Content</option>
-							</select>
-							<input
-								type="text"
-								className="search-term"
-								placeholder="Search legal cases"
-								onChange={this.onFieldValueChange.bind(this)}
-								value={this.state.currentSearchQuery}
-							/> */}
 							<button type="submit" className="search-button">
 								Search
-								{/* <SearchIcon /> */}
 							</button>
 						</div>
 					</form>
@@ -190,3 +167,9 @@ export default class Search extends Component {
 		);
 	}
 }
+
+AdvancedSearch.defaultProps = {
+	typesOfFields
+};
+
+export default AdvancedSearch;

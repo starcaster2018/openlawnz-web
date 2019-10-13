@@ -19,7 +19,8 @@ export default function Footer() {
 				<div className="law-foundation-nav-logo">
 					<p>Supported by</p>
 					<a href="https://www.lawfoundation.org.nz/">
-						<Logo alt="The Law Foundation" className="the-law-foundation-logo" />
+						<span className="visuallyhidden">The Law Foundation</span>
+						<Logo alt="The Law Foundation logo" className="the-law-foundation-logo" />
 					</a>
 				</div>
 			</div>

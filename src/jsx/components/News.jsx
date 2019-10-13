@@ -26,7 +26,7 @@ class NewsSpotlight extends Component {
 
 	render() {
 		return (
-			<div className="news-container">
+			<section className="news-container">
 				<div className="news-items">
 					<h1>
 						<Link to="/news">News</Link>
@@ -51,7 +51,7 @@ class NewsSpotlight extends Component {
 						))}
 					</div>
 				</div>
-			</div>
+			</section>
 		);
 	}
 }

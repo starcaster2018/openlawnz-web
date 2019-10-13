@@ -20,7 +20,7 @@ const RouteWithTransition = ({ children }) => (
 	<Route
 		render={({ location }) => (
 			<TransitionGroup>
-				<CSSTransition key={location.pathname} classNames="route-transition" timeout={300}>
+				<CSSTransition key={location.pathname} classNames="route-transition" timeout={800}>
 					<div>{children}</div>
 				</CSSTransition>
 			</TransitionGroup>

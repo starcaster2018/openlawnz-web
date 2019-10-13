@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SearchIcon from "-!svg-react-loader?name=Logo!../../img/search-icon.svg";
+import Exclamation from "-!svg-react-loader?name=Logo!../../img/exclamation.svg";
 
 export default class Search extends Component {
 	constructor() {
@@ -16,7 +17,7 @@ export default class Search extends Component {
 		e.preventDefault();
 		if (this.state.currentSearchQuery === "") {
 			this.setState({
-				searchMsg: "Please enter a search term!",
+				searchMsg: "Please enter a search term",
 				showSearchMsg: true
 			});
 		} else {
@@ -34,7 +35,9 @@ export default class Search extends Component {
 				<div className="search">
 					<form className="search-input" onSubmit={this.handleSubmit.bind(this)}>
 						<div className="input-wrapper">
-							<label className="search-label" htmlFor="searchTerm">Search legal cases</label>
+							<label className="search-label" htmlFor="searchTerm">
+								Search legal cases
+							</label>
 							<input
 								id="searchTerm"
 								type="text"
@@ -54,7 +57,7 @@ export default class Search extends Component {
 				</div>
 				{this.state.showSearchMsg ? (
 					<div className="search-msg">
-						<p>{this.state.searchMsg}</p>
+						<Exclamation /> <p>{this.state.searchMsg}</p>
 					</div>
 				) : null}
 			</section>

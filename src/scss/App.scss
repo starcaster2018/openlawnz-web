@@ -302,7 +302,7 @@ li {
 
 .route-transition-enter.route-transition-enter-active {
   opacity: 1;
-  transition: opacity 250ms ease-in;
+  transition: opacity 10ms ease-in;
 }
 
 @import "./Nav.scss";

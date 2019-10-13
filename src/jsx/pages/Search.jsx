@@ -11,6 +11,7 @@ import InfoCard from "../components/InfoCard.jsx";
 import SearchIcon from "-!svg-react-loader?name=Logo!../../img/search-icon.svg";
 import Next from "-!svg-react-loader?name=Logo!../../img/next-page.svg";
 import Previous from "-!svg-react-loader?name=Logo!../../img/previous-page.svg";
+import Exclamation from "-!svg-react-loader?name=Logo!../../img/exclamation.svg";
 
 const queryString = require("query-string");
 const memoizedFetch = memoize((query, offset, end) =>
@@ -61,6 +62,7 @@ const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) =>
 		</div>
 		{showSearchMsg ? (
 			<div className="search-msg">
+				<Exclamation />
 				<p>{searchMsg}</p>
 			</div>
 		) : null}
@@ -139,7 +141,7 @@ class SearchPage extends Component {
 		e.preventDefault();
 		if (this.state.query === "") {
 			this.setState({
-				searchMsg: "Please enter a new search term!",
+				searchMsg: "Please enter a new search term",
 				showSearchMsg: true
 			});
 		} else {

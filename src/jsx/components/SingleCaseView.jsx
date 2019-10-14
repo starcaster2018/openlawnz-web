@@ -55,7 +55,7 @@ class SingleCaseView extends Component {
 					<div className="case-document-viewer">
 						{this.state.loadingIframe && (
 							<p className="loading-iframe">
-								<span className="spinner centered">Loading</span>
+								<span className="spinner centered"></span>
 							</p>
 						)}
 						{pdf.pdfDbKey && (

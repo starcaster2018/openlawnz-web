@@ -11,6 +11,7 @@ import InfoCard from "../components/InfoCard.jsx";
 import SearchIcon from "-!svg-react-loader?name=Logo!../../img/search-icon.svg";
 import Next from "-!svg-react-loader?name=Logo!../../img/next-page.svg";
 import Previous from "-!svg-react-loader?name=Logo!../../img/previous-page.svg";
+import Exclamation from "-!svg-react-loader?name=Logo!../../img/exclamation.svg";
 
 const queryString = require("query-string");
 const memoizedFetch = memoize((query, offset, end) =>
@@ -36,19 +37,21 @@ const NoResults = () => (
 	</tr>
 );
 
-const Search = ({ value, onSubmit, onInputChange }) => (
+const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) => (
 	<div className="search-container">
 		<div className="search">
 			<form className="search-input" onSubmit={onSubmit}>
 				<div className="input-wrapper">
+					<label className="search-label" htmlFor="searchTerm">Search legal cases</label>
 					<input
+						id="searchTerm"
 						type="text"
 						className="search-term"
 						placeholder="Search legal cases"
 						onChange={onInputChange}
 						defaultValue={value}
 					/>
-					<button type="submit" className="search-button">
+					<button type="submit" className="search-button" title="Search">
 						<SearchIcon />
 					</button>
 				</div>
@@ -57,6 +60,12 @@ const Search = ({ value, onSubmit, onInputChange }) => (
 				</button>
 			</form>
 		</div>
+		{showSearchMsg ? (
+			<div className="search-msg">
+				<Exclamation />
+				<p>{searchMsg}</p>
+			</div>
+		) : null}
 	</div>
 );
 
@@ -131,10 +140,19 @@ class SearchPage extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		if (this.state.query === "") {
-			alert("Please enter a search term");
+			this.setState({
+				searchMsg: "Please enter a new search term",
+				showSearchMsg: true
+			});
 		} else {
 			this.props.history.replace(`/search?q=${this.state.query}`);
-			this.setState({ currentPage: 0, query: "", currentSearchQuery: this.state.query, searchInProgress: true });
+			this.setState({
+				currentPage: 0,
+				query: "",
+				currentSearchQuery: this.state.query,
+				searchInProgress: true,
+				showSearchMsg: false
+			});
 			this.doSearch(this.state.query, 0);
 		}
 	}
@@ -168,6 +186,8 @@ class SearchPage extends Component {
 					value={this.state.currentSearchQuery}
 					onSubmit={this.handleSubmit}
 					onInputChange={this.handleChange}
+					showSearchMsg={this.state.showSearchMsg}
+					searchMsg={this.state.searchMsg}
 				/>
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">

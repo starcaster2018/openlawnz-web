@@ -21,7 +21,7 @@ const RouteWithTransition = ({ children }) => (
 	<Route
 		render={({ location }) => (
 			<TransitionGroup>
-				<CSSTransition key={location.pathname} classNames="route-transition" timeout={300}>
+				<CSSTransition key={location.pathname} classNames="route-transition" timeout={800}>
 					<div>{children}</div>
 				</CSSTransition>
 			</TransitionGroup>
@@ -48,28 +48,26 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div>
+				<React.Fragment>
 					<Helmet>
-						<meta name="openlaw" content="open law of new zealand" />
+						<meta name="openlaw" content="open law of New Zealand" />
 					</Helmet>
-					<React.Fragment>
-						<MainNavWithRouter />
-						<div className="content-wrapper">
-							<RouteWithTransition>
-								<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>
-									<Route exact path="/" component={Home} />
-									<Route exact path="/news" component={News} />
-									<Route exact path="/news/:id" component={SingleNews} />
-								</NewsContext.Provider>
-								<Route exact path="/search" component={Search} />
-								<Route exact path="/case/:id" component={SingleCase} />
-								<Route exact path="/developers" component={Developers} />
-								<Route exact path="/plugins" component={Plugins} />
-								<Route exact path="/about" component={About} />
-							</RouteWithTransition>
-						</div>
-					</React.Fragment>
-				</div>
+					<MainNavWithRouter />
+					<main className="content-wrapper">
+						<RouteWithTransition>
+							<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>
+								<Route exact path="/" component={Home} />
+								<Route exact path="/news" component={News} />
+								<Route exact path="/news/:id" component={SingleNews} />
+							</NewsContext.Provider>
+							<Route exact path="/search" component={Search} />
+							<Route exact path="/case/:id" component={SingleCase} />
+							<Route exact path="/developers" component={Developers} />
+							<Route exact path="/plugins" component={Plugins} />
+							<Route exact path="/about" component={About} />
+						</RouteWithTransition>
+					</main>
+				</React.Fragment>
 			</Router>
 		);
 	}

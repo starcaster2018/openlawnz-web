@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, BrowserRouter as Router, Route } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { hot } from "react-hot-loader";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import MainNav from "./components/MainNav.jsx";
@@ -48,6 +49,9 @@ class App extends Component {
 		return (
 			<Router>
 				<React.Fragment>
+					<Helmet>
+						<meta name="openlaw" content="open law of New Zealand" />
+					</Helmet>
 					<MainNavWithRouter />
 					<main className="content-wrapper">
 						<RouteWithTransition>

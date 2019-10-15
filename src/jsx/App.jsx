@@ -50,7 +50,8 @@ class App extends Component {
 			<Router>
 				<React.Fragment>
 					<Helmet>
-						<meta name="openlaw" content="open law of New Zealand" />
+						<title>OpenLaw NZ</title>
+						<meta name="openlaw" content="open-source legal data platform, free to use" />
 					</Helmet>
 					<MainNavWithRouter />
 					<main className="content-wrapper">

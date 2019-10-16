@@ -1,0 +1,158 @@
+.advanced-search {
+  @include card-style;
+  padding: 26px 37px;
+  width: 100%;
+
+  .compound-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .search-field {
+    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    &-button {
+      align-items: center;
+      display: flex;
+      flex-basis: 5%;
+      justify-content: space-between;
+
+      span {
+        color: $openLawLightBrown;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 19px;
+      }
+    }
+
+    &-input {
+      flex-basis: 86%;
+    }
+
+    input {
+      background: #ffffff;
+      border-radius: 5px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0px 0.5px 2px rgba(0, 0, 0, 0.25);
+      color: #959595;
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 15px;
+      outline: none;
+      padding: 11px 15px;
+      width: 100%;
+    }
+
+    select,
+    label {
+      align-items: center;
+      background: #f7f7f7;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 0px 0.5px 2px rgba(0, 0, 0, 0.25);
+      color: #3d3d3d;
+      display: flex;
+      flex-basis: 86%;
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      outline: none;
+      padding: 11px 8px;
+    }
+  }
+
+  .action-button {
+    background: $openLawLightBrown;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    outline: none;
+    padding: 12px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: #fae8d9;
+      color: $openLawLightBrown;
+      cursor: pointer;
+    }
+
+    &.large {
+      padding: 12px 39px;
+    }
+
+    &.large-font {
+      font-size: 18px;
+    }
+
+    &.simple {
+      background: none;
+      color: #555;
+    }
+  }
+
+  .title {
+    color: $openLawLightBrown;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .subtitle {
+    color: $openLawDarkGreen;
+    display: inline-block;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .action-container {
+    display: flex;
+    justify-content: flex-end;
+
+    .action-button {
+      margin-left: 20px;
+    }
+  }
+}
+
+@media (min-width: 767px) {
+  .advanced-search {
+    .search-field {
+      flex-wrap: nowrap;
+
+      &-input {
+        flex-basis: 70%;
+        margin: 0 0 0 20px;
+      }
+
+      select,
+      label {
+        flex-basis: initial;
+        margin-bottom: 0;
+      }
+    }
+
+    .compound-field {
+      flex-direction: row;
+      margin-bottom: 20px;
+
+      input {
+        margin-left: 15px;
+      }
+
+      label {
+        flex-basis: 20%;
+      }
+    }
+  }
+}

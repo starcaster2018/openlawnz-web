@@ -1,47 +1,54 @@
 import React, { Component } from "react";
 
-const DefaultInput = ({ value, id, onChange }) => (
-	<div>
-		<input id={`simple-${id}`} value={value} onChange={ev => onChange(id, ev.target.value)} />
+const DefaultInput = ({ value, id, onChange, className }) => (
+	<div className={className}>
+		<input required id={`simple-${id}`} value={value} onChange={ev => onChange(id, ev.target.value)} />
 	</div>
 );
 
-const JudgementDate = ({ value, id, onChange }) => (
-	<div>
-		<label htmlFor={`from-${id}`}>From</label>
-		<input
-			type="date"
-			value={value.from || ""}
-			id={`from-${id}`}
-			onChange={ev => onChange(id, ev.target.value, "from")}
-		/>
-		<label htmlFor={`to-${id}`}>To</label>
-		<input
-			type="date"
-			value={value.to || ""}
-			id={`to-${id}`}
-			onChange={ev => onChange(id, ev.target.value, "to")}
-		/>
+const JudgementDate = ({ value, id, onChange, className }) => (
+	<div className={className}>
+		<div className="compound-field">
+			<label htmlFor={`from-${id}`}>From</label>
+			<input
+				type="date"
+				value={value.from || ""}
+				id={`from-${id}`}
+				onChange={ev => onChange(id, ev.target.value, "from")}
+			/>
+		</div>
+		<div className="compound-field">
+			<label htmlFor={`to-${id}`}>To</label>
+			<input
+				type="date"
+				value={value.to || ""}
+				id={`to-${id}`}
+				onChange={ev => onChange(id, ev.target.value, "to")}
+			/>
+		</div>
 	</div>
 );
 
-const Legislation = ({ value, id, onChange }) => (
-	<div>
-		<label htmlFor={`act-${id}`}>Act</label>
-		<input
-			type="text"
-			value={value.act || ""}
-			id={`act-${id}`}
-			onChange={ev => onChange(id, ev.target.value, "act")}
-		/>
-		<br />
-		<label htmlFor={`section-${id}`}>Section</label>
-		<input
-			type="text"
-			value={value.section || ""}
-			id={`section-${id}`}
-			onChange={ev => onChange(id, ev.target.value, "section")}
-		/>
+const Legislation = ({ value, id, onChange, className }) => (
+	<div className={className}>
+		<div className="compound-field">
+			<label htmlFor={`act-${id}`}>Act</label>
+			<input
+				type="text"
+				value={value.act || ""}
+				id={`act-${id}`}
+				onChange={ev => onChange(id, ev.target.value, "act")}
+			/>
+		</div>
+		<div className="compound-field">
+			<label htmlFor={`section-${id}`}>Section</label>
+			<input
+				type="text"
+				value={value.section || ""}
+				id={`section-${id}`}
+				onChange={ev => onChange(id, ev.target.value, "section")}
+			/>
+		</div>
 	</div>
 );
 
@@ -74,8 +81,8 @@ class AdvancedSearch extends Component {
 	}
 
 	onFieldValueChange(id, value, valueInObject) {
-		this.setState({
-			searchFields: this.state.searchFields.map(sf => {
+		this.setState(prevState => ({
+			searchFields: prevState.searchFields.map(sf => {
 				if (sf.id !== id) return sf;
 
 				let newValue = value;
@@ -90,7 +97,7 @@ class AdvancedSearch extends Component {
 					value: newValue
 				};
 			})
-		});
+		}));
 	}
 
 	onAddField() {
@@ -103,15 +110,15 @@ class AdvancedSearch extends Component {
 	}
 
 	onRemoveField(id) {
-		this.setState({
-			searchFields: this.state.searchFields.filter(item => item.id !== id)
-		});
+		this.setState(prevState => ({
+			searchFields: prevState.searchFields.filter(item => item.id !== id)
+		}));
 	}
 
 	onFieldSelectChange(value, id) {
 		const type = this.props.typesOfFields.find(t => t.value === value);
-		this.setState({
-			searchFields: this.state.searchFields.map(sf =>
+		this.setState(prevState => ({
+			searchFields: prevState.searchFields.map(sf =>
 				sf.id === id
 					? {
 							...sf,
@@ -121,43 +128,62 @@ class AdvancedSearch extends Component {
 					  }
 					: sf
 			)
-		});
+		}));
 	}
 
 	render() {
 		return (
 			<div className="search-container">
 				<div className="search">
-					<form className="search-input" onSubmit={this.handleSubmit}>
-						<div className="input-wrapper">
-							{this.state.searchFields.map(({ type, id, value, Component }, index) => (
-								<React.Fragment key={id}>
-									<select onChange={ev => this.onFieldSelectChange(ev.target.value, id)}>
-										{this.props.typesOfFields.map(type => (
-											<option key={`searchField${id}-${type.value}`} value={type.value}>
-												{type.text}
-											</option>
-										))}
-									</select>
+					<form className="advanced-search" onSubmit={this.handleSubmit}>
+						<h2 className="title">Advanced Search</h2>
+						<span className="subtitle">Please select:</span>
 
-									<Component id={id} value={value} onChange={this.onFieldValueChange} />
-									<div>
+						{this.state.searchFields.map(({ type, id, value, Component }, index) => (
+							<div className="search-field" key={id}>
+								<select
+									className="search-field-select"
+									onChange={ev => this.onFieldSelectChange(ev.target.value, id)}
+								>
+									{this.props.typesOfFields.map(type => (
+										<option key={`searchField${id}-${type.value}`} value={type.value}>
+											{type.text}
+										</option>
+									))}
+								</select>
+
+								<Component
+									className="search-field-input"
+									id={id}
+									value={value}
+									onChange={this.onFieldValueChange}
+								/>
+
+								<div className="search-field-button">
+									{index > 0 && (
 										<button
 											type="button"
-											onClick={
-												index === 0
-													? this.onAddField
-													: () => {
-															this.onRemoveField(id);
-													  }
-											}
+											className="action-button simple large-font"
+											onClick={() => this.onRemoveField(id)}
 										>
-											{index === 0 ? "+" : "x"}
+											x
 										</button>
-									</div>
-								</React.Fragment>
-							))}
-							<button type="submit" className="search-button">
+									)}
+								</div>
+							</div>
+						))}
+
+						<div className="search-field">
+							<button type="button" className="action-button large-font" onClick={this.onAddField}>
+								+
+							</button>
+						</div>
+
+						<div className="action-container">
+							<button type="button" className="action-button simple" onClick={this.props.onCancelSearch}>
+								Cancel
+							</button>
+							<button type="submit" className="action-button large">
 								Search
 							</button>
 						</div>
@@ -169,7 +195,8 @@ class AdvancedSearch extends Component {
 }
 
 AdvancedSearch.defaultProps = {
-	typesOfFields
+	typesOfFields,
+	onCancelSearch: () => {}
 };
 
 export default AdvancedSearch;

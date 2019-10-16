@@ -66,6 +66,7 @@ class AdvancedSearch extends Component {
 	constructor(props) {
 		super(props);
 		this.defaultSearchFieldFormat = { id: 0, value: "", type: "any", Component: DefaultInput };
+		this.containerRef = React.createRef();
 		this.state = { searchFields: props.searchFields || [this.defaultSearchFieldFormat] };
 
 		this.onFieldSelectChange = this.onFieldSelectChange.bind(this);
@@ -73,11 +74,29 @@ class AdvancedSearch extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.onAddField = this.onAddField.bind(this);
 		this.onRemoveField = this.onRemoveField.bind(this);
+		this.handleGlobalNavHeight = this.handleGlobalNavHeight.bind(this);
+	}
+
+	componentDidMount() {
+		setTimeout(this.handleGlobalNavHeight, 300);
+	}
+
+	componentWillUnmount() {
+		this.handleGlobalNavHeight(true);
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
 		console.log(this.state);
+	}
+
+	handleGlobalNavHeight(unmount) {
+		const containerBounding = this.containerRef.current.getBoundingClientRect();
+		const containerBottomBounding = containerBounding.y + window.pageYOffset + containerBounding.height;
+		const navContainer = document.getElementById("nav-container");
+		if (!navContainer) return;
+
+		navContainer.style = unmount ? "" : `height: ${containerBottomBounding}px`;
 	}
 
 	onFieldValueChange(id, value, valueInObject) {
@@ -101,12 +120,15 @@ class AdvancedSearch extends Component {
 	}
 
 	onAddField() {
-		this.setState(({ searchFields }) => ({
-			searchFields: [
-				...searchFields,
-				{ ...this.defaultSearchFieldFormat, id: searchFields[searchFields.length - 1].id + 1 }
-			]
-		}));
+		this.setState(
+			({ searchFields }) => ({
+				searchFields: [
+					...searchFields,
+					{ ...this.defaultSearchFieldFormat, id: searchFields[searchFields.length - 1].id + 1 }
+				]
+			}),
+			this.handleGlobalNavHeight
+		);
 	}
 
 	onRemoveField(id) {
@@ -117,78 +139,79 @@ class AdvancedSearch extends Component {
 
 	onFieldSelectChange(value, id) {
 		const type = this.props.typesOfFields.find(t => t.value === value);
-		this.setState(prevState => ({
-			searchFields: prevState.searchFields.map(sf =>
-				sf.id === id
-					? {
-							...sf,
-							Component: type.Component,
-							value: "",
-							type: type.value
-					  }
-					: sf
-			)
-		}));
+		this.setState(
+			prevState => ({
+				searchFields: prevState.searchFields.map(sf =>
+					sf.id === id
+						? {
+								...sf,
+								Component: type.Component,
+								value: "",
+								type: type.value
+						  }
+						: sf
+				)
+			}),
+			this.handleGlobalNavHeight
+		);
 	}
 
 	render() {
 		return (
-			<div className="search-container">
-				<div className="search">
-					<form className="advanced-search" onSubmit={this.handleSubmit}>
-						<h2 className="title">Advanced Search</h2>
-						<span className="subtitle">Please select:</span>
+			<div ref={this.containerRef} className="advanced-search">
+				<form className="box" onSubmit={this.handleSubmit}>
+					<h2 className="title">Advanced Search</h2>
+					<span className="subtitle">Please select:</span>
 
-						{this.state.searchFields.map(({ type, id, value, Component }, index) => (
-							<div className="search-field" key={id}>
-								<select
-									className="search-field-select"
-									onChange={ev => this.onFieldSelectChange(ev.target.value, id)}
-								>
-									{this.props.typesOfFields.map(type => (
-										<option key={`searchField${id}-${type.value}`} value={type.value}>
-											{type.text}
-										</option>
-									))}
-								</select>
+					{this.state.searchFields.map(({ type, id, value, Component }, index) => (
+						<div className="search-field" key={id}>
+							<select
+								className="search-field-select"
+								onChange={ev => this.onFieldSelectChange(ev.target.value, id)}
+							>
+								{this.props.typesOfFields.map(type => (
+									<option key={`searchField${id}-${type.value}`} value={type.value}>
+										{type.text}
+									</option>
+								))}
+							</select>
 
-								<Component
-									className="search-field-input"
-									id={id}
-									value={value}
-									onChange={this.onFieldValueChange}
-								/>
+							<Component
+								className="search-field-input"
+								id={id}
+								value={value}
+								onChange={this.onFieldValueChange}
+							/>
 
-								<div className="search-field-button">
-									{index > 0 && (
-										<button
-											type="button"
-											className="action-button simple large-font"
-											onClick={() => this.onRemoveField(id)}
-										>
-											x
-										</button>
-									)}
-								</div>
+							<div className="search-field-button">
+								{index > 0 && (
+									<button
+										type="button"
+										className="action-button simple large-font"
+										onClick={() => this.onRemoveField(id)}
+									>
+										x
+									</button>
+								)}
 							</div>
-						))}
-
-						<div className="search-field">
-							<button type="button" className="action-button large-font" onClick={this.onAddField}>
-								+
-							</button>
 						</div>
+					))}
 
-						<div className="action-container">
-							<button type="button" className="action-button simple" onClick={this.props.onCancelSearch}>
-								Cancel
-							</button>
-							<button type="submit" className="action-button large">
-								Search
-							</button>
-						</div>
-					</form>
-				</div>
+					<div className="search-field">
+						<button type="button" className="action-button large-font" onClick={this.onAddField}>
+							+
+						</button>
+					</div>
+
+					<div className="action-container">
+						<button type="button" className="action-button simple" onClick={this.props.onCancelSearch}>
+							Cancel
+						</button>
+						<button type="submit" className="action-button large">
+							Search
+						</button>
+					</div>
+				</form>
 			</div>
 		);
 	}

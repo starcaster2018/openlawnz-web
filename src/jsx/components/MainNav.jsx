@@ -20,7 +20,7 @@ class MainNav extends Component {
 
 	render() {
 		return (
-			<div className="nav-container">
+			<div className="nav-container" id="nav-container">
 				<div className="nav-items">
 					<div className="nav-logo">
 						<Link to="/">

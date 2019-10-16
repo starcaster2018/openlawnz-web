@@ -1,7 +1,14 @@
 .advanced-search {
-  @include card-style;
-  padding: 26px 37px;
-  width: 100%;
+  padding-bottom: 120px;
+  margin-top: 60px;
+
+  .box {
+    @include card-style;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 26px 37px;
+    width: 100%;
+  }
 
   .compound-field {
     display: flex;
@@ -127,6 +134,10 @@
 
 @media (min-width: 767px) {
   .advanced-search {
+    .box {
+      max-width: 740px;
+    }
+
     .search-field {
       flex-wrap: nowrap;
 

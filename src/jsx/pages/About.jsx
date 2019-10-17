@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import InfoCard from "../components/InfoCard.jsx";
-import Search from "../components/Search.jsx";
+import SearchContainer from "../components/SearchContainer.jsx";
 import Footer from "../components/Footer.jsx";
 import { Link } from "react-router-dom";
 import GenericAvatar from "../../img/about-us/avatar.png";
@@ -23,7 +23,7 @@ class About extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
+				<SearchContainer history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1 className="no-margin">About Us</h1>

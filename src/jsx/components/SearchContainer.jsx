@@ -4,6 +4,7 @@ import AdvancedSearch from "./AdvancedSearch.jsx";
 
 function SearchContainer(props) {
 	const [isAdvanced, setAdvanced] = useState(false);
+	const { CustomSearch } = props;
 
 	function toggleTypeOfSearch(ev) {
 		ev.preventDefault();
@@ -12,6 +13,8 @@ function SearchContainer(props) {
 
 	return isAdvanced ? (
 		<AdvancedSearch onCancelSearch={toggleTypeOfSearch} {...props} />
+	) : CustomSearch ? (
+		<CustomSearch toggleTypeOfSearch={toggleTypeOfSearch} {...props} />
 	) : (
 		<Search toggleTypeOfSearch={toggleTypeOfSearch} {...props} />
 	);

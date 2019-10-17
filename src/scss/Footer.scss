@@ -7,7 +7,7 @@
   
   .law-foundation-nav-logo{
     @include header-five;
-    color: $headerLinkColor;
+    color: $openWhite;
     position: absolute;
     right: 63px;
     top: 50%;
@@ -26,7 +26,7 @@
 
   .footer-contact-us{
     @include header-five;
-    color: $headerLinkColor;
+    color: $openWhite;
     position: absolute;
     left: 63px;
     top: 50%;
@@ -40,7 +40,7 @@
     flex-direction: row;
   
       a {
-        color: $headerLinkColor;
+        color: $openWhite;
       }
     }
 

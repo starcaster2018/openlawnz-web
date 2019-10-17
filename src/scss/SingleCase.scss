@@ -2,9 +2,7 @@ $left-column-width:576px;
 $detail-column-width:370px;
 $primary-color:#3F7578;
 $key-font-color:#00A8B3;
-$odd-row-color: #fff;
 $even-row-color:#F7F7F7;
-$card-background-color:#fff;
 $pdf-reader-padding-color:rgba(255, 255, 255, 0.47);
 $primary-font-family: 'Nunito Sans',
 sans-serif;
@@ -34,7 +32,7 @@ sans-serif;
         width: 100%;
         height: 60px;
         background-color: $openLawDarkGreen;
-        color: $headerLinkColor;
+        color: $openWhite;
         @include header-four;
         border-radius: 5px 5px 0 0;
 
@@ -112,7 +110,7 @@ sans-serif;
             width: $detail-column-width;
             height: calc(100% - 60px);
             overflow: auto;
-            background-color: $card-background-color;
+            background-color: $openWhite;
             box-shadow: 3px 2px 13px 0px rgba(0, 0, 0, 0.29);
 
             &.loading:before {
@@ -169,7 +167,7 @@ sans-serif;
 
                 th {
                     background: $primary-color;
-                    color: #FFF;
+                    color: $openWhite;
                     height: 35px;
                     font-family: $primary-font-family;
                     font-size: 14px;
@@ -187,7 +185,7 @@ sans-serif;
                     font-family: $primary-font-family;
                     font-size: 12px;
                     line-height: 14px;
-                    background: $odd-row-color;
+                    background: $openWhite;
                     height: 35px;
                 }
 

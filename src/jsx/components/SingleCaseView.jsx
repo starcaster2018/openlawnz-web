@@ -24,7 +24,11 @@ class SingleCaseView extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (this.props.singleCase.pdf.pdfDbKey !== prevProps.singleCase.pdf.pdfDbKey) {
+		if (
+			this.props.singleCase &&
+			prevProps.singleCase &&
+			this.props.singleCase.pdf.pdfDbKey !== prevProps.singleCase.pdf.pdfDbKey
+		) {
 			this.setState({ loadingIframe: true });
 		}
 	}
@@ -40,23 +44,27 @@ class SingleCaseView extends Component {
 						info {this.state.showDetails ? <Close /> : <Open />}
 					</div>
 					<div className="download-button">
-						<a href={`https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${pdf.pdfDbKey}`} download>
-							<Download alt="Download" className="download-icon" />
-						</a>
+						{pdf.pdfDbKey && (
+							<a href={`https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${pdf.pdfDbKey}`} download>
+								<Download alt="Download" className="download-icon" />
+							</a>
+						)}
 					</div>
 				</div>
 				<div className="row">
 					<div className="case-document-viewer">
 						{this.state.loadingIframe && (
 							<p className="loading-iframe">
-								<span className="spinner centered">Loading</span>
+								<span className="spinner centered"></span>
 							</p>
 						)}
-						<iframe
-							onLoad={this.hideLoadingIframe.bind(this)}
-							src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${pdf.pdfDbKey}&embedded=true`}
-							frameBorder={0}
-						/>
+						{pdf.pdfDbKey && (
+							<iframe
+								onLoad={this.hideLoadingIframe.bind(this)}
+								src={`https://docs.google.com/gview?url=https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${pdf.pdfDbKey}&embedded=true`}
+								frameBorder={0}
+							/>
+						)}
 					</div>
 					<div
 						className={

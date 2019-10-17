@@ -53,7 +53,7 @@ class Plugin extends React.Component {
 										src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromeextension.mp4"
 										type="video/mp4"
 									/>
-									<img src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromescreenshot1.png" />
+									<img src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromescreenshot1.png" alt="Screenshot of the New Zealand website highlighting the Chrome Extension" />
 								</video>
 							</p>
 							<p>If you build something with our platform, get in touch and we&apos;ll list it here.</p>

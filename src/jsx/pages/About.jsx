@@ -62,9 +62,9 @@ class About extends Component {
 										</a>
 									</div>
 								</div>
-								<div aria-hidden="true" id="infrastructure" className="modal-window">
+								<div aria-hidden="true" id="infrastructure" className="modal-window" role="dialog">
 									<div>
-										<a href="#" title="Close" className="modal-close">
+										<a href="#" title="Close" className="modal-close" role="button" aria-modal="true">
 											Close
 										</a>
 										<img src={Infra} alt="Infrastructure" />

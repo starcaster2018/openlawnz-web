@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Search from "../components/Search.jsx";
+import SearchContainer from "../components/SearchContainer.jsx";
 import Mission from "../components/Mission.jsx";
 import Footer from "../components/Footer.jsx";
 import InfoCard from "../components/InfoCard.jsx";
@@ -12,7 +12,7 @@ class Home extends Component {
 		return (
 			<React.Fragment>
 				<h1 className="header-title">OpenLaw NZ is a new, free legal research platform for New Zealand.</h1>
-				<Search history={this.props.history} />
+				<SearchContainer history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard>
 						<InfoCardUnit one="30,141" two="CASES" />

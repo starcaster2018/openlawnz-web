@@ -51,7 +51,7 @@ const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) =>
 						onChange={onInputChange}
 						defaultValue={value}
 					/>
-					<button type="submit" className="search-button" title="Search">
+					<button type="submit" className="search-button" title="Search" tabindex="-1">
 						<SearchIcon />
 					</button>
 				</div>

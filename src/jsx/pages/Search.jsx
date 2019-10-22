@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import dateFormat from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import Footer from "../components/Footer.jsx";
-import SearchContainer from "../components/SearchContainer.jsx";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
 
@@ -38,7 +37,7 @@ const NoResults = () => (
 	</tr>
 );
 
-const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange, toggleTypeOfSearch }) => (
+const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) => (
 	<div className="search-container">
 		<div className="search">
 			<form className="search-input" onSubmit={onSubmit}>
@@ -60,11 +59,6 @@ const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange, togg
 					Search
 				</button>
 			</form>
-			{toggleTypeOfSearch && (
-				<a href="#" className="toggle-search" onClick={toggleTypeOfSearch}>
-					Advanced Search
-				</a>
-			)}
 		</div>
 		{showSearchMsg ? (
 			<div className="search-msg">
@@ -188,8 +182,7 @@ class SearchPage extends Component {
 		}
 		return (
 			<React.Fragment>
-				<SearchContainer
-					CustomSearch={Search}
+				<Search
 					value={this.state.currentSearchQuery}
 					onSubmit={this.handleSubmit}
 					onInputChange={this.handleChange}
@@ -197,7 +190,7 @@ class SearchPage extends Component {
 					searchMsg={this.state.searchMsg}
 				/>
 				<div className="home-wrapper">
-					<InfoCard>
+					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						{this.state.searchInProgress ? (
 							<span>
 								SEARCHING RESULTS FOR <b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>

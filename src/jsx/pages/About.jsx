@@ -165,6 +165,17 @@ class About extends Component {
 										people&apos;s life.
 									</p>
 								</div>
+								<div className="card-item-small">
+									<div>
+										<img src={GenericAvatar} alt="Chanil Park" />
+										<strong>Chanil Park</strong>
+									</div>
+									<p>
+										Chanil is a developer who has completed a Computer Science Major at Victoria
+										University of Wellington. He has volunteered to obtain more development
+										experience and to use his skills to help  New Zealand's community.
+									</p>
+								</div>
 							</div>
 
 							<h3>API</h3>
@@ -176,8 +187,8 @@ class About extends Component {
 									</div>
 									<p>
 										Noel is a full stack developer hungry to expand his knowledge for the whole
-										technology stack. He helped develop, deploy and maintain the GraphQL api. As
-										well as worked on the documentation on Github. Graduated from the University of
+										technology stack. He helped develop, deploy and maintain the GraphQL api. He has also
+										worked on the documentation on Github. Graduated from the University of
 										Canterbury and Dev Academy.
 									</p>
 								</div>
@@ -209,7 +220,12 @@ class About extends Component {
 										<img src={Limei} alt="Limei" />
 										<strong>Limei</strong>
 									</div>
-									<p></p>
+									<p>
+										Limei is a skilled DevOps Engineer with in-depth professional experience with
+										several major corporations in China. In order to experience different life, she
+										came to New Zealand to study, work and live. She lives in Auckland with her
+										family.
+									</p>
 								</div>
 							</div>
 
@@ -260,6 +276,30 @@ class About extends Component {
 										advisory services for whānau, hapū, iwi, communities and community
 										organisations. He&apos;s also a volunteer fire fighter, marae trustee and as a
 										self-professed accounting geek.
+									</p>
+								</div>
+							</div>
+							<h3>Legal</h3>
+							<div className="cards-list">
+								<div className="card-item-small">
+									<div>
+										<img src={GenericAvatar} alt="Benedict Stewart" />
+										<strong>Benedict Stewart</strong>
+									</div>
+									<p>
+										Benedict leads product &amp; growth strategy at Dacreed, a regtech startup based
+										in Auckland. Previously a lawyer at Chapman Tripp, Benedict leverages his deep
+										domain expertise to solve customer problems. Benedict holds a BA/LLB(Hons) from
+										the University of Auckland.
+									</p>
+								</div>
+								<div className="card-item-small">
+									<div>
+										<img src={GenericAvatar} alt="Emma Burke" />
+										<strong>Emma Burke</strong>
+									</div>
+									<p>
+									Emma has a background in law and botany. She has worked in general practice, primarily in property for two years.
 									</p>
 								</div>
 							</div>

@@ -1,5 +1,5 @@
 import React from "react";
-import SearchContainer from "../components/SearchContainer.jsx";
+import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import Footer from "../components/Footer.jsx";
 
@@ -9,7 +9,7 @@ class Developers extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<SearchContainer history={this.props.history} />
+				<Search history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>Developers</h1>

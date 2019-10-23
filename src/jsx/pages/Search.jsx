@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import dateFormat from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import Footer from "../components/Footer.jsx";
+import SearchContainer from "../components/SearchContainer.jsx";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
 
@@ -37,12 +38,14 @@ const NoResults = () => (
 	</tr>
 );
 
-const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) => (
+const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange, toggleTypeOfSearch }) => (
 	<div className="search-container">
 		<div className="search">
 			<form className="search-input" onSubmit={onSubmit}>
 				<div className="input-wrapper">
-					<label className="search-label" htmlFor="searchTerm">Search legal cases</label>
+					<label className="search-label" htmlFor="searchTerm">
+						Search legal cases
+					</label>
 					<input
 						id="searchTerm"
 						type="text"
@@ -59,6 +62,11 @@ const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) =>
 					Search
 				</button>
 			</form>
+			{toggleTypeOfSearch && (
+				<a href="#" className="toggle-search" onClick={toggleTypeOfSearch}>
+					Advanced Search
+				</a>
+			)}
 		</div>
 		{showSearchMsg ? (
 			<div className="search-msg">
@@ -182,7 +190,8 @@ class SearchPage extends Component {
 		}
 		return (
 			<React.Fragment>
-				<Search
+				<SearchContainer
+					CustomSearch={Search}
 					value={this.state.currentSearchQuery}
 					onSubmit={this.handleSubmit}
 					onInputChange={this.handleChange}

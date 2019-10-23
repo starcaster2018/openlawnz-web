@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../components/Search.jsx";
+import SearchContainer from "../components/SearchContainer.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import Footer from "../components/Footer.jsx";
 
@@ -9,7 +9,7 @@ class Plugin extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
+				<SearchContainer history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>Plugins</h1>

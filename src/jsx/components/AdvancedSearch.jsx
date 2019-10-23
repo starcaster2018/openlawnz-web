@@ -207,6 +207,7 @@ class AdvancedSearch extends Component {
 						<button type="button" className="action-button simple" onClick={this.props.onCancelSearch}>
 							Cancel
 						</button>
+
 						<button type="submit" className="action-button large">
 							Search
 						</button>

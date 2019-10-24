@@ -14,9 +14,6 @@ import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
 import NewsContext from "./NewsContext.jsx";
 
-// login
-import { useAuth0 } from "../js/react-auth0-spa";
-
 import "normalize.css";
 import "../scss/App.scss";
 
@@ -34,18 +31,22 @@ const RouteWithTransition = ({ children }) => (
 
 const MainNavWithRouter = withRouter(props => <MainNav {...props} />);
 
-const App = (props) => {
-		const { loading } = useAuth0();
-		const [news, setNews] = React.useState(null);
-		const updateNewsData = (news) => setNews(news);
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.updateNewsData = this.updateNewsData.bind(this);
 
-		if (loading) {
-	    return (
-	      <div>Loading...</div>
-	    );
-	  }
+		this.state = {
+			news: null
+		};
+	}
 
-		return(
+	updateNewsData(news) {
+		this.setState({ news });
+	}
+
+	render() {
+		return (
 			<Router>
 				<React.Fragment>
 					<Helmet>
@@ -55,7 +56,7 @@ const App = (props) => {
 					<MainNavWithRouter />
 					<main className="content-wrapper">
 						<RouteWithTransition>
-							<NewsContext.Provider value={{ data: news, updateData: updateNewsData }}>
+							<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/news" component={News} />
 								<Route exact path="/news/:id" component={SingleNews} />
@@ -70,6 +71,7 @@ const App = (props) => {
 				</React.Fragment>
 			</Router>
 		);
-};
+	}
+}
 
 export default hot(module)(App);

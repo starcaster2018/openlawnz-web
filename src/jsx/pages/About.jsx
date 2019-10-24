@@ -17,6 +17,10 @@ import April from "../../img/about-us/april-liau.png";
 import Lina from "../../img/about-us/lina-xie.png";
 import David from "../../img/about-us/david-paitai.png";
 import Hanbyul from "../../img/about-us/hanbyul-son.png";
+import Chanil from "../../img/about-us/chanil-park.png";
+import Benedict from "../../img/about-us/benedict-stewart.png";
+import Daryl from "../../img/about-us/daryl-diesto.png";
+import Emma from "../../img/about-us/emma-burke.png";
 import Infra from "../../img/about-us/openlaw-infrastructure.png";
 
 class About extends Component {
@@ -167,7 +171,7 @@ class About extends Component {
 								</div>
 								<div className="card-item-small">
 									<div>
-										<img src={GenericAvatar} alt="Chanil Park" />
+										<img src={Chanil} alt="Chanil Park" />
 										<strong>Chanil Park</strong>
 									</div>
 									<p>
@@ -180,7 +184,7 @@ class About extends Component {
 							<div className="cards-list">
 								<div className="card-item-small">
 									<div>
-										<img src={GenericAvatar} alt="Daryl Diesto" />
+										<img src={Daryl} alt="Daryl Diesto" />
 										<strong>Daryl Diesto</strong>
 									</div>
 									<p>
@@ -297,7 +301,7 @@ class About extends Component {
 							<div className="cards-list">
 								<div className="card-item-small">
 									<div>
-										<img src={GenericAvatar} alt="Benedict Stewart" />
+										<img src={Benedict} alt="Benedict Stewart" />
 										<strong>Benedict Stewart</strong>
 									</div>
 									<p>
@@ -309,7 +313,7 @@ class About extends Component {
 								</div>
 								<div className="card-item-small">
 									<div>
-										<img src={GenericAvatar} alt="Emma Burke" />
+										<img src={Emma} alt="Emma Burke" />
 										<strong>Emma Burke</strong>
 									</div>
 									<p>

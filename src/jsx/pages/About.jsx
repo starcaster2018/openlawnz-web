@@ -177,7 +177,17 @@ class About extends Component {
 									</p>
 								</div>
 							</div>
-
+							<div className="cards-list">
+								<div className="card-item-small">
+									<div>
+										<img src={GenericAvatar} alt="Daryl Diesto" />
+										<strong>Daryl Diesto</strong>
+									</div>
+									<p>
+									Daryl is a business data analyst who is keen to learn more about data, equipped with experience and innovative ideas. A leader, a follower and passionate about data.
+									</p>
+								</div>
+							</div>
 							<h3>API</h3>
 							<div className="cards-list">
 								<div className="card-item-small">
@@ -197,7 +207,11 @@ class About extends Component {
 										<img src={Hanbyul} alt="Hanbyul Son" />
 										<strong>Hanbyul Son</strong>
 									</div>
-									<p>Hanbyul is a mission-driven developer who always looks for opportunities to gain more in-depth software development knowledge, and turn it into innovative solutions to support communities.</p>
+									<p>
+										Hanbyul is a mission-driven developer who always looks for opportunities to gain
+										more in-depth software development knowledge, and turn it into innovative
+										solutions to support communities.
+									</p>
 								</div>
 							</div>
 
@@ -299,7 +313,21 @@ class About extends Component {
 										<strong>Emma Burke</strong>
 									</div>
 									<p>
-									Emma has a background in law and botany. She has worked in general practice, primarily in property for two years.
+										Emma has a background in law and botany. She has worked in general practice,
+										primarily in property for two years.
+									</p>
+								</div>
+							</div>
+							<div className="cards-list">
+								<div className="card-item-small">
+									<div>
+										<img src={GenericAvatar} alt="Alex McNichol" />
+										<strong>Alex McNichol</strong>
+									</div>
+									<p>
+										Alex is a Law and Commerce student in his penultimate year at the University of
+										Canterbury. He is passionate about using and developing his legal skills for the
+										purpose of helping others.
 									</p>
 								</div>
 							</div>

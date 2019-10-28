@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import produce from "immer";
 
 const DefaultInput = ({ value, id, onChange, className }) => (
 	<div className={className}>
@@ -100,32 +101,29 @@ class AdvancedSearch extends Component {
 	}
 
 	onFieldValueChange(id, value, valueInObject) {
-		this.setState(prevState => ({
-			searchFields: prevState.searchFields.map(sf => {
-				if (sf.id !== id) return sf;
-
+		this.setState(
+			produce(draft => {
+				const searchField = draft.searchFields.find(sf => sf.id === id);
 				let newValue = value;
-
 				if (valueInObject) {
-					newValue = { ...sf.value };
+					newValue = { ...searchField.value };
 					newValue[valueInObject] = value;
 				}
 
-				return {
-					...sf,
-					value: newValue
-				};
+				searchField.value = newValue;
 			})
-		}));
+		);
 	}
 
 	onAddField() {
 		this.setState(
-			({ searchFields }) => ({
-				searchFields: [
-					...searchFields,
-					{ ...this.defaultSearchFieldFormat, id: searchFields[searchFields.length - 1].id + 1 }
-				]
+			produce(draft => {
+				const { searchFields } = draft;
+				const newSearchField = {
+					...this.defaultSearchFieldFormat,
+					id: searchFields[searchFields.length - 1].id + 1
+				};
+				searchFields.push(newSearchField);
 			}),
 			this.handleGlobalNavHeight
 		);
@@ -140,17 +138,11 @@ class AdvancedSearch extends Component {
 	onFieldSelectChange(value, id) {
 		const type = this.props.typesOfFields.find(t => t.value === value);
 		this.setState(
-			prevState => ({
-				searchFields: prevState.searchFields.map(sf =>
-					sf.id === id
-						? {
-								...sf,
-								Component: type.Component,
-								value: "",
-								type: type.value
-						  }
-						: sf
-				)
+			produce(draft => {
+				const searchField = draft.searchFields.find(sf => sf.id === id);
+				searchField.Component = type.Component;
+				searchField.value = "";
+				searchField.type = type.value;
 			}),
 			this.handleGlobalNavHeight
 		);

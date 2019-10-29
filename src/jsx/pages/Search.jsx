@@ -16,7 +16,7 @@ import Exclamation from "-!svg-react-loader?name=Logo!../../img/exclamation.svg"
 
 const queryString = require("query-string");
 const memoizedFetch = memoize((query, offset, end) =>
-	fetch(`https://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${end}`)
+	fetch(`http://localhost:8085/cases?search=${query}&start=${offset}&end=${end}`)
 );
 
 const Results = ({ data = [] }) =>
@@ -26,7 +26,7 @@ const Results = ({ data = [] }) =>
 				<Link to={`/case/${result.caseId}`}>{result.caseName}</Link>
 			</td>
 			<td>{result.citation === null ? "N / A" : result.citation}</td>
-			<td className="caseDate">{dateFormat(parseISO(result.date), "dd/MM/yyyy")}</td>
+			{result.date && <td className="caseDate">{dateFormat(parseISO(result.date), "dd/MM/yyyy")}</td>}
 		</tr>
 	));
 
@@ -113,6 +113,7 @@ class SearchPage extends Component {
 		};
 		this.handlePageClick = this.handlePageClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleAdvancedSubmit = this.handleAdvancedSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
 
@@ -139,9 +140,10 @@ class SearchPage extends Component {
 	handlePageClick(data) {
 		const selected = data.selected;
 		const offset = selected * this.state.perPage;
+		const query = this.state.advancedQuery ? location.search : this.state.currentSearchQuery;
 
 		this.setState({ offset: offset, currentPage: selected, paginationInProgress: true }, () => {
-			this.doSearch(this.state.currentSearchQuery, this.state.offset);
+			this.doSearch(query, this.state.offset);
 		});
 	}
 
@@ -165,6 +167,17 @@ class SearchPage extends Component {
 		}
 	}
 
+	handleAdvancedSubmit(query) {
+		this.props.history.replace(`/search?${query}`);
+		this.setState({
+			currentPage: 0,
+			advancedQuery: true,
+			searchInProgress: true,
+			showSearchMsg: false
+		});
+		this.doSearch(location.search, 0);
+	}
+
 	handleChange(e) {
 		this.setState({ query: e.target.value });
 	}
@@ -172,12 +185,19 @@ class SearchPage extends Component {
 	componentDidMount() {
 		const searchQuery = queryString.parse(location.search);
 		this._isMounted = true;
-		this.doSearch(searchQuery.q, this.state.offset);
 		if (searchQuery.q) {
+			this.doSearch(searchQuery.q, this.state.offset);
 			this.setState({
 				currentSearchQuery: searchQuery.q
 			});
+
+			return;
 		}
+
+		this.doSearch(location.search, this.state.offset);
+		this.setState({
+			advancedQuery: true
+		});
 	}
 
 	componentWillUnmount() {
@@ -185,15 +205,17 @@ class SearchPage extends Component {
 	}
 
 	render() {
-		if (!this.state.currentSearchQuery) {
+		if (!this.state.currentSearchQuery && !this.state.advancedQuery) {
 			return <p className="loading-text">Loading</p>;
 		}
 		return (
 			<React.Fragment>
 				<SearchContainer
 					CustomSearch={Search}
+					showAdvancedSearch={this.state.advancedQuery}
 					value={this.state.currentSearchQuery}
 					onSubmit={this.handleSubmit}
+					onAdvancedSubmit={this.handleAdvancedSubmit}
 					onInputChange={this.handleChange}
 					showSearchMsg={this.state.showSearchMsg}
 					searchMsg={this.state.searchMsg}
@@ -202,13 +224,23 @@ class SearchPage extends Component {
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						{this.state.searchInProgress ? (
 							<span>
-								SEARCHING RESULTS FOR <b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
+								SEARCHING RESULTS FOR{" "}
+								{this.state.advancedQuery ? (
+									"ADVANCED SEARCH"
+								) : (
+									<b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
+								)}
 							</span>
 						) : (
 							<React.Fragment>
 								<h1>{this.state.length}</h1>
 								<span>
-									SEARCH RESULTS FOR <b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
+									SEARCH RESULTS FOR{" "}
+									{this.state.advancedQuery ? (
+										"ADVANCED SEARCH"
+									) : (
+										<b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
+									)}
 								</span>
 							</React.Fragment>
 						)}

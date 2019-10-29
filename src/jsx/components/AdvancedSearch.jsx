@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import produce from "immer";
+import queryString from "query-string";
 
 const DefaultInput = ({ value, id, onChange, className }) => (
 	<div className={className}>
@@ -53,15 +54,27 @@ const Legislation = ({ value, id, onChange, className }) => (
 	</div>
 );
 
-const typesOfFields = [
-	{ value: "any", Component: DefaultInput, text: "Any Field" },
-	{ value: "caseTitle", Component: DefaultInput, text: "Case Title" },
-	{ value: "court", Component: DefaultInput, text: "Court" },
-	{ value: "judge", Component: DefaultInput, text: "Judge" },
-	{ value: "judgementDate", Component: JudgementDate, text: "Judgment Date" },
-	{ value: "legislation", Component: Legislation, text: "Legislation" },
-	{ value: "caseContent", Component: DefaultInput, text: "Case Content" }
-];
+const relationOfTypes = {
+	any: { Component: DefaultInput, text: "Any Field" },
+	case_title: { Component: DefaultInput, text: "Case Title" },
+	court: { Component: DefaultInput, text: "Court" },
+	judge: { Component: DefaultInput, text: "Judge" },
+	judgement_date: { Component: JudgementDate, text: "Judgment Date" },
+	legislation: { Component: Legislation, text: "Legislation" },
+	case_content: { Component: DefaultInput, text: "Case Content" }
+};
+
+const relationOfSubTypes = {
+	judgement_date_from: { ...relationOfTypes.judgement_date, type: "judgement_date", sub_value: "from" },
+	judgement_date_to: { ...relationOfTypes.judgement_date, type: "judgement_date", sub_value: "to" },
+	legislation_act: { ...relationOfTypes.legislation, type: "legislation", sub_value: "act" },
+	legislation_section: { ...relationOfTypes.legislation, type: "legislation", sub_value: "section" }
+};
+
+const typesOfFields = Object.keys(relationOfTypes).map(type => ({
+	...relationOfTypes[type],
+	value: type
+}));
 
 class AdvancedSearch extends Component {
 	constructor(props) {
@@ -80,15 +93,65 @@ class AdvancedSearch extends Component {
 
 	componentDidMount() {
 		setTimeout(this.handleGlobalNavHeight, 300);
+		const urlParams = queryString.parse(location.search);
+		const prevState = [];
+		Object.keys(urlParams).forEach((key, idx) => {
+			let field;
+			if (relationOfTypes[key]) {
+				prevState.push({ ...relationOfTypes[key], type: key, value: urlParams[key], id: idx });
+				return;
+			}
+
+			if (!relationOfSubTypes[key]) return;
+
+			field = prevState.find(({ type }) => type === relationOfSubTypes[key].type);
+			if (field) field.value[relationOfSubTypes[key].sub_value] = urlParams[key];
+			else {
+				field = {
+					...relationOfTypes[relationOfSubTypes[key].type],
+					type: relationOfSubTypes[key].type,
+					value: {},
+					id: idx
+				};
+				field.value[relationOfSubTypes[key].sub_value] = urlParams[key];
+				prevState.push(field);
+			}
+		});
+
+		if (prevState.length) {
+			this.setState({ searchFields: prevState });
+		}
 	}
 
 	componentWillUnmount() {
 		this.handleGlobalNavHeight(true);
 	}
 
+	getParamsAsString() {
+		return this.state.searchFields.reduce((acc, sf, sfIdx) => {
+			if (typeof sf.value === "object" && sf.value !== null) {
+				const keys = Object.keys(sf.value);
+				keys.forEach((key, keyIdx) => {
+					acc += `${sf.type}_${key}=${sf.value[key]}`;
+					if (keyIdx < keys.length - 1 || sfIdx < this.state.searchFields.length - 1) acc += "&";
+				});
+			} else {
+				acc += `${sf.type}=${sf.value}`;
+				if (sfIdx < this.state.searchFields.length - 1) acc += "&";
+			}
+
+			return acc;
+		}, "");
+	}
+
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log(this.state);
+
+		if (this.props.onAdvancedSubmit) {
+			this.props.onAdvancedSubmit(this.getParamsAsString());
+			return;
+		}
+		this.props.history.push(`/search?${this.getParamsAsString()}`);
 	}
 
 	handleGlobalNavHeight(unmount) {
@@ -159,6 +222,7 @@ class AdvancedSearch extends Component {
 						<div className="search-field" key={id}>
 							<select
 								className="search-field-select"
+								value={type}
 								onChange={ev => this.onFieldSelectChange(ev.target.value, id)}
 							>
 								{this.props.typesOfFields.map(type => (

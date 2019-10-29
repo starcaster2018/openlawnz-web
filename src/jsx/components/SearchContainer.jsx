@@ -3,7 +3,7 @@ import Search from "./Search.jsx";
 import AdvancedSearch from "./AdvancedSearch.jsx";
 
 function SearchContainer(props) {
-	const [isAdvanced, setAdvanced] = useState(false);
+	const [isAdvanced, setAdvanced] = useState(props.showAdvancedSearch);
 	const { CustomSearch } = props;
 
 	function toggleTypeOfSearch(ev) {

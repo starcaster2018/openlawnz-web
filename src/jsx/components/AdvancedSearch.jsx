@@ -71,17 +71,19 @@ const relationOfSubTypes = {
 	legislation_section: { ...relationOfTypes.legislation, type: "legislation", sub_value: "section" }
 };
 
-const typesOfFields = Object.keys(relationOfTypes).map(type => ({
-	...relationOfTypes[type],
-	value: type
-}));
-
 class AdvancedSearch extends Component {
 	constructor(props) {
 		super(props);
 		this.defaultSearchFieldFormat = { id: 0, value: "", type: "any", Component: DefaultInput };
 		this.containerRef = React.createRef();
-		this.state = { searchFields: props.searchFields || [this.defaultSearchFieldFormat] };
+		this.state = {
+			searchFields: [this.defaultSearchFieldFormat],
+			typesOfFields: Object.keys(relationOfTypes).map(type => ({
+				...relationOfTypes[type],
+				visible: true,
+				value: type
+			}))
+		};
 
 		this.onFieldSelectChange = this.onFieldSelectChange.bind(this);
 		this.onFieldValueChange = this.onFieldValueChange.bind(this);
@@ -95,10 +97,12 @@ class AdvancedSearch extends Component {
 		setTimeout(this.handleGlobalNavHeight, 300);
 		const urlParams = queryString.parse(location.search);
 		const prevState = [];
+		const prevTypesOfFields = [];
 		Object.keys(urlParams).forEach((key, idx) => {
 			let field;
 			if (relationOfTypes[key]) {
 				prevState.push({ ...relationOfTypes[key], type: key, value: urlParams[key], id: idx });
+				prevTypesOfFields.push(key);
 				return;
 			}
 
@@ -115,11 +119,18 @@ class AdvancedSearch extends Component {
 				};
 				field.value[relationOfSubTypes[key].sub_value] = urlParams[key];
 				prevState.push(field);
+				prevTypesOfFields.push(relationOfSubTypes[key].type);
 			}
 		});
 
 		if (prevState.length) {
-			this.setState({ searchFields: prevState });
+			this.setState(state => ({
+				searchFields: prevState,
+				typesOfFields: state.typesOfFields.map(type => ({
+					...type,
+					visible: prevTypesOfFields.indexOf(type.value) === -1
+				}))
+			}));
 		}
 	}
 
@@ -192,20 +203,33 @@ class AdvancedSearch extends Component {
 		);
 	}
 
-	onRemoveField(id) {
-		this.setState(prevState => ({
-			searchFields: prevState.searchFields.filter(item => item.id !== id)
-		}));
+	onRemoveField(id, type) {
+		this.setState(
+			produce(draft => {
+				const typeOfField = draft.typesOfFields.find(t => t.value === type);
+
+				draft.searchFields = draft.searchFields.filter(item => item.id !== id);
+				typeOfField.visible = true;
+			})
+		);
 	}
 
 	onFieldSelectChange(value, id) {
-		const type = this.props.typesOfFields.find(t => t.value === value);
 		this.setState(
 			produce(draft => {
+				let newType, currentType;
 				const searchField = draft.searchFields.find(sf => sf.id === id);
-				searchField.Component = type.Component;
+				draft.typesOfFields.forEach(type => {
+					if (type.value === value) newType = type;
+					if (type.value === searchField.type) currentType = type;
+				});
+
+				searchField.Component = newType.Component;
 				searchField.value = "";
-				searchField.type = type.value;
+				searchField.type = newType.value;
+
+				newType.visible = newType.value === "any" || false;
+				currentType.visible = true;
 			}),
 			this.handleGlobalNavHeight
 		);
@@ -225,11 +249,14 @@ class AdvancedSearch extends Component {
 								value={type}
 								onChange={ev => this.onFieldSelectChange(ev.target.value, id)}
 							>
-								{this.props.typesOfFields.map(type => (
-									<option key={`searchField${id}-${type.value}`} value={type.value}>
-										{type.text}
-									</option>
-								))}
+								{this.state.typesOfFields.map(
+									t =>
+										(t.value === type || t.visible) && (
+											<option key={`searchField${id}-${t.value}`} value={t.value}>
+												{t.text}
+											</option>
+										)
+								)}
 							</select>
 
 							<Component
@@ -244,7 +271,7 @@ class AdvancedSearch extends Component {
 									<button
 										type="button"
 										className="action-button simple large-font"
-										onClick={() => this.onRemoveField(id)}
+										onClick={() => this.onRemoveField(id, type)}
 									>
 										x
 									</button>
@@ -275,7 +302,6 @@ class AdvancedSearch extends Component {
 }
 
 AdvancedSearch.defaultProps = {
-	typesOfFields,
 	onCancelSearch: () => {}
 };
 

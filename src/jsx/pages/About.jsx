@@ -103,7 +103,7 @@ class About extends Component {
 								</div>
 								<div className="card-item">
 									<img src={Will} alt="Willian Parry, CTO" />
-									<strong>Willian Parry, CTO</strong>
+									<strong>William Parry, CTO</strong>
 									<p>
 										William brings 15 years of tech experience across enterprise, advertising and
 										small businesses including 8 years working with open data in projects and

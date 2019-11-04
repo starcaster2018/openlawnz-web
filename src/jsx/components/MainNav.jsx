@@ -21,7 +21,9 @@ class MainNav extends Component {
 	render() {
 		return (
 			<header role="banner" className="nav-container">
-				<a href="#searchTerm" class="skip-content visuallyhidden">Skip to content</a>
+				<a href="#searchTerm" className="skip-content visuallyhidden">
+					Skip to content
+				</a>
 				<div className="nav-items">
 					<div className="nav-logo">
 						<Link to="/">

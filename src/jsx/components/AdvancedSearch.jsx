@@ -1,6 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import produce from "immer";
 import queryString from "query-string";
+import DatePicker from "react-date-picker";
+import startOfMonth from "date-fns/startOfMonth";
+import endOfMonth from "date-fns/endOfMonth";
+import format from "date-fns/format";
+import parse from "date-fns/parse";
 
 const DefaultInput = ({ value, id, onChange, className }) => (
 	<div className={className}>
@@ -8,28 +13,52 @@ const DefaultInput = ({ value, id, onChange, className }) => (
 	</div>
 );
 
-const JudgementDate = ({ value, id, onChange, className }) => (
-	<div className={className}>
-		<div className="compound-field">
-			<label htmlFor={`from-${id}`}>From</label>
-			<input
-				type="date"
-				value={value.from || ""}
-				id={`from-${id}`}
-				onChange={ev => onChange(id, ev.target.value, "from")}
-			/>
+const JudgementDate = ({ value, id, onChange, className }) => {
+	const dateFormat = "dd-M-y";
+	const startingDateFrom = value.from ? parse(value.from, dateFormat, new Date()) : startOfMonth(new Date());
+	const startingDateTo = value.to ? parse(value.to, dateFormat, new Date()) : endOfMonth(new Date());
+	const [dateFrom, setDateFrom] = useState(startingDateFrom);
+	const [dateTo, setDateTo] = useState(startingDateTo);
+
+	const onDateChange = (date, type) => {
+		if (type === "from") {
+			setDateFrom(date);
+		} else {
+			setDateTo(date);
+		}
+		onChange(id, format(date, dateFormat), type);
+	};
+
+	useEffect(() => {
+		onChange(id, format(startingDateFrom, dateFormat), "from");
+		onChange(id, format(startingDateTo, dateFormat), "to");
+	}, []);
+
+	return (
+		<div className={className}>
+			<div className="compound-field">
+				<label htmlFor={`from-${id}`}>From</label>
+				<DatePicker
+					showLeadingZeros
+					required
+					maxDate={dateTo}
+					onChange={date => onDateChange(date, "from")}
+					value={dateFrom}
+				/>
+			</div>
+			<div className="compound-field">
+				<label htmlFor={`to-${id}`}>To</label>
+				<DatePicker
+					showLeadingZeros
+					required
+					minDate={dateFrom}
+					onChange={date => onDateChange(date, "to")}
+					value={dateTo}
+				/>
+			</div>
 		</div>
-		<div className="compound-field">
-			<label htmlFor={`to-${id}`}>To</label>
-			<input
-				type="date"
-				value={value.to || ""}
-				id={`to-${id}`}
-				onChange={ev => onChange(id, ev.target.value, "to")}
-			/>
-		</div>
-	</div>
-);
+	);
+};
 
 const Legislation = ({ value, id, onChange, className }) => (
 	<div className={className}>

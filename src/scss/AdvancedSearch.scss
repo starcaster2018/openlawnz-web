@@ -41,7 +41,8 @@
       flex-basis: 86%;
     }
 
-    input {
+    input,
+    .react-date-picker__wrapper {
       background: #ffffff;
       border-radius: 5px;
       border: 1px solid #e0e0e0;
@@ -52,6 +53,21 @@
       outline: none;
       padding: 11px 15px;
       width: 100%;
+    }
+
+    .react-date-picker {
+      width: 100%;
+
+      &__button svg {
+        stroke: #555;
+      }
+      
+      input {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
     }
 
     select,
@@ -136,6 +152,12 @@
   .advanced-search {
     .box {
       max-width: 740px;
+    }
+
+    .react-date-picker {
+      &__wrapper {
+        margin-left: 15px;
+      }
     }
 
     .search-field {

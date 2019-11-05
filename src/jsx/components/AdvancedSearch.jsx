@@ -13,7 +13,7 @@ const DefaultInput = ({ value, id, onChange, className }) => (
 	</div>
 );
 
-const JudgementDate = ({ value, id, onChange, className }) => {
+const JudgmentDate = ({ value, id, onChange, className }) => {
 	const dateFormat = "dd-M-y";
 	const startingDateFrom = value.from ? parse(value.from, dateFormat, new Date()) : startOfMonth(new Date());
 	const startingDateTo = value.to ? parse(value.to, dateFormat, new Date()) : endOfMonth(new Date());
@@ -87,15 +87,15 @@ const relationOfTypes = {
 	any: { Component: DefaultInput, text: "Any Field" },
 	case_title: { Component: DefaultInput, text: "Case Title" },
 	court: { Component: DefaultInput, text: "Court" },
-	judge: { Component: DefaultInput, text: "Judge" },
-	judgement_date: { Component: JudgementDate, text: "Judgment Date" },
-	legislation: { Component: Legislation, text: "Legislation" },
-	case_content: { Component: DefaultInput, text: "Case Content" }
+	// judge: { Component: DefaultInput, text: "Judge" },
+	judgment_date: { Component: JudgmentDate, text: "Judgment Date" },
+	legislation: { Component: Legislation, text: "Legislation" }
+	// case_content: { Component: DefaultInput, text: "Case Content" }
 };
 
 const relationOfSubTypes = {
-	judgement_date_from: { ...relationOfTypes.judgement_date, type: "judgement_date", sub_value: "from" },
-	judgement_date_to: { ...relationOfTypes.judgement_date, type: "judgement_date", sub_value: "to" },
+	judgment_date_from: { ...relationOfTypes.judgment_date, type: "judgment_date", sub_value: "from" },
+	judgment_date_to: { ...relationOfTypes.judgment_date, type: "judgment_date", sub_value: "to" },
 	legislation_act: { ...relationOfTypes.legislation, type: "legislation", sub_value: "act" },
 	legislation_section: { ...relationOfTypes.legislation, type: "legislation", sub_value: "section" }
 };
@@ -110,7 +110,7 @@ class AdvancedSearch extends Component {
 			typesOfFields: Object.keys(relationOfTypes).map(type => ({
 				...relationOfTypes[type],
 				visible: true,
-				value: type
+				value: type === "any" ? "" : type
 			}))
 		};
 
@@ -257,8 +257,8 @@ class AdvancedSearch extends Component {
 				searchField.value = "";
 				searchField.type = newType.value;
 
-				newType.visible = newType.value === "any" || false;
-				currentType.visible = true;
+				newType.visible = newType.value === "" || false;
+				if (currentType) currentType.visible = true;
 			}),
 			this.handleGlobalNavHeight
 		);
@@ -276,6 +276,7 @@ class AdvancedSearch extends Component {
 							<select
 								className="search-field-select"
 								value={type}
+								required
 								onChange={ev => this.onFieldSelectChange(ev.target.value, id)}
 							>
 								{this.state.typesOfFields.map(
@@ -310,7 +311,12 @@ class AdvancedSearch extends Component {
 					))}
 
 					<div className="search-field">
-						<button type="button" className="action-button large-font" onClick={this.onAddField}>
+						<button
+							disabled={this.state.typesOfFields.length - 1 === this.state.searchFields.length || false}
+							type="button"
+							className="action-button large-font"
+							onClick={this.onAddField}
+						>
 							+
 						</button>
 					</div>

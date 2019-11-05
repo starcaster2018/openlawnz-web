@@ -61,7 +61,7 @@
       &__button svg {
         stroke: #555;
       }
-      
+
       input {
         border: none;
         box-shadow: none;
@@ -99,7 +99,11 @@
     font-weight: bold;
     outline: none;
     padding: 12px;
-    transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	
+	&:disabled {
+		background: #fae8d9;	
+	}
 
     &:hover {
       background: #fae8d9;

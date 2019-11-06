@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DOMPurify from "dompurify";
 import SearchIcon from "-!svg-react-loader?name=Logo!../../img/search-icon.svg";
 import Exclamation from "-!svg-react-loader?name=Logo!../../img/exclamation.svg";
 
@@ -26,7 +27,7 @@ export default class Search extends Component {
 	}
 
 	handleChange(e) {
-		this.setState({ currentSearchQuery: e.target.value });
+		this.setState({ currentSearchQuery: DOMPurify.sanitize(e.target.value) });
 	}
 
 	render() {

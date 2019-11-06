@@ -6,6 +6,7 @@ import startOfMonth from "date-fns/startOfMonth";
 import endOfMonth from "date-fns/endOfMonth";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
+import DOMPurify from "dompurify";
 
 const DefaultInput = ({ value, id, onChange, className }) => (
 	<div className={className}>
@@ -129,26 +130,29 @@ class AdvancedSearch extends Component {
 		const prevTypesOfFields = [];
 		Object.keys(urlParams).forEach((key, idx) => {
 			let field;
-			if (relationOfTypes[key]) {
-				prevState.push({ ...relationOfTypes[key], type: key, value: urlParams[key], id: idx });
+			const value = DOMPurify.sanitize(urlParams[key]);
+			const type = relationOfTypes[key];
+			const subType = relationOfSubTypes[key];
+			if (type) {
+				prevState.push({ ...type, value, type: key, id: idx });
 				prevTypesOfFields.push(key);
 				return;
 			}
 
-			if (!relationOfSubTypes[key]) return;
+			if (!subType) return;
 
-			field = prevState.find(({ type }) => type === relationOfSubTypes[key].type);
-			if (field) field.value[relationOfSubTypes[key].sub_value] = urlParams[key];
+			field = prevState.find(({ type }) => type === subType.type);
+			if (field) field.value[subType.sub_value] = value;
 			else {
 				field = {
-					...relationOfTypes[relationOfSubTypes[key].type],
-					type: relationOfSubTypes[key].type,
+					...relationOfTypes[subType.type],
+					type: subType.type,
 					value: {},
 					id: idx
 				};
-				field.value[relationOfSubTypes[key].sub_value] = urlParams[key];
+				field.value[subType.sub_value] = value;
 				prevState.push(field);
-				prevTypesOfFields.push(relationOfSubTypes[key].type);
+				prevTypesOfFields.push(subType.type);
 			}
 		});
 
@@ -207,10 +211,10 @@ class AdvancedSearch extends Component {
 		this.setState(
 			produce(draft => {
 				const searchField = draft.searchFields.find(sf => sf.id === id);
-				let newValue = value;
+				let newValue = DOMPurify.sanitize(value, { ALLOWED_TAGS: ["&"] });
 				if (valueInObject) {
 					newValue = { ...searchField.value };
-					newValue[valueInObject] = value;
+					newValue[valueInObject] = DOMPurify.sanitize(value);
 				}
 
 				searchField.value = newValue;

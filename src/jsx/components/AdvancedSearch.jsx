@@ -242,7 +242,7 @@ class AdvancedSearch extends Component {
 				const typeOfField = draft.typesOfFields.find(t => t.value === type);
 
 				draft.searchFields = draft.searchFields.filter(item => item.id !== id);
-				typeOfField.visible = true;
+				if (typeOfField) typeOfField.visible = true;
 			})
 		);
 	}

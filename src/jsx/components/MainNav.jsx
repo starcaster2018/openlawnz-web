@@ -22,7 +22,7 @@ const MainNav = () => {
 					</Link>
 				</div>
 				<nav className="nav-links" id="menuToggle">
-					<input type="checkbox" checked={isNavOpen} onChange={toggleNavState} />
+					<input aria-hidden type="checkbox" checked={isNavOpen} onChange={toggleNavState} />
 					<span></span>
 					<span></span>
 					<span></span>
@@ -48,26 +48,16 @@ const MainNav = () => {
 								</sup>
 							</a>
 						</li>
-						{!isAuthenticated && (
+						{/*
 							<li
-								onClick={() => {
-									toggleNavState();
-									loginWithRedirect({});
-								}}
-							>
-								<span>Log in</span>
-							</li>
-						)}
-						{isAuthenticated && (
-							<li
-								onClick={() => {
-									toggleNavState();
-									logout();
-								}}
-							>
-								<span>Log out</span>
-							</li>
-						)}
+							onClick={() => {
+								toggleNavState();
+								return isAuthenticated ? logout() : loginWithRedirect({});
+							}}
+						>
+							<a href="#">{isAuthenticated ? "Logout" : "Log In"}</a>
+						</li>
+						*/}
 					</ul>
 				</nav>
 			</div>

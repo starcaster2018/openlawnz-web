@@ -17,6 +17,10 @@ import April from "../../img/about-us/april-liau.png";
 import Lina from "../../img/about-us/lina-xie.png";
 import David from "../../img/about-us/david-paitai.png";
 import Hanbyul from "../../img/about-us/hanbyul-son.png";
+import Chanil from "../../img/about-us/chanil-park.png";
+import Benedict from "../../img/about-us/benedict-stewart.png";
+import Daryl from "../../img/about-us/daryl-diesto.png";
+import Emma from "../../img/about-us/emma-burke.png";
 import Infra from "../../img/about-us/openlaw-infrastructure.png";
 
 class About extends Component {
@@ -99,7 +103,7 @@ class About extends Component {
 								</div>
 								<div className="card-item">
 									<img src={Will} alt="Willian Parry, CTO" />
-									<strong>Willian Parry, CTO</strong>
+									<strong>William Parry, CTO</strong>
 									<p>
 										William brings 15 years of tech experience across enterprise, advertising and
 										small businesses including 8 years working with open data in projects and
@@ -165,8 +169,29 @@ class About extends Component {
 										people&apos;s life.
 									</p>
 								</div>
+								<div className="card-item-small">
+									<div>
+										<img src={Chanil} alt="Chanil Park" />
+										<strong>Chanil Park</strong>
+									</div>
+									<p>
+										Chanil is a developer who has completed a Computer Science Major at Victoria
+										University of Wellington. He has volunteered to obtain more development
+										experience and to use his skills to help  New Zealand's community.
+									</p>
+								</div>
 							</div>
-
+							<div className="cards-list">
+								<div className="card-item-small">
+									<div>
+										<img src={Daryl} alt="Daryl Diesto" />
+										<strong>Daryl Diesto</strong>
+									</div>
+									<p>
+									Daryl is a business data analyst who is keen to learn more about data, equipped with experience and innovative ideas. A leader, a follower and passionate about data.
+									</p>
+								</div>
+							</div>
 							<h3>API</h3>
 							<div className="cards-list">
 								<div className="card-item-small">
@@ -176,8 +201,8 @@ class About extends Component {
 									</div>
 									<p>
 										Noel is a full stack developer hungry to expand his knowledge for the whole
-										technology stack. He helped develop, deploy and maintain the GraphQL api. As
-										well as worked on the documentation on Github. Graduated from the University of
+										technology stack. He helped develop, deploy and maintain the GraphQL api. He has also
+										worked on the documentation on Github. Graduated from the University of
 										Canterbury and Dev Academy.
 									</p>
 								</div>
@@ -186,7 +211,11 @@ class About extends Component {
 										<img src={Hanbyul} alt="Hanbyul Son" />
 										<strong>Hanbyul Son</strong>
 									</div>
-									<p>Hanbyul is a mission-driven developer who always looks for opportunities to gain more in-depth software development knowledge, and turn it into innovative solutions to support communities.</p>
+									<p>
+										Hanbyul is a mission-driven developer who always looks for opportunities to gain
+										more in-depth software development knowledge, and turn it into innovative
+										solutions to support communities.
+									</p>
 								</div>
 							</div>
 
@@ -209,7 +238,12 @@ class About extends Component {
 										<img src={Limei} alt="Limei" />
 										<strong>Limei</strong>
 									</div>
-									<p></p>
+									<p>
+										Limei is a skilled DevOps Engineer with in-depth professional experience with
+										several major corporations in China. In order to experience different life, she
+										came to New Zealand to study, work and live. She lives in Auckland with her
+										family.
+									</p>
 								</div>
 							</div>
 
@@ -260,6 +294,44 @@ class About extends Component {
 										advisory services for whānau, hapū, iwi, communities and community
 										organisations. He&apos;s also a volunteer fire fighter, marae trustee and as a
 										self-professed accounting geek.
+									</p>
+								</div>
+							</div>
+							<h3>Legal</h3>
+							<div className="cards-list">
+								<div className="card-item-small">
+									<div>
+										<img src={Benedict} alt="Benedict Stewart" />
+										<strong>Benedict Stewart</strong>
+									</div>
+									<p>
+										Benedict leads product &amp; growth strategy at Dacreed, a regtech startup based
+										in Auckland. Previously a lawyer at Chapman Tripp, Benedict leverages his deep
+										domain expertise to solve customer problems. Benedict holds a BA/LLB(Hons) from
+										the University of Auckland.
+									</p>
+								</div>
+								<div className="card-item-small">
+									<div>
+										<img src={Emma} alt="Emma Burke" />
+										<strong>Emma Burke</strong>
+									</div>
+									<p>
+										Emma has a background in law and botany. She has worked in general practice,
+										primarily in property for two years.
+									</p>
+								</div>
+							</div>
+							<div className="cards-list">
+								<div className="card-item-small">
+									<div>
+										<img src={GenericAvatar} alt="Alex McNichol" />
+										<strong>Alex McNichol</strong>
+									</div>
+									<p>
+										Alex is a Law and Commerce student in his penultimate year at the University of
+										Canterbury. He is passionate about using and developing his legal skills for the
+										purpose of helping others.
 									</p>
 								</div>
 							</div>

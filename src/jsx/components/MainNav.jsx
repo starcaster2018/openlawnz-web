@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import Logo from "-!svg-react-loader?name=Logo!../../img/openlaw-logo.svg";
@@ -7,16 +7,15 @@ import External from "-!svg-react-loader?name=External!../../img/external.svg";
 // login
 import { useAuth0 } from "../../js/react-auth0-spa";
 
-
-const MainNav = (props) => {
+const MainNav = () => {
 	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-	const [ checked, setChecked ] = React.useState(false);
+	const [checked, setChecked] = React.useState(false);
 	const checkHandler = event => {
-		if(checked) setChecked(false);
+		if (checked) setChecked(false);
 		else setChecked(true);
 	};
 
-	return(
+	return (
 		<header role="banner" className="nav-container">
 			<div className="nav-items">
 				<div className="nav-logo">
@@ -52,8 +51,26 @@ const MainNav = (props) => {
 								</sup>
 							</a>
 						</li>
-							{!isAuthenticated && (<li onClick={ () => {checkHandler(); loginWithRedirect({});} }><span>Log in</span></li>)}
-							{isAuthenticated && <li onClick={() => {checkHandler(); logout();}}><span>Log out</span></li>}
+						{!isAuthenticated && (
+							<li
+								onClick={() => {
+									checkHandler();
+									loginWithRedirect({});
+								}}
+							>
+								<span>Log in</span>
+							</li>
+						)}
+						{isAuthenticated && (
+							<li
+								onClick={() => {
+									checkHandler();
+									logout();
+								}}
+							>
+								<span>Log out</span>
+							</li>
+						)}
 					</ul>
 				</nav>
 			</div>

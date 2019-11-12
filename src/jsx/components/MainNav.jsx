@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import Logo from "-!svg-react-loader?name=Logo!../../img/openlaw-logo.svg";
@@ -7,16 +7,12 @@ import External from "-!svg-react-loader?name=External!../../img/external.svg";
 // login
 import { useAuth0 } from "../../js/react-auth0-spa";
 
-
-const MainNav = (props) => {
+const MainNav = () => {
 	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-	const [ checked, setChecked ] = React.useState(false);
-	const checkHandler = event => {
-		if(checked) setChecked(false);
-		else setChecked(true);
-	};
+	const [isNavOpen, setIsNavOpen] = React.useState(false);
+	const toggleNavState = () => setIsNavOpen(!isNavOpen);
 
-	return(
+	return (
 		<header role="banner" className="nav-container">
 			<div className="nav-items">
 				<div className="nav-logo">
@@ -26,25 +22,25 @@ const MainNav = (props) => {
 					</Link>
 				</div>
 				<nav className="nav-links" id="menuToggle">
-					<input type="checkbox" checked={checked} onChange={() => checkHandler()} />
+					<input aria-hidden type="checkbox" checked={isNavOpen} onChange={toggleNavState} />
 					<span></span>
 					<span></span>
 					<span></span>
 
 					<ul id="menu">
-						<li onClick={() => checkHandler()}>
+						<li onClick={toggleNavState}>
 							<Link to="/about">About Us</Link>
 						</li>
-						<li onClick={() => checkHandler()}>
+						<li onClick={toggleNavState}>
 							<Link to="/news">News</Link>
 						</li>
-						<li onClick={() => checkHandler()}>
+						<li onClick={toggleNavState}>
 							<Link to="/plugins">Plugins</Link>
 						</li>
-						<li onClick={() => checkHandler()}>
+						<li onClick={toggleNavState}>
 							<Link to="/developers">Developers</Link>
 						</li>
-						<li onClick={() => checkHandler()}>
+						<li onClick={toggleNavState}>
 							<a href="https://donorbox.org/openlaw-nz-3" target="_blank" rel="noopener noreferrer">
 								Support Us{" "}
 								<sup>
@@ -52,8 +48,16 @@ const MainNav = (props) => {
 								</sup>
 							</a>
 						</li>
-							{!isAuthenticated && (<li onClick={ () => {checkHandler(); loginWithRedirect({});} }><span>Log in</span></li>)}
-							{isAuthenticated && <li onClick={() => {checkHandler(); logout();}}><span>Log out</span></li>}
+						{/*
+							<li
+							onClick={() => {
+								toggleNavState();
+								return isAuthenticated ? logout() : loginWithRedirect({});
+							}}
+						>
+							<a href="#">{isAuthenticated ? "Logout" : "Log In"}</a>
+						</li>
+						*/}
 					</ul>
 				</nav>
 			</div>

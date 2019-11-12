@@ -145,6 +145,10 @@
     transform: translate(0px, 20px);
   }
 
+  #menuToggle input:checked {
+    position: fixed;
+  }
+
   #menuToggle input:checked ~ span {
     position: fixed;
     opacity: 1;

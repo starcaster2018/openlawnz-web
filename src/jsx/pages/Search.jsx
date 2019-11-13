@@ -9,14 +9,12 @@ import SearchContainer from "../components/SearchContainer.jsx";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
 
-import SearchIcon from "-!svg-react-loader?name=Logo!../../img/search-icon.svg";
 import Next from "-!svg-react-loader?name=Logo!../../img/next-page.svg";
 import Previous from "-!svg-react-loader?name=Logo!../../img/previous-page.svg";
-import Exclamation from "-!svg-react-loader?name=Logo!../../img/exclamation.svg";
 
 const queryString = require("query-string");
 const memoizedFetch = memoize((query, offset, end) =>
-	fetch(`http://localhost:8085/cases?search=${query}&start=${offset}&end=${end}`)
+	fetch(`http://localhost:8085/cases?${query}&start=${offset}&end=${end}`)
 );
 
 const Results = ({ data = [] }) =>
@@ -36,45 +34,6 @@ const NoResults = () => (
 		<td>-------</td>
 		<td className="caseDate">-------</td>
 	</tr>
-);
-
-const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange, toggleTypeOfSearch }) => (
-	<div className="search-container">
-		<div className="search">
-			<form className="search-input" onSubmit={onSubmit}>
-				<div className="input-wrapper">
-					<label className="search-label" htmlFor="searchTerm">
-						Search legal cases
-					</label>
-					<input
-						id="searchTerm"
-						type="text"
-						className="search-term"
-						placeholder="Search legal cases"
-						onChange={onInputChange}
-						defaultValue={value}
-					/>
-					<button type="submit" className="search-button" title="Search">
-						<SearchIcon />
-					</button>
-				</div>
-				<button type="submit" className="search-submit-button">
-					Search
-				</button>
-			</form>
-			{toggleTypeOfSearch && (
-				<a href="#" className="toggle-search" onClick={toggleTypeOfSearch}>
-					Advanced Search
-				</a>
-			)}
-		</div>
-		{showSearchMsg ? (
-			<div className="search-msg">
-				<Exclamation />
-				<p>{searchMsg}</p>
-			</div>
-		) : null}
-	</div>
 );
 
 const Pagination = ({ onPageChange, pageCount, currentPage }) => (
@@ -100,8 +59,9 @@ class SearchPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentSearchQuery: queryString.parse(props.location).q,
 			query: "",
+			queryValue: "",
+			advancedQuery: "",
 			results: [],
 			perPage: 10,
 			offset: 0,
@@ -113,12 +73,11 @@ class SearchPage extends Component {
 		};
 		this.handlePageClick = this.handlePageClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleAdvancedSubmit = this.handleAdvancedSubmit.bind(this);
-		this.handleChange = this.handleChange.bind(this);
 	}
 
 	doSearch(query, offset) {
-		return memoizedFetch(query, offset, offset + this.state.perPage).then(results => {
+		const { perPage } = this.state;
+		return memoizedFetch(query, offset, offset + perPage).then(results => {
 			results
 				.clone() // Necessary because of memoization of fetch
 				.json()
@@ -128,7 +87,7 @@ class SearchPage extends Component {
 						this.setState({
 							results: data.results,
 							length: parseInt(data.total),
-							pageCount: parseInt(data.total) / this.state.perPage,
+							pageCount: parseInt(data.total) / perPage,
 							paginationInProgress: false,
 							searchInProgress: false
 						});
@@ -140,64 +99,36 @@ class SearchPage extends Component {
 	handlePageClick(data) {
 		const selected = data.selected;
 		const offset = selected * this.state.perPage;
-		const query = this.state.advancedQuery ? location.search : this.state.currentSearchQuery;
+		const query = this.state.advancedQuery || this.state.query;
 
 		this.setState({ offset: offset, currentPage: selected, paginationInProgress: true }, () => {
 			this.doSearch(query, this.state.offset);
 		});
 	}
 
-	handleSubmit(e) {
-		e.preventDefault();
-		if (this.state.query === "") {
-			this.setState({
-				searchMsg: "Please enter a new search term",
-				showSearchMsg: true
-			});
-		} else {
-			this.props.history.replace(`/search?q=${this.state.query}`);
-			this.setState({
-				currentPage: 0,
-				query: "",
-				currentSearchQuery: this.state.query,
-				searchInProgress: true,
-				showSearchMsg: false
-			});
-			this.doSearch(this.state.query, 0);
-		}
-	}
-
-	handleAdvancedSubmit(query) {
-		this.props.history.replace(`/search?${query}`);
-		this.setState({
-			currentPage: 0,
-			advancedQuery: true,
-			searchInProgress: true,
-			showSearchMsg: false
+	handleSubmit(searchString, query, type, queryValue) {
+		this.props.history.replace(`/search?${searchString}`);
+		this.setState(prevState => {
+			const newState = { ...prevState, currentPage: 0, queryValue, query: "", advancedQuery: "" };
+			newState[type] = query;
+			return newState;
 		});
-		this.doSearch(location.search, 0);
-	}
-
-	handleChange(e) {
-		this.setState({ query: e.target.value });
+		this.doSearch(query, 0);
 	}
 
 	componentDidMount() {
-		const searchQuery = queryString.parse(location.search);
 		this._isMounted = true;
+		const { offset } = this.state;
+		const searchQuery = queryString.parse(location.search);
+		const query = searchQuery.q ? `search=${searchQuery.q}` : location.search.replace("?", "");
+
+		this.doSearch(query, offset);
+
 		if (searchQuery.q) {
-			this.doSearch(searchQuery.q, this.state.offset);
-			this.setState({
-				currentSearchQuery: searchQuery.q
-			});
-
-			return;
+			this.setState({ query, queryValue: searchQuery.q });
+		} else {
+			this.setState({ advancedQuery: query });
 		}
-
-		this.doSearch(location.search, this.state.offset);
-		this.setState({
-			advancedQuery: true
-		});
 	}
 
 	componentWillUnmount() {
@@ -205,52 +136,47 @@ class SearchPage extends Component {
 	}
 
 	render() {
-		if (!this.state.currentSearchQuery && !this.state.advancedQuery) {
+		const {
+			query,
+			queryValue,
+			advancedQuery,
+			results,
+			length,
+			perPage,
+			currentPage,
+			pageCount,
+			paginationInProgress,
+			searchInProgress
+		} = this.state;
+		if (!query && !advancedQuery) {
 			return <p className="loading-text">Loading</p>;
 		}
 		return (
 			<React.Fragment>
-				<SearchContainer
-					CustomSearch={Search}
-					showAdvancedSearch={this.state.advancedQuery}
-					value={this.state.currentSearchQuery}
-					onSubmit={this.handleSubmit}
-					onAdvancedSubmit={this.handleAdvancedSubmit}
-					onInputChange={this.handleChange}
-					showSearchMsg={this.state.showSearchMsg}
-					searchMsg={this.state.searchMsg}
-				/>
+				<SearchContainer populateComponent showAdvancedSearch={advancedQuery} onSubmit={this.handleSubmit} />
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
-						{this.state.searchInProgress ? (
+						{searchInProgress ? (
 							<span>
 								SEARCHING RESULTS FOR{" "}
-								{this.state.advancedQuery ? (
-									"ADVANCED SEARCH"
-								) : (
-									<b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
-								)}
+								{advancedQuery ? "ADVANCED SEARCH" : <b>{`"${queryValue.toUpperCase()}"`}</b>}
 							</span>
 						) : (
 							<React.Fragment>
-								<h1>{this.state.length}</h1>
+								<h1>{length}</h1>
 								<span>
 									SEARCH RESULTS FOR{" "}
-									{this.state.advancedQuery ? (
-										"ADVANCED SEARCH"
-									) : (
-										<b>{`"${this.state.currentSearchQuery.toUpperCase()}"`}</b>
-									)}
+									{advancedQuery ? "ADVANCED SEARCH" : <b>{`"${queryValue.toUpperCase()}"`}</b>}
 								</span>
 							</React.Fragment>
 						)}
 					</InfoCard>
 					<div className="container">
-						{this.state.length >= this.state.perPage && (
+						{length >= perPage && (
 							<Pagination
 								onPageChange={this.handlePageClick}
-								currentPage={this.state.currentPage}
-								pageCount={this.state.pageCount}
+								currentPage={currentPage}
+								pageCount={pageCount}
 							/>
 						)}
 						<table className="table">
@@ -261,21 +187,15 @@ class SearchPage extends Component {
 									<th>Date</th>
 								</tr>
 							</thead>
-							<tbody
-								className={
-									this.state.paginationInProgress || this.state.searchInProgress
-										? "loading"
-										: undefined
-								}
-							>
-								{this.state.length === 0 ? <NoResults /> : <Results data={this.state.results} />}
+							<tbody className={paginationInProgress || searchInProgress ? "loading" : undefined}>
+								{length === 0 ? <NoResults /> : <Results data={results} />}
 							</tbody>
 						</table>
-						{this.state.length >= this.state.perPage && (
+						{length >= perPage && (
 							<Pagination
 								onPageChange={this.handlePageClick}
-								currentPage={this.state.currentPage}
-								pageCount={this.state.pageCount}
+								currentPage={currentPage}
+								pageCount={pageCount}
 							/>
 						)}
 					</div>

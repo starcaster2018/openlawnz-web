@@ -125,6 +125,8 @@ class AdvancedSearch extends Component {
 
 	componentDidMount() {
 		setTimeout(this.handleGlobalNavHeight, 300);
+		if (!this.props.populateComponent) return;
+
 		const urlParams = queryString.parse(location.search);
 		const prevState = [];
 		const prevTypesOfFields = [];
@@ -191,8 +193,9 @@ class AdvancedSearch extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 
-		if (this.props.onAdvancedSubmit) {
-			this.props.onAdvancedSubmit(this.getParamsAsString());
+		if (this.props.onSubmit) {
+			const paramsAsString = this.getParamsAsString();
+			this.props.onSubmit(paramsAsString, paramsAsString, "advancedQuery");
 			return;
 		}
 		this.props.history.push(`/search?${this.getParamsAsString()}`);
@@ -326,7 +329,7 @@ class AdvancedSearch extends Component {
 					</div>
 
 					<div className="action-container">
-						<button type="button" className="action-button simple" onClick={this.props.onCancelSearch}>
+						<button type="button" className="action-button simple" onClick={this.props.toggleTypeOfSearch}>
 							Cancel
 						</button>
 
@@ -341,7 +344,7 @@ class AdvancedSearch extends Component {
 }
 
 AdvancedSearch.defaultProps = {
-	onCancelSearch: () => {}
+	toggleTypeOfSearch: () => {}
 };
 
 export default AdvancedSearch;

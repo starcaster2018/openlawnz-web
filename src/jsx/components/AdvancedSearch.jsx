@@ -15,7 +15,7 @@ const DefaultInput = ({ value, id, onChange, className }) => (
 );
 
 const JudgmentDate = ({ value, id, onChange, className }) => {
-	const dateFormat = "dd-M-y";
+	const dateFormat = "y-M-dd";
 	const startingDateFrom = value.from ? parse(value.from, dateFormat, new Date()) : startOfMonth(new Date());
 	const startingDateTo = value.to ? parse(value.to, dateFormat, new Date()) : endOfMonth(new Date());
 	const [dateFrom, setDateFrom] = useState(startingDateFrom);

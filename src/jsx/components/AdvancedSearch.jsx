@@ -6,6 +6,7 @@ import startOfMonth from "date-fns/startOfMonth";
 import endOfMonth from "date-fns/endOfMonth";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
+import isValidDate from "date-fns/isValid";
 import DOMPurify from "dompurify";
 
 const DefaultInput = ({ value, id, onChange, className }) => (
@@ -95,10 +96,14 @@ const relationOfTypes = {
 };
 
 const relationOfSubTypes = {
-	judgment_date_from: { ...relationOfTypes.judgment_date, type: "judgment_date", sub_value: "from" },
-	judgment_date_to: { ...relationOfTypes.judgment_date, type: "judgment_date", sub_value: "to" },
-	legislation_act: { ...relationOfTypes.legislation, type: "legislation", sub_value: "act" },
-	legislation_section: { ...relationOfTypes.legislation, type: "legislation", sub_value: "section" }
+	judgment_date_from: { ...relationOfTypes.judgment_date, parentType: "judgment_date", prop: "from" },
+	judgment_date_to: { ...relationOfTypes.judgment_date, parentType: "judgment_date", prop: "to" },
+	legislation_act: { ...relationOfTypes.legislation, parentType: "legislation", prop: "act" },
+	legislation_section: { ...relationOfTypes.legislation, parentType: "legislation", prop: "section" }
+};
+
+const validateValueOnPopulate = {
+	judgment_date: value => isValidDate(new Date(value))
 };
 
 class AdvancedSearch extends Component {
@@ -136,6 +141,8 @@ class AdvancedSearch extends Component {
 			const type = relationOfTypes[key];
 			const subType = relationOfSubTypes[key];
 			if (type) {
+				// Validate format if necessary before saving it
+				if (validateValueOnPopulate[type] && !validateValueOnPopulate[type](value)) return;
 				prevState.push({ ...type, value, type: key, id: idx });
 				prevTypesOfFields.push(key);
 				return;
@@ -143,18 +150,21 @@ class AdvancedSearch extends Component {
 
 			if (!subType) return;
 
-			field = prevState.find(({ type }) => type === subType.type);
-			if (field) field.value[subType.sub_value] = value;
+			// Validate format if necessary before saving it
+			if (validateValueOnPopulate[subType.parentType] && !validateValueOnPopulate[subType.parentType](value))
+				return;
+			field = prevState.find(({ type }) => type === subType.parentType);
+			if (field) field.value[subType.prop] = value;
 			else {
 				field = {
-					...relationOfTypes[subType.type],
-					type: subType.type,
+					...relationOfTypes[subType.parentType],
+					type: subType.parentType,
 					value: {},
 					id: idx
 				};
-				field.value[subType.sub_value] = value;
+				field.value[subType.prop] = value;
 				prevState.push(field);
-				prevTypesOfFields.push(subType.type);
+				prevTypesOfFields.push(subType.parentType);
 			}
 		});
 

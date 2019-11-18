@@ -24,8 +24,6 @@ import Daryl from "../../img/about-us/daryl-diesto.png";
 import Emma from "../../img/about-us/emma-burke.png";
 import Infra from "../../img/about-us/openlaw-infrastructure.png";
 
-const _ = require("lodash");
-
 class About extends Component {
 	render() {
 		return (
@@ -128,7 +126,6 @@ class About extends Component {
 										<strong>Blaine Western</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Lead web developer - Blaine is a programmer and developer with a background in
 									the visual arts. He is passionate about developing web technologies that strive
@@ -143,7 +140,6 @@ class About extends Component {
 										<strong>Tian Bai</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									A passionate Software Developer who graduated with a major in Computer Science and Statistics from Victoria University of Wellington.
 									"
@@ -157,7 +153,6 @@ class About extends Component {
 										<strong>Caio Nunes</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Caio is a Front End Developer who decided to give something back to New
 									Zealand's community after living in Auckland.
@@ -180,7 +175,6 @@ class About extends Component {
 										<strong>Alex Huang</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Alex is a web developer with a passion to create cool apps to change
 									people's life.
@@ -193,7 +187,6 @@ class About extends Component {
 										<strong>Chanil Park</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Chanil is a Software Developer who has completed Computer Science at Victoria University of Wellington.
 									He is participating in web development and machine learning at OpenLaw NZ.
@@ -209,7 +202,6 @@ class About extends Component {
 										<strong>Noel Soong</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Noel is a full stack developer hungry to expand his knowledge for the whole
 									technology stack. He helped develop, deploy and maintain the GraphQL api. He has also
@@ -224,7 +216,6 @@ class About extends Component {
 										<strong>Hanbyul Son</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Hanbyul is a mission-driven developer who always looks for opportunities to gain
 									more in-depth software development knowledge, and turn it into innovative
@@ -242,7 +233,6 @@ class About extends Component {
 										<strong>Alex Chan</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Alex has more than 10 years of experience in the IT industry covering software
 									development, project management and operational support. He is also a Certified
@@ -256,10 +246,7 @@ class About extends Component {
 										<img src={Limei} alt="Limei" />
 										<strong>Limei</strong>
 									</div>
-									<ReadMore
-										id={_.uniqueId()}
-										text="Limei is a skilled DevOps Engineer with in-depth professional experience with several major corporations in China. In order to experience different life, she came to New Zealand to study, work and live. She lives in Auckland with her family."
-									/>
+									<ReadMore text="Limei is a skilled DevOps Engineer with in-depth professional experience with several major corporations in China. In order to experience different life, she came to New Zealand to study, work and live. She lives in Auckland with her family." />
 								</div>
 							</div>
 
@@ -278,7 +265,6 @@ class About extends Component {
 										<strong>Daryl Diesto</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Daryl is a business data analyst who is keen to learn more about data, equipped with experience and innovative ideas. A leader, a follower and passionate about data.
 									"
@@ -302,15 +288,7 @@ class About extends Component {
 										<img src={Lina} alt="Lina Xie" />
 										<strong>Lina Xie</strong>
 									</div>
-									<p>
-										<ReadMore
-											id={_.uniqueId()}
-											text="
-									Lina is enthusiastic when it comes to web/graphic design. She likes taking on
-									challenges and pursues the production of good results for end users.
-									"
-										/>
-									</p>
+									<ReadMore text="Lina is enthusiastic when it comes to web/graphic design. She likes taking on challenges and pursues the production of good results for end users." />
 								</div>
 							</div>
 
@@ -322,7 +300,6 @@ class About extends Component {
 										<strong>David Paitai</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									David is a Community Advisor for Te Tari Taiwhenua (Internal Affairs) providing
 									advisory services for whānau, hapū, iwi, communities and community
@@ -340,7 +317,6 @@ class About extends Component {
 										<strong>Benedict Stewart</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Benedict leads product &amp; growth strategy at Dacreed, a regtech startup based
 									in Auckland. Previously a lawyer at Chapman Tripp, Benedict leverages his deep
@@ -355,7 +331,6 @@ class About extends Component {
 										<strong>Emma Burke</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Emma has a background in law and botany. She has worked in general practice,
 									primarily in property for two years.
@@ -370,7 +345,6 @@ class About extends Component {
 										<strong>Alex McNichol</strong>
 									</div>
 									<ReadMore
-										id={_.uniqueId()}
 										text="
 									Alex is a Law and Commerce student in his penultimate year at the University of
 									Canterbury. He is passionate about using and developing his legal skills for the

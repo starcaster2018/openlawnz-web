@@ -1,25 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 
 const ReadMore = props => {
-	const handleReadMore = e => {
+	const [textStyle, setTextStyle] = React.useState(null);
+	const [triggerStyle, setTriggerStyle] = React.useState(null);
+
+	const showContent = e => {
 		e.preventDefault();
 		if (e) {
-			const text = document.getElementById("text_" + props.id);
-			const readmore = document.getElementById("readmore_" + props.id);
-			text.style.height = "auto";
-			readmore.style.display = "none";
+			setTextStyle({ height: "auto" });
+			setTriggerStyle({ display: "none" });
 		}
 	};
 
 	return (
 		<p>
-			<span className="text" id={"text_" + props.id}>
+			<span className="text" id="text" style={textStyle}>
 				{props.text}
 			</span>
-			<span className="readmore" id={"readmore_" + props.id}>
-				.....{" "}
-				<span className="readmore-text" onClick={handleReadMore}>
-					Read more
+			<span className="readmore" id="readmore" style={triggerStyle}>
+				...
+				<span className="readmore-text" onClick={showContent}>
+					Read More
 				</span>
 			</span>
 		</p>

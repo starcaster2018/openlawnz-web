@@ -53,11 +53,20 @@
         @include header-five;
 
         li {
-          padding: 0 3vw;
+          padding: 0 2.3vw;
         }
 
         a {
           color: $openWhite;
+        }
+
+        span {
+          color: $openWhite;
+        }
+
+        span:hover {
+          cursor: pointer;
+          text-decoration: underline;
         }
       }
     }
@@ -136,6 +145,10 @@
     transform: translate(0px, 20px);
   }
 
+  #menuToggle input:checked {
+    position: fixed;
+  }
+
   #menuToggle input:checked ~ span {
     position: fixed;
     opacity: 1;
@@ -167,7 +180,7 @@
     background: #2b6064;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
-  
+
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
 

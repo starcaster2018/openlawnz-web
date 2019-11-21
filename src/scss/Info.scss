@@ -81,8 +81,12 @@
       flex-direction: column;
 
       h1 {
-        margin-bottom: 0px;
+        margin-bottom: 10px;
       }
+    }
+
+    &--column-nosub {
+      flex-direction: column;
     }
 
     .info-card-unit {

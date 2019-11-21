@@ -29,7 +29,7 @@ class About extends Component {
 			<React.Fragment>
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
-					<InfoCard classModifier="info-card--large info-card--title info-card--column">
+					<InfoCard classModifier="info-card--large info-card--title info-card--column-nosub">
 						<h1 className="no-margin">About Us</h1>
 					</InfoCard>
 

@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useReducer } from "react";
 import produce from "immer";
 import queryString from "query-string";
 import DatePicker from "react-date-picker";
@@ -11,7 +11,7 @@ import DOMPurify from "dompurify";
 
 const DefaultInput = ({ value, id, onChange, className }) => (
 	<div className={className}>
-		<input required id={`simple-${id}`} value={value} onChange={ev => onChange(id, ev.target.value)} />
+		<input required id={`simple-${id}`} value={value} onChange={ev => onChange({ id, value: ev.target.value })} />
 	</div>
 );
 
@@ -28,12 +28,12 @@ const JudgmentDate = ({ value, id, onChange, className }) => {
 		} else {
 			setDateTo(date);
 		}
-		onChange(id, format(date, dateFormat), type);
+		onChange({ id, valueInObject: type, value: format(date, dateFormat) });
 	};
 
 	useEffect(() => {
-		onChange(id, format(startingDateFrom, dateFormat), "from");
-		onChange(id, format(startingDateTo, dateFormat), "to");
+		onChange({ id, value: format(startingDateFrom, dateFormat), valueInObject: "from" });
+		onChange({ id, value: format(startingDateTo, dateFormat), valueInObject: "to" });
 	}, []);
 
 	return (
@@ -70,7 +70,7 @@ const Legislation = ({ value, id, onChange, className }) => (
 				type="text"
 				value={value.act || ""}
 				id={`act-${id}`}
-				onChange={ev => onChange(id, ev.target.value, "act")}
+				onChange={ev => onChange({ id, value: ev.target.value, valueInObject: "act" })}
 			/>
 		</div>
 		<div className="compound-field">
@@ -79,7 +79,7 @@ const Legislation = ({ value, id, onChange, className }) => (
 				type="text"
 				value={value.section || ""}
 				id={`section-${id}`}
-				onChange={ev => onChange(id, ev.target.value, "section")}
+				onChange={ev => onChange({ id, value: ev.target.value, valueInObject: "section" })}
 			/>
 		</div>
 	</div>
@@ -106,164 +106,55 @@ const validateValueOnPopulate = {
 	judgment_date: value => isValidDate(new Date(value))
 };
 
-class AdvancedSearch extends Component {
-	constructor(props) {
-		super(props);
-		this.defaultSearchFieldFormat = { id: 0, value: "", type: "any", Component: DefaultInput };
-		this.containerRef = React.createRef();
-		this.state = {
-			searchFields: [this.defaultSearchFieldFormat],
-			typesOfFields: Object.keys(relationOfTypes).map(type => ({
-				...relationOfTypes[type],
-				visible: true,
-				value: type === "any" ? "" : type
-			}))
-		};
+const defaultSearchFieldFormat = { id: 0, value: "", type: "any", Component: DefaultInput };
 
-		this.onFieldSelectChange = this.onFieldSelectChange.bind(this);
-		this.onFieldValueChange = this.onFieldValueChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.onAddField = this.onAddField.bind(this);
-		this.onRemoveField = this.onRemoveField.bind(this);
-		this.handleGlobalNavHeight = this.handleGlobalNavHeight.bind(this);
-	}
-
-	componentDidMount() {
-		setTimeout(this.handleGlobalNavHeight, 300);
-		if (!this.props.populateComponent) return;
-
-		const urlParams = queryString.parse(location.search);
-		const prevState = [];
-		const prevTypesOfFields = [];
-		Object.keys(urlParams).forEach((key, idx) => {
-			let field;
-			const value = DOMPurify.sanitize(urlParams[key]);
-			const type = relationOfTypes[key];
-			const subType = relationOfSubTypes[key];
-			if (type) {
-				// Validate format if necessary before saving it
-				if (validateValueOnPopulate[type] && !validateValueOnPopulate[type](value)) return;
-				prevState.push({ ...type, value, type: key, id: idx });
-				prevTypesOfFields.push(key);
-				return;
-			}
-
-			if (!subType) return;
-
-			// Validate format if necessary before saving it
-			if (validateValueOnPopulate[subType.parentType] && !validateValueOnPopulate[subType.parentType](value))
-				return;
-			field = prevState.find(({ type }) => type === subType.parentType);
-			if (field) field.value[subType.prop] = value;
-			else {
-				field = {
-					...relationOfTypes[subType.parentType],
-					type: subType.parentType,
-					value: {},
-					id: idx
-				};
-				field.value[subType.prop] = value;
-				prevState.push(field);
-				prevTypesOfFields.push(subType.parentType);
-			}
-		});
-
-		if (prevState.length) {
-			this.setState(state => ({
-				searchFields: prevState,
-				typesOfFields: state.typesOfFields.map(type => ({
-					...type,
-					visible: prevTypesOfFields.indexOf(type.value) === -1
-				}))
-			}));
-		}
-	}
-
-	componentWillUnmount() {
-		this.handleGlobalNavHeight(true);
-	}
-
-	getParamsAsString() {
-		return this.state.searchFields.reduce((acc, sf, sfIdx) => {
-			if (typeof sf.value === "object" && sf.value !== null) {
-				const keys = Object.keys(sf.value);
-				keys.forEach((key, keyIdx) => {
-					acc += `${sf.type}_${key}=${sf.value[key]}`;
-					if (keyIdx < keys.length - 1 || sfIdx < this.state.searchFields.length - 1) acc += "&";
-				});
-			} else {
-				acc += `${sf.type}=${sf.value}`;
-				if (sfIdx < this.state.searchFields.length - 1) acc += "&";
-			}
-
-			return acc;
-		}, "");
-	}
-
-	handleSubmit(e) {
-		e.preventDefault();
-
-		if (this.props.onSubmit) {
-			const paramsAsString = this.getParamsAsString();
-			this.props.onSubmit(paramsAsString, paramsAsString, "advancedQuery");
-			return;
-		}
-		this.props.history.push(`/search?${this.getParamsAsString()}`);
-	}
-
-	handleGlobalNavHeight(unmount) {
-		const containerBounding = this.containerRef.current.getBoundingClientRect();
-		const containerBottomBounding = containerBounding.y + window.pageYOffset + containerBounding.height;
-		const navContainer = document.getElementById("nav-container");
-		if (!navContainer) return;
-
-		navContainer.style = unmount ? "" : `height: ${containerBottomBounding}px`;
-	}
-
-	onFieldValueChange(id, value, valueInObject) {
-		this.setState(
-			produce(draft => {
+const searchReducer = (state, action) => {
+	switch (action.type) {
+		case "UPDATE_FIELD_VALUE":
+			return produce(state, draft => {
+				const { id, value, valueInObject } = action.payload;
 				const searchField = draft.searchFields.find(sf => sf.id === id);
 				let newValue = DOMPurify.sanitize(value, { ALLOWED_TAGS: ["&"] });
+
 				if (valueInObject) {
 					newValue = { ...searchField.value };
 					newValue[valueInObject] = DOMPurify.sanitize(value);
 				}
 
 				searchField.value = newValue;
-			})
-		);
-	}
+			});
+		case "EMPTY_FIELDS":
+			return {
+				...state,
+				searchFields: []
+			};
+		case "ADD_FIELD":
+			return produce(state, draft => {
+				const { type: fieldType } = action.payload.field;
+				const type = draft.typesOfFields.find(t => t.value === fieldType);
 
-	onAddField() {
-		this.setState(
-			produce(draft => {
-				const { searchFields } = draft;
-				const newSearchField = {
-					...this.defaultSearchFieldFormat,
-					id: searchFields[searchFields.length - 1].id + 1
-				};
-				searchFields.push(newSearchField);
-			}),
-			this.handleGlobalNavHeight
-		);
-	}
-
-	onRemoveField(id, type) {
-		this.setState(
-			produce(draft => {
+				draft.searchFields.push(action.payload.field);
+				if (type) type.visible = false;
+			});
+		case "ADD_EMPTY_FIELD":
+			return produce(state, draft => {
+				draft.searchFields.push({
+					...defaultSearchFieldFormat,
+					id: state.searchFields[state.searchFields.length - 1].id + 1
+				});
+			});
+		case "REMOVE_FIELD":
+			return produce(state, draft => {
+				const { type, id } = action.payload;
 				const typeOfField = draft.typesOfFields.find(t => t.value === type);
 
 				draft.searchFields = draft.searchFields.filter(item => item.id !== id);
 				if (typeOfField) typeOfField.visible = true;
-			})
-		);
-	}
-
-	onFieldSelectChange(value, id) {
-		this.setState(
-			produce(draft => {
+			});
+		case "UPDATE_FIELD_COMPONENT_AND_SELECT":
+			return produce(state, draft => {
 				let newType, currentType;
+				const { value, id } = action.payload;
 				const searchField = draft.searchFields.find(sf => sf.id === id);
 				draft.typesOfFields.forEach(type => {
 					if (type.value === value) newType = type;
@@ -276,82 +167,183 @@ class AdvancedSearch extends Component {
 
 				newType.visible = newType.value === "" || false;
 				if (currentType) currentType.visible = true;
-			}),
-			this.handleGlobalNavHeight
-		);
+			});
+		default:
+			throw new Error();
 	}
+};
 
-	render() {
-		return (
-			<div ref={this.containerRef} className="advanced-search">
-				<form className="box" onSubmit={this.handleSubmit}>
-					<h2 className="title">Advanced Search</h2>
-					<span className="subtitle">Please select:</span>
+const AdvancedSearch = ({ onSubmit, toggleTypeOfSearch, populateComponent, history }) => {
+	const containerRef = useRef(null);
+	const [state, dispatch] = useReducer(searchReducer, {
+		searchFields: [defaultSearchFieldFormat],
+		typesOfFields: Object.keys(relationOfTypes).map(type => ({
+			...relationOfTypes[type],
+			visible: true,
+			value: type === "any" ? "" : type
+		}))
+	});
 
-					{this.state.searchFields.map(({ type, id, value, Component }, index) => (
-						<div className="search-field" key={id}>
-							<select
-								className="search-field-select"
-								value={type}
-								required
-								onChange={ev => this.onFieldSelectChange(ev.target.value, id)}
-							>
-								{this.state.typesOfFields.map(
-									t =>
-										(t.value === type || t.visible) && (
-											<option key={`searchField${id}-${t.value}`} value={t.value}>
-												{t.text}
-											</option>
-										)
-								)}
-							</select>
+	useEffect(() => {
+		handleGlobalNavHeight();
+		return () => handleGlobalNavHeight(true);
+	});
 
-							<Component
-								className="search-field-input"
-								id={id}
-								value={value}
-								onChange={this.onFieldValueChange}
-							/>
+	useEffect(() => {
+		setTimeout(handleGlobalNavHeight, 300);
+		if (!populateComponent) return;
 
-							<div className="search-field-button">
-								{index > 0 && (
-									<button
-										type="button"
-										className="action-button simple large-font"
-										onClick={() => this.onRemoveField(id, type)}
-									>
-										x
-									</button>
-								)}
-							</div>
-						</div>
-					))}
+		const urlParams = queryString.parse(location.search);
+		const prevState = [];
+		Object.keys(urlParams).forEach((key, idx) => {
+			let field;
+			const value = DOMPurify.sanitize(urlParams[key]);
+			const type = relationOfTypes[key];
+			const subType = relationOfSubTypes[key];
+			if (type) {
+				// Validate format if necessary before saving it
+				if (validateValueOnPopulate[type] && !validateValueOnPopulate[type](value)) return;
+				field = { ...type, value, type: key, id: idx };
+				prevState.push(field);
+				return;
+			}
 
-					<div className="search-field">
-						<button
-							disabled={this.state.typesOfFields.length - 1 === this.state.searchFields.length || false}
-							type="button"
-							className="action-button large-font"
-							onClick={this.onAddField}
+			if (!subType) return;
+
+			// Validate format if necessary before saving it
+			if (validateValueOnPopulate[subType.parentType] && !validateValueOnPopulate[subType.parentType](value))
+				return;
+			field = prevState.find(({ type }) => type === subType.parentType) || {
+				...relationOfTypes[subType.parentType],
+				type: subType.parentType,
+				value: {},
+				id: idx
+			};
+			field.value[subType.prop] = value;
+			if (Object.keys(field.value).length <= 1) prevState.push(field);
+		});
+
+		if (prevState.length) {
+			triggerDispatch("EMPTY_FIELDS");
+			prevState.forEach(field => triggerDispatch("ADD_FIELD", { field }));
+		}
+	}, []);
+
+	const getParamsAsString = () => {
+		return state.searchFields.reduce((acc, sf, sfIdx) => {
+			if (typeof sf.value === "object" && sf.value !== null) {
+				const keys = Object.keys(sf.value);
+				keys.forEach((key, keyIdx) => {
+					acc += `${sf.type}_${key}=${sf.value[key]}`;
+					if (keyIdx < keys.length - 1 || sfIdx < state.searchFields.length - 1) acc += "&";
+				});
+			} else {
+				acc += `${sf.type}=${sf.value}`;
+				if (sfIdx < state.searchFields.length - 1) acc += "&";
+			}
+
+			return acc;
+		}, "");
+	};
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		const paramsAsString = getParamsAsString();
+
+		return onSubmit
+			? onSubmit(paramsAsString, paramsAsString, "advancedQuery")
+			: history.push(`/search?${getParamsAsString()}`);
+	};
+
+	const handleGlobalNavHeight = unmount => {
+		const bounding = {};
+		const navContainer = document.getElementById("nav-container");
+		if (unmount && navContainer) {
+			navContainer.style = "";
+			return;
+		} else if (!navContainer) return;
+
+		bounding.container = containerRef.current.getBoundingClientRect();
+		bounding.containerBounding = bounding.container.y + window.pageYOffset + bounding.container.height;
+
+		navContainer.style = unmount ? "" : `height: ${bounding.containerBounding}px`;
+	};
+
+	const triggerDispatch = (type, payload) => {
+		dispatch({ type, payload });
+	};
+
+	return (
+		<div ref={containerRef} className="advanced-search">
+			<form className="box" onSubmit={handleSubmit}>
+				<h2 className="title">Advanced Search</h2>
+				<span className="subtitle">Please select:</span>
+
+				{state.searchFields.map(({ type, id, value, Component }, index) => (
+					<div className="search-field" key={id}>
+						<select
+							className="search-field-select"
+							value={type}
+							required
+							onChange={ev =>
+								triggerDispatch("UPDATE_FIELD_COMPONENT_AND_SELECT", { id, value: ev.target.value })
+							}
 						>
-							+
-						</button>
-					</div>
+							{state.typesOfFields.map(
+								t =>
+									(t.value === type || t.visible) && (
+										<option key={`searchField${id}-${t.value}`} value={t.value}>
+											{t.text}
+										</option>
+									)
+							)}
+						</select>
 
-					<div className="action-container">
-						<button type="button" className="action-button simple" onClick={this.props.toggleTypeOfSearch}>
-							Cancel
-						</button>
+						<Component
+							className="search-field-input"
+							id={id}
+							value={value}
+							onChange={payload => triggerDispatch("UPDATE_FIELD_VALUE", payload)}
+						/>
 
-						<button type="submit" className="action-button large">
-							Search
-						</button>
+						<div className="search-field-button">
+							{index > 0 && (
+								<button
+									type="button"
+									className="action-button simple large-font"
+									onClick={() => triggerDispatch("REMOVE_FIELD", { id, type })}
+								>
+									x
+								</button>
+							)}
+						</div>
 					</div>
-				</form>
-			</div>
-		);
-	}
-}
+				))}
+
+				<div className="search-field">
+					<button
+						disabled={state.typesOfFields.length - 1 === state.searchFields.length || false}
+						type="button"
+						className="action-button large-font"
+						onClick={() => triggerDispatch("ADD_EMPTY_FIELD", null)}
+					>
+						+
+					</button>
+				</div>
+
+				<div className="action-container">
+					<button type="button" className="action-button simple" onClick={toggleTypeOfSearch}>
+						Cancel
+					</button>
+
+					<button type="submit" className="action-button large">
+						Search
+					</button>
+				</div>
+			</form>
+		</div>
+	);
+};
 
 AdvancedSearch.defaultProps = {
 	toggleTypeOfSearch: () => {}

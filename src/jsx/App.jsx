@@ -12,6 +12,7 @@ import Plugins from "./pages/Plugins.jsx";
 import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
 import NewsContext from "./NewsContext.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 // login
 import { useAuth0 } from "../js/react-auth0-spa";
@@ -21,40 +22,39 @@ import "../scss/App.scss";
 
 const MainNavWithRouter = withRouter(props => <MainNav {...props} />);
 
-const App = (props) => {
-		const { loading } = useAuth0();
-		const [news, setNews] = React.useState(null);
-		const updateNewsData = (news) => setNews(news);
+const App = props => {
+	const { loading } = useAuth0();
+	const [news, setNews] = React.useState(null);
+	const updateNewsData = news => setNews(news);
 
-		if (loading) {
-	    return (
-	      <div>Loading...</div>
-	    );
-	  }
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 
-		return(
-			<Router>
-				<React.Fragment>
-					<Helmet>
-						<title>OpenLaw NZ</title>
-						<meta name="openlaw" content="open-source legal data platform, free to use" />
-					</Helmet>
-					<MainNavWithRouter />
-					<main className="content-wrapper">
-							<NewsContext.Provider value={{ data: news, updateData: updateNewsData }}>
-								<Route exact path="/" component={Home} />
-								<Route exact path="/news" component={News} />
-								<Route exact path="/news/:id" component={SingleNews} />
-							</NewsContext.Provider>
-							<Route exact path="/search" component={Search} />
-							<Route exact path="/case/:id" component={SingleCase} />
-							<Route exact path="/developers" component={Developers} />
-							<Route exact path="/plugins" component={Plugins} />
-							<Route exact path="/about" component={About} />
-					</main>
-				</React.Fragment>
-			</Router>
-		);
+	return (
+		<Router>
+			<React.Fragment>
+				<Helmet>
+					<title>OpenLaw NZ</title>
+					<meta name="openlaw" content="open-source legal data platform, free to use" />
+				</Helmet>
+				<MainNavWithRouter />
+				<main className="content-wrapper">
+					<NewsContext.Provider value={{ data: news, updateData: updateNewsData }}>
+						<Route exact path="/" component={Home} />
+						<Route exact path="/news" component={News} />
+						<Route exact path="/news/:id" component={SingleNews} />
+					</NewsContext.Provider>
+					<Route exact path="/profile" component={ProfilePage} />
+					<Route exact path="/search" component={Search} />
+					<Route exact path="/case/:id" component={SingleCase} />
+					<Route exact path="/developers" component={Developers} />
+					<Route exact path="/plugins" component={Plugins} />
+					<Route exact path="/about" component={About} />
+				</main>
+			</React.Fragment>
+		</Router>
+	);
 };
 
 export default hot(module)(App);

@@ -17,6 +17,9 @@ module.exports = (env, argv) => ({
 		publicPath: "/",
 		filename: "bundle.js"
 	},
+	resolve: {
+		extensions: [".js", ".jsx"]
+	},
 	module: {
 		rules: [
 			{

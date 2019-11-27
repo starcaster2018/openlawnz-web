@@ -1,0 +1,107 @@
+$selectTextColor: #3D3D3D;
+$selectTextBgColor: #f6f6f6;
+$pureWhite: #fff;
+$openLawLightBrown: #cf9768;
+$selectBigHeight: 40px;
+$selectSmallHeight: 36px;
+$selectPaddingLeft: 12px;
+
+@mixin select-big {
+  width: 306px;
+  height: $selectBigHeight;
+  line-height: $selectBigHeight;
+}
+
+@mixin select-small{
+  width: 190px;
+  height: $selectSmallHeight;
+  line-height: $selectSmallHeight;
+}
+
+@mixin select-text {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  background-color: $selectTextBgColor ;
+}
+
+.select-big {
+  @include select-big;
+
+  p{
+    height: $selectBigHeight;
+    line-height: $selectBigHeight;
+  }
+
+  li{
+    @include select-big;
+  }
+}
+
+.select-small {
+  @include select-small;
+
+  p{
+    height: $selectSmallHeight;
+    line-height: $selectSmallHeight;
+  }
+
+  li {
+    @include select-small;
+  }
+
+}
+
+.select {
+  @include select-text;
+  position: relative;
+  color: $selectTextColor;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 9000;
+
+  p {
+    display: inline-block;
+    padding-left: $selectPaddingLeft;
+  }
+
+  ul {
+    background: $pureWhite;
+    box-shadow: 0 4px 4px rgba(133, 133, 133, 0.25);
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    margin-top: 2px;
+
+    li {
+      padding-left: $selectPaddingLeft;
+    }
+
+    li:hover {
+      background-color: $openLawLightBrown;
+      color: $pureWhite;
+    }
+
+  }
+
+  svg{
+    display: inline-block;
+    height: 25%;
+    position: absolute;
+    right: 16px;
+    top: calc(75%/2);
+  }
+
+
+}
+
+.select-mask{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 8199;
+}
+

@@ -1,0 +1,85 @@
+$ModalBackgroundWhite: #f6f6f6;
+$pureWhite: #fff;
+$openLawArapawa: #225160;
+$openLawDarkGreen: #3f7578;
+
+.modal {
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 100px;
+  width: 484px;
+  height: 416px;
+  background: $pureWhite;
+  box-shadow: 0 4px 13px rgba(133, 133, 133, 0.25);
+  border-radius: 5px;
+  z-index: 8100;
+
+  .modal-title{
+    width: 100%;
+    height: 22px;
+    margin-top: 53px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    text-decoration-line: underline;
+    color: $openLawArapawa
+  }
+
+  .modal-button{
+
+    position: absolute;
+    width: 310px;
+    left: 88px;
+    bottom: 34px;
+
+    .modal-button-confirm {
+      width: 155px;
+      height: 45px;
+    }
+    .modal-button-cancel {
+      width: 0;
+      height: 0;
+      margin-left: 60px;
+
+    }
+  }
+
+  .modal-text{
+    font-weight: 800;
+    color: $openLawDarkGreen;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 30px 0 0 90px;
+  }
+
+  .modal-select{
+    width: 306px;
+    height: 40px;
+    background-color: $ModalBackgroundWhite;
+    border-radius: 5px;
+    box-shadow: 0 4px 2px rgba(0,0,0,0.25);
+    margin-left: 88px;
+  }
+
+  .modal-input{
+    margin-left: 88px;
+  }
+}
+
+.modal-mask{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 8099;
+}
+
+.prevent-scroll{
+  height: 100%;
+  overflow: hidden;
+}

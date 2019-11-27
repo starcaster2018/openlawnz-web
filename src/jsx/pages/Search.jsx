@@ -7,6 +7,7 @@ import parseISO from "date-fns/parseISO";
 import Footer from "../components/Footer.jsx";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
+import ModalWrapper from "../components/Modal/ModalWrapper";
 
 import SearchIcon from "-!svg-react-loader?name=Logo!../../img/search-icon.svg";
 import Next from "-!svg-react-loader?name=Logo!../../img/next-page.svg";
@@ -26,6 +27,9 @@ const Results = ({ data = [] }) =>
 			</td>
 			<td>{result.citation === null ? "N / A" : result.citation}</td>
 			<td className="caseDate">{dateFormat(parseISO(result.date), "dd/MM/yyyy")}</td>
+			<td>
+				<ModalWrapper />
+			</td>
 		</tr>
 	));
 
@@ -42,7 +46,9 @@ const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) =>
 		<div className="search">
 			<form className="search-input" onSubmit={onSubmit}>
 				<div className="input-wrapper">
-					<label className="search-label" htmlFor="searchTerm">Search legal cases</label>
+					<label className="search-label" htmlFor="searchTerm">
+						Search legal cases
+					</label>
 					<input
 						id="searchTerm"
 						type="text"
@@ -51,7 +57,7 @@ const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) =>
 						onChange={onInputChange}
 						defaultValue={value}
 					/>
-					<button type="submit" className="search-button" title="Search" tabindex="-1">
+					<button type="submit" className="search-button" title="Search" tabIndex="-1">
 						<SearchIcon />
 					</button>
 				</div>
@@ -218,6 +224,7 @@ class SearchPage extends Component {
 									<th>Case Name</th>
 									<th>Citation</th>
 									<th>Date</th>
+									<th>Save</th>
 								</tr>
 							</thead>
 							<tbody

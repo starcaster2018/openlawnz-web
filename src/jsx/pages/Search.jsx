@@ -28,7 +28,7 @@ const Results = ({ data = [] }) =>
 			<td>{result.citation === null ? "N / A" : result.citation}</td>
 			<td className="caseDate">{dateFormat(parseISO(result.date), "dd/MM/yyyy")}</td>
 			<td>
-				<ModalWrapper />
+				<ModalWrapper caseId={result.caseId} caseName={result.caseName} />
 			</td>
 		</tr>
 	));

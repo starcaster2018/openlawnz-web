@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Modal from "./Modal";
 import Button from "./Button";
 import Input from "./Input";
@@ -92,7 +93,7 @@ class ModalWrapper extends Component {
 					key={this.state.buttonID}
 				>
 					<div className="modal-title">
-						{this.props.title || "titletitltitletitleetitletitletitletitletitletitletitletitle"}
+						{this.props.caseName || "titletitltitletitleetitletitletitletitletitletitletitletitle"}
 					</div>
 					<p className="modal-text">Add to: </p>
 					<Button.Group
@@ -126,3 +127,7 @@ class ModalWrapper extends Component {
 }
 
 export default ModalWrapper;
+
+ModalWrapper.propTypes = {
+	caseName: PropTypes.string
+};

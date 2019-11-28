@@ -1,4 +1,5 @@
 
 
 ___
-By creating this pull request, I agree with the contributors guide of this project described in the [Contributors Agreement](https://github.com/openlawnz/openlawnz-web/blob/master/CONTRIBUTING.md).
+NB - by making a pull request you confirm agreement to the [Contributors Agreement](https://github.com/openlawnz/openlawnz-web/blob/master/CONTRIBUTING.md).
+

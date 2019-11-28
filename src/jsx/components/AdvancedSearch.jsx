@@ -89,10 +89,12 @@ const relationOfTypes = {
 	any: { Component: DefaultInput, text: "Any Field" },
 	case_title: { Component: DefaultInput, text: "Case Title" },
 	court: { Component: DefaultInput, text: "Court" },
-	// judge: { Component: DefaultInput, text: "Judge" },
+	case_text: { Component: DefaultInput, text: "Case Text" },
+	citation: { Component: DefaultInput, text: "Citation" },
+	cited_by: { Component: DefaultInput, text: "Cited By" },
+	cites: { Component: DefaultInput, text: "Cites" },
 	judgment_date: { Component: JudgmentDate, text: "Judgment Date" },
 	legislation: { Component: Legislation, text: "Legislation" }
-	// case_content: { Component: DefaultInput, text: "Case Content" }
 };
 
 const relationOfSubTypes = {

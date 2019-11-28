@@ -210,7 +210,7 @@ li {
   }
 
   .contact-us-button {
-    
+
     a {
       display: inline-block;
       @include button-style;
@@ -293,16 +293,6 @@ li {
   text-align: center;
   margin: 0;
   padding: 5vh 10vw 0;
-}
-
-.route-transition-enter {
-  opacity: 0;
-  z-index: 1;
-}
-
-.route-transition-enter.route-transition-enter-active {
-  opacity: 1;
-  transition: opacity 10ms ease-in;
 }
 
 @import "./Nav.scss";

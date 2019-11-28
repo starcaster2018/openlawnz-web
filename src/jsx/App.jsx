@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter, BrowserRouter as Router, Route } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { hot } from "react-hot-loader";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import MainNav from "./components/MainNav.jsx";
 import Home from "./pages/Home.jsx";
 import Search from "./pages/Search.jsx";
@@ -19,18 +18,6 @@ import { useAuth0 } from "../js/react-auth0-spa";
 
 import "normalize.css";
 import "../scss/App.scss";
-
-const RouteWithTransition = ({ children }) => (
-	<Route
-		render={({ location }) => (
-			<TransitionGroup>
-				<CSSTransition key={location.pathname} classNames="route-transition" timeout={800}>
-					<div>{children}</div>
-				</CSSTransition>
-			</TransitionGroup>
-		)}
-	/>
-);
 
 const MainNavWithRouter = withRouter(props => <MainNav {...props} />);
 
@@ -54,7 +41,6 @@ const App = (props) => {
 					</Helmet>
 					<MainNavWithRouter />
 					<main className="content-wrapper">
-						<RouteWithTransition>
 							<NewsContext.Provider value={{ data: news, updateData: updateNewsData }}>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/news" component={News} />
@@ -65,7 +51,6 @@ const App = (props) => {
 							<Route exact path="/developers" component={Developers} />
 							<Route exact path="/plugins" component={Plugins} />
 							<Route exact path="/about" component={About} />
-						</RouteWithTransition>
 					</main>
 				</React.Fragment>
 			</Router>

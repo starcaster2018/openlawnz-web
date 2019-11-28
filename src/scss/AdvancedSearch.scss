@@ -1,6 +1,7 @@
 .advanced-search {
   padding-bottom: 120px;
   margin-top: 60px;
+  margin-bottom: 25px;
 
   .box {
     @include card-style;
@@ -154,6 +155,8 @@
 
 @media (min-width: 767px) {
   .advanced-search {
+    margin-bottom: 0px;
+
     .box {
       max-width: 740px;
     }

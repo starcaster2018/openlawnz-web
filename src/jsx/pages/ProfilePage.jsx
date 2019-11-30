@@ -37,11 +37,21 @@ function FoldersList() {
 		<div className="folder-list">
 			<ul>
 				<li>
-					<img src={Folder} srcSet={`${SmallFolder2x} 2x,${SmallFolder3x} 3x`} alt="Small Folder" className="small-folder" />
+					<img
+						src={Folder}
+						srcSet={`${SmallFolder2x} 2x,${SmallFolder3x} 3x`}
+						alt="Small Folder"
+						className="small-folder"
+					/>
 					<span className="folder-name">Custody</span>
 				</li>
 				<li>
-					<img src={Folder} srcSet={`${SmallFolder2x} 2x,${SmallFolder3x} 3x`} alt="Small Folder" className="small-folder" />
+					<img
+						src={Folder}
+						srcSet={`${SmallFolder2x} 2x,${SmallFolder3x} 3x`}
+						alt="Small Folder"
+						className="small-folder"
+					/>
 					<span className="folder-name">Claims</span>
 				</li>
 			</ul>
@@ -59,7 +69,12 @@ function FolderTableTitle() {
 			<div className="folder-table-title">Custody Folder</div>
 			<div className="folder-privacy">(private)</div>
 			<span className="folder-edit">Edit</span>
-			<img src={DeleteFolder} srcSet={`${DeleteFolder2x} 2x, ${DeleteFolder3x} 3x`} alt="Delete" className="delete-folder"></img>
+			<img
+				src={DeleteFolder}
+				srcSet={`${DeleteFolder2x} 2x, ${DeleteFolder3x} 3x`}
+				alt="Delete"
+				className="delete-folder"
+			></img>
 		</div>
 	);
 }

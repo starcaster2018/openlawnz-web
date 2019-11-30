@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import DeleteFolder2x from "../../img/delete-folder2x.png";
-import DeleteFolder3x from "../../img/delete-folder3x.png";
-import LargeFolder2x from "../../img/large-folder2x.png";
-import LargeFolder3x from "../../img/large-folder3x.png";
-import SmallFolder2x from "../../img/small-folder2x.png";
-import SmallFolder3x from "../../img/small-folder3x.png";
+import DeleteFolder from "../../img/delete-folder.png";
+import DeleteFolder2x from "../../img/delete-folder@2x.png";
+import DeleteFolder3x from "../../img/delete-folder@3x.png";
+import Folder from "../../img/folder.png";
+import SmallFolder2x from "../../img/small-folder@2x.png";
+import SmallFolder3x from "../../img/small-folder@3x.png";
+import LargeFolder2x from "../../img/large-folder@2x.png";
+import LargeFolder3x from "../../img/large-folder@3x.png";
 import Footer from "../components/Footer.jsx";
 
 function FoldersHead() {
@@ -24,7 +26,7 @@ function FoldersNavBar() {
 function FoldersNavBarTitle() {
 	return (
 		<div className="folder-navbar-title-container">
-			<img src={LargeFolder2x} alt="Large Folder 2x" className="large-folder2x" />
+			<img src={LargeFolder2x} srcSet={LargeFolder3x} alt="Large Folder" className="large-folder" />
 			<span className="folder-navbar-title">All Saved Cases</span>
 		</div>
 	);
@@ -35,11 +37,11 @@ function FoldersList() {
 		<div className="folder-list">
 			<ul>
 				<li>
-					<img src={SmallFolder2x} alt="Small Folder 2x" className="small-folder2x" />
+					<img src={Folder} srcSet={`${SmallFolder2x} 2x,${SmallFolder3x} 3x`} alt="Small Folder" className="small-folder" />
 					<span className="folder-name">Custody</span>
 				</li>
 				<li>
-					<img src={SmallFolder2x} alt="Small Folder 2x" className="small-folder2x" />
+					<img src={Folder} srcSet={`${SmallFolder2x} 2x,${SmallFolder3x} 3x`} alt="Small Folder" className="small-folder" />
 					<span className="folder-name">Claims</span>
 				</li>
 			</ul>
@@ -57,7 +59,7 @@ function FolderTableTitle() {
 			<div className="folder-table-title">Custody Folder</div>
 			<div className="folder-privacy">(private)</div>
 			<span className="folder-edit">Edit</span>
-			<img src={DeleteFolder2x} alt="Delete 2x" className="delete-folder2x" />
+			<img src={DeleteFolder} srcSet={`${DeleteFolder2x} 2x, ${DeleteFolder3x} 3x`} alt="Delete" className="delete-folder"></img>
 		</div>
 	);
 }

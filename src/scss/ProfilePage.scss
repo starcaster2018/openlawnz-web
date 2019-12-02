@@ -13,10 +13,19 @@
             color: $openWhite;
             font-weight: 700;
             @include header-three;
-            padding: 16px 0px 11px 50px;
+            //padding: 16px 0px 11px 50px;
+            padding-left: 50px;
+            height: 60px;
+            line-height: 60px;
             background-color: $openLawDarkGreen;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
+
+          .folder-head-close{
+            float: right;
+            margin-right: 22px;
+          }
+
         }
 
         .content {

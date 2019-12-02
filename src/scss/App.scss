@@ -709,6 +709,14 @@ li {
   padding: 5vh 10vw 0;
 }
 
+.clearfix:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+
+
 @import "./Nav.scss";
 @import "./Search.scss";
 @import "./Info.scss";

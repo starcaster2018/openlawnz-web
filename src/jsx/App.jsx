@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter, BrowserRouter as Router, Route } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { hot } from "react-hot-loader";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import MainNav from "./components/MainNav.jsx";
 import Home from "./pages/Home.jsx";
 import Search from "./pages/Search.jsx";
@@ -18,36 +17,13 @@ import ModalWrapper from "./components/Modal/ModalWrapper";
 import "normalize.css";
 import "../scss/App.scss";
 
-const RouteWithTransition = ({ children }) => (
-	<Route
-		render={({ location }) => (
-			<TransitionGroup>
-				<CSSTransition key={location.pathname} classNames="route-transition" timeout={800}>
-					<div>{children}</div>
-				</CSSTransition>
-			</TransitionGroup>
-		)}
-	/>
-);
-
 const MainNavWithRouter = withRouter(props => <MainNav {...props} />);
 
-class App extends Component {
-	constructor(props) {
-		super(props);
-		this.updateNewsData = this.updateNewsData.bind(this);
+const App = (props) => {
+		const [news, setNews] = React.useState(null);
+		const updateNewsData = (news) => setNews(news);
 
-		this.state = {
-			news: null
-		};
-	}
-
-	updateNewsData(news) {
-		this.setState({ news });
-	}
-
-	render() {
-		return (
+		return(
 			<Router>
 				<React.Fragment>
 					<Helmet>
@@ -56,8 +32,7 @@ class App extends Component {
 					</Helmet>
 					<MainNavWithRouter />
 					<main className="content-wrapper">
-						<RouteWithTransition>
-							<NewsContext.Provider value={{ data: this.state.news, updateData: this.updateNewsData }}>
+							<NewsContext.Provider value={{ data: news, updateData: updateNewsData }}>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/news" component={News} />
 								<Route exact path="/news/:id" component={SingleNews} />
@@ -68,12 +43,10 @@ class App extends Component {
 							<Route exact path="/developers" component={Developers} />
 							<Route exact path="/plugins" component={Plugins} />
 							<Route exact path="/about" component={About} />
-						</RouteWithTransition>
 					</main>
 				</React.Fragment>
 			</Router>
 		);
-	}
-}
+};
 
 export default hot(module)(App);

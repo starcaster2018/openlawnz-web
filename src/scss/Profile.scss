@@ -1,0 +1,94 @@
+$profileNavBgColor: #f7f7f7;
+.profile{
+  padding: 65px 0 135px;
+  height: 910px;
+  width: 100vw;
+  background-color: $openWhite;
+
+  .profile-wrapper{
+    @include card-style;
+    width: 1100px;
+    height: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .profile-header{
+      @include header-three;
+      color: $openWhite;
+      font-weight: 800;
+      padding-left: 50px;
+      height: 60px;
+      line-height: 60px;
+      background-color: $openLawDarkGreen;
+      border-radius: 5px 5px 0 0;
+
+      .profile-header-close{
+        float: right;
+        margin-right: 22px;
+      }
+    }
+
+    .profile-content{
+
+      div{
+        height: 40px;
+        line-height: 40px;
+      }
+      .profile-nav{
+        width: 195px;
+        height: 640px;
+        background: $profileNavBgColor;
+
+        .profile-nav-list{
+          width: 100%;
+          height: 560px;
+        }
+
+        .profile-nav-title, .profile-nav-menu{
+          color: $openLawDarkGreen;
+          font-weight: bold;
+          font-size: 14px;
+        }
+
+        .profile-nav-menu{
+          cursor: pointer;
+        }
+
+        .profile-nav-menu-active, .profile-nav-menu:hover{
+          color: $openWhite;
+          background-color: $openLawLightBrown;
+        }
+
+        .profile-nav-big{
+
+          svg{
+            margin: 14px 12px 0 18px ;
+          }
+
+        }
+
+        .profile-nav-small{
+          svg{
+            margin: 14px 8px 0 38px ;
+          }
+        }
+
+        .profile-create-folder{
+          color: $openLawDarkGreen;
+          font-size: 16px;
+          font-weight: 900;
+          height: 22px;
+          line-height: 22px;
+          cursor: pointer;
+          padding-left: 24px;
+        }
+
+      }
+
+
+
+    }
+
+  }
+
+}

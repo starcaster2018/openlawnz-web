@@ -13,6 +13,7 @@ import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
 import NewsContext from "./NewsContext.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import Profile from "./pages/Profile.jsx";
 
 // login
 import { useAuth0 } from "../js/react-auth0-spa";
@@ -46,6 +47,7 @@ const App = props => {
 						<Route exact path="/news/:id" component={SingleNews} />
 					</NewsContext.Provider>
 					<Route exact path="/profile" component={ProfilePage} />
+					<Route exact path="/newprofile" component={Profile} />
 					<Route exact path="/search" component={Search} />
 					<Route exact path="/case/:id" component={SingleCase} />
 					<Route exact path="/developers" component={Developers} />

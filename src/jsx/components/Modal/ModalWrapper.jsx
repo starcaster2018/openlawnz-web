@@ -28,10 +28,7 @@ class ModalWrapper extends Component {
 	}
 
 	handleVisible(e) {
-		const _this = this;
-		this.setState({ buttonID: e.target.id, visible: true }, () => {
-			console.log(` ${_this.state.visible}`);
-		});
+		this.setState({ buttonID: e.target.id, visible: true });
 	}
 
 	clickButton(e) {

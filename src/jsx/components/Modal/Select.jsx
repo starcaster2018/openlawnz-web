@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-import "../../../scss/Select.scss";
-
 class Select extends Component {
 	constructor(props) {
 		super(props);

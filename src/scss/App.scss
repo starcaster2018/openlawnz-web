@@ -10,6 +10,10 @@ $openLawA11yBrown: #a36633;
 $openLawCharcoal: #22283a;
 $newsBackgroundColor: #f5f5f5;
 $openLawArapawa: #225160;
+$ModalBackgroundWhite: #f6f6f6;
+$buttonTextColor: #a8a8a8;
+$inputLightGrey: #E0E0E0;
+$selectTextColor: #3D3D3D;
 
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800&display=swap');
@@ -309,3 +313,7 @@ li {
 @import "./MainContent.scss";
 @import "./Result.scss";
 @import "./SingleCase.scss";
+@import "./Button.scss";
+@import "./Input.scss";
+@import "./Modal.scss";
+@import "./Select.scss";

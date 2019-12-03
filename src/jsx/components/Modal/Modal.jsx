@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Button from "./Button";
 import PropTypes from "prop-types";
-import "../../../scss/Modal.scss";
 
 class Modal extends Component {
 	constructor(props) {

@@ -3,8 +3,6 @@ import classnames from "classnames";
 import ButtonGroup from "./ButtonGroup";
 import PropTypes from "prop-types";
 
-import "../../../scss/Button.scss";
-
 const Button = props => {
 	const isColored = props.colored ? "button-colored" : "button-white";
 

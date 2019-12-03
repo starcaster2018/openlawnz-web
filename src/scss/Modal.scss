@@ -1,8 +1,3 @@
-$ModalBackgroundWhite: #f6f6f6;
-$pureWhite: #fff;
-$openLawArapawa: #225160;
-$openLawDarkGreen: #3f7578;
-
 .modal {
   position: fixed;
   margin: 0 auto;
@@ -11,7 +6,7 @@ $openLawDarkGreen: #3f7578;
   top: 100px;
   width: 484px;
   height: 416px;
-  background: $pureWhite;
+  background: $openWhite;
   box-shadow: 0 4px 13px rgba(133, 133, 133, 0.25);
   border-radius: 5px;
   z-index: 8100;
@@ -26,7 +21,8 @@ $openLawDarkGreen: #3f7578;
     line-height: 22px;
     text-align: center;
     text-decoration-line: underline;
-    color: $openLawArapawa
+    color: $openLawArapawa;
+    padding: 0 40px;
   }
 
   .modal-button{
@@ -77,6 +73,7 @@ $openLawDarkGreen: #3f7578;
   left: 0;
   right: 0;
   z-index: 8099;
+  background-color: rgba(250,250,250,0.7);
 }
 
 .prevent-scroll{

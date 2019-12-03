@@ -37,7 +37,6 @@ const App = (props) => {
 								<Route exact path="/news" component={News} />
 								<Route exact path="/news/:id" component={SingleNews} />
 							</NewsContext.Provider>
-                            <Route exact path="/modal" component={ModalWrapper} />
 							<Route exact path="/search" component={Search} />
 							<Route exact path="/case/:id" component={SingleCase} />
 							<Route exact path="/developers" component={Developers} />

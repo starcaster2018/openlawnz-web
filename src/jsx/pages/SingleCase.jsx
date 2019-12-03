@@ -3,7 +3,6 @@ import Search from "../components/Search.jsx";
 import Footer from "../components/Footer.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import SingleCaseView from "../components/SingleCaseView.jsx";
-
 import ApiService from "../../js/ApiService";
 
 class SingleCase extends Component {

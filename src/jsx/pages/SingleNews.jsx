@@ -1,5 +1,4 @@
 import React from "react";
-
 import { getNews } from "../../js/ApiNews";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";

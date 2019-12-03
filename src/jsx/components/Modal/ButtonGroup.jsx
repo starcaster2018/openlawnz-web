@@ -4,20 +4,20 @@ import PropTypes from "prop-types";
 
 const ButtonGroup = props => {
 	function clickFirst(e) {
-		props.clickFirst && props.clickFirst(e);
+		props.clickFirst(e);
 	}
 
 	function clickLast(e) {
-		props.clickLast && props.clickLast(e);
+		props.clickLast(e);
 	}
 
 	return (
 		<div className={"button-group"}>
 			<div className={classNames({ "button-selected": props.collected === "first" })} onClick={clickFirst}>
-				{props.first || "first button"}
+				{props.first}
 			</div>
 			<div className={classNames({ "button-selected": props.collected === "last" })} onClick={clickLast}>
-				{props.last || "last button"}
+				{props.last}
 			</div>
 		</div>
 	);
@@ -31,4 +31,11 @@ ButtonGroup.propTypes = {
 	collected: PropTypes.string,
 	clickFirst: PropTypes.func,
 	clickLast: PropTypes.func
+};
+
+ButtonGroup.defaultProps = {
+	clickFirst: () => {},
+	clickLast: () => {},
+	first: "first button",
+	last: "last button"
 };

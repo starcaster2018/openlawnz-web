@@ -7,7 +7,7 @@ const Input = props => {
 
 	function handleEnter(e) {
 		if (e.keyCode === 13) {
-			props.onEnter && props.onEnter();
+			props.onEnter();
 			setValue("");
 		}
 	}
@@ -22,7 +22,7 @@ const Input = props => {
 			value={value}
 			className={classNames("input", props.className)}
 			type="text"
-			placeholder={props.placeholder || "Please input here"}
+			placeholder={props.placeholder}
 			onChange={handleChange}
 		/>
 	);
@@ -34,4 +34,9 @@ Input.propTypes = {
 	placeholder: PropTypes.string,
 	onEnter: PropTypes.func,
 	className: PropTypes.string
+};
+
+Input.defaultProps = {
+	onEnter: () => {},
+	placeholder: "Please input here"
 };

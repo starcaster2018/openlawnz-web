@@ -14,14 +14,14 @@ class Modal extends Component {
 		console.log("save");
 		const { onConfirm } = this.props;
 
-		onConfirm && onConfirm();
+		onConfirm();
 	}
 
 	handleCancel() {
 		console.log("cancel");
 		const { onCancel } = this.props;
 
-		onCancel && onCancel();
+		onCancel();
 	}
 
 	clickMask(e) {
@@ -73,4 +73,9 @@ Modal.propTypes = {
 	title: PropTypes.string,
 	visible: PropTypes.bool,
 	reset: PropTypes.func
+};
+
+Modal.defaultProps = {
+	onConfirm: () => {},
+	onCancel: () => {}
 };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
+import Footer from "../components/Footer.jsx";
 
 import { casesArrays } from "../../../mock/ProfileData";
 
@@ -158,15 +159,18 @@ class Profile extends Component {
 		const activeData = this.filterData();
 
 		return (
-			<div className="profile">
-				<div className="profile-wrapper">
-					<ProfileHead />
-					<div className="profile-content">
-						<ProfileNavBar activeMenu={this.state.activeMenu} onClick={this.clickMenu} data={data} />
-						<ProfileTable data={activeData} />
+			<>
+				<div className="profile">
+					<div className="profile-wrapper">
+						<ProfileHead />
+						<div className="profile-content">
+							<ProfileNavBar activeMenu={this.state.activeMenu} onClick={this.clickMenu} data={data} />
+							<ProfileTable data={activeData} />
+						</div>
 					</div>
 				</div>
-			</div>
+				<Footer />
+			</>
 		);
 	}
 }

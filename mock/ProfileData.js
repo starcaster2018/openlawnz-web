@@ -5,6 +5,76 @@ export const casesArrays = [
 		cases: [
 			{
 				id: 1,
+				case_name: "Cameron vs JetstarCameron vs JetstarCameron vs JetstarCameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 3121,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 322211,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 21321,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 3211,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 1231,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 1111,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 221,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 331,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 11,
+				case_name: "Cameron vs Jetstar",
+				case_date: "2019-11-08T13:00:01Z",
+				case_text: "",
+				citations: ["[2019] NZHC 2923"]
+			},
+			{
+				id: 1123,
 				case_name: "Cameron vs Jetstar",
 				case_date: "2019-11-08T13:00:01Z",
 				case_text: "",

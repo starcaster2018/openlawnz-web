@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import classnames from "classnames";
+
 import { casesArrays } from "../../../mock/ProfileData";
+
 import FolderBig from "-!svg-react-loader?name=FolderBig!../../img/folder-big.svg";
 import FolderSmall from "-!svg-react-loader?name=FolderSmall!../../img/folder-small.svg";
 import Close from "-!svg-react-loader?name=Close!../../img/close.svg";
 import Trash from "-!svg-react-loader?name=Trash!../../img/trash.svg";
+import Remove from "-!svg-react-loader?name=Remove!../../img/profile-remove.svg";
 
 const ProfileHead = () => {
 	return (
@@ -66,20 +67,47 @@ const ProfileNavBar = props => {
 const ProfileTable = props => {
 	const { data } = props || {};
 	const title = (data && data.folder_name) || "title";
+	const cases = (data && data.cases) || [];
 
 	return (
 		<div className="profile-table">
 			<ProfileTableTitle title={title} />
-			<ProfileTableContent />
+			<ProfileTableContent data={cases} />
 		</div>
 	);
 };
 
 const ProfileTableContent = props => {
-    return (
-        <div className="profile-table-content">content</div>
-    )
-}
+	return (
+		<div className="profile-table-content">
+			<div className="profile-table-content-title">
+				<span>Case Name</span>
+				<span>Citation</span>
+				<span>Date</span>
+				<span>Remove</span>
+			</div>
+			<div className="profile-table-content-wrapper">
+				<ul>
+					{props.data &&
+						props.data.map(item => {
+							return (
+								<li className="profile-table-content-list" key={item.id}>
+									<span onClick={() => console.log(`click on the title of ${item.case_name}`)}>
+										{item.case_name}
+									</span>
+									<span>{item.citations}</span>
+									<span>{item.case_date.split("T")[0]}</span>
+									<span onClick={() => console.log(`click on remove ${item.case_name}`)}>
+										<Remove />
+									</span>
+								</li>
+							);
+						})}
+				</ul>
+			</div>
+		</div>
+	);
+};
 
 const ProfileTableTitle = props => {
 	return (
@@ -128,8 +156,6 @@ class Profile extends Component {
 	render() {
 		const { data } = this.state;
 		const activeData = this.filterData();
-
-		console.log(activeData);
 
 		return (
 			<div className="profile">

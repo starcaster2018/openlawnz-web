@@ -14,22 +14,14 @@ import About from "./pages/About.jsx";
 import NewsContext from "./NewsContext.jsx";
 import Profile from "./pages/Profile.jsx";
 
-// login
-import { useAuth0 } from "../js/react-auth0-spa";
-
 import "normalize.css";
 import "../scss/App.scss";
 
 const MainNavWithRouter = withRouter(props => <MainNav {...props} />);
 
 const App = props => {
-	const { loading } = useAuth0();
 	const [news, setNews] = React.useState(null);
 	const updateNewsData = news => setNews(news);
-
-	if (loading) {
-		return <div>Loading...</div>;
-	}
 
 	return (
 		<Router>

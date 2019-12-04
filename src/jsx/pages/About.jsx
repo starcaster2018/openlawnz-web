@@ -30,7 +30,7 @@ class About extends Component {
 				<Search history={this.props.history} />
 				<div className="home-wrapper">
 					<InfoCard classModifier="info-card--large info-card--title info-card--column-nosub">
-						<h1 className="no-margin">About Us</h1>
+						<h1>About Us</h1>
 					</InfoCard>
 
 					<div className="container main">

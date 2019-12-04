@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import Footer from "../components/Footer.jsx";
+import PropTypes from "prop-types";
 
 import { casesArrays } from "../../../mock/ProfileData";
 
@@ -44,19 +45,18 @@ const ProfileNavBar = props => {
 		<div className="profile-nav">
 			<ProfileNavMenu className="profile-nav-title" type="big" name="All Saved Cases" />
 			<div className="profile-nav-list">
-				{data &&
-					data.map(item => {
-						const activeClass = activeMenu === item.uuid ? "profile-nav-menu-active" : "";
-						return (
-							<ProfileNavMenu
-								onClick={onMenuClick(item.uuid)}
-								className={classnames("profile-nav-menu", activeClass)}
-								key={item.uuid}
-								type="small"
-								name={item.folder_name}
-							/>
-						);
-					})}
+				{data.map(item => {
+					const activeClass = activeMenu === item.uuid ? "profile-nav-menu-active" : "";
+					return (
+						<ProfileNavMenu
+							onClick={onMenuClick(item.uuid)}
+							className={classnames("profile-nav-menu", activeClass)}
+							key={item.uuid}
+							type="small"
+							name={item.folder_name}
+						/>
+					);
+				})}
 			</div>
 			<div onClick={() => console.log("click on +create folder")} className="profile-create-folder">
 				+ Create folder
@@ -66,9 +66,9 @@ const ProfileNavBar = props => {
 };
 
 const ProfileTable = props => {
-	const { data } = props || {};
-	const title = (data && data.folder_name) || "title";
-	const cases = (data && data.cases) || [];
+	const { data } = props;
+	const title = data.folder_name;
+	const cases = data.cases;
 
 	return (
 		<div className="profile-table">
@@ -89,21 +89,20 @@ const ProfileTableContent = props => {
 			</div>
 			<div className="profile-table-content-wrapper">
 				<ul>
-					{props.data &&
-						props.data.map(item => {
-							return (
-								<li className="profile-table-content-list" key={item.id}>
-									<span onClick={() => console.log(`click on the title of ${item.case_name}`)}>
-										{item.case_name}
-									</span>
-									<span>{item.citations}</span>
-									<span>{item.case_date.split("T")[0]}</span>
-									<span onClick={() => console.log(`click on remove ${item.case_name}`)}>
-										<Remove />
-									</span>
-								</li>
-							);
-						})}
+					{props.data.map(item => {
+						return (
+							<li className="profile-table-content-list" key={item.id}>
+								<span onClick={() => console.log(`click on the title of ${item.case_name}`)}>
+									{item.case_name}
+								</span>
+								<span>{item.citations}</span>
+								<span>{item.case_date.split("T")[0]}</span>
+								<span onClick={() => console.log(`click on remove ${item.case_name}`)}>
+									<Remove />
+								</span>
+							</li>
+						);
+					})}
 				</ul>
 			</div>
 		</div>
@@ -176,3 +175,52 @@ class Profile extends Component {
 }
 
 export default Profile;
+
+ProfileNavBar.propTypes = {
+	data: PropTypes.array,
+	onClick: PropTypes.func,
+	activeMenu: PropTypes.string
+};
+
+ProfileTable.propTypes = {
+	data: PropTypes.object
+};
+
+ProfileTableTitle.propTypes = {
+	title: PropTypes.string
+};
+
+ProfileTableContent.propTypes = {
+	data: PropTypes.object
+};
+
+ProfileNavBar.defaultProp = {
+	data: [
+		{
+			uuid: "",
+			folder_name: ""
+		}
+	],
+	onClick: () => {},
+	activeMenu: ""
+};
+ProfileTable.defaultProp = {
+	data: {
+		folder_name: "title",
+		cases: []
+	}
+};
+
+ProfileTableTitle.defaultProp = {
+	title: ""
+};
+
+ProfileTableContent.defaultProp = {
+	data: [
+		{
+			case_name: "",
+			citations: "",
+			case_date: ""
+		}
+	]
+};

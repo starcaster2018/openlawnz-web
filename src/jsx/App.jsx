@@ -12,7 +12,6 @@ import Plugins from "./pages/Plugins.jsx";
 import Developers from "./pages/Developers.jsx";
 import About from "./pages/About.jsx";
 import NewsContext from "./NewsContext.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
 import Profile from "./pages/Profile.jsx";
 
 // login
@@ -46,8 +45,7 @@ const App = props => {
 						<Route exact path="/news" component={News} />
 						<Route exact path="/news/:id" component={SingleNews} />
 					</NewsContext.Provider>
-					<Route exact path="/profile" component={ProfilePage} />
-					<Route exact path="/newprofile" component={Profile} />
+					<Route exact path="/profile" component={Profile} />
 					<Route exact path="/search" component={Search} />
 					<Route exact path="/case/:id" component={SingleCase} />
 					<Route exact path="/developers" component={Developers} />

@@ -130,7 +130,8 @@ li {
   margin-bottom: 115px;
   margin-left: auto;
   margin-right: auto;
-  video{
+
+  video {
     padding: 10%;
     width: 100%;
   }
@@ -173,6 +174,7 @@ li {
     width: 10px;
     vertical-align: baseline;
   }
+
   &-medium {
     width: 1em;
   }
@@ -180,6 +182,7 @@ li {
   &.link {
     fill: $openAllyLink;
   }
+
   &.white {
     fill: white;
   }
@@ -274,7 +277,9 @@ li {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner {
@@ -304,6 +309,14 @@ li {
   padding: 5vh 10vw 0;
 }
 
+.clearfix:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+
+
 @import "./Nav.scss";
 @import "./Search.scss";
 @import "./Info.scss";
@@ -317,3 +330,4 @@ li {
 @import "./Input.scss";
 @import "./Modal.scss";
 @import "./Select.scss";
+@import "./Profile.scss";

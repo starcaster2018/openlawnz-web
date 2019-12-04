@@ -1,0 +1,47 @@
+.button {
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  cursor: pointer;
+}
+.button-colored {
+  color: $openWhite;
+  background: $openLawLightBrown;
+}
+
+.button-white {
+  color: $buttonTextColor;
+  background: $openWhite;
+  border: none;
+}
+
+.button-group{
+  width: 306px;
+  height: 45px;
+  border: 1px solid $openLawLightBrown;
+  border-radius: 4px;
+  top: 124px;
+  margin: 0 90px;
+  box-sizing: border-box;
+
+  div{
+    display: inline-block;
+    width: 50%;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    color: $openLawLightBrown;
+    font-weight: 800;
+    cursor: pointer;
+
+  }
+
+  .button-selected{
+    color: $openWhite;
+    background-color: $openLawLightBrown;
+  }
+
+}

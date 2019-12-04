@@ -61,6 +61,7 @@ $selectPaddingLeft: 12px;
   p {
     display: inline-block;
     padding-left: $selectPaddingLeft;
+    margin-bottom: 0;
   }
 
   ul {

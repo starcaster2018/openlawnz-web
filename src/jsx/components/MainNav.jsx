@@ -33,11 +33,11 @@ const MainNav = () => {
 
 	const runAuth0Lock = e => {
 		e.preventDefault();
-		if(loggedIn){
+		if (loggedIn) {
 			setLoggedIn(false);
 			setLoginText("Login");
-			sessionStorage.removeItem('token');
-			sessionStorage.removeItem('profile');
+			sessionStorage.removeItem("token");
+			sessionStorage.removeItem("profile");
 		} else {
 			lock.show();
 		}
@@ -106,7 +106,7 @@ const MainNav = () => {
 									runAuth0Lock(e);
 								}}
 							>
-								{ loginText }
+								{loginText}
 							</a>
 						</li>
 					</ul>

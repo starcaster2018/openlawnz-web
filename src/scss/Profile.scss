@@ -1,0 +1,222 @@
+$profileNavBgColor: #f7f7f7;
+.profile{
+  padding: 65px 0 135px;
+  height: 910px;
+  width: 100vw;
+  background-color: $openWhite;
+
+  .profile-wrapper{
+    @include card-style;
+    width: 1100px;
+    height: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .profile-header{
+      @include header-three;
+      color: $openWhite;
+      font-weight: 800;
+      padding-left: 50px;
+      height: 60px;
+      line-height: 60px;
+      background-color: $openLawDarkGreen;
+      border-radius: 5px 5px 0 0;
+
+      .profile-header-close{
+        float: right;
+        margin-right: 22px;
+      }
+    }
+
+    .profile-content{
+
+
+      .profile-nav{
+        width: 195px;
+        height: 640px;
+        display: inline-block;
+        background: $profileNavBgColor;
+
+        div{
+          height: 40px;
+          line-height: 40px;
+        }
+
+        .profile-nav-list{
+          width: 100%;
+          height: 560px;
+        }
+
+        .profile-nav-title, .profile-nav-menu{
+          color: $openLawDarkGreen;
+          font-weight: bold;
+          font-size: 14px;
+        }
+
+        .profile-nav-menu{
+          cursor: pointer;
+        }
+
+        .profile-nav-menu-active, .profile-nav-menu:hover{
+          color: $openWhite;
+          background-color: $openLawLightBrown;
+        }
+
+        .profile-nav-big{
+
+          svg{
+            margin: 14px 12px 0 18px ;
+          }
+
+        }
+
+        .profile-nav-small{
+          svg{
+            margin: 14px 8px 0 38px ;
+          }
+        }
+
+        .profile-create-folder{
+          color: $openLawDarkGreen;
+          font-size: 16px;
+          font-weight: 900;
+          height: 22px;
+          line-height: 22px;
+          cursor: pointer;
+          padding-left: 24px;
+        }
+
+      }
+
+      .profile-table {
+        display: inline-block;
+        vertical-align: top;
+        width: 905px;
+
+        .profile-table-title {
+          height: 110px;
+          line-height: 110px;
+
+          span:nth-child(1){
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 40px;
+            text-align: center;
+            color: $openLawDarkGreen;
+            margin: 0 12px 0 40px;
+          }
+
+          span:nth-child(2){
+            color: $openLawLightBrown;
+            font-weight: bold;
+            font-size: 18px;
+          }
+
+          span:nth-child(3){
+            text-decoration-line: underline;
+            font-size: 18px;
+            color: $openLawDarkGreen;
+            margin-left: 12px;
+            cursor: pointer;
+          }
+
+          span:nth-child(4){
+            float: right;
+            padding-top: 8px;
+            margin-right: 30px;
+            cursor: pointer;
+          }
+
+        }
+
+        .profile-table-content {
+          width: 100%;
+          height: 528px;
+          padding: 0 24px;
+
+          .profile-table-content-wrapper{
+            overflow-y: scroll;
+            height: 468px;
+
+            .profile-table-content-list{
+              width: 780px;
+              min-height: 76px;
+              border-bottom: 1px solid rgba(133, 133, 133, 0.5);
+              display: flex;
+              align-items: center;
+
+              span {
+                color: #3d3d3d;
+                font-size: 14px;
+                text-transform: uppercase;
+                font-weight: bold;
+                display: inline-block;
+                line-height: 15px;
+
+              }
+
+              span:nth-child(1) {
+                width: 240px;
+                text-decoration: underline;
+                cursor: pointer;
+              }
+
+              span:nth-child(2) {
+                width: 320px;
+              }
+
+              span:nth-child(3) {
+                width: 180px;
+              }
+
+              span:nth-child(4) {
+                padding-left: 0;
+                cursor: pointer;
+                height: 10px;
+                line-height: 10px;
+              }
+            }
+          }
+
+          .profile-table-content-title{
+            width: 860px;
+            height: 60px;
+            background: #f7f7f7;
+
+            span {
+              display: inline-block;
+              font-weight: 900;
+              font-size: 16px;
+              height: 60px;
+              line-height: 60px;
+              color: $openLawDarkGreen;
+              padding-left: 40px;
+            }
+
+            span:nth-child(1) {
+              width: 240px;
+            }
+
+            span:nth-child(2) {
+              width: 320px;
+            }
+
+            span:nth-child(3) {
+              width: 200px;
+            }
+
+            span:nth-child(4) {
+              width: 70px;
+              padding-left: 0;
+
+            }
+          }
+
+
+        }
+      }
+    }
+
+  }
+
+}

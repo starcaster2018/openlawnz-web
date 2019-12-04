@@ -36,9 +36,9 @@ class Select extends Component {
 	}
 
 	clickSelect() {
-		this.setState({
-			showOptions: !this.state.showOptions
-		});
+		this.setState(({ showOptions }) => ({
+			showOptions: !showOptions
+		}));
 	}
 
 	clickMask() {

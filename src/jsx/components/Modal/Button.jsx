@@ -6,12 +6,8 @@ import PropTypes from "prop-types";
 const Button = props => {
 	const isColored = props.colored ? "button-colored" : "button-white";
 
-	function onclick(e) {
-		props.onclick(e);
-	}
-
 	return (
-		<button className={classnames("button", isColored, props.className)} onClick={onclick}>
+		<button className={classnames("button", isColored, props.className)} onClick={props.onclick}>
 			{props.title}
 		</button>
 	);

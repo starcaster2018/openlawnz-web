@@ -191,10 +191,10 @@ ProfileTableTitle.propTypes = {
 };
 
 ProfileTableContent.propTypes = {
-	data: PropTypes.object
+	data: PropTypes.array
 };
 
-ProfileNavBar.defaultProp = {
+ProfileNavBar.defaultProps = {
 	data: [
 		{
 			uuid: "",
@@ -204,18 +204,18 @@ ProfileNavBar.defaultProp = {
 	onClick: () => {},
 	activeMenu: ""
 };
-ProfileTable.defaultProp = {
+ProfileTable.defaultProps = {
 	data: {
 		folder_name: "title",
 		cases: []
 	}
 };
 
-ProfileTableTitle.defaultProp = {
+ProfileTableTitle.defaultProps = {
 	title: ""
 };
 
-ProfileTableContent.defaultProp = {
+ProfileTableContent.defaultProps = {
 	data: [
 		{
 			case_name: "",

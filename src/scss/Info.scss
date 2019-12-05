@@ -85,6 +85,10 @@
       }
     }
 
+    &--column-nosub {
+      flex-direction: column;
+    }
+
     .info-card-unit {
       width: calc(100% / 3);
     }

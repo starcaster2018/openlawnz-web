@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 import Footer from "../components/Footer.jsx";
 import PropTypes from "prop-types";
+import ProfileEdit from "../components/Modal/ProfileEdit";
 
 import { casesArrays } from "../../../mock/ProfileData";
 
@@ -69,10 +70,11 @@ const ProfileTable = props => {
 	const { data } = props;
 	const title = data.folder_name;
 	const cases = data.cases;
+	const id = data.uuid;
 
 	return (
 		<div className="profile-table">
-			<ProfileTableTitle title={title} />
+			<ProfileTableTitle title={title} id={id} />
 			<ProfileTableContent data={cases} />
 		</div>
 	);
@@ -114,7 +116,9 @@ const ProfileTableTitle = props => {
 		<div className="profile-table-title clearfix">
 			<span>{props.title} Folder</span>
 			<span>(private)</span>
-			<span onClick={() => console.log("click on profile edit")}>Edit</span>
+			<span onClick={() => console.log("click on profile edit")}>
+				<ProfileEdit folderName={props.title} id={props.id} />
+			</span>
 			<span onClick={() => console.log("click on profile delete")}>
 				<Trash />
 			</span>
@@ -206,7 +210,7 @@ ProfileNavBar.defaultProps = {
 };
 ProfileTable.defaultProps = {
 	data: {
-		folder_name: "title",
+		folder_name: "",
 		cases: []
 	}
 };

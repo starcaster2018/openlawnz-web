@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Search from "./Search.jsx";
-import AdvancedSearch from "./AdvancedSearch.jsx";
+import AdvancedSearch from "./AdvancedSearch/index.jsx";
 
 function SearchContainer(props) {
 	const [isAdvanced, setAdvanced] = useState(props.showAdvancedSearch);

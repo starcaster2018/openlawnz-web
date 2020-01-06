@@ -23,6 +23,7 @@ import Benedict from "../../img/about-us/benedict-stewart.png";
 import Daryl from "../../img/about-us/daryl-diesto.png";
 import Emma from "../../img/about-us/emma-burke.png";
 import Infra from "../../img/about-us/openlaw-infrastructure.png";
+import Nicolas from "../../img/about-us/Nicolas-zhou.png";
 
 class About extends Component {
 	render() {
@@ -190,6 +191,19 @@ class About extends Component {
 										text="
 									Chanil is a Software Developer who has completed Computer Science at Victoria University of Wellington.
 									He is participating in web development and machine learning at OpenLaw NZ.
+									"
+									/>
+								</div>
+							</div>
+							<div className="cards-list">
+								<div className="card-item-small">
+									<div>
+										<img src={Nicolas} alt="Nicolas Zhou" />
+										<strong>Nicolas Zhou</strong>
+									</div>
+									<ReadMore
+										text="
+									Nicolas is an outstanding developer who has more than 5 years of experience in web development space. He is a highly self-motivated person who strives for the best result and uses his experience and creativity to help us reach the goals, to meet and exceed expectations.
 									"
 									/>
 								</div>

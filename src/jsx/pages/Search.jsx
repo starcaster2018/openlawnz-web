@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import dateFormat from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-import Footer from "../components/Footer.jsx";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
 
@@ -242,7 +241,6 @@ class SearchPage extends Component {
 							/>
 						)}
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

@@ -3,7 +3,6 @@ import React from "react";
 import { getNews } from "../../js/ApiNews";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
-import Footer from "../components/Footer.jsx";
 import NewsContext from "../NewsContext.jsx";
 
 const selectNews = (news = [], id) => news.find(item => item.id === id);
@@ -65,7 +64,6 @@ class News extends React.Component {
 							/>
 						</div>
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

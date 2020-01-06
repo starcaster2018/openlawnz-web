@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Search from "../components/Search.jsx";
-import Footer from "../components/Footer.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import SingleCaseView from "../components/SingleCaseView.jsx";
 
@@ -61,7 +60,6 @@ class SingleCase extends Component {
 				</div>
 				<div className="home-wrapper">
 					{<SingleCaseView isBeingUpdated={this.state.loadingCase} singleCase={this.state.singleCase} />}
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

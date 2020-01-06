@@ -1,7 +1,6 @@
 import React from "react";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
-import Footer from "../components/Footer.jsx";
 
 import External from "-!svg-react-loader?name=External!../../img/external.svg";
 
@@ -59,7 +58,6 @@ class Developers extends React.Component {
 							</p>
 						</div>
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Search from "../components/Search.jsx";
 import Mission from "../components/Mission.jsx";
-import Footer from "../components/Footer.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import InfoCardUnit from "../components/InfoCardUnit.jsx";
 import ContactUs from "../components/ContactUs.jsx";
@@ -26,7 +25,6 @@ class Home extends Component {
 					<Mission />
 					<News />
 					<ContactUs />
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

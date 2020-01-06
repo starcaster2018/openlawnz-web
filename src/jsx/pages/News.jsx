@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { getNews } from "../../js/ApiNews";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
-import Footer from "../components/Footer.jsx";
 import NewsContext from "../NewsContext.jsx";
 
 const NewsItem = ({ id, title, summary, formattedDate, image_url: imageUrl }) => (
@@ -55,7 +54,6 @@ class News extends React.Component {
 					<div className="container news-list">
 						{news && news.map(item => <NewsItem key={item.id} {...item} />)}
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

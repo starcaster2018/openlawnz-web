@@ -1,7 +1,6 @@
 import React from "react";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
-import Footer from "../components/Footer.jsx";
 
 import Chrome from "-!svg-react-loader?name=Chrome!../../img/chrome.svg";
 
@@ -64,7 +63,6 @@ class Plugin extends React.Component {
 							<p>If you build something with our platform, get in touch and we&apos;ll list it here.</p>
 						</div>
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import SingleCaseView from "../components/SingleCaseView.jsx";
-
 import ApiService from "../../js/ApiService";
 
 class SingleCase extends Component {

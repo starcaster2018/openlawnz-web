@@ -29,12 +29,13 @@ class About extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<Search history={this.props.history} />
 					<InfoCard classModifier="info-card--large info-card--title info-card--column-nosub">
 						<h1>About Us</h1>
 					</InfoCard>
-
+				</div>
+				<div className="home-wrapper">
 					<div className="container main">
 						<div className="content">
 							<h2>What we do</h2>

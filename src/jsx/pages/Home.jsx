@@ -11,9 +11,9 @@ class Home extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<h1 className="header-title">OpenLaw NZ is a new, free legal research platform for New Zealand.</h1>
-				<Search history={this.props.history} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<h1 className="header-title">OpenLaw NZ is a new, free legal research platform for New Zealand.</h1>
+					<Search history={this.props.history} />
 					<InfoCard>
 						<InfoCardUnit one="30,141" two="CASES" />
 						<div className="border"></div>
@@ -21,6 +21,8 @@ class Home extends Component {
 						<div className="border"></div>
 						<InfoCardUnit one="346,395" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					<Mission />
 					<News />
 					<ContactUs />

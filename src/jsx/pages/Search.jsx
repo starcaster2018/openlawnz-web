@@ -42,7 +42,9 @@ const Search = ({ searchMsg, showSearchMsg, value, onSubmit, onInputChange }) =>
 		<div className="search">
 			<form className="search-input" onSubmit={onSubmit}>
 				<div className="input-wrapper">
-					<label className="search-label" htmlFor="searchTerm">Search legal cases</label>
+					<label className="search-label" htmlFor="searchTerm">
+						Search legal cases
+					</label>
 					<input
 						id="searchTerm"
 						type="text"
@@ -182,14 +184,14 @@ class SearchPage extends Component {
 		}
 		return (
 			<React.Fragment>
-				<Search
-					value={this.state.currentSearchQuery}
-					onSubmit={this.handleSubmit}
-					onInputChange={this.handleChange}
-					showSearchMsg={this.state.showSearchMsg}
-					searchMsg={this.state.searchMsg}
-				/>
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<Search
+						value={this.state.currentSearchQuery}
+						onSubmit={this.handleSubmit}
+						onInputChange={this.handleChange}
+						showSearchMsg={this.state.showSearchMsg}
+						searchMsg={this.state.searchMsg}
+					/>
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						{this.state.searchInProgress ? (
 							<span>
@@ -204,6 +206,8 @@ class SearchPage extends Component {
 							</React.Fragment>
 						)}
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					<div className="container">
 						{this.state.length >= this.state.perPage && (
 							<Pagination

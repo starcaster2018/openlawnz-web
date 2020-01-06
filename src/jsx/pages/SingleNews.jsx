@@ -40,12 +40,14 @@ class News extends React.Component {
 
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<Search history={this.props.history} />
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>{title}</h1>
 						<span>{formattedDate}</span>
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					<div className="container main">
 						<div className="content">
 							{imageUrl && (

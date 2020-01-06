@@ -48,8 +48,8 @@ class SingleCase extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<Search history={this.props.history} />
 					<InfoCard>
 						<h2
 							ref={this.titleRef}
@@ -58,6 +58,8 @@ class SingleCase extends Component {
 							{this.state.loadingCase ? "-" : this.state.singleCase.caseName}
 						</h2>
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					{<SingleCaseView isBeingUpdated={this.state.loadingCase} singleCase={this.state.singleCase} />}
 					<Footer />
 				</div>

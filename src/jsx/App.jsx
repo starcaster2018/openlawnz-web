@@ -40,7 +40,7 @@ const App = (props) => {
 						<meta name="openlaw" content="open-source legal data platform, free to use" />
 					</Helmet>
 					<MainNavWithRouter />
-					<main className="content-wrapper">
+					<main>
 							<NewsContext.Provider value={{ data: news, updateData: updateNewsData }}>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/news" component={News} />

@@ -44,12 +44,14 @@ class News extends React.Component {
 		const news = this.context.data;
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<Search history={this.props.history} />
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>News</h1>
 						<span>Stay up to date with us.</span>
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					<div className="container news-list">
 						{news && news.map(item => <NewsItem key={item.id} {...item} />)}
 					</div>

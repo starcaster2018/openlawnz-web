@@ -1,7 +1,6 @@
 .search-container {
     position: relative;
-    height: 30px;
-    margin-bottom: 115px;
+    height: 200px;
   }
 
   .search {
@@ -153,8 +152,6 @@
 
 @media (min-width: 767px) {
   .search-container {
-    height: 200px;
-    margin-bottom: 70px;
     .search,
     .input-wrapper {
       max-width: 740px;

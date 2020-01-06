@@ -149,14 +149,14 @@ li {
   -o-background-size: cover;
   background-size: cover;
   background-position: top;
-  padding-top: 140px;
+  padding-top: 90px;
 }
 
 .home-wrapper {
   position: relative;
   width: 100%;
   background: $openWhite;
-  padding-top: 167px;
+  padding-top: 60px;
 }
 
 .border {
@@ -266,6 +266,10 @@ li {
     &__item {
       margin-bottom: 0;
     }
+  }
+
+  .highlighted-content {
+    padding-top: 140px;
   }
 }
 

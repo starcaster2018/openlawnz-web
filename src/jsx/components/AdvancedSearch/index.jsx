@@ -110,12 +110,6 @@ const AdvancedSearch = ({ onSubmit, toggleTypeOfSearch, populateComponent, histo
 	});
 
 	useEffect(() => {
-		handleGlobalNavHeight();
-		return () => handleGlobalNavHeight(true);
-	});
-
-	useEffect(() => {
-		setTimeout(handleGlobalNavHeight, 300);
 		if (!populateComponent) return;
 
 		const urlParams = queryString.parse(location.search);
@@ -179,20 +173,6 @@ const AdvancedSearch = ({ onSubmit, toggleTypeOfSearch, populateComponent, histo
 		return onSubmit
 			? onSubmit(paramsAsString, paramsAsString, "advancedQuery")
 			: history.push(`/search?${getParamsAsString()}`);
-	};
-
-	const handleGlobalNavHeight = unmount => {
-		const bounding = {};
-		const navContainer = document.getElementById("nav-container");
-		if (unmount && navContainer) {
-			navContainer.style = "";
-			return;
-		} else if (!navContainer) return;
-
-		bounding.container = containerRef.current.getBoundingClientRect();
-		bounding.containerBounding = bounding.container.y + window.pageYOffset + bounding.container.height;
-
-		navContainer.style = unmount ? "" : `height: ${bounding.containerBounding}px`;
 	};
 
 	const triggerDispatch = (type, payload) => {

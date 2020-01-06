@@ -109,11 +109,6 @@ li {
   max-width: 80%;
 }
 
-.content-wrapper {
-  position: relative;
-  margin-top: 140px;
-}
-
 .container {
   width: 100%;
   padding-right: 15px;
@@ -145,6 +140,16 @@ li {
   color: $openLawDarkBlue;
   margin-top: 0;
   margin-bottom: 20px;
+}
+
+.highlighted-content {
+  background: url(../img/open-law-background.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: top;
+  padding-top: 140px;
 }
 
 .home-wrapper {

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import dateFormat from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-import Footer from "../components/Footer.jsx";
 import SearchContainer from "../components/SearchContainer.jsx";
 import ReactPaginate from "react-paginate";
 import InfoCard from "../components/InfoCard.jsx";
@@ -153,8 +152,12 @@ class SearchPage extends Component {
 		}
 		return (
 			<React.Fragment>
-				<SearchContainer populateComponent showAdvancedSearch={advancedQuery} onSubmit={this.handleSubmit} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<SearchContainer
+						populateComponent
+						showAdvancedSearch={advancedQuery}
+						onSubmit={this.handleSubmit}
+					/>
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						{searchInProgress ? (
 							<span>
@@ -171,6 +174,8 @@ class SearchPage extends Component {
 							</React.Fragment>
 						)}
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					<div className="container">
 						{length >= perPage && (
 							<Pagination
@@ -199,7 +204,6 @@ class SearchPage extends Component {
 							/>
 						)}
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

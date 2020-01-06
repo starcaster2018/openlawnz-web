@@ -1,7 +1,6 @@
 import React from "react";
 import SearchContainer from "../components/SearchContainer.jsx";
 import InfoCard from "../components/InfoCard.jsx";
-import Footer from "../components/Footer.jsx";
 
 import External from "-!svg-react-loader?name=External!../../img/external.svg";
 
@@ -9,12 +8,14 @@ class Developers extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<SearchContainer history={this.props.history} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<SearchContainer history={this.props.history} />
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>Developers</h1>
 						<span>Use our API to integrate case law intelligence into your own applications.</span>
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					<div className="container main">
 						<div className="content">
 							<p>
@@ -57,7 +58,6 @@ class Developers extends React.Component {
 							</p>
 						</div>
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

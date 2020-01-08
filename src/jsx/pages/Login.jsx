@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
-import Footer from "../components/Footer.jsx";
 
 
 class Login extends React.Component {
@@ -17,7 +16,6 @@ class Login extends React.Component {
 						<span>Quick and easy login!</span>
 					</InfoCard>
 
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

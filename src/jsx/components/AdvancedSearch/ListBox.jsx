@@ -84,10 +84,12 @@ const ListBox = ({
 
 	return (
 		<React.Fragment>
-			<label htmlFor={`${id}-input`} id={`${id}-label`} className="combobox-label">
-				{labelText}
-				{hint && <span className="visuallyhidden">{hint}</span>}
-			</label>
+			{labelText && (
+				<label htmlFor={`${id}-input`} id={`${id}-label`} className="combobox-label">
+					{labelText}
+					{hint && <span className="visuallyhidden">{hint}</span>}
+				</label>
+			)}
 			<div className="combobox-wrapper">
 				<div
 					role="combobox"

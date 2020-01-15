@@ -8,11 +8,13 @@ const Legislation = ({ value, id, onChange, className, isPopulated }) => {
 	const [section, setSection] = useState(value.section || "");
 	const { results: actResults, setJumpFetch: setIsActSelected } = useDebouncedFetch({
 		source: "http://localhost:8085/legislation/acts?search=",
-		term: act
+		term: act,
+		extraParams: "&start=0&end=5"
 	});
 	const { results: sectionResults, setJumpFetch: setIsSectionSelected } = useDebouncedFetch({
 		source: () => `http://localhost:8085/legislation/acts/${act}/sections?search=`,
-		term: section
+		term: section,
+		extraParams: "&start=0&end=5"
 	});
 	const actions = {
 		act: { set: setAct, onSelection: setIsActSelected },

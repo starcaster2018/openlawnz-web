@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Modal from "./Modal";
 import Input from "./Input";
+import { RadioGroup } from "./Radio";
 import PropTypes from "prop-types";
 
 class ProfileEdit extends Component {
@@ -16,7 +17,9 @@ class ProfileEdit extends Component {
 
 		this.state = {
 			visible: false,
-			folderName: ""
+			folderName: "",
+			folderOptions: ["Private", "Listed", "Unlisted"],
+			subFolderOptions: ["Viewable to only you", "Available in public search", "Available as an URL"]
 		};
 	}
 
@@ -82,6 +85,13 @@ class ProfileEdit extends Component {
 							onChange={this.handleInput}
 						/>
 					</div>
+					<RadioGroup
+						className="profile-modal-radio"
+						title="Folder Privacy"
+						options={this.state.folderOptions}
+						onChange={e => console.log(e.target.value)}
+						subValues={this.state.subFolderOptions}
+					/>
 				</Modal>
 			</>
 		);

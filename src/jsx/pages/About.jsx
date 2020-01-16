@@ -23,6 +23,7 @@ import Daryl from "../../img/about-us/daryl-diesto.png";
 import Emma from "../../img/about-us/emma-burke.png";
 import Infra from "../../img/about-us/openlaw-infrastructure.png";
 import Nicolas from "../../img/about-us/Nicolas-zhou.png";
+import Jins from "../../img/about-us/Jins_Mary_Job.png";
 
 class About extends Component {
 	render() {
@@ -205,6 +206,17 @@ class About extends Component {
 										text="
 									Nicolas is an outstanding developer who has more than 5 years of experience in web development space. He is a highly self-motivated person who strives for the best result and uses his experience and creativity to help us reach the goals, to meet and exceed expectations.
 									"
+									/>
+								</div>
+								<div className="card-item-small">
+									<div>
+										<img src={Jins} alt="Jins Mary Job" />
+										<strong>Jins Mary Job</strong>
+									</div>
+									<ReadMore
+										text="
+										Jins is software engineer, who is passionate about applying technology to solve complex problems and challenges. She loves coding and learning new technologies. She has Masters in computer applications and extensive experience in Microsoft technologies
+										"
 									/>
 								</div>
 							</div>

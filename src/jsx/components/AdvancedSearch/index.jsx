@@ -10,15 +10,15 @@ import Legislation from "./Legislation.jsx";
 import CaseName from "./CaseName.jsx";
 
 const relationOfTypes = {
-	any: { Component: DefaultInput, text: "Any Field" },
-	case_name: { Component: CaseName, text: "Case Name" },
-	court: { Component: DefaultInput, text: "Court" },
-	// case_text: { Component: DefaultInput, text: "Case Text" },
-	// citation: { Component: DefaultInput, text: "Citation" },
-	// cited_by: { Component: DefaultInput, text: "Cited By" },
-	// cites: { Component: DefaultInput, text: "Cites" },
-	judgment_date: { Component: JudgmentDate, text: "Judgment Date" },
-	legislation: { Component: Legislation, text: "Legislation" }
+	search: { Component: DefaultInput, description: "Any Field" },
+	case_name: { Component: CaseName, description: "Case Name" },
+	court: { Component: DefaultInput, description: "Court" },
+	// case_text: { Component: DefaultInput, description: "Case Text" },
+	// citation: { Component: DefaultInput, description: "Citation" },
+	// cited_by: { Component: DefaultInput, description: "Cited By" },
+	// cites: { Component: DefaultInput, description: "Cites" },
+	judgment_date: { Component: JudgmentDate, description: "Judgment Date" },
+	legislation: { Component: Legislation, description: "Legislation" }
 };
 
 const relationOfSubTypes = {
@@ -32,7 +32,9 @@ const validateValueOnPopulate = {
 	judgment_date: value => isValidDate(new Date(value))
 };
 
-const defaultSearchFieldFormat = { id: 0, value: "", type: "any", Component: DefaultInput };
+const INITIAL_INPUT_TYPE = "search";
+
+const defaultSearchFieldFormat = { ...relationOfTypes[INITIAL_INPUT_TYPE], type: INITIAL_INPUT_TYPE, id: 0, value: "" };
 
 const searchReducer = (state, action) => {
 	switch (action.type) {
@@ -64,10 +66,14 @@ const searchReducer = (state, action) => {
 			});
 		case "ADD_EMPTY_FIELD":
 			return produce(state, draft => {
+				const firstAvailableType = draft.typesOfFields.find(t => t.visible === true);
 				draft.searchFields.push({
-					...defaultSearchFieldFormat,
+					...relationOfTypes[firstAvailableType.value],
+					value: "",
+					type: firstAvailableType.value,
 					id: state.searchFields[state.searchFields.length - 1].id + 1
 				});
+				firstAvailableType.visible = false;
 			});
 		case "REMOVE_FIELD":
 			return produce(state, draft => {
@@ -94,6 +100,12 @@ const searchReducer = (state, action) => {
 				newType.visible = newType.value === "" || false;
 				if (currentType) currentType.visible = true;
 			});
+		case "UPDATE_TYPE_VISIBILITY":
+			return produce(state, draft => {
+				const { type, visible } = action.payload;
+				const typeOfField = draft.typesOfFields.find(t => t.value === type);
+				if (typeOfField) typeOfField.visible = visible;
+			});
 		default:
 			throw new Error();
 	}
@@ -106,11 +118,14 @@ const AdvancedSearch = ({ onSubmit, toggleTypeOfSearch, populateComponent, histo
 		typesOfFields: Object.keys(relationOfTypes).map(type => ({
 			...relationOfTypes[type],
 			visible: true,
-			value: type === "any" ? "" : type
+			value: type
 		}))
 	});
 
 	useEffect(() => {
+		// Hide the first or default input type that is always available on the component
+		triggerDispatch("UPDATE_TYPE_VISIBILITY", { type: defaultSearchFieldFormat.type, visible: false }); //
+
 		if (!populateComponent) return;
 
 		const urlParams = queryString.parse(location.search);
@@ -200,7 +215,7 @@ const AdvancedSearch = ({ onSubmit, toggleTypeOfSearch, populateComponent, histo
 								t =>
 									(t.value === type || t.visible) && (
 										<option key={`searchField${id}-${t.value}`} value={t.value}>
-											{t.text}
+											{t.description}
 										</option>
 									)
 							)}
@@ -230,7 +245,7 @@ const AdvancedSearch = ({ onSubmit, toggleTypeOfSearch, populateComponent, histo
 
 				<div className="search-field">
 					<button
-						disabled={state.typesOfFields.length - 1 === state.searchFields.length || false}
+						disabled={state.typesOfFields.length === state.searchFields.length}
 						type="button"
 						className="action-button large-font"
 						onClick={() => triggerDispatch("ADD_EMPTY_FIELD", null)}

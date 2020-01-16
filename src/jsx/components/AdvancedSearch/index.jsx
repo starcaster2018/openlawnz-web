@@ -123,13 +123,13 @@ const AdvancedSearch = ({ onSubmit, toggleTypeOfSearch, populateComponent, histo
 	});
 
 	useEffect(() => {
-		// Hide the first or default input type that is always available on the component
-		triggerDispatch("UPDATE_TYPE_VISIBILITY", { type: defaultSearchFieldFormat.type, visible: false }); //
-
-		if (!populateComponent) return;
-
 		const urlParams = queryString.parse(location.search);
 		const prevState = [];
+
+		// Hide the first or default input type that is always available on the component
+		triggerDispatch("UPDATE_TYPE_VISIBILITY", { type: defaultSearchFieldFormat.type, visible: false });
+
+		if (!populateComponent) return;
 		Object.keys(urlParams).forEach((key, idx) => {
 			let field = { isPopulated: true };
 			const value = DOMPurify.sanitize(urlParams[key]);
@@ -161,6 +161,7 @@ const AdvancedSearch = ({ onSubmit, toggleTypeOfSearch, populateComponent, histo
 
 		if (prevState.length) {
 			triggerDispatch("EMPTY_FIELDS");
+			triggerDispatch("UPDATE_TYPE_VISIBILITY", { type: defaultSearchFieldFormat.type, visible: true }); // Reset visibility of default type of field
 			prevState.forEach(field => triggerDispatch("ADD_FIELD", { field }));
 		}
 	}, []);

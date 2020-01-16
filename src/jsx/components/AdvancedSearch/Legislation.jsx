@@ -6,12 +6,12 @@ import useDebouncedFetch from "./useDebouncedFetch.jsx";
 const Legislation = ({ value, id, onChange, className, isPopulated }) => {
 	const [act, setAct] = useState(value.act || "");
 	const [section, setSection] = useState(value.section || "");
-	const { results: actResults, setJumpFetch: setIsActSelected } = useDebouncedFetch({
+	const { results: actResults, setSkipFetch: setIsActSelected } = useDebouncedFetch({
 		source: "http://localhost:8085/legislation/acts?search=",
 		term: act,
 		extraParams: "&start=0&end=5"
 	});
-	const { results: sectionResults, setJumpFetch: setIsSectionSelected } = useDebouncedFetch({
+	const { results: sectionResults, setSkipFetch: setIsSectionSelected } = useDebouncedFetch({
 		source: () => `http://localhost:8085/legislation/acts/${act}/sections?search=`,
 		term: section,
 		extraParams: "&start=0&end=5"

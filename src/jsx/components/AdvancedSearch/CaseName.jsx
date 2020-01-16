@@ -25,7 +25,7 @@ const CaseName = ({ value, id, onChange, className, isPopulated }) => {
 				results={titleResults}
 				textSelection={result => result.caseName}
 				onInputValueChange={value => onValueChange(value)}
-				onSelection={({ caseName = "" }) => onValueChange(caseName, "act")}
+				onSelection={({ caseName = "" }) => onValueChange(caseName)}
 			/>
 		</div>
 	);

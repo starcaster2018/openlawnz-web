@@ -6,7 +6,7 @@ const memoizedFetch = memoize(fullUrl => fetch(fullUrl));
 const useDebouncedFetch = ({ term, source = "/", extraParams = "", useMemoize = true, delay = 500, avoidOnMount }) => {
 	const [termDebounced, setTermDebounced] = useState(term);
 	const [results, setResults] = useState([]);
-	const [jumpFetch, setJumpFetch] = useState(avoidOnMount);
+	const [skipFetch, setSkipFetch] = useState(avoidOnMount);
 	const fetchFn = useMemoize ? memoizedFetch : fetch;
 
 	useEffect(() => {
@@ -18,7 +18,7 @@ const useDebouncedFetch = ({ term, source = "/", extraParams = "", useMemoize = 
 	}, [term]);
 
 	useEffect(() => {
-		if (jumpFetch) return;
+		if (skipFetch || termDebounced === "") return;
 		const url = {}.toString.call(source) === "[object Function]" ? source() : source;
 
 		fetchFn(`${url}${termDebounced}${extraParams}`)
@@ -37,8 +37,7 @@ const useDebouncedFetch = ({ term, source = "/", extraParams = "", useMemoize = 
 	return {
 		results,
 		termDebounced,
-		jumpFetch,
-		setJumpFetch
+		setSkipFetch
 	};
 };
 

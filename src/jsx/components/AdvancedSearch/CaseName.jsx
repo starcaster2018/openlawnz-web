@@ -4,7 +4,7 @@ import ListBox from "./ListBox.jsx";
 import useDebouncedFetch from "./useDebouncedFetch.jsx";
 
 const CaseName = ({ value, id, onChange, className, isPopulated }) => {
-	const [name, setName] = useState(value.title || "");
+	const [name, setName] = useState(value || "");
 	const { results: titleResults } = useDebouncedFetch({
 		source: "http://localhost:8085/cases/names?search=",
 		term: name,

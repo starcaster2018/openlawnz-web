@@ -13,10 +13,10 @@ const relationOfTypes = {
 	any: { Component: DefaultInput, text: "Any Field" },
 	case_name: { Component: CaseName, text: "Case Name" },
 	court: { Component: DefaultInput, text: "Court" },
-	case_text: { Component: DefaultInput, text: "Case Text" },
-	citation: { Component: DefaultInput, text: "Citation" },
-	cited_by: { Component: DefaultInput, text: "Cited By" },
-	cites: { Component: DefaultInput, text: "Cites" },
+	// case_text: { Component: DefaultInput, text: "Case Text" },
+	// citation: { Component: DefaultInput, text: "Citation" },
+	// cited_by: { Component: DefaultInput, text: "Cited By" },
+	// cites: { Component: DefaultInput, text: "Cites" },
 	judgment_date: { Component: JudgmentDate, text: "Judgment Date" },
 	legislation: { Component: Legislation, text: "Legislation" }
 };

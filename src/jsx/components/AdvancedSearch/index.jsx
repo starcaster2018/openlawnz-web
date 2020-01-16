@@ -7,11 +7,11 @@ import DOMPurify from "dompurify";
 import DefaultInput from "./DefaultInput.jsx";
 import JudgmentDate from "./JudgmentDate.jsx";
 import Legislation from "./Legislation.jsx";
-import CaseTitle from "./CaseTitle.jsx";
+import CaseName from "./CaseName.jsx";
 
 const relationOfTypes = {
 	any: { Component: DefaultInput, text: "Any Field" },
-	case_title: { Component: CaseTitle, text: "Case Title" },
+	case_name: { Component: CaseName, text: "Case Name" },
 	court: { Component: DefaultInput, text: "Court" },
 	case_text: { Component: DefaultInput, text: "Case Text" },
 	citation: { Component: DefaultInput, text: "Citation" },

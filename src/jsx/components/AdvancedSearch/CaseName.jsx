@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import ListBox from "./ListBox.jsx";
 import useDebouncedFetch from "./useDebouncedFetch.jsx";
 
-const CaseTitle = ({ value, id, onChange, className, isPopulated }) => {
-	const [title, setTitle] = useState(value.title || "");
+const CaseName = ({ value, id, onChange, className, isPopulated }) => {
+	const [name, setName] = useState(value.title || "");
 	const { results: titleResults } = useDebouncedFetch({
-		source: "http://localhost:8085/cases/titles?search=",
-		term: title,
+		source: "http://localhost:8085/cases/names?search=",
+		term: name,
 		extraParams: "&start=0&end=5"
 	});
 	const onValueChange = value => {
-		setTitle(value);
+		setName(value);
 		onChange({ id, value });
 	};
 
@@ -19,16 +19,16 @@ const CaseTitle = ({ value, id, onChange, className, isPopulated }) => {
 		<div className={className}>
 			<ListBox
 				id={`case-title-${id}`}
-				value={title}
+				value={name}
 				automatic={false}
 				isPopulated={isPopulated}
 				results={titleResults}
-				textSelection={result => result.legislationTitle}
+				textSelection={result => result.caseName}
 				onInputValueChange={value => onValueChange(value)}
-				onSelection={({ legislationTitle = "" }) => onValueChange(legislationTitle, "act")}
+				onSelection={({ caseName = "" }) => onValueChange(caseName, "act")}
 			/>
 		</div>
 	);
 };
 
-export default CaseTitle;
+export default CaseName;

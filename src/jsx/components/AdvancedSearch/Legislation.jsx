@@ -46,7 +46,6 @@ const Legislation = ({ value, id, onChange, className, isPopulated }) => {
 				<ListBox
 					id={`section-${id}`}
 					value={section}
-					automatic
 					isPopulated={isPopulated}
 					hint="You should select one."
 					labelText="Section"

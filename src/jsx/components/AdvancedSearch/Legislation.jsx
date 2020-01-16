@@ -37,9 +37,9 @@ const Legislation = ({ value, id, onChange, className, isPopulated }) => {
 					hint="You should select one."
 					labelText="Act"
 					results={actResults}
-					textSelection={result => result.legislationTitle}
+					textSelection={result => result.actName}
 					onInputValueChange={value => onValueChange(value, "act")}
-					onSelection={({ legislationTitle = "" }) => onValueChange(legislationTitle, "act")}
+					onSelection={({ actName = "" }) => onValueChange(actName, "act")}
 				/>
 			</div>
 			<div className="compound-field">

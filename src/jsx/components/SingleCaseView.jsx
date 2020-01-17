@@ -9,9 +9,9 @@ import Close from "-!svg-react-loader?name=Logo!../../img/close-details.svg";
 const useAdobePreview = () => {
 	const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 	const adobeUIConfig = {
-		showLeftHandPanel: false,
-		showDownloadPDF: false,
-		showPrintPDF: false
+		showLeftHandPanel: true,
+		showDownloadPDF: true,
+		showPrintPDF: true
 	};
 
 	useEffect(() => {

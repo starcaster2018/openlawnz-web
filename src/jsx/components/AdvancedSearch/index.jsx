@@ -8,11 +8,12 @@ import DefaultInput from "./DefaultInput.jsx";
 import JudgmentDate from "./JudgmentDate.jsx";
 import Legislation from "./Legislation.jsx";
 import CaseName from "./CaseName.jsx";
+import Court from "./Court.jsx";
 
 const relationOfTypes = {
 	search: { Component: DefaultInput, description: "Any Field" },
 	case_name: { Component: CaseName, description: "Case Name" },
-	court: { Component: DefaultInput, description: "Court" },
+	court: { Component: Court, description: "Court" },
 	// case_text: { Component: DefaultInput, description: "Case Text" },
 	// citation: { Component: DefaultInput, description: "Citation" },
 	// cited_by: { Component: DefaultInput, description: "Cited By" },

@@ -84,7 +84,8 @@
     }
 
     input,
-    .react-date-picker__wrapper {
+    .react-date-picker__wrapper,
+    .extended-select {
       background: #ffffff;
       border-radius: 5px;
       border: 1px solid #e0e0e0;
@@ -92,9 +93,17 @@
       color: #959595;
       font-family: "Nunito Sans", sans-serif;
       font-size: 15px;
+      font-weight: normal;
+      outline: none;
       outline: none;
       padding: 11px 15px;
       width: 100%;
+    }
+
+    .extended-select {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
     }
 
     .react-date-picker {

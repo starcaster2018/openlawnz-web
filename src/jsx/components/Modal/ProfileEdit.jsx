@@ -77,7 +77,7 @@ class ProfileEdit extends Component {
 				>
 					<div className="profile-modal-header">Edit Folder</div>
 					<div className="profile-modal-input-wrapper">
-						<span>Folder Name: </span>
+						<label>Folder Name: </label>
 						<Input
 							className="profile-modal-input"
 							id={this.props.id}

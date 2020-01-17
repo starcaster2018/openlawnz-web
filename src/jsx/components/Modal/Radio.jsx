@@ -13,8 +13,8 @@ export const Radio = props => {
 			</div>
 			<label className="radio-label" htmlFor={value}>
 				{value}
+				{subValue ? <label className="radio-sub-value">{`(${subValue})`}</label> : null}
 			</label>
-			{subValue ? <span className="radio-sub-value">{`(${subValue})`}</span> : null}
 		</div>
 	);
 };
@@ -29,7 +29,7 @@ export const RadioGroup = props => {
 	};
 
 	return (
-		<div className={classnames("radio-group-wrapper",className)}>
+		<div className={classnames("radio-group-wrapper", className)}>
 			<span className="radio-title">{`${title} : `}</span>
 			<div className="radio-group" onChange={handleChange}>
 				{options.map((item, index) => {

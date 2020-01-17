@@ -82,16 +82,17 @@
         text-align: center;
         margin-left: 16px;
 
+        .radio-sub-value{
+          padding :4px 0 0 4px;
+          font-size: 12px;
+          line-height: 16px;
+        }
+
       }
 
     }
 
-    .radio-sub-value{
-      padding :4px 0 0 4px;
-      float: left;
-      font-size: 12px;
-      line-height: 16px;
-    }
+
 
   }
 }

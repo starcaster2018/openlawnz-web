@@ -40,7 +40,7 @@ export default class Search extends Component {
 
 	render() {
 		return (
-			<section className="search-container">
+			<div className="search-container">
 				<div className="search">
 					<form className="search-input" onSubmit={this.handleSubmit.bind(this)}>
 						<div className="input-wrapper">
@@ -74,7 +74,7 @@ export default class Search extends Component {
 						<Exclamation /> <p>{this.state.searchMsg}</p>
 					</div>
 				) : null}
-			</section>
+			</div>
 		);
 	}
 }

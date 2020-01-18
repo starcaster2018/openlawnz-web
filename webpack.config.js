@@ -1,11 +1,9 @@
 const path = require("path");
-const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-
-const config = require("./config.json");
+const Dotenv = require("dotenv-webpack");
 
 const src = path.resolve(__dirname, "src");
 const out = path.resolve(__dirname, "debug");
@@ -55,9 +53,7 @@ module.exports = (env, argv) => ({
 		]
 	},
 	plugins: [
-		new webpack.DefinePlugin({
-			API_URL: JSON.stringify(config[argv.mode].API_URL)
-		}),
+		new Dotenv(),
 		new HtmlWebpackPlugin({
 			template: src + "/templates/index.html"
 		}),

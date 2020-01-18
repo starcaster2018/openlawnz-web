@@ -15,7 +15,7 @@ import Exclamation from "-!svg-react-loader?name=Logo!../../img/exclamation.svg"
 
 const queryString = require("query-string");
 const memoizedFetch = memoize((query, offset, end) =>
-	fetch(`https://search.openlaw.nz/cases?search=${query}&start=${offset}&end=${end}`)
+	fetch(`${process.env.SEARCH_API_URL}?search=${query}&start=${offset}&end=${end}`)
 );
 
 const Results = ({ data = [] }) =>

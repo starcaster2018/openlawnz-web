@@ -13,7 +13,7 @@ import Previous from "-!svg-react-loader?name=Logo!../../img/previous-page.svg";
 
 const queryString = require("query-string");
 const memoizedFetch = memoize((query, offset, end) =>
-	fetch(`http://localhost:8085/cases?${query}&start=${offset}&end=${end}`)
+	fetch(`${process.env.SEARCH_API_URL}?${query}&start=${offset}&end=${end}`)
 );
 
 const Results = ({ data = [] }) =>

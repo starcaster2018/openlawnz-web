@@ -6,7 +6,6 @@ import External from "-!svg-react-loader?name=External!../../img/external.svg";
 
 // Auth0: Authentication
 import Auth0Lock from "auth0-lock";
-import { environment } from "../../js/environment";
 
 const options = {
 	theme: {
@@ -20,7 +19,7 @@ const options = {
 	}
 };
 
-const lock = new Auth0Lock(environment.auth0.clientId, environment.auth0.domain, options);
+const lock = new Auth0Lock(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN, options);
 var globalToken = sessionStorage.getItem("token");
 var globalProfile = sessionStorage.getItem("profile") && JSON.parse(sessionStorage.getItem("profile"));
 

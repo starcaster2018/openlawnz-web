@@ -215,7 +215,7 @@ class About extends Component {
 									</div>
 									<ReadMore
 										text="
-										Jins is software engineer, who is passionate about applying technology to solve complex problems and challenges. She loves coding and learning new technologies. She has Masters in computer applications and extensive experience in Microsoft technologies
+										Jins is a software engineer who is passionate about applying technology to solve complex problems and challenges. She loves coding and learning new technologies. She has a Masters in computer applications and extensive experience in Microsoft technologies
 										"
 									/>
 								</div>

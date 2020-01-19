@@ -13,7 +13,7 @@ export const Radio = props => {
 			</div>
 			<label className="radio-label" htmlFor={value}>
 				{value}
-				{subValue ? <label className="radio-sub-value">{`(${subValue})`}</label> : null}
+				{subValue ? <span className="radio-sub-value">{`(${subValue})`}</span> : null}
 			</label>
 		</div>
 	);

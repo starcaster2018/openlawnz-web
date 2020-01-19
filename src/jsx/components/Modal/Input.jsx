@@ -1,29 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
 const Input = props => {
-	const [value, setValue] = useState("");
-
 	function handleEnter(e) {
 		if (e.keyCode === 13) {
 			props.onEnter();
-			setValue("");
+			// setValue("");
 		}
-	}
-
-	function handleChange(e) {
-		setValue(e.target.value);
 	}
 
 	return (
 		<input
 			onKeyUp={handleEnter}
-			value={value}
+			value={props.value}
 			className={classNames("input", props.className)}
 			type="text"
 			placeholder={props.placeholder}
-			onChange={handleChange}
+			onChange={props.onChange}
 		/>
 	);
 };
@@ -33,10 +27,13 @@ export default Input;
 Input.propTypes = {
 	placeholder: PropTypes.string,
 	onEnter: PropTypes.func,
-	className: PropTypes.string
+	className: PropTypes.string,
+	value: PropTypes.string,
+	onChange: PropTypes.func
 };
 
 Input.defaultProps = {
 	onEnter: () => {},
-	placeholder: "Please input here"
+	placeholder: "Please input here",
+	onChange: () => {}
 };

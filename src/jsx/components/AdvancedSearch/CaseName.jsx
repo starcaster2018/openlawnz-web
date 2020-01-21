@@ -6,7 +6,7 @@ import useDebouncedFetch from "./useDebouncedFetch.jsx";
 const CaseName = ({ value, id, onChange, className, isPopulated }) => {
 	const [name, setName] = useState(value || "");
 	const { results: titleResults } = useDebouncedFetch({
-		source: "http://localhost:8085/cases/names?search=",
+		source: `${process.env.SEARCH_API_CASESNAMES_URL}?search=`,
 		term: name,
 		extraParams: "&start=0&end=5"
 	});

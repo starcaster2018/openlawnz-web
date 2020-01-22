@@ -6,7 +6,7 @@
     display: none;
   }
 
-  .combobox-wrapper {
+  .comboBox-wrapper {
     position: relative;
     width: 100%;
     &:focus {
@@ -14,7 +14,7 @@
     }
   }
 
-  .listbox {
+  .listBox {
     background: $openWhite;
     border: 1px solid $openLawMediumGray;
     border-radius: 5px;
@@ -35,7 +35,7 @@
     &__item {
       padding: 7px 15px;
 
-      &:not(.listbox__item--clean):hover,
+      &:not(.listBox__item--clean):hover,
       &-focused {
         background-color: $openLawDarkBlue;
         color: $openWhite;

@@ -85,12 +85,12 @@ const ListBox = ({
 	return (
 		<React.Fragment>
 			{labelText && (
-				<label htmlFor={`${id}-input`} id={`${id}-label`} className="combobox-label">
+				<label htmlFor={`${id}-input`} id={`${id}-label`} className="comboBox-label">
 					{labelText}
 					{hint && <span className="visuallyhidden">{hint}</span>}
 				</label>
 			)}
-			<div className="combobox-wrapper">
+			<div className="comboBox-wrapper">
 				<div
 					role="combobox"
 					aria-expanded={isInputFocused && results.length > 0}
@@ -112,8 +112,8 @@ const ListBox = ({
 						aria-activedescendant={resultOnFocus != null ? `${id}-result-item-${resultOnFocus}` : ""}
 					/>
 					{isInputFocused && !results.length && (
-						<div className="listbox">
-							<div className="listbox__item listbox__item--clean" aria-hidden="true">
+						<div className="listBox">
+							<div className="listBox__item listBox__item--clean" aria-hidden="true">
 								Type to search suggestions. {hint}
 							</div>
 						</div>
@@ -123,13 +123,13 @@ const ListBox = ({
 					aria-labelledby={`${id}-label`}
 					role="listbox"
 					id={`${id}-listbox`}
-					className={`listbox ${!isInputFocused || (isInputFocused && !results.length) ? "hidden" : ""}`}
+					className={`listBox ${!isInputFocused || (isInputFocused && !results.length) ? "hidden" : ""}`}
 				>
 					{results.map((result, idx) => (
 						<li
 							key={`${id}-result-item-${idx}`}
 							onMouseDown={() => handleSelection(result)}
-							className={`listbox__item ${resultOnFocus === idx ? "listbox__item-focused" : ""}`}
+							className={`listBox__item ${resultOnFocus === idx ? "listBox__item-focused" : ""}`}
 							role="option"
 							id={`${id}-result-item-${idx}`}
 						>

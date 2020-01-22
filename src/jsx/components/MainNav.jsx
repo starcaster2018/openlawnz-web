@@ -13,7 +13,7 @@ const MainNav = () => {
 	const toggleNavState = () => setIsNavOpen(!isNavOpen);
 
 	return (
-		<header role="banner" className="nav-container" id="nav-container">
+		<header role="banner" className="nav-container">
 			<div className="nav-items">
 				<div className="nav-logo">
 					<Link to="/">

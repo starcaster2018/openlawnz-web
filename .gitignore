@@ -3,3 +3,9 @@ node_modules
 .DS_STORE
 dist
 .env
+
+#gatsby
+.cache/
+# Build directory
+public/
+static/admin/*.bundle.*

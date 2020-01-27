@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import ListBox from "./ListBox.jsx";
-import useDebouncedFetch from "./useDebouncedFetch.jsx";
+import ListBox from "./ListBox";
+import useDebouncedFetch from "./useDebouncedFetch";
 
 const CaseName = ({ value, id, onChange, className, isPopulated }) => {
 	const [name, setName] = useState(value || "");

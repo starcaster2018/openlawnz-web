@@ -4,11 +4,11 @@ import queryString from "query-string";
 import isValidDate from "date-fns/isValid";
 import DOMPurify from "dompurify";
 
-import DefaultInput from "./DefaultInput.jsx";
-import JudgmentDate from "./JudgmentDate.jsx";
-import Legislation from "./Legislation.jsx";
-import CaseName from "./CaseName.jsx";
-import Court from "./Court.jsx";
+import DefaultInput from "./DefaultInput";
+import JudgmentDate from "./JudgmentDate";
+import Legislation from "./Legislation";
+import CaseName from "./CaseName";
+import Court from "./Court";
 
 const relationOfTypes = {
 	search: { Component: DefaultInput, description: "Any Field" },

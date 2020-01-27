@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
-import Download from "-!svg-react-loader?name=Logo!../../img/download-icon.svg";
-import Open from "-!svg-react-loader?name=Logo!../../img/open-details.svg";
-import Close from "-!svg-react-loader?name=Logo!../../img/close-details.svg";
+import Download from "-!svg-react-loader?name=Logo!../img/download-icon.svg";
+import Open from "-!svg-react-loader?name=Logo!../img/open-details.svg";
+import Close from "-!svg-react-loader?name=Logo!../img/close-details.svg";
 
 const useAdobePreview = () => {
 	const [isScriptLoaded, setIsScriptLoaded] = useState(false);
@@ -56,7 +56,9 @@ const SingleCaseView = props => {
 		adobeDCView.previewFile(
 			{
 				content: {
-					location: { url: `https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${pdf.pdfDbKey}` }
+					location: {
+						url: `https://s3-ap-southeast-2.amazonaws.com/openlawnz-pdfs/${pdf.pdfDbKey}`
+					}
 				},
 				metaData: { fileName: `${caseName}.pdf` }
 			},

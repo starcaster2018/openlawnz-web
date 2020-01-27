@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "gatsby";
 
 import Logo from "-!svg-react-loader?name=Logo!../../img/openlaw-logo.svg";
 import External from "-!svg-react-loader?name=External!../../img/external.svg";
 
 // login
-import { useAuth0 } from "../../js/react-auth0-spa";
+// import { useAuth0 } from "../js/react-auth0-spa";
 
 const MainNav = () => {
-	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+	// const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 	const [isNavOpen, setIsNavOpen] = React.useState(false);
 	const toggleNavState = () => setIsNavOpen(!isNavOpen);
 

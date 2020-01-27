@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "gatsby";
 import { getNews } from "../../js/ApiNews";
-import NewsContext from "../NewsContext.jsx";
+import NewsContext from "../NewsContext";
 
 const selectNews = (news = [], qty = 3) => news.slice(0, qty);
 

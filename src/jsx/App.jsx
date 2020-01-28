@@ -28,7 +28,8 @@ const App = props => {
 	const updateNewsData = news => setNews(news);
 
 	if (loading) {
-		return <div>Loading...</div>;
+		// In relevant with an issuie of Get rid of loading text, below <div> should be commented or removed
+		// return <div>Loading...</div>;
 	}
 
 	return (

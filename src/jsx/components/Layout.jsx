@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import "normalize.css";
 import "../../scss/App.scss";
@@ -65,46 +64,3 @@ Layout.propTypes = {
 	subHeading: PropTypes.string
 };
 export default Layout;
-
-export const query = graphql`
-	fragment LayoutFragment on Query {
-		footerData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "footer" } } }) {
-			edges {
-				node {
-					id
-					frontmatter {
-						logoImage {
-							image
-							imageAlt
-							tagline
-						}
-						socialLinks {
-							image
-							imageAlt
-							label
-							linkURL
-						}
-					}
-				}
-			}
-		}
-		navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "navbar" } } }) {
-			edges {
-				node {
-					id
-					frontmatter {
-						logoImage {
-							image
-							imageAlt
-						}
-						menuItems {
-							label
-							linkType
-							linkURL
-						}
-					}
-				}
-			}
-		}
-	}
-`;

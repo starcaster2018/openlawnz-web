@@ -63,6 +63,11 @@ module.exports = (env, argv) => ({
 		}),
 		new FaviconsWebpackPlugin(src + "/img/logo-small.png")
 	],
+	resolve: {
+		alias: {
+			"react-dom": "@hot-loader/react-dom"
+		}
+	},
 	devServer: {
 		contentBase: out,
 		port: 9000,

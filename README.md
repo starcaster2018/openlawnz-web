@@ -11,11 +11,11 @@ yarn
 
 gatsby develop
 
+Visit http://localhost:8000/
+
 ## Create a production build
 
 gatsby build
-
-Visit http://localhost:8000/
 
 ## Serve the production build locally
 

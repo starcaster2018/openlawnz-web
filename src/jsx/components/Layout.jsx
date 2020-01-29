@@ -8,59 +8,57 @@ import createBrowserHistory from "history/createBrowserHistory";
 
 import MainNav from "./MainNav";
 import SearchContainer from "./SearchContainer";
-import InfoCard from "./InfoCard";
-import InfoCardUnit from "./InfoCardUnit";
 import Footer from "./Footer";
-
+import InfoCard from "./InfoCard";
 const history = createBrowserHistory();
 
-const Layout = ({ path, heading, children, subHeading }) => {
-	return (
-		<>
-			<Helmet>
-				<title>OpenLaw NZ</title>
-				<meta name="openlaw" content="open-source legal data platform, free to use" />
-			</Helmet>
-			<MainNav />
-			<div className="highlighted-content">
-				{path === "/" && <h1 className="header-title">{heading}</h1>}
-				<SearchContainer history={history} />
-				{path === "/" && <HomePageInfoCards />}
-				{path !== "/" && (
-					<InfoCard classModifier="info-card info-card--large info-card--title info-card--column">
-						<h1>{heading}</h1>
-						<span>{subHeading}</span>
-					</InfoCard>
-				)}
-			</div>
-			<div className="home-wrapper">
-				{path === "/" ? (
-					children
-				) : (
-					<div className="container main">
-						<div className="content">{children}</div>
-					</div>
-				)}
-			</div>
-			<Footer />
-		</>
-	);
-};
+class Layout extends React.Component {
+  static SpecialHeading = props => {
+    return <h1 className="header-title">{props.children}</h1>;
+  };
 
-const HomePageInfoCards = () => (
-	<InfoCard>
-		<InfoCardUnit one="30,141" two="CASES" />
-		<div className="border"></div>
-		<InfoCardUnit one="25,208" two="CASE-TO-CASE RELATIONSHIPS" />
-		<div className="border"></div>
-		<InfoCardUnit one="346,395" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
-	</InfoCard>
-);
+  static Search = () => {
+    return <SearchContainer history={history} />;
+  };
+
+  static PageHeader = props => {
+    return (
+      <InfoCard classModifier="info-card info-card--large info-card--title info-card--column">
+        {props.children}
+      </InfoCard>
+    );
+  };
+
+  static PageContent = props => {
+    return (
+      <div className="home-wrapper">
+        <div className="container main">
+          <div className="content">{props.children}</div>
+        </div>
+      </div>
+    );
+  };
+
+  render() {
+    return (
+      <>
+        <Helmet>
+          <title>OpenLaw NZ</title>
+          <meta
+            name="openlaw"
+            content="open-source legal data platform, free to use"
+          />
+        </Helmet>
+        <MainNav />
+        <div className="highlighted-content">{this.props.children}</div>
+        <Footer />
+      </>
+    );
+  }
+}
 
 Layout.propTypes = {
-	path: PropTypes.string,
-	children: PropTypes.element.isRequired,
-	heading: PropTypes.string,
-	subHeading: PropTypes.string
+  children: PropTypes.element.isRequired
 };
+
 export default Layout;

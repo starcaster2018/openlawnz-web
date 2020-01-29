@@ -1,17 +1,25 @@
 # openlawnz-web
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![](https://badgen.net/dependabot/openlawnz/openlawnz-web/117378835=?icon=dependabot)
 
-## Running
+## Start development server
 
-	npm install
-	npm run dev
+npm install -g gatsby-cli
 
-## Building
+yarn
 
-	npm run build
+gatsby develop
 
-Visit http://localhost:9000/
+## Create a production build
+
+gatsby build
+
+Visit http://localhost:8000/
+
+## Serve the production build locally
+
+gatsby serve
 
 ## Contributors
 

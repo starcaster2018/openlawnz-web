@@ -298,7 +298,7 @@ body {
   font-size: 14px;
   line-height: 1.4285em;
   color: rgba(0, 0, 0, 0.87);
-  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 h1,
 h2,
@@ -491,7 +491,7 @@ li {
   padding-top: 90px;
 }
 
-.home-wrapper {
+.page-wrapper {
   position: relative;
   width: 100%;
   background: $openWhite;

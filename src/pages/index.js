@@ -5,6 +5,7 @@ import News from "../jsx/components/News";
 import Layout from "../jsx/components/Layout";
 import InfoCard from "../jsx/components/InfoCard";
 import InfoCardUnit from "../jsx/components/InfoCardUnit";
+
 const Index = () => (
   <Layout>
     <Layout.SpecialHeading>
@@ -20,7 +21,7 @@ const Index = () => (
       <InfoCardUnit one="346,395" two="CASE-TO-LEGISLATION RELATIONSHIPS" />
     </InfoCard>
 
-    <div className="home-wrapper">
+    <div className="page-wrapper">
       <Mission />
       <News />
       <ContactUs />

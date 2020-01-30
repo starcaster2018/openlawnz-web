@@ -65,7 +65,7 @@ module.exports = (env, argv) => ({
 	],
 	resolve: {
 		alias: {
-			"react-dom": "@hot-loader/react-dom"
+			"react-dom": "@hot-loader/react-dom" // As recommended in the docs https://www.npmjs.com/package/react-hot-loader#hot-loaderreact-dom
 		}
 	},
 	devServer: {

@@ -17,13 +17,15 @@ class ModalWrapper extends Component {
 		this.onConfirm = this.onConfirm.bind(this);
 		this.onCancel = this.onCancel.bind(this);
 		this.onSelect = this.onSelect.bind(this);
+		this.changeInput = this.changeInput.bind(this);
 
 		this.state = {
 			visible: false,
 			defaultVisible: false,
 			buttonID: 0,
 			buttonCollected: "existing",
-			selectValue: ""
+			selectValue: "",
+			inputValue: ""
 		};
 	}
 
@@ -49,8 +51,11 @@ class ModalWrapper extends Component {
 	}
 
 	reset() {
-		this.setState({ buttonCollected: "existing" });
-		this.setState({ visible: false });
+		this.setState({
+			buttonCollected: "existing",
+			visible: false,
+			inputValue: ""
+		});
 	}
 
 	clickMask() {
@@ -70,6 +75,12 @@ class ModalWrapper extends Component {
 	onSelect(v) {
 		this.setState({
 			selectValue: v
+		});
+	}
+
+	changeInput(e) {
+		this.setState({
+			inputValue: e.target.value
 		});
 	}
 
@@ -130,7 +141,13 @@ class ModalWrapper extends Component {
 					) : (
 						<>
 							<p className="modal-text">Enter new folder name: </p>
-							<Input onEnter={this.onConfirm} className="modal-input" placeholder={"New folder name"} />
+							<Input
+								value={this.state.inputValue}
+								onChange={this.changeInput}
+								onEnter={this.onConfirm}
+								className="modal-input"
+								placeholder={"New folder name"}
+							/>
 						</>
 					)}
 				</Modal>

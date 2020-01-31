@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "./Button";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 
 class Modal extends Component {
 	constructor(props) {
@@ -32,7 +33,7 @@ class Modal extends Component {
 	}
 
 	render() {
-		const { children, visible } = this.props;
+		const { children, visible, className } = this.props;
 
 		if (visible) {
 			document.getElementsByTagName("body")[0].classList.add("prevent-scroll");
@@ -41,7 +42,7 @@ class Modal extends Component {
 		}
 
 		return visible ? (
-			<div className="modal-wrapper">
+			<div className={classnames("modal-wrapper", className)}>
 				<div className="modal">
 					{children}
 					<div className="modal-button">
@@ -72,7 +73,8 @@ Modal.propTypes = {
 	onCancel: PropTypes.func,
 	title: PropTypes.string,
 	visible: PropTypes.bool,
-	reset: PropTypes.func
+	reset: PropTypes.func,
+	className: PropTypes.string
 };
 
 Modal.defaultProps = {

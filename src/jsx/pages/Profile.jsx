@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
-import Footer from "../components/Footer.jsx";
 import PropTypes from "prop-types";
 
 import { casesArrays } from "../../../mock/ProfileData";
 
+import InfoCard from "../components/InfoCard.jsx";
+import SearchContainer from "../components/SearchContainer.jsx";
 import FolderBig from "-!svg-react-loader?name=FolderBig!../../img/folder-big.svg";
 import FolderSmall from "-!svg-react-loader?name=FolderSmall!../../img/folder-small.svg";
 import Close from "-!svg-react-loader?name=Close!../../img/close.svg";
@@ -159,6 +160,12 @@ class Profile extends Component {
 
 		return (
 			<>
+				<div className="highlighted-content">
+					<SearchContainer history={this.props.history} />
+					<InfoCard classModifier="info-card--large info-card--title info-card--column">
+						<h1>My Profile</h1>
+					</InfoCard>
+				</div>
 				<div className="profile">
 					<div className="profile-wrapper">
 						<ProfileHead />
@@ -168,7 +175,6 @@ class Profile extends Component {
 						</div>
 					</div>
 				</div>
-				<Footer />
 			</>
 		);
 	}

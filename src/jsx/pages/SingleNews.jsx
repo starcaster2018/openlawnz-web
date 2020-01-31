@@ -1,6 +1,6 @@
 import React from "react";
 import { getNews } from "../../js/ApiNews";
-import Search from "../components/Search.jsx";
+import SearchContainer from "../components/SearchContainer.jsx";
 import InfoCard from "../components/InfoCard.jsx";
 import NewsContext from "../NewsContext.jsx";
 
@@ -39,7 +39,7 @@ class News extends React.Component {
 		return (
 			<React.Fragment>
 				<div className="highlighted-content">
-					<Search history={this.props.history} />
+					<SearchContainer history={this.props.history} />
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>{title}</h1>
 						<span>{formattedDate}</span>
